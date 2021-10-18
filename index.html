@@ -133,13 +133,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -176,6 +176,89 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/18/call-apply-bind%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/18/call-apply-bind%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">call,apply,bind实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-18 14:04:16 / 修改时间：14:53:10" itemprop="dateCreated datePublished" datetime="2021-10-18T14:04:16+08:00">2021-10-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="call-apply-bind源码的实现"><a href="#call-apply-bind源码的实现" class="headerlink" title="call,apply,bind源码的实现"></a>call,apply,bind源码的实现</h1><h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>使用，就是替换了this的指向，传参使用的基本传参。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">这里将方法写在了Function函数的原型里面，这样因为通过原型链就可以找到这个方法了。</span><br><span class="line">Function.prototype.myCall = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line"></span><br><span class="line">  //这里这个this，指向的就是方法。这里使用Symbol，用于避免出现方法重复。</span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line"></span><br><span class="line">  // 获取参数</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  // 使用ctx来进行调用。替换了this指向。</span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line"></span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.call(db, &#x27;cc&#x27;, 1);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>同上，传参使用的是数组传参。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myApply = function (ctx, args) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line">  </span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.apply(db, [&#x27;cc&#x27;, 1]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><p>同call方法的参数，但是不是马上执行，需要自己执行一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  </span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  return () =&gt; &#123;</span><br><span class="line">    const result = ctx[fn](...args);</span><br><span class="line">    delete ctx[fn];</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(db, [&#x27;cc&#x27;, 1])();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -286,7 +369,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-18 13:12:26" itemprop="dateModified" datetime="2021-10-18T13:12:26+08:00">2021-10-18</time>
+        <time title="修改时间：2021-10-18 13:20:33" itemprop="dateModified" datetime="2021-10-18T13:20:33+08:00">2021-10-18</time>
       </span>
 
   
@@ -321,16 +404,10 @@
 
 
 <p>对于v7.8，其他版本的我没有尝试，不知道这个问题，这里有个bug，如果在md文档里面设置了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Object&gt;</span><br><span class="line">就这样一个单标签，就会让你的头像那一块位置不正确或者找不到。我这个是v7.8的版本，开始用的v8.8的版本没有问题，这个原因应该是因为没有对md文档里面的内容的处理。</span><br><span class="line">但是我使用他的话，会造成其他问题，详细见下</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Object&gt;</span><br><span class="line">就这样一个单标签，就会让你的头像那一块位置不正确或者找不到。我这个是v7.8的版本，开始用的v8.8的版本没有问题，这个原因应该是因为没有对md文档里面的内容的处理。</span><br></pre></td></tr></table></figure>
 
 <p><img src="img/image-20211018105920422.png" alt="image-20211018105920422"></p>
 <p><img src="img/image-20211018110658046.png" alt="image-20211018110658046"></p>
-<p><strong>v8.8的问题</strong></p>
-<p>这里就是开始那个需要手动安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-<p>但是，虽然安装了之后本地没有问题了，但是上传到网上便出现了问题。所以我又降到了v7.8的版本。于是就可以了。</p>
-<p><img src="img/image-20211018110937363.png" alt="image-20211018110937363"></p>
 <h2 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h2><p>这里设置 的 菜单出现错误</p>
 <p>因为 在那个 /about/||user，这个 <code>||</code>之前不能有空格，空格会被当作url，你也可以看到点击之后的url地址后面有个%20,这个就是空格。</p>
 <p>不过较新的版本解决了这个问题。具体是从哪个版本开始解决的不清楚。</p>
@@ -371,6 +448,97 @@
 
 <h2 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h2><p><strong>DISQUS</strong>，大部分都是需要翻墙的，所以我就没有搞。。。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/14/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-18 13:21:01" itemprop="dateModified" datetime="2021-10-18T13:21:01+08:00">2021-10-18</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他，我这里就使用简单的形式对应就行了。</p>
+<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
+
+<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
+<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">npx hexo g</span><br><span class="line">nex hexo d</span><br></pre></td></tr></table></figure>
 
 
       
@@ -463,95 +631,6 @@
 
 
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/14/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-16 14:03:28" itemprop="dateModified" datetime="2021-10-16T14:03:28+08:00">2021-10-16</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他，我这里就使用简单的形式对应就行了。</p>
-<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
-
-<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
-<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
 
       
     </div>
