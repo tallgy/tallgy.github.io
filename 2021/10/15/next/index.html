@@ -20,30 +20,38 @@
     var CONFIG = {"hostname":"tallgy.gitee.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="逐步学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tallgy&#39;s blog">
-<meta property="og:url" content="http://tallgy.gitee.io/index.html">
+  <meta name="description" content="next 基本使用基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。 1http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html#install-next-theme  下面这个是比较新的情况，有一个组织进行了维护。使用也有说明 1https:&#x2F;&#x2F;theme-next.js.org&#x2F;docs&#x2F;getting-started&#x2F;    12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="next 基本使用">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/10/15/next/index.html">
 <meta property="og:site_name" content="tallgy&#39;s blog">
-<meta property="og:description" content="逐步学习">
+<meta property="og:description" content="next 基本使用基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。 1http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html#install-next-theme  下面这个是比较新的情况，有一个组织进行了维护。使用也有说明 1https:&#x2F;&#x2F;theme-next.js.org&#x2F;docs&#x2F;getting-started&#x2F;    12">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018105920422.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018110658046.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018110937363.png">
+<meta property="article:published_time" content="2021-10-15T12:44:58.922Z">
+<meta property="article:modified_time" content="2021-10-18T03:10:34.523Z">
 <meta property="article:author" content="tallgy">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="next">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018105920422.png">
 
-<link rel="canonical" href="http://tallgy.gitee.io/">
+<link rel="canonical" href="http://tallgy.gitee.io/2021/10/15/next/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tallgy's blog</title>
+  <title>next 基本使用 | tallgy's blog</title>
   
 
 
@@ -166,73 +174,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/16/rem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/16/rem/" class="post-title-link" itemprop="url">rem</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-10-16 14:14:53 / 修改时间：14:17:27" itemprop="dateCreated datePublished" datetime="2021-10-16T14:14:53+08:00">2021-10-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>rem是相对于根元素html的字号进行了等比例的计算。</p>
-<p>for example</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size: 16px; &#125;</span><br><span class="line"></span><br><span class="line">ohter &#123; width: 300/16 rem; &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -248,10 +193,9 @@
       <meta itemprop="name" content="tallgy's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/15/next/" class="post-title-link" itemprop="url">next 基本使用</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          next 基本使用
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -281,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="next-基本使用"><a href="#next-基本使用" class="headerlink" title="next 基本使用"></a>next 基本使用</h1><p>基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。</p>
+        <h1 id="next-基本使用"><a href="#next-基本使用" class="headerlink" title="next 基本使用"></a>next 基本使用</h1><p>基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/getting-started.html#install-next-theme</span><br></pre></td></tr></table></figure>
 
 <p>下面这个是比较新的情况，有一个组织进行了维护。使用也有说明</p>
@@ -355,320 +299,76 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/">
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
+    <div class="social-list">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/14/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Node JS 读取文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://github.com/tallgy">
+            <span class="icon">
+              <i class="fa fa-github"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-18 10:48:16" itemprop="dateModified" datetime="2021-10-18T10:48:16+08:00">2021-10-18</time>
-              </span>
 
-          
-
+            <span class="label">GitHub</span>
+          </a>
         </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Node-JS-读取文件"><a href="#Node-JS-读取文件" class="headerlink" title="Node JS 读取文件"></a>Node JS 读取文件</h1><p>在  <code>Node JS</code> 中文件 操作是使用的 <code>fs</code> 模块进行了读取操作。</p>
-<h4 id="使用Node-JS读取文件"><a href="#使用Node-JS读取文件" class="headerlink" title="使用Node JS读取文件"></a>使用<code>Node JS</code>读取文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>path</code> &lt;string&gt; | &lt;Buffer&gt; | &lt;URL&gt; | &lt;integer&gt; 文件名或文件描述符</li>
-<li>options   &lt;Object&gt; | &lt;string&gt;<ul>
-<li><code>encoding</code> &lt;null&gt; | &lt;string&gt; <strong>默认值:</strong> <code>null</code></li>
-<li><code>flag</code> &lt;string&gt;  <strong>默认值:</strong> <code>&#39;r&#39;</code>。</li>
-<li><code>signal</code> &lt;AbortSignal&gt;允许中止正在进行的读取文件</li>
-</ul>
-</li>
-<li>callback   &lt;Function&gt;<ul>
-<li><code>err</code>  &lt;Error&gt; | &lt;AggregateError&gt;</li>
-<li><code>data</code> &lt;string&gt; | &lt;Buffer&gt;</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;./../source/Node JS 读取文件.md&#x27;, &#x27;utf8&#x27;, (err, data) =&gt; &#123;</span><br><span class="line">  if (err) &#123;</span><br><span class="line">    throw err;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  	//data 是一个 十六进制的buffer，所以使用toString转成字符。</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/14/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://gitee.com/tallgy">
+            <span class="icon">
+              <i class="fa fa-git"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-16 14:03:28" itemprop="dateModified" datetime="2021-10-16T14:03:28+08:00">2021-10-16</time>
-              </span>
 
-          
-
+            <span class="label">Gitee</span>
+          </a>
         </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他，我这里就使用简单的形式对应就行了。</p>
-<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
-
-<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
-<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/md%20%E8%BD%AC%20html%20%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/13/md%20%E8%BD%AC%20html%20%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">md 转 html 的方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-13T00:00:00+08:00">2021-10-13</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-16 14:14:09" itemprop="dateModified" datetime="2021-10-16T14:14:09+08:00">2021-10-16</time>
-              </span>
 
-          
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="md-转-html-的几个方式"><a href="#md-转-html-的几个方式" class="headerlink" title="md 转 html 的几个方式"></a>md 转 html 的几个方式</h1><p>方式有很多，我这里就简单的</p>
-<h3 id="使用在线的-strapdown"><a href="#使用在线的-strapdown" class="headerlink" title="使用在线的 strapdown"></a>使用在线的 strapdown</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://strapdownjs.com/v/0.2/strapdown.js</span><br></pre></td></tr></table></figure>
-      
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/next/" rel="tag"># next</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/14/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" rel="prev" title="Node JS 读取文件">
+      <i class="fa fa-chevron-left"></i> Node JS 读取文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/16/rem/" rel="next" title="rem">
+      rem <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/margin%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E5%8F%B7%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/13/margin%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E5%8F%B7%E5%80%BC/" class="post-title-link" itemprop="url">margin使用百分号值</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-13T00:00:00+08:00">2021-10-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-16 14:13:53" itemprop="dateModified" datetime="2021-10-16T14:13:53+08:00">2021-10-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="css-margin-top"><a href="#css-margin-top" class="headerlink" title="css margin-top"></a>css margin-top</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">margin-top: 50%</span><br><span class="line">是相对于父节点的宽度。其他同样</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -721,6 +421,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#next-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">next 基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-%E8%8F%9C%E5%8D%95"><span class="nav-number">1.2.</span> <span class="nav-text">设置 菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">设置头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">黑暗模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">后续主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE%EF%BC%8C%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.1.</span> <span class="nav-text">字体设置，代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87"><span class="nav-number">2.2.</span> <span class="nav-text">图标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E9%9B%86%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">三方服务集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.1.</span> <span class="nav-text">评论系统</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
