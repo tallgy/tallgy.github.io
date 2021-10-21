@@ -27,15 +27,16 @@
 <meta property="og:site_name" content="tallgy&#39;s blog">
 <meta property="og:description" content="next 基本使用基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。 1http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html#install-next-theme  下面这个是比较新的情况，有一个组织进行了维护。使用也有说明 1https:&#x2F;&#x2F;theme-next.js.org&#x2F;docs&#x2F;getting-started&#x2F;    12">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018105920422.png">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018110658046.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/image-20211018110937363.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/image-20211018105920422.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/15/next/image-20211018110658046.png">
 <meta property="article:published_time" content="2021-10-15T12:44:58.922Z">
-<meta property="article:modified_time" content="2021-10-18T05:20:33.418Z">
+<meta property="article:modified_time" content="2021-10-19T07:05:24.590Z">
 <meta property="article:author" content="tallgy">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="next">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/15/next/img/image-20211018105920422.png">
+<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/15/next/image-20211018110937363.png">
 
 
 <link rel="canonical" href="http://tallgy.gitee.io/2021/10/15/next/">
@@ -141,13 +142,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -225,7 +226,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-18 13:20:33" itemprop="dateModified" datetime="2021-10-18T13:20:33+08:00">2021-10-18</time>
+        <time title="修改时间：2021-10-19 15:05:24" itemprop="dateModified" datetime="2021-10-19T15:05:24+08:00">2021-10-19</time>
       </span>
 
   
@@ -254,6 +255,7 @@
 
 
 <h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
+<p><img src="/2021/10/15/next/image-20211018110937363.png" alt="image-20211018105920422"></p>
 <p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
 
@@ -262,9 +264,9 @@
 <p>对于v7.8，其他版本的我没有尝试，不知道这个问题，这里有个bug，如果在md文档里面设置了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Object&gt;</span><br><span class="line">就这样一个单标签，就会让你的头像那一块位置不正确或者找不到。我这个是v7.8的版本，开始用的v8.8的版本没有问题，这个原因应该是因为没有对md文档里面的内容的处理。</span><br></pre></td></tr></table></figure>
 
-<p><img src="img/image-20211018105920422.png" alt="image-20211018105920422"></p>
-<p><img src="img/image-20211018110658046.png" alt="image-20211018110658046"></p>
-<h2 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h2><p>这里设置 的 菜单出现错误</p>
+<p><img src="/2021/10/15/next/image-20211018105920422.png" alt="image-20211018105920422"></p>
+<p><img src="/2021/10/15/next/image-20211018110658046.png" alt="image-20211018110658046"></p>
+<h2 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h2><p>这里设置 的 菜单出现错误，这个应该是v5这个版本之前的bug，后面的应该都解决了</p>
 <p>因为 在那个 /about/||user，这个 <code>||</code>之前不能有空格，空格会被当作url，你也可以看到点击之后的url地址后面有个%20,这个就是空格。</p>
 <p>不过较新的版本解决了这个问题。具体是从哪个版本开始解决的不清楚。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /|| home</span><br><span class="line">  about: /about/|| user</span><br><span class="line">  tags: /tags/|| tags</span><br><span class="line">  categories: /categories/|| th</span><br><span class="line">  archives: /archives/|| archive</span><br><span class="line">  schedule: /schedule/|| calendar</span><br><span class="line">  sitemap: /sitemap.xml|| sitemap</span><br><span class="line">  #commonweal: /404/|| heartbeat</span><br></pre></td></tr></table></figure>
