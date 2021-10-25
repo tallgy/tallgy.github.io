@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tallgy.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="border-radius的原理和使用1https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;border-radius    原理：首先我们可以知道 border-radius 是四个属性的简写，所以我们先理解四个属性的值的效果。 border-top-right-radius border-top-left-radius  border-bottom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="border-radius的原理和使用">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="tallgy&#39;s blog">
+<meta property="og:description" content="border-radius的原理和使用1https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;border-radius    原理：首先我们可以知道 border-radius 是四个属性的简写，所以我们先理解四个属性的值的效果。 border-top-right-radius border-top-left-radius  border-bottom">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png">
+<meta property="article:published_time" content="2021-10-24T02:53:12.000Z">
+<meta property="article:modified_time" content="2021-10-25T08:38:25.367Z">
+<meta property="article:author" content="tallgy">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="border-radius">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png">
+
+
+<link rel="canonical" href="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/","path":"2021/10/24/border-radius的原理和使用/","title":"border-radius的原理和使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>border-radius的原理和使用 | tallgy's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">tallgy's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">border-radius的原理和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%B6%85%E8%BF%87-50-%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">对于超过 50% 的计算方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E5%92%8C%E5%9E%82%E7%9B%B4%E4%BB%8E%E5%93%AA%E4%B8%AA%E4%BD%8D%E7%BD%AE%E5%BC%80%E5%A7%8B%E5%81%8F%E7%A7%BB"><span class="nav-number">1.2.</span> <span class="nav-text">水平和垂直从哪个位置开始偏移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E5%85%88%E7%9C%8B%E4%BD%BF%E7%94%A8px%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">1.2.1.</span> <span class="nav-text">我们先看使用px的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E5%86%8D%E7%9C%8B%E4%BD%BF%E7%94%A8-%E7%99%BE%E5%88%86%E5%8F%B7-%E8%BF%9B%E8%A1%8C%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">1.2.2.</span> <span class="nav-text">我们再看使用 百分号% 进行的计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AA"><span class="nav-number">1.3.</span> <span class="nav-text">如何裁剪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%86%99%E5%8F%82%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">简写参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E5%B0%86%E5%8F%82%E6%95%B0%E4%BB%8E%E7%AE%80%E5%86%99%E7%9A%84%E4%B8%AA%E6%95%B0%E5%8C%96%E4%B8%BA%E5%AE%8C%E6%95%B4%E4%B8%AA%E6%95%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">第一步，将参数从简写的个数化为完整个数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0-border-radius-50px"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">一个参数 border-radius: 50px;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%8F%82%E6%95%B0-border-radius-50px-30px"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">两个参数 border-radius: 50px 30px;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0-border-radius-50px-30px-40px"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">三个参数 border-radius: 50px 30px 40px;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E4%B8%AA%E5%8F%82%E6%95%B0-border-radius-50px-40px-30px-20px"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">四个参数 border-radius: 50px 40px 30px 20px;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%8F%82%E6%95%B0%E9%87%8C%E9%9D%A2%E5%B8%A6%E6%9C%89-%E7%AC%A6%E5%8F%B7%E7%9A%84-border-radius-4px-3px-6px-2px-4px"><span class="nav-number">1.4.1.5.</span> <span class="nav-text">对于参数里面带有 &#x2F; 符号的 border-radius: 4px 3px 6px &#x2F; 2px 4px;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E5%B0%86%E5%85%B6%E8%BD%AC%E5%8C%96%E4%B8%BA-border-radius"><span class="nav-number">1.4.2.</span> <span class="nav-text">第二步，将其转化为 border-*-*-radius</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E6%B2%A1%E6%9C%89%E5%B8%A6-%E7%AC%A6%E5%8F%B7%E7%9A%84-border-radius-50px-40px-30px-20px"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">对于没有带 &#x2F; 符号的 border-radius: 50px 40px 30px 20px;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%B8%A6%E6%9C%89-%E7%AC%A6%E5%8F%B7%E7%9A%84-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">对于带有 &#x2F; 符号的 border-radius: 4px 3px 6px 3px &#x2F; 2px 4px 2px 4px;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tallgy"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">tallgy</p>
+  <div class="site-description" itemprop="description">逐步学习</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tallgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/tallgy" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github-alt fa-fw"></i>Gitee</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          border-radius的原理和使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-24 10:53:12" itemprop="dateCreated datePublished" datetime="2021-10-24T10:53:12+08:00">2021-10-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-25 16:38:25" itemprop="dateModified" datetime="2021-10-25T16:38:25+08:00">2021-10-25</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="border-radius的原理和使用"><a href="#border-radius的原理和使用" class="headerlink" title="border-radius的原理和使用"></a>border-radius的原理和使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>首先我们可以知道 <code>border-radius</code> 是四个属性的简写，所以我们先理解四个属性的值的效果。</p>
+<p><code>border-top-right-radius</code> <code>border-top-left-radius</code></p>
+<p> <code>border-bottom-right-radius</code> <code>border-bottm-left-radius</code></p>
+<p>我们取其中一个</p>
+<p><code>border-top-right-radius</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
+
+<p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
+
+<p>通过例子也可以知道，对于一个值，说明了 横轴<code>horizontal</code> 和 数轴<code>vertical</code> 的值相等，对于两个值，那么就说明了第一值是横轴，第二个值是数轴。</p>
+<p>然后得到横轴和数轴的半径后，相对进行偏移，然后画出一个圆形或者一个椭圆形，所裁剪出来的值。就是得到的效果。</p>
+<p>对于值是%的，那么宽度就会相对于宽度，高度就会相对于高度。</p>
+<h3 id="对于超过-50-的计算方式"><a href="#对于超过-50-的计算方式" class="headerlink" title="对于超过 50% 的计算方式"></a>对于超过 50% 的计算方式</h3><p>原文链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/20128284</span><br></pre></td></tr></table></figure>
+
+<p>简单来说就是对于 <strong>相邻的角的半径和超过了对应的盒子的边的长度，那么浏览器要重新计算保证它们不会重合。</strong></p>
+<p>就是会同时进行缩放。来保证不会重合。</p>
+<h2 id="水平和垂直从哪个位置开始偏移"><a href="#水平和垂直从哪个位置开始偏移" class="headerlink" title="水平和垂直从哪个位置开始偏移"></a>水平和垂直从哪个位置开始偏移</h2><h3 id="我们先看使用px的计算"><a href="#我们先看使用px的计算" class="headerlink" title="我们先看使用px的计算"></a>我们先看使用px的计算</h3><p>先说结果，结果是，<strong>px的计算是相对于border的位置开始的偏移。</strong></p>
+<p>然后我们再看代码和执行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
+
+
+
+<h3 id="我们再看使用-百分号-进行的计算"><a href="#我们再看使用-百分号-进行的计算" class="headerlink" title="我们再看使用 百分号% 进行的计算"></a>我们再看使用 百分号% 进行的计算</h3><p>意思是一样的，会按照你的宽高加上你的border的宽高，然后乘以 百分比。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始我这样写，以为10%应该是 50px，但是忘了border有上有下，所以真正的宽高是550px，所以50%是55px，后面才搞清楚</span><br><span class="line"></span><br><span class="line">width: 450px;</span><br><span class="line">height: 450px;</span><br><span class="line">background-color: #f00;</span><br><span class="line">border: blue solid 50px;</span><br><span class="line">border-radius: 10%;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="如何裁剪"><a href="#如何裁剪" class="headerlink" title="如何裁剪"></a>如何裁剪</h2><p>这个就是自己的理解了，我们可以看到，对于存在了border的，当你的数值超过了一定值之后，你的content也会变成弧边，而这个值就是border的宽度。</p>
+<p><strong>所以这个裁剪的方法是：</strong></p>
+<ul>
+<li><p>先计算出radius的偏移量x，y</p>
+</li>
+<li><p>然后从border的边框开始进行x，y的偏移，并且半径值也为x，y画弧，将border进行了裁剪。</p>
+</li>
+<li><p>然后如果x，y的偏移量在content里面了（这个content是包含了padding的），那么就会再对content进行裁剪，而裁剪的半径就是x，y这个点到content边界的半径。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
+
+
+
+<h2 id="简写参数"><a href="#简写参数" class="headerlink" title="简写参数"></a>简写参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: top-left top-right bottom-right bottom-left;</span><br><span class="line">上左，上右，下右，下左，这是一个从上左开始的一个顺时针顺序。</span><br><span class="line">按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</span><br><span class="line">	参考链接：(https://www.w3school.com.cn/cssref/pr_border-radius.asp)</span><br><span class="line">意思就是，如果在省略的情况下，那么就是最后一个开始是没有值的，而前面的才有值，然后对没有值的那个，他的值就是对面的值，如果对面也没有值，那么他的值就和旁边的相等(此时就是只有一个参数)</span><br><span class="line"></span><br><span class="line">按照上面的意思来理解的话，那么很多简写参数都可以理解了。我这里就直接统计结果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第一步，将参数从简写的个数化为完整个数"><a href="#第一步，将参数从简写的个数化为完整个数" class="headerlink" title="第一步，将参数从简写的个数化为完整个数"></a>第一步，将参数从简写的个数化为完整个数</h3><h4 id="一个参数-border-radius-50px"><a href="#一个参数-border-radius-50px" class="headerlink" title="一个参数 border-radius: 50px;"></a>一个参数 <code>border-radius: 50px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px;</span><br><span class="line"></span><br><span class="line">只有一个 top-left </span><br><span class="line">那么，bottom-right = top-left = 50</span><br><span class="line">并且 bottom-left = top-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 50px 50px 50px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="两个参数-border-radius-50px-30px"><a href="#两个参数-border-radius-50px-30px" class="headerlink" title="两个参数 border-radius: 50px 30px;"></a>两个参数 <code>border-radius: 50px 30px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px;</span><br><span class="line"></span><br><span class="line">有两个，那么这两个就是 top-left 和 top-right</span><br><span class="line">对应的 bottom-left = top-right = 30</span><br><span class="line">bottom-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 50px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="三个参数-border-radius-50px-30px-40px"><a href="#三个参数-border-radius-50px-30px-40px" class="headerlink" title="三个参数 border-radius: 50px 30px 40px;"></a>三个参数 <code>border-radius: 50px 30px 40px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px 40px;</span><br><span class="line"></span><br><span class="line">有三个，那么就只有最后一个 bottom-left 没有</span><br><span class="line">那么 bottom-left 等于对面的 top-right = 30px</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 40px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="四个参数-border-radius-50px-40px-30px-20px"><a href="#四个参数-border-radius-50px-40px-30px-20px" class="headerlink" title="四个参数 border-radius: 50px 40px 30px 20px;"></a>四个参数 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">没啥说的。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px"><a href="#对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px" class="headerlink" title="对于参数里面带有 / 符号的 border-radius: 4px 3px 6px / 2px 4px;"></a>对于参数里面带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px / 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 4px 3px 6px / 2px 4px;</span><br><span class="line"></span><br><span class="line">这个分为两个部分</span><br><span class="line">第一部分 4 3 6 将其转化为对应的 horizontal</span><br><span class="line">	所以为 4 3 6 3</span><br><span class="line">第二部分 2 4 将其转化为对应的 vertical</span><br><span class="line">	所以为 2 4 2 4</span><br><span class="line">	</span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line">	</span><br><span class="line">然后结果就是</span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第二步，将其转化为-border-radius"><a href="#第二步，将其转化为-border-radius" class="headerlink" title="第二步，将其转化为 border-*-*-radius"></a>第二步，将其转化为 <code>border-*-*-radius</code></h3><h4 id="对于没有带-符号的-border-radius-50px-40px-30px-20px"><a href="#对于没有带-符号的-border-radius-50px-40px-30px-20px" class="headerlink" title="对于没有带 / 符号的 border-radius: 50px 40px 30px 20px;"></a>对于没有带 <code>/</code> 符号的 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">其 horizontal 和 vertical 的值相等。</span><br><span class="line"></span><br><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     50px 50px;</span><br><span class="line">border-top-right-radius:    40px 40px;</span><br><span class="line">border-bottom-right-radius: 30px 30px;</span><br><span class="line">border-bottom-left-radius:  20px 20px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><a href="#对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px" class="headerlink" title="对于带有 / 符号的 border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;"></a>对于带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">会将 / 前的作为每一个的 horizontal </span><br><span class="line">/ 后的作为每一个的 vertical</span><br><span class="line"></span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://gitee.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-git"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/border-radius/" rel="tag"># border-radius</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/23/HTTP%E6%A6%82%E8%BF%B0/" rel="prev" title="HTTP概述">
+                  <i class="fa fa-chevron-left"></i> HTTP概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tallgy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
