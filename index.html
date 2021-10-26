@@ -133,13 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -176,6 +181,114 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript-map%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/25/JavaScript-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-map函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-25 16:48:23" itemprop="dateCreated datePublished" datetime="2021-10-25T16:48:23+08:00">2021-10-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:08:20" itemprop="dateModified" datetime="2021-10-26T15:08:20+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Array/map/" itemprop="url" rel="index"><span itemprop="name">map</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript之Array-map函数"><a href="#JavaScript之Array-map函数" class="headerlink" title="JavaScript之Array.map函数"></a>JavaScript之Array.map函数</h1><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map</span><br></pre></td></tr></table></figure>
+
+<p><code>**map()**</code> 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</p>
+<p><strong>参数</strong></p>
+<p>​    <strong>回调函数，callback</strong></p>
+<p>​        参数分别为，value，index，array，第二个和第三个参数是可选的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const array1 = [1, 4, 9, 16];</span><br><span class="line"></span><br><span class="line">// pass a function to map</span><br><span class="line">const map1 = array1.map(x =&gt; x * 2);</span><br><span class="line"></span><br><span class="line">console.log(map1);</span><br><span class="line">// expected output: Array [2, 8, 18, 32]</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>thisArg</strong></p>
+<p>​        在执行callabck函数时，被用作 <code>this</code></p>
+<h2 id="简单的源码实现"><a href="#简单的源码实现" class="headerlink" title="简单的源码实现"></a>简单的源码实现</h2><p>通过上面的参数描述，我们可以知道，</p>
+<p>我们需要先对数组进行循环，然后将其带入callback，返回值会push入一个res数组，</p>
+<p>然后因为第二个参数是this的指向，所以我们需要在判断是否携带了第二个参数**(  const _this = thisArg || this;)**</p>
+<p>将其this的指向进行改变，使用了call方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function myMap(callback, thisArg) &#123;</span><br><span class="line">  const result = [];</span><br><span class="line">  const arr = this;</span><br><span class="line">  const _this = thisArg || this;</span><br><span class="line"></span><br><span class="line">  for (let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    result.push(callback.call(_this, arr[i], i, arr));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="一些面试时遇到的问题"><a href="#一些面试时遇到的问题" class="headerlink" title="一些面试时遇到的问题"></a>一些面试时遇到的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line"></span><br><span class="line">arr.map(parseInt)</span><br><span class="line"></span><br><span class="line">这个可能有的没有理解的话会有点懵逼</span><br><span class="line">其实理解了就很简单了。</span><br><span class="line">这就是把parseInt作为一个回调函数传递给了map，</span><br><span class="line">map的回调函数的参数是，value， index， arr</span><br><span class="line">而parseInt，可以带两个参数，这两个参数，一个是要转化的字符串（数字也可以），一个是要转化的进制。</span><br><span class="line"></span><br><span class="line">所以我们就能够理解了，</span><br><span class="line">对于 arr 1， 2， 3， 10， 111</span><br><span class="line">会分别传递</span><br><span class="line">	1， 0</span><br><span class="line">	2， 1</span><br><span class="line">	3， 2</span><br><span class="line">	10， 3</span><br><span class="line">	111， 4</span><br><span class="line">其中，0代表了默认转换，对于字符串没有进制前缀的，就是默认十进制，具体的转换规则后续写 parseInt 的时候再说明。</span><br><span class="line"></span><br><span class="line">我们可以看出，1对应的默认进制转换，2对应的1进制，3对应的2进制，10对应的3进制，111对应的4进制，因为parseInt的第二个参数范围是2-36，所以对于其他的除0以外直接NaN。</span><br><span class="line">所以对应的结果是 1, NaN, NaN, 3, 21.</span><br></pre></td></tr></table></figure>
+
+<p>对于其他的就也可以按照这个思路进行思考了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1540,95 +1653,6 @@
 
 
 
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/18/call-apply-bind%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/18/call-apply-bind%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">call,apply,bind实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-18 14:04:16" itemprop="dateCreated datePublished" datetime="2021-10-18T14:04:16+08:00">2021-10-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-20 22:11:04" itemprop="dateModified" datetime="2021-10-20T22:11:04+08:00">2021-10-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="call-apply-bind源码的实现"><a href="#call-apply-bind源码的实现" class="headerlink" title="call,apply,bind源码的实现"></a>call,apply,bind源码的实现</h1><h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>使用，就是替换了this的指向，传参使用的基本传参。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">这里将方法写在了Function函数的原型里面，这样因为通过原型链就可以找到这个方法了。</span><br><span class="line">Function.prototype.myCall = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line"></span><br><span class="line">  //这里这个this，指向的就是方法。这里使用Symbol，用于避免出现方法重复。</span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line"></span><br><span class="line">  // 获取参数</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  // 使用ctx来进行调用。替换了this指向。</span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line"></span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.call(db, &#x27;cc&#x27;, 1);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>同上，传参使用的是数组传参。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myApply = function (ctx, args) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line">  </span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.apply(db, [&#x27;cc&#x27;, 1]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><p>同call方法的参数，但是不是马上执行，需要自己执行一次</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  </span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  return () =&gt; &#123;</span><br><span class="line">    const result = ctx[fn](...args);</span><br><span class="line">    delete ctx[fn];</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(db, [&#x27;cc&#x27;, 1])();</span><br></pre></td></tr></table></figure>
 
 
       
