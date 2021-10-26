@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,379 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/25/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/" class="post-title-link" itemprop="url">CSS-元素选择器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-25 19:51:58" itemprop="dateCreated datePublished" datetime="2021-10-25T19:51:58+08:00">2021-10-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:31:59" itemprop="dateModified" datetime="2021-10-26T15:31:59+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CSS-元素选择器"><a href="#CSS-元素选择器" class="headerlink" title="CSS-元素选择器"></a>CSS-元素选择器</h1><h2 id="相邻兄弟选择器"><a href="#相邻兄弟选择器" class="headerlink" title="相邻兄弟选择器"></a>相邻兄弟选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Adjacent_sibling_combinator</span><br></pre></td></tr></table></figure>
+
+<p>​        <strong>相邻兄弟选择器</strong> (<code>+</code>) 介于两个选择器之间，当第二个元素<em>紧跟在</em>第一个元素之后，并且两个元素都是属于同一个父<code>元素</code>的子元素，则第二个元素将被选中。</p>
+<p><strong>注：</strong></p>
+<p>​    第一，要相邻之后的，不相邻的，在前面的不管。 </p>
+<p>​    只会选择一个，就算第二个元素有多个满足，只会选择最开始的一个。</p>
+<p>​    但是对于第一个元素就可以有很多个。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.f + .b &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors</span><br></pre></td></tr></table></figure>
+
+<p>​        CSS <strong>属性选择器</strong>通过已经存在的属性名或属性值匹配元素。</p>
+<p>选择存在这个属性的元素，这个属性不一定要含有意义，也不一定有值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div[cc] &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">存在cc，但是cc是一个没有意义的属性，也可以被选中。</span><br><span class="line">&lt;div class=&quot;b&quot; cc&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="属性选择器值的匹配"><a href="#属性选择器值的匹配" class="headerlink" title="属性选择器值的匹配"></a>属性选择器值的匹配</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且值为xxx</span><br><span class="line">[cc=&#x27;xxx&#x27;]</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;xxx&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且值包含了xx</span><br><span class="line">cc *= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;111xxasf&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且该属性是一个以空格作为分隔的值列表，其中至少有一个值为 xx。</span><br><span class="line">cc ~= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;111 xx asf&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且属性值为“xx”或是以“xx-”为前缀</span><br><span class="line">cc |= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;xx-asf&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且属性值是以 xx 开头的元素。</span><br><span class="line">cc ^= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;xxasf&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且属性值是以 xx 结尾的元素。</span><br><span class="line">cc $= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;awwxx&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">存在属性cc，并且属性值是以 xx 结尾的元素。</span><br><span class="line">cc $= &#x27;xx&#x27;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;b&quot; cc=&quot;awwxx&quot;&gt;1&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在属性选择器右方括号前加 i用空格隔开，表示忽略大小写</span><br><span class="line">[cc $= &#x27;xx&#x27; i]</span><br><span class="line"></span><br><span class="line">div[cc $= &#x27;xx&#x27; i] &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同上，使用 s，表示区分大小写</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator</span><br></pre></td></tr></table></figure>
+
+<p>​        当使用  <code>&gt;</code> 选择符分隔两个元素时,它只会匹配那些作为第一个元素的**直接后代(**子元素)的第二元素. </p>
+<p><strong>重点是 直接后代，而不是孙子代</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ele1 &gt; ele2 &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors</span><br></pre></td></tr></table></figure>
+
+<p>​        在一个HTML文档中，CSS类选择器会根据元素的类属性中的内容匹配元素。类属性被定义为一个以空格分隔的列表项，在这组类名中，必须有一项与类选择器中的类名完全匹配，此条样式声明才会生效。</p>
+<p>​    简单来说，就是class的属性，值是以空格进行的分割，需要其中一个值满足类选择器的属性值，才能有作用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.class &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">他和属性选择器的具有相同的作用。</span><br><span class="line">[class ~= &#x27;class&#x27;] &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Descendant_combinator</span><br></pre></td></tr></table></figure>
+
+<p>​        <strong>后代组合器</strong>（通常用单个空格（<code> </code>）字符表示）组合了两个选择器，如果第二个选择器匹配的元素具有与第一个选择器匹配的祖先（父母，父母的父母，父母的父母的父母等）元素，则它们将被选择。利用后代组合器的选择器称为后代选择器。</p>
+<p>​    简单来说，就是，第二个元素是第一个元素的后代，但是可以不是直接后代。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.a .c &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;a&quot;&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div class=&quot;c&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">如同上面这样，a存在后代c，但是不是直接后代，可以使用后代选择器(` `), 而不能使用子选择器(`&gt;`)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="通用兄弟选择器"><a href="#通用兄弟选择器" class="headerlink" title="通用兄弟选择器"></a>通用兄弟选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/General_sibling_combinator</span><br></pre></td></tr></table></figure>
+
+<p>​        兄弟选择符，位置无须紧邻，只须同层级，<code>A~B</code> 选择<code>A</code>元素之后所有同层级<code>B</code>元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ele1 ~ ele2 &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="ID-选择器"><a href="#ID-选择器" class="headerlink" title="ID 选择器"></a>ID 选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors</span><br></pre></td></tr></table></figure>
+
+<p>​        CSS ID 选择器会根据该元素的 ID 属性中的内容匹配元素,元素 ID 属性名必须与选择器中的 ID 属性名完全匹配，此条样式声明才会生效。</p>
+<p><strong>注：</strong></p>
+<p>​    一般一个html里面，一个id只能一个，如果有多个，那么这个就会选中多个。</p>
+<p>​    id属性的值只有一个，不像使用class属性那样，可以有空格划分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#id &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">同属性选择器的</span><br><span class="line">[id=value] &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="选择器列表"><a href="#选择器列表" class="headerlink" title="选择器列表"></a>选择器列表</h2><p>选择器分组</p>
+<p>​        CSS <strong>选择器列表</strong>（<code>,</code>），常被称为并集选择器或并集组合器，选择所有能被列表中的任意一个选择器选中的节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">h1,</span><br><span class="line">#id,</span><br><span class="line">.class,</span><br><span class="line">.a &gt; span &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意点：</strong></p>
+<p>​        选择器列表无效化，说的是当一个选择器不被支持，就会出现整条规则全部失效，我这里看了一个人写的，<a target="_blank" rel="noopener" href="https://www.xinran001.com/frontend/248.html">出现无效的伪选择器</a> 他的说明是如果是一个伪选择器无效的话，就会出现这个问题。但是如果是一个选择器的写法满足一个浏览器的cssom的构建，那么就不会出现这个问题。</p>
+<p>​            解决这个问题的一个方法是使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is"><code>:is()</code></a> 选择器，它会忽视它的参数列表中失效的选择器，但是由于 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is"><code>:is()</code></a> 会影响优先级的计算方式，这么做的代价是，其中的所有选择器都会拥有相同的优先级。</p>
+<h2 id="元素选择器"><a href="#元素选择器" class="headerlink" title="元素选择器"></a>元素选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors</span><br></pre></td></tr></table></figure>
+
+<p>​        CSS元素选择器(也称为类型选择器)通过node节点名称匹配元素.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ele &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">span &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="通配选择器"><a href="#通配选择器" class="headerlink" title="通配选择器"></a>通配选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors</span><br></pre></td></tr></table></figure>
+
+<p>​        在CSS中,一个星号(<code>*</code>)就是一个通配选择器.它可以匹配任意类型的HTML元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        CSS3里面，*可以和命名空间搭配使用，命名空间，我现在也没有了解，我们后面在学。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ns|* - 会匹配ns命名空间下的所有元素</span><br><span class="line">*|* - 会匹配所有命名空间下的所有元素</span><br><span class="line">|* - 会匹配所有没有命名空间的元素</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的"><a href="#常用的" class="headerlink" title="常用的"></a>常用的</h3><p><strong>active</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a:active </span><br><span class="line">可以代表按下按键和松开按键。常用于按钮和链接</span><br></pre></td></tr></table></figure>
+
+<p><strong>focus</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">获得焦点时</span><br></pre></td></tr></table></figure>
+
+<p><strong>hover</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">鼠标放在上面时触发</span><br></pre></td></tr></table></figure>
+
+<p>MDN上有个描述</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:hover CSS伪类适用于用户使用指示设备虚指一个元素（没有激活它）的情况。这个样式会被任何与链接相关的伪类重写，像:link, :visited, 和 :active等。为了确保生效，:hover规则需要放在:link和:visited规则之后，但是在:active规则之前，按照LVHA的循顺序声明:link－:visited－:hover－:active。</span><br><span class="line"></span><br><span class="line">大致意思就是说， link会覆盖掉其他的样式，如果写在后面，其他的样式不会显示出来。</span><br></pre></td></tr></table></figure>
+
+<p><strong>link</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">应该只能用于 a 标签，我使用span标签没有成功</span><br><span class="line">:link伪类选择器是用来选中元素当中的链接，所有未访问的链接（如果定义了visited伪元素），但是如果没有定义visited伪元素的话，那么就会将所有链接都选中，不管是不是访问过的。</span><br><span class="line">对于一个链接是否访问过，应该是通过href的值来进行的判断。</span><br><span class="line">因为link会覆盖其他伪元素的样式，所以书写顺序是：</span><br><span class="line">	:link — :visited — :hover — :active。:focus伪类选择器常伴随在:hover伪类选择器左右，需要根据你想要实现的效果确定它们的顺序。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>disabled</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表示被禁用的元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>enabled</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有被禁用的元素</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>invalid</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:invalid CSS 伪类 表示任意内容未通过验证的 &lt;input&gt; 或其他 &lt;form&gt; 元素 .</span><br></pre></td></tr></table></figure>
+
+<p><strong>valid</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:valid CSS 伪类表示内容验证正确的&lt;input&gt; 或其他 &lt;form&gt; 元素。这能简单地将校验字段展示为一种能让用户辨别出其输入数据的正确性的样式。</span><br><span class="line"></span><br><span class="line">验证正确的展示</span><br></pre></td></tr></table></figure>
+
+<p><strong>optional</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:optional</span><br><span class="line">表示 任意没有 required 属性的  &lt;input&gt;，&lt;select&gt; 或  &lt;textarea&gt; 元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>required</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:required</span><br><span class="line">表示设置了 required 属性的 &lt;input&gt;，&lt;select&gt; 或  &lt;textarea&gt; 元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>read-only</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:read-only</span><br><span class="line">	选中其中元素不可被用户编辑的状态</span><br><span class="line">与之对应的</span><br><span class="line">	read-write</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>first-child</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一组兄弟元素中的第一个元素。</span><br><span class="line"></span><br><span class="line">p:first-child，代表的是p的第一个</span><br></pre></td></tr></table></figure>
+
+<p><strong>last-child</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一组兄弟元素中的最后一个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>not</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">反选</span><br><span class="line"></span><br><span class="line">:not(p)</span><br><span class="line">不要p标签的</span><br></pre></td></tr></table></figure>
+
+<p><strong>nth-child</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:nth-child(an+b) 这个 CSS 伪类首先找到所有当前元素的兄弟元素，然后按照位置先后顺序从1开始排序，选择的结果为CSS伪类:nth-child括号中表达式（an+b）匹配到的元素集合（n=0，1，2，3...）。</span><br><span class="line"></span><br><span class="line">简单来说，:nth-child(an+b)，其中 an+b 的值的范围是 1~n，超过范围的不会显示，虽然 an+b 的范围是 1~n，但是n的范围却是 0~，因为我们使用 n+1 可以发现，每个都还是有，说明了这个事实。</span><br><span class="line"></span><br><span class="line">几个特殊值：使用后，不要再加n和b了</span><br><span class="line">	odd，奇数行</span><br><span class="line">	even，偶数行</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>​    不能写成 b+an 的形式，只能是 an+b</p>
+<p>​    可以使用减号，<code>-</code>, 但是要注意一个问题，就是n的取值，貌似不是从 0~n，而是从0开始，不知道最终值是多少，所以对于 :nth-child(n-10)，还是会全部显示，但是使用 :nth-child(2n - 1)，就会发现不同。</p>
+<p>​    所以一般要找前面n个，都是使用的 <code>-n+b</code>。</p>
+<p>​    第二个不能使用n  2n-n，没有效果。</p>
+<p><strong>nth-last-child</strong></p>
+<p>​    从兄弟节点中从后往前匹配处于某些位置的元素</p>
+<p><strong>注意:</strong> 这个伪类和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child"><code>:nth-child</code></a> 基本一致, 但它是从<em>结尾</em>计数, 而不是从开始计数.</p>
+<p><strong>only-child</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">匹配没有任何兄弟的元素</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">	.c</span><br><span class="line">	.c</span><br><span class="line">.b</span><br><span class="line">	.c</span><br><span class="line">	</span><br><span class="line">	类似于上面的，不是通过 .b:only-child，因为在同层中，.b没有只存在一个的情况，使用 .c:only-child 就能找到。</span><br><span class="line"></span><br><span class="line">	等效的选择器还可以写成 :first-child:last-child或者:nth-child(1):nth-last-child(1),当然,前者的权重会低一点.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>root</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:root 这个 CSS 伪类匹配文档树的根元素。对于 HTML 来说，:root 表示 &lt;html&gt; 元素，除了优先级更高之外，与 html 选择器相同。</span><br></pre></td></tr></table></figure>
+
+<p><strong>target</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">对目标元素的id进行一个匹配，当url中出现了这个id时显示，url的构造形式类似于vue-router 的hash模式</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;12&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div:target &#123; &#125; </span><br><span class="line">当url为 http://xxxx#12 时，这里面的效果就会展示出来</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity</span><br></pre></td></tr></table></figure>
+
+<p>简单来说，</p>
+<p><strong>!important &gt; 行内样式&gt;ID选择器 &gt; 类选择器 &gt; 标签 &gt; 通配符 &gt; 继承 &gt; 浏览器默认属性</strong></p>
+<p>我们是使用的权重方式进行的判断优先级</p>
+<p><strong>内联的权重是：1 0 0 0</strong></p>
+<p><strong>id的权重是 1 0 0</strong></p>
+<p><strong>class的权重是 1 0</strong></p>
+<p><strong>标签的权重是 1</strong></p>
+<p><strong>注意：</strong></p>
+<p>​    权重是不会进位的，不会因为有11个class，就可以超过id</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript-parseInt%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/25/JavaScript-parseInt%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-parseInt函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-25 19:41:27" itemprop="dateCreated datePublished" datetime="2021-10-25T19:41:27+08:00">2021-10-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 16:18:58" itemprop="dateModified" datetime="2021-10-26T16:18:58+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="parseInt函数"><a href="#parseInt函数" class="headerlink" title="parseInt函数"></a>parseInt函数</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>parseInt(*string*, *radix*)</strong>  解析一个字符串并返回指定基数的十进制整数， <code>radix</code> 是2-36之间的整数，表示被解析字符串的基数。</p>
+<h2 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h2><p><strong>string</strong></p>
+<p>​        要被解析的值。如果参数不是一个字符串，则将其转换为字符串(使用  <code>ToString </code>抽象操作)。字符串开头的空白符将会被忽略。</p>
+<p><strong>radix</strong></p>
+<p>​        从 <code>2</code> 到 <code>36</code>，表示字符串的基数。例如指定 16 表示被解析值是十六进制数。请注意，10不是默认值！简单来说就是设置进制，一个2~36的进制</p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个整数，</p>
+<p>或者NaN</p>
+<p>​    转换NaN的情况</p>
+<p>​        <code>radix</code> 小于 <code>2</code> 或大于 <code>36</code> ，或</p>
+<p>​        第一个非空格字符不能转换为数字。</p>
+<p><strong>注意：</strong></p>
+<p>​    这个在进行进制运算时，不是先转为十进制在运算，而是直接进行对应的进制转换，</p>
+<p>​        比如：    33 ， 2 此时是：33转为2进制的转换，因为2进制每位数最大值是1，所以33直接NaN，但是如果是12，就会转化为1.</p>
+<h2 id="面试问到的："><a href="#面试问到的：" class="headerlink" title="面试问到的："></a>面试问到的：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line">arr.map(parseInt)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">简单的解析一下，</span><br><span class="line">首先map内部的回调函数的三个参数分别为 value，index，array</span><br><span class="line">然后parseInt会使用两个参数，一个是要转换的字符串，一个是进制</span><br><span class="line">所以 按照顺序就会变成： 1,0	2,1		3,2		10,3	111,4</span><br><span class="line">	对于0，会使用默认形式，对于1，会直接NaN，对于后面的就按照正常进制的运算</span><br><span class="line">	所以结果是： 1,NaN,NaN,3,21</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript-map%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -221,7 +594,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:08:20" itemprop="dateModified" datetime="2021-10-26T15:08:20+08:00">2021-10-26</time>
+        <time title="修改时间：2021-10-26 15:17:03" itemprop="dateModified" datetime="2021-10-26T15:17:03+08:00">2021-10-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,10 +607,6 @@
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/JavaScript/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/Array/map/" itemprop="url" rel="index"><span itemprop="name">map</span></a>
         </span>
     </span>
 
@@ -329,8 +698,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-25 16:38:25" itemprop="dateModified" datetime="2021-10-25T16:38:25+08:00">2021-10-25</time>
+        <time title="修改时间：2021-10-26 15:19:12" itemprop="dateModified" datetime="2021-10-26T15:19:12+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -488,8 +866,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-24 10:51:10" itemprop="dateModified" datetime="2021-10-24T10:51:10+08:00">2021-10-24</time>
+        <time title="修改时间：2021-10-26 15:16:54" itemprop="dateModified" datetime="2021-10-26T15:16:54+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -642,8 +1029,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-25 16:29:03" itemprop="dateModified" datetime="2021-10-25T16:29:03+08:00">2021-10-25</time>
+        <time title="修改时间：2021-10-26 15:30:06" itemprop="dateModified" datetime="2021-10-26T15:30:06+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -893,8 +1289,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-22 21:24:14" itemprop="dateModified" datetime="2021-10-22T21:24:14+08:00">2021-10-22</time>
+        <time title="修改时间：2021-10-26 15:29:57" itemprop="dateModified" datetime="2021-10-26T15:29:57+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -1016,8 +1421,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-21 22:47:22" itemprop="dateModified" datetime="2021-10-21T22:47:22+08:00">2021-10-21</time>
+        <time title="修改时间：2021-10-26 15:31:45" itemprop="dateModified" datetime="2021-10-26T15:31:45+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -1175,9 +1589,28 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-10-20 11:01:49 / 修改时间：11:17:52" itemprop="dateCreated datePublished" datetime="2021-10-20T11:01:49+08:00">2021-10-20</time>
+      <time title="创建时间：2021-10-20 11:01:49" itemprop="dateCreated datePublished" datetime="2021-10-20T11:01:49+08:00">2021-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:16:19" itemprop="dateModified" datetime="2021-10-26T15:16:19+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
     </span>
 
   
@@ -1267,8 +1700,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-20 10:54:00" itemprop="dateModified" datetime="2021-10-20T10:54:00+08:00">2021-10-20</time>
+        <time title="修改时间：2021-10-26 15:18:40" itemprop="dateModified" datetime="2021-10-26T15:18:40+08:00">2021-10-26</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -1366,314 +1808,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/19/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Git常用命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-19 14:10:15 / 修改时间：22:03:24" itemprop="dateCreated datePublished" datetime="2021-10-19T14:10:15+08:00">2021-10-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><p>新建一个git仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-
-
-<p>将内容进行本地提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-
-
-
-<p>设置提交到GitHub的url</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://xxx</span><br></pre></td></tr></table></figure>
-
-
-
-<p>提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-
-
-<p>拉取</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-
-
-
-<p>同时将一个项目提交到两个仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要再添加一个新的仓库</span><br><span class="line">git remote set-url --add origin https://xx</span><br></pre></td></tr></table></figure>
-
-<p>也可以在配置文件里面进行修改</p>
-<p>.git/config</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在文件里面的[remote &quot;origin&quot;]</span><br><span class="line">下面添加一个url：设置为自己的另一个仓库的url地址就可以在提交的时候将仓库提交到远程了</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/19/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">JavaScript类型转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-19 10:07:37 / 修改时间：15:02:20" itemprop="dateCreated datePublished" datetime="2021-10-19T10:07:37+08:00">2021-10-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript类型转换"><a href="#JavaScript类型转换" class="headerlink" title="JavaScript类型转换"></a>JavaScript类型转换</h1><p>参考的文章</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/shikaka/p/10463293.html</span><br><span class="line">https://www.cnblogs.com/shikaka/p/10473462.html</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string， number， Boolean， null， undefined， symbol</span><br></pre></td></tr></table></figure>
-
-<p>基本数据类型是没有方法可以调用的。</p>
-<p>但是我们却发现，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;aaa&#x27;.indexOf(&#x27;a&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>这个明明是基本数据类型，但是却可以调用方法，这个是为什么呢。</p>
-<p>这个是因为<code>JavaScript</code>在底层进行了一个操作，当发现调用方法的是一个基本数据类型的话，会根据这个类型来创建一个对应的引用数据类型对象。然后再调用这个方法，调用之后将返回值进行返回并将这个对象进行删除。</p>
-<p>在 <code>JavaScript</code> 中，类型转换主要的两个方法是</p>
-<p><code>valueOf</code> ， <code>toString</code></p>
-<p>我们下面分别对这两个进行一个判断使用操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let a = 1,</span><br><span class="line">    b = &#x27;a&#x27;,</span><br><span class="line">    c = true,</span><br><span class="line">    d = undefined,</span><br><span class="line">    e = null,</span><br><span class="line">    f = [1, 2, 3],</span><br><span class="line">    g = [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line">    h = new Number(3),</span><br><span class="line">    i = new String(&#x27;12&#x27;),</span><br><span class="line">    j = new Boolean(false),</span><br><span class="line">    k = new Object(&#123; a: 3&#125; ),</span><br><span class="line">    l = &#123; b: 4 &#125;,</span><br><span class="line">    m = function () &#123;&#125;,</span><br><span class="line">    n = new Date(),</span><br><span class="line">    o = new RegExp(&#x27;sss&#x27;),</span><br><span class="line">    p = /sss/,</span><br><span class="line">    q = `sdcard`,</span><br><span class="line">    r = new Array([1,2,3]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf"></a>valueOf</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.valueOf());</span><br><span class="line">console.log(b.valueOf());</span><br><span class="line">console.log(c.valueOf());</span><br><span class="line">// console.log(d.valueOf());</span><br><span class="line">// console.log(e.valueOf());</span><br><span class="line">console.log(f.valueOf());</span><br><span class="line">console.log(h.valueOf());</span><br><span class="line">console.log(i.valueOf());</span><br><span class="line">console.log(j.valueOf());</span><br><span class="line">console.log(k.valueOf());</span><br><span class="line">console.log(n.valueOf());</span><br><span class="line">console.log(o.valueOf());</span><br></pre></td></tr></table></figure>
-
-<h4 id="这就是执行的结果。"><a href="#这就是执行的结果。" class="headerlink" title="这就是执行的结果。"></a>这就是执行的结果。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">a</span><br><span class="line">true</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">3</span><br><span class="line">12</span><br><span class="line">false</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">1634610286344</span><br><span class="line">/sss/</span><br></pre></td></tr></table></figure>
-
-<h4 id="我们可以从结果里面看到"><a href="#我们可以从结果里面看到" class="headerlink" title="我们可以从结果里面看到"></a>我们可以从结果里面看到</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>null，undefined</td>
-<td>没有valueOf方法，会报错</td>
-</tr>
-<tr>
-<td>基本数据类型，包括Symbol类型</td>
-<td>valueOf方法为其本身，可以使用 === 来判断，Symbol为true。</td>
-</tr>
-<tr>
-<td>对象，数组，方法，正则</td>
-<td>也为其本身</td>
-</tr>
-<tr>
-<td>使用new方法创建的基本数据类型，new number(1)</td>
-<td>为其值，与原来不等。</td>
-</tr>
-<tr>
-<td>date类型</td>
-<td>当前时间距 1970.01.01 午夜的毫秒数</td>
-</tr>
-</tbody></table>
-<p>所以我们可以看到，</p>
-<p>基本除了对象，其他的类型使用valueOf方法都可以转换成基本数据类型。</p>
-<p>对于使用new方法创建的基本数据类型的引用数据类型，也会被转换成基本数据类型。</p>
-<p>这里的原因，是因为 <code>number </code>对象对 <code>valueOf</code> 进行了一次重写，所以在调用的时候就会调用自己所重写的方法，于是返回的结果会不同。其他也同理。</p>
-<p>但是<code>JavaScript</code>内部是如何进行操作，取出值的，我还是不了解。</p>
-<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.toString());</span><br><span class="line">console.log(b.toString());</span><br><span class="line">console.log(c.toString());</span><br><span class="line">// console.log(d.toString());</span><br><span class="line">// console.log(e.toString());</span><br><span class="line">console.log(f.toString());</span><br><span class="line">console.log(h.toString());</span><br><span class="line">console.log(i.toString());</span><br><span class="line">console.log(j.toString());</span><br><span class="line">console.log(k.toString());</span><br><span class="line">console.log(n.toString());</span><br><span class="line">console.log(o.toString());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">a</span><br><span class="line">true</span><br><span class="line">1,2,3</span><br><span class="line">3</span><br><span class="line">12</span><br><span class="line">false</span><br><span class="line">[object Object]</span><br><span class="line">Tue Oct 19 2021 10:50:07 GMT+0800 (中国标准时间)</span><br><span class="line">/sss/</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>null， undefined</td>
-<td>没有toString方法</td>
-</tr>
-<tr>
-<td>基本数据类型</td>
-<td>直接转为字符串</td>
-</tr>
-<tr>
-<td>普通对象</td>
-<td>直接转为字符串 [object Object]</td>
-</tr>
-<tr>
-<td>日期，正则对象</td>
-<td>转为对应值的字符串</td>
-</tr>
-</tbody></table>
-<h1 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h1><p>我这里主要讲解一下隐式类型转换</p>
-<h3 id="对于一个对象转为基本数据类型的方法"><a href="#对于一个对象转为基本数据类型的方法" class="headerlink" title="对于一个对象转为基本数据类型的方法"></a>对于一个对象转为基本数据类型的方法</h3><p>对于一个不是基本数据类型的。会先通过 <code>valueOf</code> 转换，看是否能转为基本数据类型</p>
-<p>如果还不可以，然后就会使用 <code>toString </code>方法转为字符串。然后再来进行判断。</p>
-<p>对于 <code>Date</code> 对象的话，使用顺序会反过来</p>
-<h3 id="转字符串。"><a href="#转字符串。" class="headerlink" title="转字符串。"></a>转字符串。</h3><p>就直接toString方法就行了。</p>
-<h3 id="转数字"><a href="#转数字" class="headerlink" title="转数字"></a>转数字</h3><p>就类似于 <code>Number(undefined); </code> 的情况</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null， false		-&gt; 0</span><br><span class="line">undefined		-&gt; NaN</span><br></pre></td></tr></table></figure>
-
-<h4 id="对于字符串"><a href="#对于字符串" class="headerlink" title="对于字符串"></a>对于字符串</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">字符串含有字符的。没有特殊含义的都为 NaN</span><br><span class="line"></span><br><span class="line">&#x27;1.111111111111111e+50&#x27; 这个就会转为数字，还有进制表示和小数点会转，其他带有字符会被转成 NaN</span><br></pre></td></tr></table></figure>
-
-<h4 id="对于对象"><a href="#对于对象" class="headerlink" title="对于对象"></a>对于对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先使用前面我说过的规则转为基本类型，然后再进行转换。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="转布尔值"><a href="#转布尔值" class="headerlink" title="转布尔值"></a>转布尔值</h3><p>几个特殊值为 <code>false</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN, undefined， null， 0， +0， -0， &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>其他为true</p>
-<h2 id="基本上涉及运算和比较就会出现隐式类型转换"><a href="#基本上涉及运算和比较就会出现隐式类型转换" class="headerlink" title="基本上涉及运算和比较就会出现隐式类型转换"></a>基本上涉及运算和比较就会出现隐式类型转换</h2><h3 id="加号"><a href="#加号" class="headerlink" title="加号 +"></a>加号 +</h3><p>存在字符串则转为字符串的拼接操作</p>
-<p>非字符串就会转数字操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1+2+&#x27;&#x27;)</span><br><span class="line">1+2 先为3，</span><br><span class="line">然后3+&#x27;&#x27; 为3</span><br></pre></td></tr></table></figure>
-
-<p>这个就涉及到了上面的转换规则</p>
-<p>这里有个小问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x = Symbol(1);</span><br><span class="line">console.log(x + &#x27;1&#x27;)</span><br><span class="line">这样会抛出异常，虽然Symbol可以使用toString，</span><br><span class="line">但是不能进行隐式转换。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="减号-乘号-除号"><a href="#减号-乘号-除号" class="headerlink" title="减号 - 乘号 * 除号 /"></a>减号 - 乘号 * 除号 /</h3><p>会转为数字进行运算。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">特殊的，对于 NaN运算得NaN</span><br><span class="line">对于 0/0 等于 NaN</span><br><span class="line">对于 1/0 等于 Infinity</span><br></pre></td></tr></table></figure>
-
-
-
-<p>|| 和 &amp;&amp; 这里这个返回值不是<code>true</code>和<code>false</code>而是返回两边操作数的执行结果。</p>
-<h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a>比较运算</h3><p><strong>转换规则</strong></p>
-<p><img src="/2021/10/19/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/image-20211019105728109-1634626914416.png" alt="image-20211019105728109"></p>
-<h4 id="和"><a href="#和" class="headerlink" title="== 和 ==="></a>== 和 ===</h4><p>非严格相等等号 可以允许强制类型转换，</p>
-<p>而严格相等等号 不允许强制类型的转换。</p>
-<p>其他的就如上，使用上面的转换规则进行转换。</p>
-<p>这里有个小问题点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if ([]) &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">此时会输出为1，所以说明了[]在if判断里面为真，但是 [] == true 为false，</span><br><span class="line">这里可以看上面 转布尔值 那个地方，说明了，布尔在进行判断时 除了 undefined，null，NaN，0， &#x27;&#x27;，其他都为true</span><br><span class="line">因此也可以说明，if判断是使用的 Boolean 来进行的判断为真还是为假。而不是与true进行的比较。</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="null和undefined的比较"><a href="#null和undefined的比较" class="headerlink" title="null和undefined的比较"></a>null和undefined的比较</h4><p>null和undefined进行比较时</p>
-<p>​    使用非严格等号为 true</p>
-<p>​    使用严格等号为 false</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">null == undefined</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="NaN-不与任何值相等，包括自己"><a href="#NaN-不与任何值相等，包括自己" class="headerlink" title="NaN 不与任何值相等，包括自己"></a>NaN 不与任何值相等，包括自己</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN	false</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">并且 NaN &gt; 0 和 NaN &lt;= 0 都为 false</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
