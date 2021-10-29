@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,256 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/20/eval%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/20/eval%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">eval函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-20 11:01:49" itemprop="dateCreated datePublished" datetime="2021-10-20T11:01:49+08:00">2021-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:16:19" itemprop="dateModified" datetime="2021-10-26T15:16:19+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="eval函数"><a href="#eval函数" class="headerlink" title="eval函数"></a>eval函数</h1><p><strong>文档</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里学习使用eval函数的原因是, 前几天遇到一个问题是拷贝函数, </p>
+<p>所以我就想说,先使用tostring, 然后再使用eval转为函数返回进行使用, 这样就进行了一次函数的复制.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn() &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你会发现结果 是不如人意的?我的想法就是这个字符串方法会被转义为一个函数赋值给f.但是却什么都没有,函数没有执行,并且没有返回值.</span><br><span class="line"></span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+
+<p>然后转念一想.可能是因为虽然转义为函数了,但是没有执行和返回.他只是定义了一下函数而已.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">结果真的有输出.所以这样一想.我可以在内部加上一个立即执行函数啊</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//我这里只是定义立即执行函数,但是没有执行.只需要使用 f(), 便可以进行函数调用了.</span><br><span class="line">let f = eval(`</span><br><span class="line">  ($&#123;fn.toString()&#125;)</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f.toString());</span><br><span class="line">console.log(f());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行结果:</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/19/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">JavaScript浅拷贝和深拷贝</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-19 15:28:12" itemprop="dateCreated datePublished" datetime="2021-10-19T15:28:12+08:00">2021-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:18:40" itemprop="dateModified" datetime="2021-10-26T15:18:40+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p>很简单，就是只拷贝一层，不拷贝多层，因为对于引用数据类型，</p>
+<p>他的数据是存放在堆中的，我们只是在栈中存放了他的地址。所以浅拷贝的问题就是对于引用数据类型还是没有进行拷贝。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一个简单的demo</span><br><span class="line"></span><br><span class="line">这里，有两个循环操作。对于forin，他会循着原型链向上查找，</span><br><span class="line">而对于 Object.keys() 和 Object.getOwnPropertyNames()，他只会返回属于自身的属性。</span><br><span class="line">而不会向上寻找原型链</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  a: 1</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">  b: 2</span><br><span class="line">&#125;;</span><br><span class="line">obj2.__proto__ = obj1;</span><br><span class="line"></span><br><span class="line">for (const obj2Key in obj2) &#123;</span><br><span class="line">  console.log(obj2Key);</span><br><span class="line">&#125;</span><br><span class="line">console.log(Object.keys(obj2))</span><br><span class="line">console.log(Object.getOwnPropertyNames(obj2))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所以我们考虑到是否要将原型链上的一起拷贝之后，再进行拷贝</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keys代表了要拷贝的key</span><br><span class="line"></span><br><span class="line">const obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">for (const key in keys) &#123;</span><br><span class="line">  obj[keys[key]] = obj2[keys[key]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个就是浅拷贝了。比较简单</p>
+<h2 id="同时也可以使用-Object-assign-进行浅拷贝"><a href="#同时也可以使用-Object-assign-进行浅拷贝" class="headerlink" title="同时也可以使用 Object.assign() 进行浅拷贝"></a>同时也可以使用 <code>Object.assign()</code> 进行浅拷贝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">第一个参数是目标对象, 第二个参数是源对象,</span><br><span class="line">我们会将源对象的值拷贝给目标对象,对于重复的会被覆盖.</span><br><span class="line">然后再将目标对象返回.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const target = &#123; a: 1, b: 2 &#125;;</span><br><span class="line">const source = &#123; b: 4, c: 5, x: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125; &#125;;</span><br><span class="line"></span><br><span class="line">const returnedTarget = Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line"></span><br><span class="line">source.x.a = 3;</span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>和浅拷贝不同的是，深拷贝，是要进行递归，吧对象里面的对象也要拷贝出来。</p>
+<h2 id="第一种：使用-JSON的方法，这个方法我也觉得很巧妙，"><a href="#第一种：使用-JSON的方法，这个方法我也觉得很巧妙，" class="headerlink" title="第一种：使用 JSON的方法，这个方法我也觉得很巧妙，"></a>第一种：使用 JSON的方法，这个方法我也觉得很巧妙，</h2><p>除了不能拷贝 function，正则，Symbol之外，其他都很不错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方法也很简单</span><br><span class="line"></span><br><span class="line">先对其进行string化，然后再json化，所以简单的使用没有问题。</span><br><span class="line">JSON.parse(JSON.stringify(obj))</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  reg : /^aaa$/,</span><br><span class="line">  fun: function()&#123; console.log(1) &#125;,</span><br><span class="line">  syb:Symbol(&#x27;foo&#x27;),</span><br><span class="line">  aa:&#x27;aa&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">let cp = JSON.parse(JSON.stringify(obj));</span><br><span class="line">console.log(cp);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; reg: &#123;&#125;, aa: &#x27;aa&#x27; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="第二种，就是简单的类型判断加递归了"><a href="#第二种，就是简单的类型判断加递归了" class="headerlink" title="第二种，就是简单的类型判断加递归了"></a>第二种，就是简单的类型判断加递归了</h2><p>就判断是否为基本数据类型，如果是那么就进行复制，如果不是那么就进入递归</p>
+<p>其中，对于正则，基本数据类型，可以直接赋值。</p>
+<p>对于对象，使用递归，</p>
+<p>对于函数，我这里下面再讲</p>
+<h4 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h4><p>这里，先用<code>typeof</code>判断是否为 <code>object</code>，</p>
+<p>然后，对于object，存在 null，对象，数组，正则和使用new进行创建的基本数据类型</p>
+<p>​    在这里，我把使用new方法创建的基本数据类型也算为基本数据类型。</p>
+<p>对于非object，有function，和基本数据类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function getType(target) &#123;</span><br><span class="line"></span><br><span class="line">  const type = typeof target;</span><br><span class="line">  if (type == &#x27;object&#x27;) &#123;</span><br><span class="line">    if (target === null) &#123;</span><br><span class="line">      // 空</span><br><span class="line">      return &#x27;null&#x27;;</span><br><span class="line">    &#125; else if (Array.isArray(target)) &#123;</span><br><span class="line">      // 数组</span><br><span class="line">      return &#x27;array&#x27;;</span><br><span class="line">    &#125; else if (target.constructor === RegExp) &#123;</span><br><span class="line">      //正则</span><br><span class="line">      return &#x27;regexp&#x27;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 对象，这里还要判断是否为map和set对象。</span><br><span class="line">      //并且，map，set只能使用 forof 进行循环，或者使用自带的 oreach 进行循环。</span><br><span class="line">      if (typeof target.valueOf() === &#x27;object&#x27;) &#123;</span><br><span class="line">        return &#x27;object&#x27;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return &#x27;basic&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else if (type == &#x27;function&#x27;) &#123;</span><br><span class="line">    return &#x27;function&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return &#x27;basic&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里也可以使用 Object.prototype.toString.call(); 方法进行调用来判断是什么类型的.这个就比较方便,直接可以将map,set,对象,数组,基本数据类型等都辨别出来.</span><br><span class="line">可以看看我写的另一个关于 类型判断的blog ,里面有.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="然后就是递归"><a href="#然后就是递归" class="headerlink" title="然后就是递归"></a>然后就是递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(target) &#123;</span><br><span class="line">  let result;</span><br><span class="line"></span><br><span class="line">  for (const key in target) &#123;</span><br><span class="line">    result[key] = recursion(target[key]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">  </span><br><span class="line">  function recursion(target) &#123;</span><br><span class="line">    if (&#x27;基本数据类型&#x27;) &#123;</span><br><span class="line">      return target;</span><br><span class="line">    &#125; else if (&#x27;函数&#x27;) &#123;</span><br><span class="line">		</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      //对象</span><br><span class="line">      return recursion(target)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于函数如何进行拷贝"><a href="#对于函数如何进行拷贝" class="headerlink" title="对于函数如何进行拷贝"></a>对于函数如何进行拷贝</h4><p>前几天面试问到了..</p>
+<p>我的想法，有三种方式，</p>
+<p>​    <strong>第一种：使用toString，然后再使用eval。</strong>    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let fn = function () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn1() &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这里我对于eval函数的使用还是不够了解。</span><br><span class="line">这里，我不知道为什么， eval(fn.toString()) 没有返回值，所以我写了一个箭头函数字符串进行包装和执行。</span><br><span class="line">	这里，需要使用一个箭头函数进行包装，如果使用普通函数进行包装。也没有用处。</span><br><span class="line">let fn2 = eval(&#x27;() =&gt; &#x27; + fn1.toString())(); //这里，fn和fn1都可以运行。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这样写也可以。</span><br><span class="line">eval(`</span><br><span class="line">  (() =&gt; fn)()</span><br><span class="line">`)()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">应该是因为需要使用()进行包裹.</span><br><span class="line">let a = eval(`</span><br><span class="line">  (function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;)</span><br><span class="line">`);</span><br><span class="line">a()</span><br><span class="line">console.log(a.toString())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p><strong>第二种：使用new Function(‘return ‘ + func.toString())();</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let f = new Function(&#x27;return &#x27; + fn.toString())()</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>第三种：使用bind函数进行一次绑定。但是这个对于有传参的函数会有所不同。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个有个要求，因为bind函数实则就是对于一个函数进行了call方法，但是是一个延迟的调用。</span><br><span class="line"></span><br><span class="line">从一个简单的逻辑来说，应该是并没有进行一个从底层复制操作的。因为是直接进行的 简单赋值。</span><br><span class="line"></span><br><span class="line">let f = fn.bind()</span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1046,6 +1296,111 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/16/rem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/16/rem/" class="post-title-link" itemprop="url">rem</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-16 14:14:53" itemprop="dateCreated datePublished" datetime="2021-10-16T14:14:53+08:00">2021-10-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-27 15:49:50" itemprop="dateModified" datetime="2021-10-27T15:49:50+08:00">2021-10-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> MDN 参考</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="rem-和-em"><a href="#rem-和-em" class="headerlink" title="rem 和 em"></a>rem 和 em</h1><h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2><p>再说rem之前，先说一下em</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width</span><br></pre></td></tr></table></figure>
+
+<h2 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rem 就是 root em</span><br><span class="line">根元素的字体大小</span><br></pre></td></tr></table></figure>
+
+<p>rem是相对于根元素html的字号进行了等比例的计算。</p>
+<p>for example</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size: 16px; &#125;</span><br><span class="line"></span><br><span class="line">ohter &#123; width: 300/16 rem; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="rem使用方式"><a href="#rem使用方式" class="headerlink" title="rem使用方式"></a>rem使用方式</h2><p>​        简单来说，就是从px转化成了一个rem，所以为了方便计算，常用的方式就是 1rem 转化成 10px 或者 100px。</p>
+<p>​        所以对于一个 750px 的设计图，就将其除以 75或者7.5，<code> font-size=10px | 100px</code> </p>
+<h1 id="vh-和-vw"><a href="#vh-和-vw" class="headerlink" title="vh 和 vw"></a>vh 和 vw</h1><p>简单来说就是相对于视窗宽度和高度的百分比，会计算出视窗的高度和宽度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vw：视窗宽度的1%</span><br><span class="line">vh：视窗高度的1%</span><br></pre></td></tr></table></figure>
+
+<p>如果将浏览器缩小了，对应的百分比值也会缩小。</p>
+<h1 id="vmin-和-vmax"><a href="#vmin-和-vmax" class="headerlink" title="vmin 和 vmax"></a>vmin 和 vmax</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vmin：视窗较小尺寸的1%</span><br><span class="line">vmax：视图大尺寸的1%</span><br></pre></td></tr></table></figure>
+
+<p>大致和上面的那个一样一个意思。</p>
+<h1 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h1><p>​        百分比简单来说，就是相对于父级，但是对于边距是不一样的方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果将元素的字体大小设置为百分比，那么它将是元素父元素字体大小的百分比。如果使用百分比作为宽度值，那么它将是父值宽度的百分比。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/15/next/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1168,298 +1523,6 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/14/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Node JS 读取文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:28:32" itemprop="dateModified" datetime="2021-10-26T15:28:32+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Node-JS/" itemprop="url" rel="index"><span itemprop="name">Node JS</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Node-JS/fs/" itemprop="url" rel="index"><span itemprop="name">fs</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Node-JS-读取文件"><a href="#Node-JS-读取文件" class="headerlink" title="Node JS 读取文件"></a>Node JS 读取文件</h1><p>在  <code>Node JS</code> 中文件 操作是使用的 <code>fs</code> 模块进行了读取操作。</p>
-<h4 id="使用Node-JS读取文件"><a href="#使用Node-JS读取文件" class="headerlink" title="使用Node JS读取文件"></a>使用<code>Node JS</code>读取文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>path</code> &lt;string&gt; | &lt;Buffer&gt; | &lt;URL&gt; | &lt;integer&gt; 文件名或文件描述符</li>
-<li>options   &lt;Object&gt; | &lt;string&gt;<ul>
-<li><code>encoding</code> &lt;null&gt; | &lt;string&gt; <strong>默认值:</strong> <code>null</code></li>
-<li><code>flag</code> &lt;string&gt;  <strong>默认值:</strong> <code>&#39;r&#39;</code>。</li>
-<li><code>signal</code> &lt;AbortSignal&gt;允许中止正在进行的读取文件</li>
-</ul>
-</li>
-<li>callback   &lt;Function&gt;<ul>
-<li><code>err</code>  &lt;Error&gt; | &lt;AggregateError&gt;</li>
-<li><code>data</code> &lt;string&gt; | &lt;Buffer&gt;</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;./../source/Node JS 读取文件.md&#x27;, &#x27;utf8&#x27;, (err, data) =&gt; &#123;</span><br><span class="line">  if (err) &#123;</span><br><span class="line">    throw err;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  	//data 是一个 十六进制的buffer，所以使用toString转成字符。</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/14/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:16:46" itemprop="dateModified" datetime="2021-10-26T15:16:46+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
-
-<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
-<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
-<h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/xjm850552586/article/details/84101345</span><br></pre></td></tr></table></figure>
-
-<p>使用插件  <code>hexo-asset-image</code></p>
-<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">	清除缓存文件 ( db.json) 和生成的文件 ( public)。</span><br><span class="line">npx hexo g</span><br><span class="line">	生成静态文件</span><br><span class="line">nex hexo d</span><br><span class="line">	将静态文件上传</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里因为需要使用三个命令，很麻烦，所以就想着简单化一点。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开始是想着使用npm或者npx命令，自己写一个的，但是因为技术不够，所以还不会，后面了解了更多了之后再进行解决。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">所以，我是用的方式是，通过一个bat文件直接将这三个命令写下来，我只需要运行这个文件就行了。</span><br><span class="line">所以我在blog里面创建了一个 </span><br><span class="line">publish.bat</span><br><span class="line">然后直接在里面，写入</span><br><span class="line"></span><br><span class="line">call npx hexo clean</span><br><span class="line">call npx hexo g</span><br><span class="line">call npx hexo d</span><br><span class="line"></span><br><span class="line">这里需要在前面加上call方法。在批处理脚本中，call命令用来从一个批处理脚本中调用另一个批处理脚本。</span><br><span class="line">就这样就完成了。。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="gitee自动更新"><a href="#gitee自动更新" class="headerlink" title="gitee自动更新"></a>gitee自动更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用puppeteer模块</span><br><span class="line"></span><br><span class="line">但是因为我谷歌浏览器修改过位置，所以需要重新下载，所以我没有进行后续的操作了。</span><br><span class="line"></span><br><span class="line">https://www.jianshu.com/p/6460df84a099</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/md%20%E8%BD%AC%20html%20%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/13/md%20%E8%BD%AC%20html%20%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">md 转 html 的方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-13T00:00:00+08:00">2021-10-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-16 14:14:09" itemprop="dateModified" datetime="2021-10-16T14:14:09+08:00">2021-10-16</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="md-转-html-的几个方式"><a href="#md-转-html-的几个方式" class="headerlink" title="md 转 html 的几个方式"></a>md 转 html 的几个方式</h1><p>方式有很多，我这里就简单的</p>
-<h3 id="使用在线的-strapdown"><a href="#使用在线的-strapdown" class="headerlink" title="使用在线的 strapdown"></a>使用在线的 strapdown</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://strapdownjs.com/v/0.2/strapdown.js</span><br></pre></td></tr></table></figure>
       
     </div>
 

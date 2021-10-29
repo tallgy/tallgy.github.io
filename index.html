@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,408 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/" class="post-title-link" itemprop="url">JavaScript-冒泡和捕获</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-29 10:54:26 / 修改时间：22:21:44" itemprop="dateCreated datePublished" datetime="2021-10-29T10:54:26+08:00">2021-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> <strong>前言:</strong></p>
+<h4 id="JavaScript-DOM的监听方式"><a href="#JavaScript-DOM的监听方式" class="headerlink" title="JavaScript-DOM的监听方式"></a><strong>JavaScript-DOM的监听方式</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dom.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">  console.log(&#x27;father1 捕获&#x27;);</span><br><span class="line">&#125;, true);</span><br><span class="line"></span><br><span class="line">dom.onclick = function (e) &#123;</span><br><span class="line">  console.log(&#x27;a2 冒泡&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里,又被称为 <strong>DOM0级</strong> 和 <strong>DOM2级</strong></p>
+<p><strong>0级DOM</strong>:</p>
+<ul>
+<li>标签内部的 onclick 事件</li>
+<li>JavaScript 的 onclick = function() {} 函数</li>
+</ul>
+<p><strong>2级DOM:</strong></p>
+<ul>
+<li>就是标准的事件模型</li>
+<li><strong>addEventListener</strong> 和 <strong>removeEventListener</strong></li>
+</ul>
+<h1 id="JavaScript-冒泡和捕获"><a href="#JavaScript-冒泡和捕获" class="headerlink" title="JavaScript-冒泡和捕获"></a>JavaScript-冒泡和捕获</h1><p>参考文章，感觉写的很详细</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/sinat_33523805/article/details/94018242</span><br></pre></td></tr></table></figure>
+
+<p>​        在一个 <code>Event</code> 的事件中，存在三个阶段：<code>捕获，目标和冒泡</code></p>
+<p><strong>三个阶段的顺序：</strong></p>
+<ul>
+<li><p>首先是从根节点出发，到达目标节点，若此过程中触发了事件，则被称为<strong>捕获阶段</strong></p>
+</li>
+<li><p>然后当节点到达定义点击事件的目标节点时，处于<strong>目标阶段</strong></p>
+</li>
+<li><p>在目标节点触发事件后，最后就会一路往上回到根节点，处于 <strong>冒泡阶段</strong></p>
+<p>​    给一张对应的图片。</p>
+</li>
+</ul>
+<img src="/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png" alt="image-20210907141230550" style="zoom:67%;">
+
+<p>​        如何在创建一个点击监听的时候，同时定义是处于冒泡还是捕获阶段。</p>
+<p>​        通过一个 <code>addEventListener</code> 函数的参数，分别为 <strong>事件名， 回调函数， 在什么阶段执行</strong>。第三个参数就是判断是处于什么阶段的。<strong>true代表捕获阶段，false代表了冒泡阶段</strong>。</p>
+<p>​        对于target，顺序不是按照捕获和冒泡的顺序，而是按照监听函数的创建顺序。</p>
+<p>​        可以通过 <code>event.eventPhase</code> 的值来判断是处于哪个阶段。</p>
+<p>​            <code>1，捕获阶段。2，目标阶段。3，冒泡阶段</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">father.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">  console.log(&#x27;father 捕获&#x27;);</span><br><span class="line">  console.log(e.eventPhase);	// 1</span><br><span class="line">&#125;, true);</span><br><span class="line">father.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">  console.log(&#x27;father 冒泡&#x27;);</span><br><span class="line">&#125;, false);</span><br><span class="line"></span><br><span class="line">children.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">  console.log(&#x27;children 冒泡&#x27;);</span><br><span class="line">&#125;, false);</span><br><span class="line">children.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">  console.log(&#x27;children 捕获&#x27;);</span><br><span class="line">&#125;, true);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">father 捕获</span><br><span class="line">children 冒泡</span><br><span class="line">children 捕获</span><br><span class="line">father 冒泡</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>结论：</strong></p>
+<ul>
+<li><p>捕获是从根到target， 冒泡是从target到根。</p>
+</li>
+<li><p>先捕获，后冒泡。</p>
+</li>
+<li><p>可以通过 <code>addEventListener</code> 的第三个参数来决定这个监听处于捕获还是处于冒泡。默认是冒泡阶段。</p>
+</li>
+<li><p>对于 <code>target</code> 元素，没有捕获冒泡一说，先定义先执行。</p>
+</li>
+<li><p>可以通过 <code>event.eventPhase</code> 来判断当前处于什么阶段。</p>
+</li>
+</ul>
+<h1 id="取消事件传递"><a href="#取消事件传递" class="headerlink" title="取消事件传递"></a>取消事件传递</h1><p>​        通过这三个方式 <code>stopPropagation()</code> 、<code>prenventDefault()</code>、<code>return false;</code>、<code>stopImmediatePropagation()</code>。</p>
+<ul>
+<li><p><code>stopPropagation()</code> </p>
+<ul>
+<li>会停止事件的传递。但是不会阻止事件的默认方法。</li>
+</ul>
+</li>
+<li><p><code>stopImmediatIePropagation()</code> </p>
+<ul>
+<li>同上，但是对于多个相同的事件都会被阻止。具体区别一会儿看案例.</li>
+</ul>
+</li>
+<li><p><code>prenventDefault()</code> </p>
+<ul>
+<li>取消掉元素的默认行为.</li>
+</ul>
+</li>
+<li><p><code>return false;</code> </p>
+<ul>
+<li>会取消默认行为,但是只能用于 DOM0级.</li>
+<li>但是不会终止事件的传递.</li>
+</ul>
+</li>
+</ul>
+<h2 id="stopPropagation-和-stopImmediatIePropagation-的使用"><a href="#stopPropagation-和-stopImmediatIePropagation-的使用" class="headerlink" title="stopPropagation 和 stopImmediatIePropagation 的使用"></a>stopPropagation 和 stopImmediatIePropagation 的使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">	console.log(&#x27;a 捕获&#x27;);</span><br><span class="line">	e.stopPropagation();</span><br><span class="line">&#125;, true);	//为true,代表了捕获.</span><br><span class="line">  </span><br><span class="line">children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">    console.log(&#x27;a1 捕获&#x27;);</span><br><span class="line">&#125;, true);	//为true,代表了捕获.</span><br><span class="line"></span><br><span class="line">这里对上面进行了 stopPropagation 所以会停止传递,但是</span><br><span class="line">	对于上层元素,传递会直接停止,所以如果是在捕获层进行了使用,那么就会在调用了本层方法后,就会停止, 如果是在冒泡层进行使用,就会结束后续的冒泡行为.</span><br><span class="line">	对于 target 的使用,因为 target 不分冒泡和捕获,所以两个都会执行.</span><br><span class="line">执行结果:	father 捕获, target 捕获, target 冒泡(阻止了事件的继续.虽然这个阻止放在了 捕获 位置, 但是对于 target 是不分 冒泡 和 捕获 的.所以 target 的冒泡也会执行.)</span><br><span class="line">	其中对于 target 的捕获和冒泡的顺序,按照定义的顺序执行.</span><br><span class="line"></span><br><span class="line">对于 stopImmediatIePropagation 的使用,大体上和上面起始差不多,最大的区别就是,不但会停止传递,并且会停止本层的相同事件.</span><br><span class="line">比如代码类型:</span><br><span class="line"></span><br><span class="line">    children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">        console.log(&#x27;a 捕获&#x27;);</span><br><span class="line">    	e.stopImmediatePropagation();</span><br><span class="line">    &#125;, true);</span><br><span class="line">    children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">        console.log(&#x27;a1 捕获&#x27;);</span><br><span class="line">    &#125;, true);</span><br><span class="line">    children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">        console.log(&#x27;a 冒泡&#x27;);</span><br><span class="line">    &#125;, false);</span><br><span class="line">	</span><br><span class="line">	我这里定义了两个相同的捕获. 但是使用的是 e.stopImmediatePropagation(); 所以,对于相同的事件都会停止,然后因为这个 stopImmediatePropagation 放在了最上面定义的位置,所以放在下面的都不会执行. 如果我把这个函数的位置放在了第二个,那么第一个还是会执行</span><br><span class="line">执行结果:</span><br><span class="line">	father 捕获, target 捕获(阻止了事件的传递. 并且因为target的捕获和冒泡属于同一类型,所以都被阻止了.)</span><br></pre></td></tr></table></figure>
+
+<p><strong>简单总结:</strong></p>
+<ul>
+<li><strong>stopPropagation</strong><ul>
+<li>对于非target, 会阻止后续的事件, 但是对于相同的事件不会阻止.</li>
+<li>对于 target, 因为 target 是<strong>不分冒泡和捕获</strong>,所以只会阻止上级元素的事件,对于 target 的<strong>冒泡</strong> 和 <strong>捕获</strong> 都不会阻止.</li>
+</ul>
+</li>
+<li><strong>stopImmediatIePropagation</strong><ul>
+<li>这个不但会阻止后续的事件, 对于相同的事件也会阻止.</li>
+</ul>
+</li>
+<li><strong>相同点</strong>是: 他们都<strong>不会阻止元素的默认事件的执行,就算是捕获和冒泡没有到target.</strong></li>
+</ul>
+<h2 id="prenventDefault-使用"><a href="#prenventDefault-使用" class="headerlink" title="prenventDefault 使用"></a>prenventDefault 使用</h2><p><strong>作用:</strong></p>
+<p>​    取消元素的默认行为.如果放在了父元素,那么子元素的所有默认行为都会被取消.</p>
+<p><strong>使用方式:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  children1.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">    console.log(&#x27;a 捕获&#x27;);</span><br><span class="line">    e.preventDefault();</span><br><span class="line">  &#125;, true);</span><br><span class="line">  </span><br><span class="line">这个很简单.</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="return-false-的使用"><a href="#return-false-的使用" class="headerlink" title="return false; 的使用"></a>return false; 的使用</h2><p>这个的使用方式不和上面的一样.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  children1.onclick = function (e) &#123;</span><br><span class="line">    console.log(&#x27;a2 冒泡&#x27;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">不能在 addEventListener 的回调函数里面使用. 因为这个是通过return 的值为false,来进行的定义,如果要使用 addEventListener 的回调的话, 函数的返回值不能正确返回,但是要怎么实现我也不知道.</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>​        理解很简单, 就是子元素的点击, 父级也可以进行捕获和冒泡, 很多人说事件委托是利用的冒泡原理, 但是通过前面的学习我们可以知道,事件委托,无非就是 子元素 的点击可以被父元素所监听到. 所以这里肯定会感觉不对, 然后我去网上看了一篇文章,  然后断章取义了一番.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/mmrsdym/article/details/39209375</span><br></pre></td></tr></table></figure>
+
+<p>​        我了解到了,为什么事件委托要使用的是冒泡原理, 而不是使用的捕获的原因.</p>
+<p>​        大概的意思就是, 一个元素是先进行的捕获行为, 然后再进行的冒泡行为. 所以如果我们将事件委托放在了, 捕获上面. 如果要阻止事件的行为, 那么就会让子元素的所有事件都不能执行, 而放在了事件的冒泡的话, 子元素的一些行为还是可以执行的.  所以这就是为什么事件委托需要放在冒泡的原因. </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/27/CSS-flex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/27/CSS-flex/" class="post-title-link" itemprop="url">CSS-flex</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-27 15:54:35" itemprop="dateCreated datePublished" datetime="2021-10-27T15:54:35+08:00">2021-10-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-29 10:52:09" itemprop="dateModified" datetime="2021-10-29T10:52:09+08:00">2021-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CSS-flex布局"><a href="#CSS-flex布局" class="headerlink" title="CSS-flex布局"></a>CSS-flex布局</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox</span><br></pre></td></tr></table></figure>
+
+<p>​        flex就是弹性布局。</p>
+<p>​        基本使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: flex;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="主轴"><a href="#主轴" class="headerlink" title="主轴"></a>主轴</h2><p>​        <code>flex-direction</code> 定义主轴</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">row，row-reverse</span><br><span class="line">代表inline，横向延申</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">column，column-reverse</span><br><span class="line">代表black，竖向排列</span><br></pre></td></tr></table></figure>
+
+<p>​        其中 <code>reverse </code>代表翻转，就是反过来的排列顺序</p>
+<h2 id="交叉轴，副轴"><a href="#交叉轴，副轴" class="headerlink" title="交叉轴，副轴"></a>交叉轴，副轴</h2><p>​        就是和主轴垂直的轴</p>
+<p>​        如果主轴是横轴，那么交叉轴就是数轴。</p>
+<h1 id="当使用了-Flex容器"><a href="#当使用了-Flex容器" class="headerlink" title="当使用了 Flex容器"></a>当使用了 Flex容器</h1><p>​        在定义了 <code>display: flex;</code> 之后的一些默认行为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元素排列一行，(因为 flex-direction 的默认值是 row )</span><br><span class="line">从主轴的起始线开始，这里起始线一般就是如果是row，代表了从左向右，其他的	情况查看MDN文档</span><br><span class="line">元素不会再主维度拉伸，但是可以缩小</span><br><span class="line">元素被拉伸来填充交叉轴大小</span><br><span class="line">flex-basis 为 auto</span><br><span class="line">flex-wrap 为 nowrap</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="对于flex属性值的行为"><a href="#对于flex属性值的行为" class="headerlink" title="对于flex属性值的行为"></a>对于flex属性值的行为</h1><h2 id="flex-direction-设置主轴"><a href="#flex-direction-设置主轴" class="headerlink" title="flex-direction 设置主轴"></a>flex-direction 设置主轴</h2><p>​        对定义了 <code>display: flex;</code> 的元素使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">flex-direction</span><br><span class="line">	row</span><br><span class="line">		横向，从左到右</span><br><span class="line">	row-reverse</span><br><span class="line">		横向，从右到左</span><br><span class="line">		对于行内块元素和话，宽度的计算是和 Colum-reverse 类似的。</span><br><span class="line">	column</span><br><span class="line">		纵向，从上到下</span><br><span class="line">	column-reverse</span><br><span class="line">		纵向，从下到上</span><br><span class="line">		对于没有设置高度的，就会按照最小高度进行计算，(意思就是说，高度和column的一样，只是方向反了而已。)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="flex-wrap-实现多行flex"><a href="#flex-wrap-实现多行flex" class="headerlink" title="flex-wrap 实现多行flex"></a>flex-wrap 实现多行flex</h2><p>​        对定义了 <code>display: flex;</code> 的元素使用</p>
+<p>​        在这样做的时候，您应该把每一行看作一个新的<code>flex</code>容器。 任何空间分布都将在该行上发生，而不影响该空间分布的其他行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wrap</span><br><span class="line">	会换行，而不是进行缩小</span><br><span class="line">nowrap</span><br><span class="line">	不会换行，会使用缩小的规则进行缩小，对于不能缩小的，会导致溢出。</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果在使用 wrap 时，使用了 flex:1， 时，这个时候就需要注意要不要定义 flex-basis 了。</li>
+</ul>
+<p>​            <strong>原因</strong>： 因为 <code>flex: 1</code>; 对应了 <code>flex-grow: 1</code> &amp; <code>flex-shrink: 1</code> &amp;&amp; <code>flex-basis: 0</code>  ，所以其实原因就是 flex-basis 为 0 了。所以如果不自己定义一个 flex-basis 的话，就不会进行换行。</p>
+<ul>
+<li><p>还有就是，对于每一个换行之后的元素，每一行都算是一个弹性行，所以对于以下代码</p>
+<ul>
+<li>```<br>flex: 1 1 160px;子元素在160px，换行之后，会对每一行的每个元素进行 扩张 和 收缩 的重新计算。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* ```</span><br><span class="line">  参考 MDN 链接：</span><br><span class="line">  https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Mastering_Wrapping_of_Flex_Items</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="简写属性-flex-flow"><a href="#简写属性-flex-flow" class="headerlink" title="简写属性 flex-flow"></a>简写属性 flex-flow</h2><p>​        对定义了 <code>display: flex;</code> 的元素使用</p>
+<p>​        是 <code>flex-direction</code> 和 <code>flex-wrap</code> 的组合</p>
+<p>​        对于没有写的，就会使用默认值：row 和 nowrap</p>
+<p><strong>注：</strong></p>
+<ul>
+<li>从谷歌浏览器的显示来说:<ul>
+<li>如果设置 <code>flex-flow: column; </code>  ，就直接代表了 <code>flex-direction: column;</code> ，而不会定义 <code>flex-wrap</code></li>
+<li>如果设置 <code>flex-flow: wrap; </code>  ，就代表了 <code>flex-direction: initial;</code> 而  <code>flex-flow: wrap; </code> </li>
+</ul>
+</li>
+</ul>
+<h2 id="flex-basis-元素的空间大小"><a href="#flex-basis-元素的空间大小" class="headerlink" title="flex-basis 元素的空间大小"></a>flex-basis 元素的空间大小</h2><p>​        该属性的默认值是 <code>auto</code> ，此时，浏览器会检查这个元素是否具有确定的尺寸(width / heght ，这个看是使用 row 还是 Colum)，如果<strong>具有确定的尺寸</strong>，就会将该值设置为 flex-basis。如果没有设定尺寸，就会采用<strong>元素内容的尺寸</strong>。如果不使用  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing"><code>box-sizing</code></a> 改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的尺寸。</p>
+<h2 id="flex-grow-延展比例"><a href="#flex-grow-延展比例" class="headerlink" title="flex-grow 延展比例"></a>flex-grow 延展比例</h2><p>​        负值无效，默认为0</p>
+<p>​        简单来说，这个是一个比例，对于存在可用空间的(可用空间：就是指在使用之后，父元素还存在剩余的空间。)， 子元素会根据这个比例将可用空间占据。</p>
+<p>​        比如：两个子元素，一个为 1， 一个为 2，父元素的可用空间为 90，那么第一个就会扩张 1/(1+2) * 90 ， 第二个就会扩张 2/(1+2) * 90 。</p>
+<h2 id="flex-shrink-收缩比例"><a href="#flex-shrink-收缩比例" class="headerlink" title="flex-shrink 收缩比例"></a>flex-shrink 收缩比例</h2><p>​        负值无效，默认为1</p>
+<p>​        简单来说，就会对于如果容器不够排列 flex元素的空间。那么就会按照比例进行收缩。默认为1</p>
+<p>​        计算方式： 这里的计算方式略和 <code>flex-grow</code> 有所不同。他的计算会和 <code>flex-basis</code> 相关联。这里给出计算的方法</p>
+<p>​            每个元素的 <code>flex-basis</code> * <code>flex-shrink</code> 这个值作为一个比例<strong>X1</strong>，将所有参与计算的元素进行计算 <strong>X1~Xi 的求和 Xs</strong> ，然后再计算出超出的量，这个超出的量是 <strong>overflow = 子元素的flex-basis 的总和 - 父元素的宽度</strong>， 然后就是进行计算 <strong>Xi / Xs * overflow</strong>， 这个计算出的值就是需要减去的量，这里可能有点抽象，我们也给一个例子方便理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">div	width:600px</span><br><span class="line">	div flex: 1 1 200px;</span><br><span class="line">	div flex: 1 1 200px;</span><br><span class="line">	div flex: 1 2 300px;</span><br><span class="line"></span><br><span class="line">首先我们可以看出，这个是超出了，所以需要收缩，</span><br><span class="line">超出的量 overflow = 600 - 200 - 200 - 300 = 100px</span><br><span class="line">然后比例的计算</span><br><span class="line">	X1 = 1 * 200 = 200px</span><br><span class="line">	X2 = 1 * 200 = 200px</span><br><span class="line">	X3 = 2 * 300 = 600px</span><br><span class="line">所以 Xs = X1 + X2 + X3 = 1000px</span><br><span class="line">然后就是计算收缩的值	Xi / Xs * overflow</span><br><span class="line">	200 / 1000 * 100 = 20</span><br><span class="line">	200 / 1000 * 100 = 20</span><br><span class="line">	600 / 1000 * 100 = 60</span><br><span class="line">	</span><br><span class="line">所以最终的宽度是</span><br><span class="line">div width: 600px</span><br><span class="line">	div width: 180px</span><br><span class="line">	div width: 180px</span><br><span class="line">	div width: 240px</span><br></pre></td></tr></table></figure>
+
+<p>在这里我也看到了一个更详细的一些计算教程，虽然里面的内容是否正确我没有进行参考，但是写的很详细，我就把链接贴出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/liyan-web/p/11217330.html</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>注意点：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax</span><br></pre></td></tr></table></figure>
+
+<p>​        这个元素在缩小的时候，不会小于最小宽度，至于这个最小宽度定义，我现在认为就是可以造成溢出的情况。举个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div</span><br><span class="line">	222222222222222222222222222222222222</span><br><span class="line">	</span><br><span class="line">	在这个情况，如果这个div想对于父元素的弹性布局，造成了溢出，但是因为最小的宽度为这个文字的一个长度，不会换行，所以会造成溢出。</span><br><span class="line">	而 22222 222222 222222222 222222 2222，这里，因为在 文字里面加入了空格，在html文档里面一个最小宽度是一个空格隔开的一个距离，所以会出现换行而不会让宽度溢出的情况。</span><br><span class="line">	这里记录一下会统计最小宽度的情况。</span><br><span class="line">		&#x27; &#x27;(不能使用 &amp;nbsp; ), &#x27;。&#x27;(。会在上一行), &#x27;，&#x27;(中文，号)，这里的原因应该是中文的。和， 里面的一个字符形势和 . ,不一样。</span><br><span class="line">	注意：只能是 英文和数字，中文会自动换行。原因应该是 对于英文，如果不打空格，浏览器会认为是一个单词，所以不会换行。</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>flex-grow</code> &amp;&amp; <code>flex-shrink</code> 的值要为正数。</li>
+</ul>
+<h2 id="简写属性-flex"><a href="#简写属性-flex" class="headerlink" title="简写属性 flex"></a>简写属性 flex</h2><p>​        对弹性布局的子元素使用。</p>
+<p>​        包含了： <code>flex-grow</code>  、 <code>flex-shrink</code> 和 <code>flex-basis</code> </p>
+<p>​        对于每个属性的值，都有理解了。我们就说几个简写的代表意思</p>
+<ul>
+<li><code>flex: initial</code><ul>
+<li>代表初始值：<code>flex: 0 1 auto</code></li>
+</ul>
+</li>
+<li><code>flex: auto</code><ul>
+<li>代表 <code>flex: 1 1 auto</code></li>
+</ul>
+</li>
+<li><code>flex: none</code><ul>
+<li>代表 <code>flex: 0 0 auto</code></li>
+</ul>
+</li>
+<li><code>flex: &lt;positive-number&gt;</code><ul>
+<li>代表 <code>flex: x x 0</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="align-items-交叉轴方向对齐"><a href="#align-items-交叉轴方向对齐" class="headerlink" title="align-items 交叉轴方向对齐"></a>align-items 交叉轴方向对齐</h2><p>​        默认为 <code>stretch </code>，默认会被拉伸到最高元素的高度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stretch</span><br><span class="line">	拉伸到最高元素的高度</span><br><span class="line">flex-start</span><br><span class="line">	按flex容器的顶部对齐</span><br><span class="line">flex-end</span><br><span class="line">	按flex容器的下部对齐</span><br><span class="line">center</span><br><span class="line">	使它们居中对齐</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="justify-content-主轴方向对齐"><a href="#justify-content-主轴方向对齐" class="headerlink" title="justify-content 主轴方向对齐"></a>justify-content 主轴方向对齐</h2><p>​        初始值是 <code>flex-start</code>， 元素从容器的起始线排列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">stretch</span><br><span class="line">	不了解</span><br><span class="line">flex-start</span><br><span class="line">	从容器的起始线排列</span><br><span class="line">flex-end</span><br><span class="line">	从容器的终止线开始排列</span><br><span class="line">center</span><br><span class="line">	在中间排列</span><br><span class="line">space-around</span><br><span class="line">	把元素排列好之后的剩余空间拿出来，平均分配到元素之间，所以元素之间间隔相等</span><br><span class="line">space-between</span><br><span class="line">	使每个元素的左右空间相等</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="对于flex的溢出："><a href="#对于flex的溢出：" class="headerlink" title="对于flex的溢出："></a>对于flex的溢出：</h1><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对一个元素设置了flex布局，其中的子元素的子元素的宽度可以造成溢出</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.father</span><br><span class="line">	div.children</span><br><span class="line">	</span><br><span class="line">father 元素设置了弹性布局， children 元素只设置一个宽度，会发现 children 的宽度不会高于father的宽度。主要是因为涉及了</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/27/CSS-flex/image-20211027210947232.png" alt="image-20211027210947232" style="zoom: 50%;">
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">但是</span><br><span class="line">div.father</span><br><span class="line">	div.children</span><br><span class="line">		div.cChildren</span><br><span class="line"></span><br><span class="line">这个对于 cChildren 的宽度就会将 children 的宽度顶出来，造成溢出。</span><br><span class="line">其中，这里的宽度，如果 cChildren 大于了 father 就会将 cChildren 和 children 顶出来。</span><br><span class="line">但是如果 cChildren 大于了 children 的话，就会再 children 到达他所定义的宽度之后，就不会继续扩张了。</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/27/CSS-flex/image-20211027211015004.png" alt="image-20211027211015004" style="zoom:50%;">
+
+
+
+<img src="/2021/10/27/CSS-flex/image-20211027212431340.png" alt="image-20211027211015004" style="zoom:50%;">
+
+
+
+<p>​        但是这里的计算方式我没有理解到为什么。</p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>​        设置 <code>flex-shrink: 0;</code> 属性，因为设置了0之后代表了不会对超过的部分进行处理。</p>
+<h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><p>​        这个是文字超出导致的溢出，就是如果文字，或者 img图片的设置超过了宽高也会造成溢出。</p>
+<p>​        这个的原因是因为，对于英文和数字，浏览器不能识别你的单词是否是一个，所以如果你输入一串英文和数字，中间没有分割(前面有说)，就会造成溢出，而汉字不行。</p>
+<img src="/2021/10/27/CSS-flex/image-20211027213217557.png" alt="image-20211027213217557" style="zoom:50%;">
+
+
+
+<h3 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h3><p>​        我们可以发现，flex 对于溢出的处理，默认只是针对于主轴，所以对于侧轴是没有溢出处理的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    width: 50px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.children &#123;</span><br><span class="line">	width: 60px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/27/CSS-flex/image-20211027214029980.png" alt="image-20211027214029980" style="zoom:50%;">
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1289,7 +1691,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:29:57" itemprop="dateModified" datetime="2021-10-26T15:29:57+08:00">2021-10-26</time>
+        <time title="修改时间：2021-10-27 21:20:52" itemprop="dateModified" datetime="2021-10-27T21:20:52+08:00">2021-10-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1421,7 +1823,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:31:45" itemprop="dateModified" datetime="2021-10-26T15:31:45+08:00">2021-10-26</time>
+        <time title="修改时间：2021-10-27 21:20:02" itemprop="dateModified" datetime="2021-10-27T21:20:02+08:00">2021-10-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1539,256 +1941,6 @@
 
 <h4 id="块环境上下文"><a href="#块环境上下文" class="headerlink" title="块环境上下文"></a>块环境上下文</h4><p>比如 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/20/eval%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/20/eval%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">eval函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-20 11:01:49" itemprop="dateCreated datePublished" datetime="2021-10-20T11:01:49+08:00">2021-10-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:16:19" itemprop="dateModified" datetime="2021-10-26T15:16:19+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="eval函数"><a href="#eval函数" class="headerlink" title="eval函数"></a>eval函数</h1><p><strong>文档</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval</span><br></pre></td></tr></table></figure>
-
-
-
-<p>这里学习使用eval函数的原因是, 前几天遇到一个问题是拷贝函数, </p>
-<p>所以我就想说,先使用tostring, 然后再使用eval转为函数返回进行使用, 这样就进行了一次函数的复制.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn() &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你会发现结果 是不如人意的?我的想法就是这个字符串方法会被转义为一个函数赋值给f.但是却什么都没有,函数没有执行,并且没有返回值.</span><br><span class="line"></span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
-
-<p>然后转念一想.可能是因为虽然转义为函数了,但是没有执行和返回.他只是定义了一下函数而已.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">结果真的有输出.所以这样一想.我可以在内部加上一个立即执行函数啊</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//我这里只是定义立即执行函数,但是没有执行.只需要使用 f(), 便可以进行函数调用了.</span><br><span class="line">let f = eval(`</span><br><span class="line">  ($&#123;fn.toString()&#125;)</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f.toString());</span><br><span class="line">console.log(f());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行结果:</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/19/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">JavaScript浅拷贝和深拷贝</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-19 15:28:12" itemprop="dateCreated datePublished" datetime="2021-10-19T15:28:12+08:00">2021-10-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:18:40" itemprop="dateModified" datetime="2021-10-26T15:18:40+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p>很简单，就是只拷贝一层，不拷贝多层，因为对于引用数据类型，</p>
-<p>他的数据是存放在堆中的，我们只是在栈中存放了他的地址。所以浅拷贝的问题就是对于引用数据类型还是没有进行拷贝。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一个简单的demo</span><br><span class="line"></span><br><span class="line">这里，有两个循环操作。对于forin，他会循着原型链向上查找，</span><br><span class="line">而对于 Object.keys() 和 Object.getOwnPropertyNames()，他只会返回属于自身的属性。</span><br><span class="line">而不会向上寻找原型链</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  a: 1</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">  b: 2</span><br><span class="line">&#125;;</span><br><span class="line">obj2.__proto__ = obj1;</span><br><span class="line"></span><br><span class="line">for (const obj2Key in obj2) &#123;</span><br><span class="line">  console.log(obj2Key);</span><br><span class="line">&#125;</span><br><span class="line">console.log(Object.keys(obj2))</span><br><span class="line">console.log(Object.getOwnPropertyNames(obj2))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br></pre></td></tr></table></figure>
-
-
-
-<p>所以我们考虑到是否要将原型链上的一起拷贝之后，再进行拷贝</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keys代表了要拷贝的key</span><br><span class="line"></span><br><span class="line">const obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">for (const key in keys) &#123;</span><br><span class="line">  obj[keys[key]] = obj2[keys[key]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个就是浅拷贝了。比较简单</p>
-<h2 id="同时也可以使用-Object-assign-进行浅拷贝"><a href="#同时也可以使用-Object-assign-进行浅拷贝" class="headerlink" title="同时也可以使用 Object.assign() 进行浅拷贝"></a>同时也可以使用 <code>Object.assign()</code> 进行浅拷贝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">第一个参数是目标对象, 第二个参数是源对象,</span><br><span class="line">我们会将源对象的值拷贝给目标对象,对于重复的会被覆盖.</span><br><span class="line">然后再将目标对象返回.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const target = &#123; a: 1, b: 2 &#125;;</span><br><span class="line">const source = &#123; b: 4, c: 5, x: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125; &#125;;</span><br><span class="line"></span><br><span class="line">const returnedTarget = Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line"></span><br><span class="line">source.x.a = 3;</span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>和浅拷贝不同的是，深拷贝，是要进行递归，吧对象里面的对象也要拷贝出来。</p>
-<h2 id="第一种：使用-JSON的方法，这个方法我也觉得很巧妙，"><a href="#第一种：使用-JSON的方法，这个方法我也觉得很巧妙，" class="headerlink" title="第一种：使用 JSON的方法，这个方法我也觉得很巧妙，"></a>第一种：使用 JSON的方法，这个方法我也觉得很巧妙，</h2><p>除了不能拷贝 function，正则，Symbol之外，其他都很不错。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方法也很简单</span><br><span class="line"></span><br><span class="line">先对其进行string化，然后再json化，所以简单的使用没有问题。</span><br><span class="line">JSON.parse(JSON.stringify(obj))</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  reg : /^aaa$/,</span><br><span class="line">  fun: function()&#123; console.log(1) &#125;,</span><br><span class="line">  syb:Symbol(&#x27;foo&#x27;),</span><br><span class="line">  aa:&#x27;aa&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">let cp = JSON.parse(JSON.stringify(obj));</span><br><span class="line">console.log(cp);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; reg: &#123;&#125;, aa: &#x27;aa&#x27; &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="第二种，就是简单的类型判断加递归了"><a href="#第二种，就是简单的类型判断加递归了" class="headerlink" title="第二种，就是简单的类型判断加递归了"></a>第二种，就是简单的类型判断加递归了</h2><p>就判断是否为基本数据类型，如果是那么就进行复制，如果不是那么就进入递归</p>
-<p>其中，对于正则，基本数据类型，可以直接赋值。</p>
-<p>对于对象，使用递归，</p>
-<p>对于函数，我这里下面再讲</p>
-<h4 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h4><p>这里，先用<code>typeof</code>判断是否为 <code>object</code>，</p>
-<p>然后，对于object，存在 null，对象，数组，正则和使用new进行创建的基本数据类型</p>
-<p>​    在这里，我把使用new方法创建的基本数据类型也算为基本数据类型。</p>
-<p>对于非object，有function，和基本数据类型。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function getType(target) &#123;</span><br><span class="line"></span><br><span class="line">  const type = typeof target;</span><br><span class="line">  if (type == &#x27;object&#x27;) &#123;</span><br><span class="line">    if (target === null) &#123;</span><br><span class="line">      // 空</span><br><span class="line">      return &#x27;null&#x27;;</span><br><span class="line">    &#125; else if (Array.isArray(target)) &#123;</span><br><span class="line">      // 数组</span><br><span class="line">      return &#x27;array&#x27;;</span><br><span class="line">    &#125; else if (target.constructor === RegExp) &#123;</span><br><span class="line">      //正则</span><br><span class="line">      return &#x27;regexp&#x27;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 对象，这里还要判断是否为map和set对象。</span><br><span class="line">      //并且，map，set只能使用 forof 进行循环，或者使用自带的 oreach 进行循环。</span><br><span class="line">      if (typeof target.valueOf() === &#x27;object&#x27;) &#123;</span><br><span class="line">        return &#x27;object&#x27;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return &#x27;basic&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else if (type == &#x27;function&#x27;) &#123;</span><br><span class="line">    return &#x27;function&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return &#x27;basic&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里也可以使用 Object.prototype.toString.call(); 方法进行调用来判断是什么类型的.这个就比较方便,直接可以将map,set,对象,数组,基本数据类型等都辨别出来.</span><br><span class="line">可以看看我写的另一个关于 类型判断的blog ,里面有.</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="然后就是递归"><a href="#然后就是递归" class="headerlink" title="然后就是递归"></a>然后就是递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(target) &#123;</span><br><span class="line">  let result;</span><br><span class="line"></span><br><span class="line">  for (const key in target) &#123;</span><br><span class="line">    result[key] = recursion(target[key]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">  </span><br><span class="line">  function recursion(target) &#123;</span><br><span class="line">    if (&#x27;基本数据类型&#x27;) &#123;</span><br><span class="line">      return target;</span><br><span class="line">    &#125; else if (&#x27;函数&#x27;) &#123;</span><br><span class="line">		</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      //对象</span><br><span class="line">      return recursion(target)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="对于函数如何进行拷贝"><a href="#对于函数如何进行拷贝" class="headerlink" title="对于函数如何进行拷贝"></a>对于函数如何进行拷贝</h4><p>前几天面试问到了..</p>
-<p>我的想法，有三种方式，</p>
-<p>​    <strong>第一种：使用toString，然后再使用eval。</strong>    </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let fn = function () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn1() &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这里我对于eval函数的使用还是不够了解。</span><br><span class="line">这里，我不知道为什么， eval(fn.toString()) 没有返回值，所以我写了一个箭头函数字符串进行包装和执行。</span><br><span class="line">	这里，需要使用一个箭头函数进行包装，如果使用普通函数进行包装。也没有用处。</span><br><span class="line">let fn2 = eval(&#x27;() =&gt; &#x27; + fn1.toString())(); //这里，fn和fn1都可以运行。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这样写也可以。</span><br><span class="line">eval(`</span><br><span class="line">  (() =&gt; fn)()</span><br><span class="line">`)()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">应该是因为需要使用()进行包裹.</span><br><span class="line">let a = eval(`</span><br><span class="line">  (function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;)</span><br><span class="line">`);</span><br><span class="line">a()</span><br><span class="line">console.log(a.toString())</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    </p>
-<p><strong>第二种：使用new Function(‘return ‘ + func.toString())();</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let f = new Function(&#x27;return &#x27; + fn.toString())()</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>第三种：使用bind函数进行一次绑定。但是这个对于有传参的函数会有所不同。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个有个要求，因为bind函数实则就是对于一个函数进行了call方法，但是是一个延迟的调用。</span><br><span class="line"></span><br><span class="line">从一个简单的逻辑来说，应该是并没有进行一个从底层复制操作的。因为是直接进行的 简单赋值。</span><br><span class="line"></span><br><span class="line">let f = fn.bind()</span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
 
 
       
