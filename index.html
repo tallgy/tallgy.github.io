@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/31/%E9%9A%8F%E7%AC%94/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -203,7 +203,191 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/" class="post-title-link" itemprop="url">JavaScript-冒泡和捕获</a>
+          <a href="/2021/10/31/%E9%9A%8F%E7%AC%94/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Vue-methods使用箭头函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-31 16:51:55 / 修改时间：17:04:33" itemprop="dateCreated datePublished" datetime="2021-10-31T16:51:55+08:00">2021-10-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><p>本篇随笔写的是在Vue的 <strong>methods</strong> 方法里面使用箭头函数。</p>
+<p>在说明之前，我们先对这个进行一下分析：</p>
+<p>首先 一个 <strong>Vue</strong> 的实例实则也是通过里面的对象进行的操作。</p>
+<p>其次，<strong>箭头函数的作用</strong>，主要是 this 指向的不同，箭头函数的 this 指向是根据当前的上下文进行决定的。</p>
+<p>所以首先可以认为，在Vue里面使用箭头函数，如果要使用 data里面 数据应该是不行，因为data里面的数据是通过 this 来获取，所以我们可以认为，Vue 内部对每个方法进行了一个this指向的变化，而箭头函数是无法修改的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var app4 = new Vue(&#123;</span><br><span class="line">  el: &#x27;#app-4&#x27;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; text: &#x27;学习 JavaScript&#x27;, flag: true &#125;,</span><br><span class="line">      &#123; text: &#x27;学习 Vue&#x27;, flag: false &#125;,</span><br><span class="line">      &#123; text: &#x27;整个牛项目&#x27;, flag: true &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">      console.log(this.todos);</span><br><span class="line">    &#125;,</span><br><span class="line">    test1: () =&gt; &#123;</span><br><span class="line">      console.log(this.todos);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = 3;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  m: &#123;</span><br><span class="line">    t: () =&gt; &#123;</span><br><span class="line">      console.log(this);</span><br><span class="line">      console.log(this.a);</span><br><span class="line">    &#125;,</span><br><span class="line">    t1() &#123;</span><br><span class="line">      console.log(this);</span><br><span class="line">      console.log(this.a);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>t 使用的箭头函数，this 的指向为 window</p>
+<p>t1 使用的普通函数，this 的指向，指向了调用他的方法。</p>
+<p><strong>结论：</strong></p>
+<ul>
+<li>使用箭头函数的方法，确实不能获取到 data 的值</li>
+<li>使用箭头函数后，this 的指向指向了 window 对象。</li>
+<li>对于对象的对象的箭头函数，this的指向，还是指向的最外边的对象所处的上下文位置。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/" class="post-title-link" itemprop="url">HTML-标签的title</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-30 22:35:32" itemprop="dateCreated datePublished" datetime="2021-10-30T22:35:32+08:00">2021-10-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-31 18:34:05" itemprop="dateModified" datetime="2021-10-31T18:34:05+08:00">2021-10-31</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="HTML-标签的title"><a href="#HTML-标签的title" class="headerlink" title="HTML-标签的title"></a>HTML-标签的title</h1><p>在学习的时候发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;停滞的span&quot;&gt;显示的span&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/image-20211030223916508.png" alt="image-20211030223916508" style="zoom: 67%;">
+
+<p>在页面上，鼠标进行放置可以显示 title，这个是一个html的title的特点。我们可以尝试对很多标签设置title，可以看看是否有效果。</p>
+<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>对一个标签添加 <strong>title</strong> 就可以实现。</p>
+<h2 id="出现方式"><a href="#出现方式" class="headerlink" title="出现方式"></a>出现方式</h2><p>在一个标签的范围内，进行移动，超过了一定的时间就会显示。</p>
+<h2 id="对于嵌套"><a href="#对于嵌套" class="headerlink" title="对于嵌套"></a>对于嵌套</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;height: 200px; border: 1px red solid;&quot; title=&quot;div&quot;&gt;</span><br><span class="line">  &lt;span title=&quot;停滞的span&quot;&gt;显示的span&lt;/span&gt;</span><br><span class="line">&lt;/div&gt; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在外面的会显示的是div，在span内部的会显示span，这个就像极了，在冒泡阶段进行stop。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="逐步学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/" class="post-title-link" itemprop="url">JavaScript-冒泡和捕获</a>
         </h2>
 
         <div class="post-meta-container">
@@ -265,7 +449,7 @@
 <p>​    给一张对应的图片。</p>
 </li>
 </ul>
-<img src="/2021/10/29/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png" alt="image-20210907141230550" style="zoom:67%;">
+<img src="/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png" alt="image-20210907141230550" style="zoom:67%;">
 
 <p>​        如何在创建一个点击监听的时候，同时定义是处于冒泡还是捕获阶段。</p>
 <p>​        通过一个 <code>addEventListener</code> 函数的参数，分别为 <strong>事件名， 回调函数， 在什么阶段执行</strong>。第三个参数就是判断是处于什么阶段的。<strong>true代表捕获阶段，false代表了冒泡阶段</strong>。</p>
@@ -373,7 +557,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/27/CSS-flex/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/27/CSS/CSS-flex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -386,7 +570,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/27/CSS-flex/" class="post-title-link" itemprop="url">CSS-flex</a>
+          <a href="/2021/10/27/CSS/CSS-flex/" class="post-title-link" itemprop="url">CSS-flex</a>
         </h2>
 
         <div class="post-meta-container">
@@ -537,17 +721,17 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.father</span><br><span class="line">	div.children</span><br><span class="line">	</span><br><span class="line">father 元素设置了弹性布局， children 元素只设置一个宽度，会发现 children 的宽度不会高于father的宽度。主要是因为涉及了</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/27/CSS-flex/image-20211027210947232.png" alt="image-20211027210947232" style="zoom: 50%;">
+<img src="/2021/10/27/CSS/CSS-flex/image-20211027210947232.png" alt="image-20211027210947232" style="zoom: 50%;">
 
 
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">但是</span><br><span class="line">div.father</span><br><span class="line">	div.children</span><br><span class="line">		div.cChildren</span><br><span class="line"></span><br><span class="line">这个对于 cChildren 的宽度就会将 children 的宽度顶出来，造成溢出。</span><br><span class="line">其中，这里的宽度，如果 cChildren 大于了 father 就会将 cChildren 和 children 顶出来。</span><br><span class="line">但是如果 cChildren 大于了 children 的话，就会再 children 到达他所定义的宽度之后，就不会继续扩张了。</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/27/CSS-flex/image-20211027211015004.png" alt="image-20211027211015004" style="zoom:50%;">
+<img src="/2021/10/27/CSS/CSS-flex/image-20211027211015004.png" alt="image-20211027211015004" style="zoom:50%;">
 
 
 
-<img src="/2021/10/27/CSS-flex/image-20211027212431340.png" alt="image-20211027211015004" style="zoom:50%;">
+<img src="/2021/10/27/CSS/CSS-flex/image-20211027212431340.png" alt="image-20211027211015004" style="zoom:50%;">
 
 
 
@@ -555,14 +739,14 @@
 <h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>​        设置 <code>flex-shrink: 0;</code> 属性，因为设置了0之后代表了不会对超过的部分进行处理。</p>
 <h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><p>​        这个是文字超出导致的溢出，就是如果文字，或者 img图片的设置超过了宽高也会造成溢出。</p>
 <p>​        这个的原因是因为，对于英文和数字，浏览器不能识别你的单词是否是一个，所以如果你输入一串英文和数字，中间没有分割(前面有说)，就会造成溢出，而汉字不行。</p>
-<img src="/2021/10/27/CSS-flex/image-20211027213217557.png" alt="image-20211027213217557" style="zoom:50%;">
+<img src="/2021/10/27/CSS/CSS-flex/image-20211027213217557.png" alt="image-20211027213217557" style="zoom:50%;">
 
 
 
 <h3 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h3><p>​        我们可以发现，flex 对于溢出的处理，默认只是针对于主轴，所以对于侧轴是没有溢出处理的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    width: 50px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.children &#123;</span><br><span class="line">	width: 60px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/27/CSS-flex/image-20211027214029980.png" alt="image-20211027214029980" style="zoom:50%;">
+<img src="/2021/10/27/CSS/CSS-flex/image-20211027214029980.png" alt="image-20211027214029980" style="zoom:50%;">
 
 
 
@@ -592,7 +776,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/CSS/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -605,7 +789,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/25/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/" class="post-title-link" itemprop="url">CSS-元素选择器</a>
+          <a href="/2021/10/25/CSS/CSS-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8/" class="post-title-link" itemprop="url">CSS-元素选择器</a>
         </h2>
 
         <div class="post-meta-container">
@@ -863,7 +1047,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript-parseInt%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript/JavaScript-parseInt%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -876,7 +1060,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/25/JavaScript-parseInt%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-parseInt函数</a>
+          <a href="/2021/10/25/JavaScript/JavaScript-parseInt%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-parseInt函数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -965,7 +1149,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript-map%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -978,7 +1162,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/25/JavaScript-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-map函数</a>
+          <a href="/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-map函数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1069,7 +1253,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -1082,7 +1266,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
+          <a href="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1135,7 +1319,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
 
 <p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
@@ -1152,7 +1336,7 @@
 <p>然后我们再看代码和执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
 
 
 
@@ -1175,7 +1359,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="/2021/10/24/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
 
 
 
@@ -1237,7 +1421,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/23/HTTP%E6%A6%82%E8%BF%B0/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -1250,7 +1434,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/HTTP%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">HTTP概述</a>
+          <a href="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">HTTP概述</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1293,7 +1477,7 @@
           <h1 id="HTTP概述"><a href="#HTTP概述" class="headerlink" title="HTTP概述"></a>HTTP概述</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>找不到说啥，直接放个MDN文档</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/10/23/HTTP%E6%A6%82%E8%BF%B0/image-20211024100324347.png" alt="image-20211024100324347" style="zoom:67%;">
+<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024100324347.png" alt="image-20211024100324347" style="zoom:67%;">
 
 
 
@@ -1361,7 +1545,7 @@
 
 <p>HTTP/1.x的三个连接</p>
 <p>短连接，长连接，流水线</p>
-<img src="/2021/10/23/HTTP%E6%A6%82%E8%BF%B0/image-20211024104204389.png" alt="image-20211024104204389" style="zoom:67%;">
+<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024104204389.png" alt="image-20211024104204389" style="zoom:67%;">
 
 
 
@@ -1400,7 +1584,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -1413,7 +1597,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">浏览器缓存策略</a>
+          <a href="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">浏览器缓存策略</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1517,7 +1701,7 @@
 <p><strong>重新验证与加载：</strong></p>
 <p><strong>must-revalidate</strong>：</p>
 <p>​        一旦资源过期（比如已经超过<code>max-age</code>），在成功向原始服务器验证之前，缓存不能用该资源响应后续请求。</p>
-<img src="/2021/10/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/image-20211023161739229.png" alt="image-20211023161739229" style="zoom:67%;">
+<img src="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/image-20211023161739229.png" alt="image-20211023161739229" style="zoom:67%;">
 
 <p>图片来源</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903757872889870</span><br></pre></td></tr></table></figure>
@@ -1634,314 +1818,6 @@
 <p><strong>简单来说：</strong></p>
 <p>​    就是第一次的文件请求会正常的返回，第二次会先看看能不能命中强缓存，如果能直接读取本地的，如果不能则看看能不能命中协商缓存，如果命中，则还是读取本地的文件，如果都没有命中，那么就会使用新的文件。</p>
 <p>这里<strong>对于一个文件如何在强缓存期间进行更新</strong>也有说明：就是会对文件名进行hash计算，修改过的文件的hash值不一样，所以对于浏览器来说，这个文件名不一样，不是一个文件，需要重新请求。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/21/%E5%9D%97%E7%8E%AF%E5%A2%83%E4%B8%8A%E4%B8%8B%E6%96%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/21/%E5%9D%97%E7%8E%AF%E5%A2%83%E4%B8%8A%E4%B8%8B%E6%96%87/" class="post-title-link" itemprop="url">块环境上下文(BFC)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-21 22:49:56" itemprop="dateCreated datePublished" datetime="2021-10-21T22:49:56+08:00">2021-10-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-27 21:20:52" itemprop="dateModified" datetime="2021-10-27T21:20:52+08:00">2021-10-27</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="块环境上下文（BFC）"><a href="#块环境上下文（BFC）" class="headerlink" title="块环境上下文（BFC）"></a>块环境上下文（BFC）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</span><br><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>什么是BFC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。</span><br></pre></td></tr></table></figure>
-
-<p><strong>有什么作用</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">解决外边距合并：</span><br><span class="line">	首先，外边距合并的原因是因为在同一个BFC下的结果，所以我们可以针对不同的</span><br><span class="line">	对于不同的BFC也不会造成外边距和合并。所以可以使用BFC来解决外边距合并的问题。</span><br><span class="line">清除浮动：</span><br><span class="line">	可以清除浮动，对于清除浮动，只能清除同一BFC的浮动。</span><br><span class="line">自适应两栏布局：</span><br><span class="line">	可以做一个横向的两栏布局，一个宽度固定作为一个BFC，另一个做成另一个BFC。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">根元素（&lt;html&gt;）</span><br><span class="line">浮动元素（元素的 float 不是 none）</span><br><span class="line">绝对定位元素（元素的 position 为 absolute 或 fixed）</span><br><span class="line">行内块元素（元素的 display 为 inline-block）</span><br><span class="line">表格单元格（元素的 display 为 table-cell，HTML表格单元格默认为该值）</span><br><span class="line">表格标题（元素的 display 为 table-caption，HTML表格标题默认为该值）</span><br><span class="line">匿名表格单元格元素（元素的 display 为 table、table-row、 table-row-group、table-header-group、table-footer-group（分别是HTML table、row、tbody、thead、tfoot 的默认属性）或 inline-table）</span><br><span class="line">overflow 计算值(Computed)不为 visible 的块元素</span><br><span class="line">display 值为 flow-root 的元素</span><br><span class="line">contain 值为 layout、content 或 paint 的元素</span><br><span class="line">弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）</span><br><span class="line">网格元素（display 为 grid 或 inline-grid 元素的直接子元素）</span><br><span class="line">多列容器（元素的 column-count 或 column-width (en-US) 不为 auto，包括 column-count 为 1）</span><br><span class="line">column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="常用的-BFC-方式"><a href="#常用的-BFC-方式" class="headerlink" title="常用的 BFC 方式"></a>常用的 BFC 方式</h2><p>HTML根元素</p>
-<p>浮动， 不能为 <code>none</code></p>
-<p>绝对定位， 包括 <code>absolute </code>和 <code>fixed</code></p>
-<p>表格    包括，表格布局和表格元素</p>
-<p>overflow    计算值不为 <code>visible</code> ，这里说的是计算值</p>
-<p>弹性布局    <code>flex</code></p>
-<p>网格布局    <code>grid</code></p>
-<p>​        <code>display: flow-root</code>，一个新的 <code>display</code> 属性的值，它可以创建无副作用的 BFC。在父级块中使用 <code>display: flow-root</code> 可以创建新的 BFC。</p>
-<p>​        给 <code>&lt;div&gt;</code> <code>display: flow-root</code> 属性后，<code>&lt;div&gt;</code> 中的所有内容都会参与 BFC，浮动的内容不会从底部溢出。</p>
-<h3 id="解决外边距合并"><a href="#解决外边距合并" class="headerlink" title="解决外边距合并"></a>解决外边距合并</h3><p>这个我前面有写有，并且这个只需要不处于同一个BFC就可以有效果。所以这里不做过多说明，就简单的贴一个代码就行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .f &#123;</span><br><span class="line">      display: inline-block;</span><br><span class="line">      background-color: red;</span><br><span class="line">      height: 90px;</span><br><span class="line">      width: 100px;</span><br><span class="line">      margin-bottom: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">    .c &#123;</span><br><span class="line">      margin-top: 20px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      width: 200px;</span><br><span class="line">      background-color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;f&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>​        从下面的例子可以看出。</p>
-<p>​        从结果可以看到，当一个元素创建了一个BFC之后，其内部的所有元素都会影响。对于根元素f（red），子元素c（blue），子子元素cc（black）。red的高度被其black所影响。而因为blue没有形成一个BFC，所以虽然black属于blue的子元素，但是blue没有将高度撑开为 black 的高度。</p>
-<p><strong>注意：</strong>使用clear清除浮动，不是BFC的效果。因为我们可以直接对父元素使用clear发现并不会撑开盒子，所以并没有产生BFC。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .f &#123;</span><br><span class="line">      display: flow-root;</span><br><span class="line">      background-color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .c &#123;</span><br><span class="line">      /*float: left;*/</span><br><span class="line">      height: 100px;</span><br><span class="line">      width: 200px;</span><br><span class="line">      background-color: blue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .cc &#123;</span><br><span class="line">      float: left;</span><br><span class="line">      height: 300px;</span><br><span class="line">      width: 100px;</span><br><span class="line">      background-color: black;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;f&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;c&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;cc&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<img src="/2021/10/21/%E5%9D%97%E7%8E%AF%E5%A2%83%E4%B8%8A%E4%B8%8B%E6%96%87/image-20211022110540794.png" alt="image-20211022110540794" style="zoom:33%;">
-
-
-
-
-
-
-
-<p>注意点：如果设置了高度，那么父元素则不会进行扩张。</p>
-<p>以及对一个元素的 before和 after伪类进行了 BFC ，并不会将 BFC 给到该元素上。</p>
-<h3 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h3><p>就是，先指定一个的宽度，然后令其浮动，此时第二个的盒子将会位于第一个下面，然后，在将第二个盒子设置成一个BFC，所以就会出现他们并排一行，并且第二个盒子不会换行，然后因为默认占比的100%宽度，所以就会有一个自适应的效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .left &#123;</span><br><span class="line">      float: left;</span><br><span class="line">      height: 100px;</span><br><span class="line">      width: 200px;</span><br><span class="line">      background-color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .right &#123;</span><br><span class="line">      overflow: hidden;</span><br><span class="line">      height: 300px;</span><br><span class="line">      background-color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<img src="/2021/10/21/%E5%9D%97%E7%8E%AF%E5%A2%83%E4%B8%8A%E4%B8%8B%E6%96%87/image-20211022161542404.png" alt="image-20211022161542404" style="zoom:33%;">
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/20/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="逐步学习">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/20/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/" class="post-title-link" itemprop="url">外边距合并</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-20 22:32:22" itemprop="dateCreated datePublished" datetime="2021-10-20T22:32:22+08:00">2021-10-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-27 21:20:02" itemprop="dateModified" datetime="2021-10-27T21:20:02+08:00">2021-10-27</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="外边距合并问题"><a href="#外边距合并问题" class="headerlink" title="外边距合并问题"></a>外边距合并问题</h1><h2 id="首先，什么是外边距合并"><a href="#首先，什么是外边距合并" class="headerlink" title="首先，什么是外边距合并"></a>首先，什么是外边距合并</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://www.w3school.com.cn/css/css_margin_collapse.asp</span><br><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing</span><br><span class="line">https://www.w3.org/TR/CSS2/box.html#collapsing-margins</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。</strong></p>
-<p><strong>合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</strong></p>
-<p>简单来说，这个的效果就是，两个外边距并不是进行的相加的边距，而是取了其中的最大值</p>
-<p>一个简单的例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .f &#123;</span><br><span class="line">      height: 400px;</span><br><span class="line">      width: 800px;</span><br><span class="line">      background-color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .c &#123;</span><br><span class="line">      height: 50%;</span><br><span class="line">      width: 50%;</span><br><span class="line">      background-color: blue;</span><br><span class="line">      margin-top: 25%;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;f&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;c&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>实际的效果</p>
-<img src="/2021/10/20/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211020224217218.png" alt="image-20211020224217218" style="zoom:50%;">
-
-<p>预想的效果</p>
-<img src="/2021/10/20/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211020224237425.png" alt="image-20211020224237425" style="zoom:50%;">
-
-
-
-<h2 id="有几种情况会产生外边距合并"><a href="#有几种情况会产生外边距合并" class="headerlink" title="有几种情况会产生外边距合并"></a>有几种情况会产生外边距合并</h2><h3 id="同一层相邻元素之间"><a href="#同一层相邻元素之间" class="headerlink" title="同一层相邻元素之间"></a><strong>同一层相邻元素之间</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相邻的两个元素之间的外边距重叠，除非后一个元素加上clear-fix清除浮动。</span><br></pre></td></tr></table></figure>
-
-<p>​    相邻元素， 元素包含了，<code>块级元素</code>，<code>行内元素</code>，<code>行内块元素</code></p>
-<p>但是对于 <code>行内元素</code>来说，不能使用margin-top，来进行扩张。</p>
-<p>对于 <code>行内块元素</code>  来说，因为他造成了 BFC，所以，margin-top，没有了合并的效果。</p>
-<p>所以，最后还是使用了块级元素。</p>
-<h3 id="没有内容将父元素和后代元素分开"><a href="#没有内容将父元素和后代元素分开" class="headerlink" title="没有内容将父元素和后代元素分开"></a><strong>没有内容将父元素和后代元素分开</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原话：</span><br><span class="line">	如果没有边框border，内边距padding，行内内容，也没有创建块级格式上下文或清除浮动来分开一个块级元素的上边界margin-top 与其内一个或多个后代块级元素的上边界margin-top；或没有边框，内边距，行内内容，高度height，最小高度min-height或 最大高度max-height 来分开一个块级元素的下边界margin-bottom与其内的一个或多个后代后代块元素的下边界margin-bottom，则就会出现父块元素和其内后代块元素外边界重叠，重叠部分最终会溢出到父级块元素外面。</span><br></pre></td></tr></table></figure>
-
-<p>这里的内容，包括了</p>
-<p><strong>第一部分：</strong></p>
-<p>​    <strong>边框：</strong>border    父元素使用，子元素使用并不会有效果。</p>
-<p>​    同理，<strong>内边距：</strong>padding，也是一样的。</p>
-<p>​    <strong>创建块级格式上下文：</strong>（BFC）我们后面再说：</p>
-<p>​    现在我就直接贴上　MDN　的 url</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>清除浮动：</strong>不知道是要进行什么操作的意思。不知道是不是对子元素进行一次浮动，然后再在父元素上进行清除浮动。</p>
-<p><strong>第二部分：</strong></p>
-<p>​    父元素没有定义高度，所以最终高度会由子元素进行定义，因此，对于 <code>margin-bottom</code> 下边界会造成合并的效果。，然后重叠部分会溢出到父元素的外面。</p>
-<h3 id="空的块级元素"><a href="#空的块级元素" class="headerlink" title="空的块级元素"></a><strong>空的块级元素</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当一个块元素上边界margin-top 直接贴到元素下边界margin-bottom时也会发生边界折叠。这种情况会发生在一个块元素完全没有设定边框border、内边距padding、高度height、最小高度min-height 、最大高度max-height 、内容设定为inline或是加上clear-fix的时候。</span><br></pre></td></tr></table></figure>
-
-<p>简单来说，就是一个空的块级元素</p>
-<p>然后对其进行 上边距和下边距的 设置，最终的结果不会是两个相加，</p>
-<p>而是选择最大的。</p>
-<p>前提就是父元素不能设置</p>
-<p>​    border，padding，height，min-height， max-height， display：inline， 和 加上 clear-fix。</p>
-<p>对于最后一个clear-fix，有点没有理解清除，其他的还好， display：inline，就是设置成一个行内元素，因为是行内元素，所以外边距就没有效果了。其他的 border，padding，就是一些正常的解决合并问题的方法。</p>
-<p>对于空的块级元素，连续相邻的外边距也是会合并的。</p>
-<img src="/2021/10/20/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211021103824947.png" alt="image-20211021103824947" style="zoom:50%;">
-
-
-
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
-<li>一些情况的组合会产生更多复杂的外边距离收起。</li>
-<li>即使某些外边距为0，这些规则仍然适用。因此，父母元素的外边距是0，或最后一个外边距可能会“接触到第一个元素”到父母元素的外面。</li>
-<li>如果参与折叠的外边距中包含的负值，折叠后的外边距的值为最大的正边距和最大的负边距（即绝对值的最大负边距）和；如果有—— 13px 8px 100px 一叠，远景的技术就是100px -13px的87px。（有负有正，取最大最小相加）</li>
-<li>如果所有参与的户外边距都为负，折叠后的外边距的最大负边距值为多少。这个规则适用于户外元素和元素。 （全为负，取绝对值最大的。）</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">个人认为：</span><br><span class="line">	这样正负的判断，在修改边距的时候，有一个逐渐的过程，而不会出现突变情况。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="解决外边距合并的办法"><a href="#解决外边距合并的办法" class="headerlink" title="解决外边距合并的办法"></a>解决外边距合并的办法</h2><p>首先一点：</p>
-<p>​    <strong>只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。</strong></p>
-<p>行内块不会合并的原因是，他形成了BFC，块格式化上下文。</p>
-<p>其他两个是因为他们脱离了普通文档流。</p>
-<h3 id="解决兄弟元素的上下外边距合并"><a href="#解决兄弟元素的上下外边距合并" class="headerlink" title="解决兄弟元素的上下外边距合并"></a>解决兄弟元素的上下外边距合并</h3><h4 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h4><p>虽然浮动可以解决，但是因为是兄弟元素的外边距合并，有时会产生更多的问题。</p>
-<h3 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h3><p>行内块 display: inline-block;    感觉比上面的好处多了很多。</p>
-<h3 id="使用绝对定位"><a href="#使用绝对定位" class="headerlink" title="使用绝对定位"></a>使用绝对定位</h3><p>​        在这里我知道了一个小知识点，一般对绝对定位的时候都会直接加上 left，top，如果不加的话，那么就会相对于原来的位置不变。虽然也脱离了文档流，不占据的位置，但是从视觉上来说，他是解决了外边框合并的问题。</p>
-<p>​    但是如果父元素没有给定高度的话，那么将不会把这个高度计算在内。</p>
-<h3 id="对于父子元素的外边距合并"><a href="#对于父子元素的外边距合并" class="headerlink" title="对于父子元素的外边距合并"></a>对于父子元素的外边距合并</h3><h4 id="设置边框或内边距"><a href="#设置边框或内边距" class="headerlink" title="设置边框或内边距"></a>设置边框或内边距</h4><p>避免父子的外边距相邻</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给父元素加上 border: 1px solid transparent;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 1px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="设置浮动，绝对定位，行内块布局，和overflow"><a href="#设置浮动，绝对定位，行内块布局，和overflow" class="headerlink" title="设置浮动，绝对定位，行内块布局，和overflow"></a>设置浮动，绝对定位，行内块布局，和overflow</h4><p>这种的实现就是进行 BFC 块级格式化。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float: left;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: inline-block;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow: auto;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="对于空的块级元素"><a href="#对于空的块级元素" class="headerlink" title="对于空的块级元素"></a>对于空的块级元素</h3><h4 id="设置边框，边距，高度"><a href="#设置边框，边距，高度" class="headerlink" title="设置边框，边距，高度"></a>设置边框，边距，高度</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border: 1px solid transparent;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 1px;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">height: 1px;</span><br></pre></td></tr></table></figure>
-
-<h4 id="块环境上下文"><a href="#块环境上下文" class="headerlink" title="块环境上下文"></a>块环境上下文</h4><p>比如 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
