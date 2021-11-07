@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,1108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/20/CSS/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/20/CSS/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/" class="post-title-link" itemprop="url">外边距合并</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-20 22:32:22" itemprop="dateCreated datePublished" datetime="2021-10-20T22:32:22+08:00">2021-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-27 21:20:02" itemprop="dateModified" datetime="2021-10-27T21:20:02+08:00">2021-10-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="外边距合并问题"><a href="#外边距合并问题" class="headerlink" title="外边距合并问题"></a>外边距合并问题</h1><h2 id="首先，什么是外边距合并"><a href="#首先，什么是外边距合并" class="headerlink" title="首先，什么是外边距合并"></a>首先，什么是外边距合并</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://www.w3school.com.cn/css/css_margin_collapse.asp</span><br><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing</span><br><span class="line">https://www.w3.org/TR/CSS2/box.html#collapsing-margins</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。</strong></p>
+<p><strong>合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</strong></p>
+<p>简单来说，这个的效果就是，两个外边距并不是进行的相加的边距，而是取了其中的最大值</p>
+<p>一个简单的例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .f &#123;</span><br><span class="line">      height: 400px;</span><br><span class="line">      width: 800px;</span><br><span class="line">      background-color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .c &#123;</span><br><span class="line">      height: 50%;</span><br><span class="line">      width: 50%;</span><br><span class="line">      background-color: blue;</span><br><span class="line">      margin-top: 25%;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;f&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;c&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实际的效果</p>
+<img src="/2021/10/20/CSS/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211020224217218.png" alt="image-20211020224217218" style="zoom:50%;">
+
+<p>预想的效果</p>
+<img src="/2021/10/20/CSS/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211020224237425.png" alt="image-20211020224237425" style="zoom:50%;">
+
+
+
+<h2 id="有几种情况会产生外边距合并"><a href="#有几种情况会产生外边距合并" class="headerlink" title="有几种情况会产生外边距合并"></a>有几种情况会产生外边距合并</h2><h3 id="同一层相邻元素之间"><a href="#同一层相邻元素之间" class="headerlink" title="同一层相邻元素之间"></a><strong>同一层相邻元素之间</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相邻的两个元素之间的外边距重叠，除非后一个元素加上clear-fix清除浮动。</span><br></pre></td></tr></table></figure>
+
+<p>​    相邻元素， 元素包含了，<code>块级元素</code>，<code>行内元素</code>，<code>行内块元素</code></p>
+<p>但是对于 <code>行内元素</code>来说，不能使用margin-top，来进行扩张。</p>
+<p>对于 <code>行内块元素</code>  来说，因为他造成了 BFC，所以，margin-top，没有了合并的效果。</p>
+<p>所以，最后还是使用了块级元素。</p>
+<h3 id="没有内容将父元素和后代元素分开"><a href="#没有内容将父元素和后代元素分开" class="headerlink" title="没有内容将父元素和后代元素分开"></a><strong>没有内容将父元素和后代元素分开</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原话：</span><br><span class="line">	如果没有边框border，内边距padding，行内内容，也没有创建块级格式上下文或清除浮动来分开一个块级元素的上边界margin-top 与其内一个或多个后代块级元素的上边界margin-top；或没有边框，内边距，行内内容，高度height，最小高度min-height或 最大高度max-height 来分开一个块级元素的下边界margin-bottom与其内的一个或多个后代后代块元素的下边界margin-bottom，则就会出现父块元素和其内后代块元素外边界重叠，重叠部分最终会溢出到父级块元素外面。</span><br></pre></td></tr></table></figure>
+
+<p>这里的内容，包括了</p>
+<p><strong>第一部分：</strong></p>
+<p>​    <strong>边框：</strong>border    父元素使用，子元素使用并不会有效果。</p>
+<p>​    同理，<strong>内边距：</strong>padding，也是一样的。</p>
+<p>​    <strong>创建块级格式上下文：</strong>（BFC）我们后面再说：</p>
+<p>​    现在我就直接贴上　MDN　的 url</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>清除浮动：</strong>不知道是要进行什么操作的意思。不知道是不是对子元素进行一次浮动，然后再在父元素上进行清除浮动。</p>
+<p><strong>第二部分：</strong></p>
+<p>​    父元素没有定义高度，所以最终高度会由子元素进行定义，因此，对于 <code>margin-bottom</code> 下边界会造成合并的效果。，然后重叠部分会溢出到父元素的外面。</p>
+<h3 id="空的块级元素"><a href="#空的块级元素" class="headerlink" title="空的块级元素"></a><strong>空的块级元素</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当一个块元素上边界margin-top 直接贴到元素下边界margin-bottom时也会发生边界折叠。这种情况会发生在一个块元素完全没有设定边框border、内边距padding、高度height、最小高度min-height 、最大高度max-height 、内容设定为inline或是加上clear-fix的时候。</span><br></pre></td></tr></table></figure>
+
+<p>简单来说，就是一个空的块级元素</p>
+<p>然后对其进行 上边距和下边距的 设置，最终的结果不会是两个相加，</p>
+<p>而是选择最大的。</p>
+<p>前提就是父元素不能设置</p>
+<p>​    border，padding，height，min-height， max-height， display：inline， 和 加上 clear-fix。</p>
+<p>对于最后一个clear-fix，有点没有理解清除，其他的还好， display：inline，就是设置成一个行内元素，因为是行内元素，所以外边距就没有效果了。其他的 border，padding，就是一些正常的解决合并问题的方法。</p>
+<p>对于空的块级元素，连续相邻的外边距也是会合并的。</p>
+<img src="/2021/10/20/CSS/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/image-20211021103824947.png" alt="image-20211021103824947" style="zoom:50%;">
+
+
+
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li>一些情况的组合会产生更多复杂的外边距离收起。</li>
+<li>即使某些外边距为0，这些规则仍然适用。因此，父母元素的外边距是0，或最后一个外边距可能会“接触到第一个元素”到父母元素的外面。</li>
+<li>如果参与折叠的外边距中包含的负值，折叠后的外边距的值为最大的正边距和最大的负边距（即绝对值的最大负边距）和；如果有—— 13px 8px 100px 一叠，远景的技术就是100px -13px的87px。（有负有正，取最大最小相加）</li>
+<li>如果所有参与的户外边距都为负，折叠后的外边距的最大负边距值为多少。这个规则适用于户外元素和元素。 （全为负，取绝对值最大的。）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">个人认为：</span><br><span class="line">	这样正负的判断，在修改边距的时候，有一个逐渐的过程，而不会出现突变情况。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="解决外边距合并的办法"><a href="#解决外边距合并的办法" class="headerlink" title="解决外边距合并的办法"></a>解决外边距合并的办法</h2><p>首先一点：</p>
+<p>​    <strong>只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。</strong></p>
+<p>行内块不会合并的原因是，他形成了BFC，块格式化上下文。</p>
+<p>其他两个是因为他们脱离了普通文档流。</p>
+<h3 id="解决兄弟元素的上下外边距合并"><a href="#解决兄弟元素的上下外边距合并" class="headerlink" title="解决兄弟元素的上下外边距合并"></a>解决兄弟元素的上下外边距合并</h3><h4 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h4><p>虽然浮动可以解决，但是因为是兄弟元素的外边距合并，有时会产生更多的问题。</p>
+<h3 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h3><p>行内块 display: inline-block;    感觉比上面的好处多了很多。</p>
+<h3 id="使用绝对定位"><a href="#使用绝对定位" class="headerlink" title="使用绝对定位"></a>使用绝对定位</h3><p>​        在这里我知道了一个小知识点，一般对绝对定位的时候都会直接加上 left，top，如果不加的话，那么就会相对于原来的位置不变。虽然也脱离了文档流，不占据的位置，但是从视觉上来说，他是解决了外边框合并的问题。</p>
+<p>​    但是如果父元素没有给定高度的话，那么将不会把这个高度计算在内。</p>
+<h3 id="对于父子元素的外边距合并"><a href="#对于父子元素的外边距合并" class="headerlink" title="对于父子元素的外边距合并"></a>对于父子元素的外边距合并</h3><h4 id="设置边框或内边距"><a href="#设置边框或内边距" class="headerlink" title="设置边框或内边距"></a>设置边框或内边距</h4><p>避免父子的外边距相邻</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给父元素加上 border: 1px solid transparent;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 1px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置浮动，绝对定位，行内块布局，和overflow"><a href="#设置浮动，绝对定位，行内块布局，和overflow" class="headerlink" title="设置浮动，绝对定位，行内块布局，和overflow"></a>设置浮动，绝对定位，行内块布局，和overflow</h4><p>这种的实现就是进行 BFC 块级格式化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float: left;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: inline-block;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow: auto;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对于空的块级元素"><a href="#对于空的块级元素" class="headerlink" title="对于空的块级元素"></a>对于空的块级元素</h3><h4 id="设置边框，边距，高度"><a href="#设置边框，边距，高度" class="headerlink" title="设置边框，边距，高度"></a>设置边框，边距，高度</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border: 1px solid transparent;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 1px;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">height: 1px;</span><br></pre></td></tr></table></figure>
+
+<h4 id="块环境上下文"><a href="#块环境上下文" class="headerlink" title="块环境上下文"></a>块环境上下文</h4><p>比如 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display: inline-block;</span><br><span class="line">overflow: hidden;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/20/JavaScript/eval%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/20/JavaScript/eval%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">eval函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-20 11:01:49" itemprop="dateCreated datePublished" datetime="2021-10-20T11:01:49+08:00">2021-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:16:19" itemprop="dateModified" datetime="2021-10-26T15:16:19+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="eval函数"><a href="#eval函数" class="headerlink" title="eval函数"></a>eval函数</h1><p><strong>文档</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里学习使用eval函数的原因是, 前几天遇到一个问题是拷贝函数, </p>
+<p>所以我就想说,先使用tostring, 然后再使用eval转为函数返回进行使用, 这样就进行了一次函数的复制.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn() &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你会发现结果 是不如人意的?我的想法就是这个字符串方法会被转义为一个函数赋值给f.但是却什么都没有,函数没有执行,并且没有返回值.</span><br><span class="line"></span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+
+<p>然后转念一想.可能是因为虽然转义为函数了,但是没有执行和返回.他只是定义了一下函数而已.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let f = eval(`</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">结果真的有输出.所以这样一想.我可以在内部加上一个立即执行函数啊</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//我这里只是定义立即执行函数,但是没有执行.只需要使用 f(), 便可以进行函数调用了.</span><br><span class="line">let f = eval(`</span><br><span class="line">  ($&#123;fn.toString()&#125;)</span><br><span class="line">`);</span><br><span class="line"></span><br><span class="line">console.log(f.toString());</span><br><span class="line">console.log(f());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行结果:</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  return 2;</span><br><span class="line">&#125;</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/JavaScript/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/19/JavaScript/JavaScript%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">JavaScript浅拷贝和深拷贝</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-19 15:28:12" itemprop="dateCreated datePublished" datetime="2021-10-19T15:28:12+08:00">2021-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:18:40" itemprop="dateModified" datetime="2021-10-26T15:18:40+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p>很简单，就是只拷贝一层，不拷贝多层，因为对于引用数据类型，</p>
+<p>他的数据是存放在堆中的，我们只是在栈中存放了他的地址。所以浅拷贝的问题就是对于引用数据类型还是没有进行拷贝。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一个简单的demo</span><br><span class="line"></span><br><span class="line">这里，有两个循环操作。对于forin，他会循着原型链向上查找，</span><br><span class="line">而对于 Object.keys() 和 Object.getOwnPropertyNames()，他只会返回属于自身的属性。</span><br><span class="line">而不会向上寻找原型链</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  a: 1</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">  b: 2</span><br><span class="line">&#125;;</span><br><span class="line">obj2.__proto__ = obj1;</span><br><span class="line"></span><br><span class="line">for (const obj2Key in obj2) &#123;</span><br><span class="line">  console.log(obj2Key);</span><br><span class="line">&#125;</span><br><span class="line">console.log(Object.keys(obj2))</span><br><span class="line">console.log(Object.getOwnPropertyNames(obj2))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br><span class="line"></span><br><span class="line">[ &#x27;b&#x27; ]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所以我们考虑到是否要将原型链上的一起拷贝之后，再进行拷贝</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keys代表了要拷贝的key</span><br><span class="line"></span><br><span class="line">const obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">for (const key in keys) &#123;</span><br><span class="line">  obj[keys[key]] = obj2[keys[key]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个就是浅拷贝了。比较简单</p>
+<h2 id="同时也可以使用-Object-assign-进行浅拷贝"><a href="#同时也可以使用-Object-assign-进行浅拷贝" class="headerlink" title="同时也可以使用 Object.assign() 进行浅拷贝"></a>同时也可以使用 <code>Object.assign()</code> 进行浅拷贝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">第一个参数是目标对象, 第二个参数是源对象,</span><br><span class="line">我们会将源对象的值拷贝给目标对象,对于重复的会被覆盖.</span><br><span class="line">然后再将目标对象返回.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const target = &#123; a: 1, b: 2 &#125;;</span><br><span class="line">const source = &#123; b: 4, c: 5, x: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125; &#125;;</span><br><span class="line"></span><br><span class="line">const returnedTarget = Object.assign(target, source);</span><br><span class="line"></span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 1 &#125; &#125;</span><br><span class="line"></span><br><span class="line">source.x.a = 3;</span><br><span class="line">console.log(target);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br><span class="line">console.log(returnedTarget);</span><br><span class="line">// expected output: Object &#123; a: 1, b: 4, c: 5, x: &#123; a: 3 &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>和浅拷贝不同的是，深拷贝，是要进行递归，吧对象里面的对象也要拷贝出来。</p>
+<h2 id="第一种：使用-JSON的方法，这个方法我也觉得很巧妙，"><a href="#第一种：使用-JSON的方法，这个方法我也觉得很巧妙，" class="headerlink" title="第一种：使用 JSON的方法，这个方法我也觉得很巧妙，"></a>第一种：使用 JSON的方法，这个方法我也觉得很巧妙，</h2><p>除了不能拷贝 function，正则，Symbol之外，其他都很不错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方法也很简单</span><br><span class="line"></span><br><span class="line">先对其进行string化，然后再json化，所以简单的使用没有问题。</span><br><span class="line">JSON.parse(JSON.stringify(obj))</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  reg : /^aaa$/,</span><br><span class="line">  fun: function()&#123; console.log(1) &#125;,</span><br><span class="line">  syb:Symbol(&#x27;foo&#x27;),</span><br><span class="line">  aa:&#x27;aa&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">let cp = JSON.parse(JSON.stringify(obj));</span><br><span class="line">console.log(cp);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; reg: &#123;&#125;, aa: &#x27;aa&#x27; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="第二种，就是简单的类型判断加递归了"><a href="#第二种，就是简单的类型判断加递归了" class="headerlink" title="第二种，就是简单的类型判断加递归了"></a>第二种，就是简单的类型判断加递归了</h2><p>就判断是否为基本数据类型，如果是那么就进行复制，如果不是那么就进入递归</p>
+<p>其中，对于正则，基本数据类型，可以直接赋值。</p>
+<p>对于对象，使用递归，</p>
+<p>对于函数，我这里下面再讲</p>
+<h4 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h4><p>这里，先用<code>typeof</code>判断是否为 <code>object</code>，</p>
+<p>然后，对于object，存在 null，对象，数组，正则和使用new进行创建的基本数据类型</p>
+<p>​    在这里，我把使用new方法创建的基本数据类型也算为基本数据类型。</p>
+<p>对于非object，有function，和基本数据类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function getType(target) &#123;</span><br><span class="line"></span><br><span class="line">  const type = typeof target;</span><br><span class="line">  if (type == &#x27;object&#x27;) &#123;</span><br><span class="line">    if (target === null) &#123;</span><br><span class="line">      // 空</span><br><span class="line">      return &#x27;null&#x27;;</span><br><span class="line">    &#125; else if (Array.isArray(target)) &#123;</span><br><span class="line">      // 数组</span><br><span class="line">      return &#x27;array&#x27;;</span><br><span class="line">    &#125; else if (target.constructor === RegExp) &#123;</span><br><span class="line">      //正则</span><br><span class="line">      return &#x27;regexp&#x27;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 对象，这里还要判断是否为map和set对象。</span><br><span class="line">      //并且，map，set只能使用 forof 进行循环，或者使用自带的 oreach 进行循环。</span><br><span class="line">      if (typeof target.valueOf() === &#x27;object&#x27;) &#123;</span><br><span class="line">        return &#x27;object&#x27;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return &#x27;basic&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else if (type == &#x27;function&#x27;) &#123;</span><br><span class="line">    return &#x27;function&#x27;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return &#x27;basic&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里也可以使用 Object.prototype.toString.call(); 方法进行调用来判断是什么类型的.这个就比较方便,直接可以将map,set,对象,数组,基本数据类型等都辨别出来.</span><br><span class="line">可以看看我写的另一个关于 类型判断的blog ,里面有.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="然后就是递归"><a href="#然后就是递归" class="headerlink" title="然后就是递归"></a>然后就是递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(target) &#123;</span><br><span class="line">  let result;</span><br><span class="line"></span><br><span class="line">  for (const key in target) &#123;</span><br><span class="line">    result[key] = recursion(target[key]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">  </span><br><span class="line">  function recursion(target) &#123;</span><br><span class="line">    if (&#x27;基本数据类型&#x27;) &#123;</span><br><span class="line">      return target;</span><br><span class="line">    &#125; else if (&#x27;函数&#x27;) &#123;</span><br><span class="line">		</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      //对象</span><br><span class="line">      return recursion(target)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于函数如何进行拷贝"><a href="#对于函数如何进行拷贝" class="headerlink" title="对于函数如何进行拷贝"></a>对于函数如何进行拷贝</h4><p>前几天面试问到了..</p>
+<p>我的想法，有三种方式，</p>
+<p>​    <strong>第一种：使用toString，然后再使用eval。</strong>    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let fn = function () &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn1() &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这里我对于eval函数的使用还是不够了解。</span><br><span class="line">这里，我不知道为什么， eval(fn.toString()) 没有返回值，所以我写了一个箭头函数字符串进行包装和执行。</span><br><span class="line">	这里，需要使用一个箭头函数进行包装，如果使用普通函数进行包装。也没有用处。</span><br><span class="line">let fn2 = eval(&#x27;() =&gt; &#x27; + fn1.toString())(); //这里，fn和fn1都可以运行。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这样写也可以。</span><br><span class="line">eval(`</span><br><span class="line">  (() =&gt; fn)()</span><br><span class="line">`)()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">应该是因为需要使用()进行包裹.</span><br><span class="line">let a = eval(`</span><br><span class="line">  (function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;)</span><br><span class="line">`);</span><br><span class="line">a()</span><br><span class="line">console.log(a.toString())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p><strong>第二种：使用new Function(‘return ‘ + func.toString())();</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let f = new Function(&#x27;return &#x27; + fn.toString())()</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>第三种：使用bind函数进行一次绑定。但是这个对于有传参的函数会有所不同。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个有个要求，因为bind函数实则就是对于一个函数进行了call方法，但是是一个延迟的调用。</span><br><span class="line"></span><br><span class="line">从一个简单的逻辑来说，应该是并没有进行一个从底层复制操作的。因为是直接进行的 简单赋值。</span><br><span class="line"></span><br><span class="line">let f = fn.bind()</span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/%E9%9A%8F%E7%AC%94/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/19/%E9%9A%8F%E7%AC%94/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Git常用命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-19 14:10:15" itemprop="dateCreated datePublished" datetime="2021-10-19T14:10:15+08:00">2021-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 09:48:22" itemprop="dateModified" datetime="2021-11-06T09:48:22+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><p>新建一个git仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将内容进行本地提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>设置提交到GitHub的url</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://xxx</span><br></pre></td></tr></table></figure>
+
+
+
+<p>提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+
+
+<p>拉取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+
+
+<p>同时将一个项目提交到两个仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要再添加一个新的仓库</span><br><span class="line">git remote set-url --add origin https://xx</span><br></pre></td></tr></table></figure>
+
+<p>也可以在配置文件里面进行修改</p>
+<p>.git/config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在文件里面的[remote &quot;origin&quot;]</span><br><span class="line">下面添加一个url：设置为自己的另一个仓库的url地址就可以在提交的时候将仓库提交到远程了</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/19/JavaScript/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/19/JavaScript/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">JavaScript类型转换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-19 10:07:37" itemprop="dateCreated datePublished" datetime="2021-10-19T10:07:37+08:00">2021-10-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:17:52" itemprop="dateModified" datetime="2021-10-26T15:17:52+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript类型转换"><a href="#JavaScript类型转换" class="headerlink" title="JavaScript类型转换"></a>JavaScript类型转换</h1><p>参考的文章</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/shikaka/p/10463293.html</span><br><span class="line">https://www.cnblogs.com/shikaka/p/10473462.html</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string， number， Boolean， null， undefined， symbol</span><br></pre></td></tr></table></figure>
+
+<p>基本数据类型是没有方法可以调用的。</p>
+<p>但是我们却发现，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;aaa&#x27;.indexOf(&#x27;a&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>这个明明是基本数据类型，但是却可以调用方法，这个是为什么呢。</p>
+<p>这个是因为<code>JavaScript</code>在底层进行了一个操作，当发现调用方法的是一个基本数据类型的话，会根据这个类型来创建一个对应的引用数据类型对象。然后再调用这个方法，调用之后将返回值进行返回并将这个对象进行删除。</p>
+<p>在 <code>JavaScript</code> 中，类型转换主要的两个方法是</p>
+<p><code>valueOf</code> ， <code>toString</code></p>
+<p>我们下面分别对这两个进行一个判断使用操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let a = 1,</span><br><span class="line">    b = &#x27;a&#x27;,</span><br><span class="line">    c = true,</span><br><span class="line">    d = undefined,</span><br><span class="line">    e = null,</span><br><span class="line">    f = [1, 2, 3],</span><br><span class="line">    g = [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line">    h = new Number(3),</span><br><span class="line">    i = new String(&#x27;12&#x27;),</span><br><span class="line">    j = new Boolean(false),</span><br><span class="line">    k = new Object(&#123; a: 3&#125; ),</span><br><span class="line">    l = &#123; b: 4 &#125;,</span><br><span class="line">    m = function () &#123;&#125;,</span><br><span class="line">    n = new Date(),</span><br><span class="line">    o = new RegExp(&#x27;sss&#x27;),</span><br><span class="line">    p = /sss/,</span><br><span class="line">    q = `sdcard`,</span><br><span class="line">    r = new Array([1,2,3]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf"></a>valueOf</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.valueOf());</span><br><span class="line">console.log(b.valueOf());</span><br><span class="line">console.log(c.valueOf());</span><br><span class="line">// console.log(d.valueOf());</span><br><span class="line">// console.log(e.valueOf());</span><br><span class="line">console.log(f.valueOf());</span><br><span class="line">console.log(h.valueOf());</span><br><span class="line">console.log(i.valueOf());</span><br><span class="line">console.log(j.valueOf());</span><br><span class="line">console.log(k.valueOf());</span><br><span class="line">console.log(n.valueOf());</span><br><span class="line">console.log(o.valueOf());</span><br></pre></td></tr></table></figure>
+
+<h4 id="这就是执行的结果。"><a href="#这就是执行的结果。" class="headerlink" title="这就是执行的结果。"></a>这就是执行的结果。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">a</span><br><span class="line">true</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">3</span><br><span class="line">12</span><br><span class="line">false</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">1634610286344</span><br><span class="line">/sss/</span><br></pre></td></tr></table></figure>
+
+<h4 id="我们可以从结果里面看到"><a href="#我们可以从结果里面看到" class="headerlink" title="我们可以从结果里面看到"></a>我们可以从结果里面看到</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>null，undefined</td>
+<td>没有valueOf方法，会报错</td>
+</tr>
+<tr>
+<td>基本数据类型，包括Symbol类型</td>
+<td>valueOf方法为其本身，可以使用 === 来判断，Symbol为true。</td>
+</tr>
+<tr>
+<td>对象，数组，方法，正则</td>
+<td>也为其本身</td>
+</tr>
+<tr>
+<td>使用new方法创建的基本数据类型，new number(1)</td>
+<td>为其值，与原来不等。</td>
+</tr>
+<tr>
+<td>date类型</td>
+<td>当前时间距 1970.01.01 午夜的毫秒数</td>
+</tr>
+</tbody></table>
+<p>所以我们可以看到，</p>
+<p>基本除了对象，其他的类型使用valueOf方法都可以转换成基本数据类型。</p>
+<p>对于使用new方法创建的基本数据类型的引用数据类型，也会被转换成基本数据类型。</p>
+<p>这里的原因，是因为 <code>number </code>对象对 <code>valueOf</code> 进行了一次重写，所以在调用的时候就会调用自己所重写的方法，于是返回的结果会不同。其他也同理。</p>
+<p>但是<code>JavaScript</code>内部是如何进行操作，取出值的，我还是不了解。</p>
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.toString());</span><br><span class="line">console.log(b.toString());</span><br><span class="line">console.log(c.toString());</span><br><span class="line">// console.log(d.toString());</span><br><span class="line">// console.log(e.toString());</span><br><span class="line">console.log(f.toString());</span><br><span class="line">console.log(h.toString());</span><br><span class="line">console.log(i.toString());</span><br><span class="line">console.log(j.toString());</span><br><span class="line">console.log(k.toString());</span><br><span class="line">console.log(n.toString());</span><br><span class="line">console.log(o.toString());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">a</span><br><span class="line">true</span><br><span class="line">1,2,3</span><br><span class="line">3</span><br><span class="line">12</span><br><span class="line">false</span><br><span class="line">[object Object]</span><br><span class="line">Tue Oct 19 2021 10:50:07 GMT+0800 (中国标准时间)</span><br><span class="line">/sss/</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>null， undefined</td>
+<td>没有toString方法</td>
+</tr>
+<tr>
+<td>基本数据类型</td>
+<td>直接转为字符串</td>
+</tr>
+<tr>
+<td>普通对象</td>
+<td>直接转为字符串 [object Object]</td>
+</tr>
+<tr>
+<td>日期，正则对象</td>
+<td>转为对应值的字符串</td>
+</tr>
+</tbody></table>
+<h1 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h1><p>我这里主要讲解一下隐式类型转换</p>
+<h3 id="对于一个对象转为基本数据类型的方法"><a href="#对于一个对象转为基本数据类型的方法" class="headerlink" title="对于一个对象转为基本数据类型的方法"></a>对于一个对象转为基本数据类型的方法</h3><p>对于一个不是基本数据类型的。会先通过 <code>valueOf</code> 转换，看是否能转为基本数据类型</p>
+<p>如果还不可以，然后就会使用 <code>toString </code>方法转为字符串。然后再来进行判断。</p>
+<p>对于 <code>Date</code> 对象的话，使用顺序会反过来</p>
+<h3 id="转字符串。"><a href="#转字符串。" class="headerlink" title="转字符串。"></a>转字符串。</h3><p>就直接toString方法就行了。</p>
+<h3 id="转数字"><a href="#转数字" class="headerlink" title="转数字"></a>转数字</h3><p>就类似于 <code>Number(undefined); </code> 的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null， false		-&gt; 0</span><br><span class="line">undefined		-&gt; NaN</span><br></pre></td></tr></table></figure>
+
+<h4 id="对于字符串"><a href="#对于字符串" class="headerlink" title="对于字符串"></a>对于字符串</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">字符串含有字符的。没有特殊含义的都为 NaN</span><br><span class="line"></span><br><span class="line">&#x27;1.111111111111111e+50&#x27; 这个就会转为数字，还有进制表示和小数点会转，其他带有字符会被转成 NaN</span><br></pre></td></tr></table></figure>
+
+<h4 id="对于对象"><a href="#对于对象" class="headerlink" title="对于对象"></a>对于对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先使用前面我说过的规则转为基本类型，然后再进行转换。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="转布尔值"><a href="#转布尔值" class="headerlink" title="转布尔值"></a>转布尔值</h3><p>几个特殊值为 <code>false</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN, undefined， null， 0， +0， -0， &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>其他为true</p>
+<h2 id="基本上涉及运算和比较就会出现隐式类型转换"><a href="#基本上涉及运算和比较就会出现隐式类型转换" class="headerlink" title="基本上涉及运算和比较就会出现隐式类型转换"></a>基本上涉及运算和比较就会出现隐式类型转换</h2><h3 id="加号"><a href="#加号" class="headerlink" title="加号 +"></a>加号 +</h3><p>存在字符串则转为字符串的拼接操作</p>
+<p>非字符串就会转数字操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1+2+&#x27;&#x27;)</span><br><span class="line">1+2 先为3，</span><br><span class="line">然后3+&#x27;&#x27; 为3</span><br></pre></td></tr></table></figure>
+
+<p>这个就涉及到了上面的转换规则</p>
+<p>这里有个小问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x = Symbol(1);</span><br><span class="line">console.log(x + &#x27;1&#x27;)</span><br><span class="line">这样会抛出异常，虽然Symbol可以使用toString，</span><br><span class="line">但是不能进行隐式转换。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="减号-乘号-除号"><a href="#减号-乘号-除号" class="headerlink" title="减号 - 乘号 * 除号 /"></a>减号 - 乘号 * 除号 /</h3><p>会转为数字进行运算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">特殊的，对于 NaN运算得NaN</span><br><span class="line">对于 0/0 等于 NaN</span><br><span class="line">对于 1/0 等于 Infinity</span><br></pre></td></tr></table></figure>
+
+
+
+<p>|| 和 &amp;&amp; 这里这个返回值不是<code>true</code>和<code>false</code>而是返回两边操作数的执行结果。</p>
+<h3 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a>比较运算</h3><p><strong>转换规则</strong></p>
+<p><img src="/2021/10/19/JavaScript/JavaScript%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/image-20211019105728109-1634626914416.png" alt="image-20211019105728109"></p>
+<h4 id="和"><a href="#和" class="headerlink" title="== 和 ==="></a>== 和 ===</h4><p>非严格相等等号 可以允许强制类型转换，</p>
+<p>而严格相等等号 不允许强制类型的转换。</p>
+<p>其他的就如上，使用上面的转换规则进行转换。</p>
+<p>这里有个小问题点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if ([]) &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">此时会输出为1，所以说明了[]在if判断里面为真，但是 [] == true 为false，</span><br><span class="line">这里可以看上面 转布尔值 那个地方，说明了，布尔在进行判断时 除了 undefined，null，NaN，0， &#x27;&#x27;，其他都为true</span><br><span class="line">因此也可以说明，if判断是使用的 Boolean 来进行的判断为真还是为假。而不是与true进行的比较。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="null和undefined的比较"><a href="#null和undefined的比较" class="headerlink" title="null和undefined的比较"></a>null和undefined的比较</h4><p>null和undefined进行比较时</p>
+<p>​    使用非严格等号为 true</p>
+<p>​    使用严格等号为 false</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">null == undefined</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="NaN-不与任何值相等，包括自己"><a href="#NaN-不与任何值相等，包括自己" class="headerlink" title="NaN 不与任何值相等，包括自己"></a>NaN 不与任何值相等，包括自己</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN	false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">并且 NaN &gt; 0 和 NaN &lt;= 0 都为 false</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/18/JavaScript/call-apply-bind%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/18/JavaScript/call-apply-bind%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">call,apply,bind实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-18 14:04:16" itemprop="dateCreated datePublished" datetime="2021-10-18T14:04:16+08:00">2021-10-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:16:11" itemprop="dateModified" datetime="2021-10-26T15:16:11+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="call-apply-bind源码的实现"><a href="#call-apply-bind源码的实现" class="headerlink" title="call,apply,bind源码的实现"></a>call,apply,bind源码的实现</h1><h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>使用，就是替换了this的指向，传参使用的基本传参。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">这里将方法写在了Function函数的原型里面，这样因为通过原型链就可以找到这个方法了。</span><br><span class="line">Function.prototype.myCall = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line"></span><br><span class="line">  //这里这个this，指向的就是方法。这里使用Symbol，用于避免出现方法重复。</span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line"></span><br><span class="line">  // 获取参数</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  // 使用ctx来进行调用。替换了this指向。</span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line"></span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.call(db, &#x27;cc&#x27;, 1);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>同上，传参使用的是数组传参。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myApply = function (ctx, args) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line">  </span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.apply(db, [&#x27;cc&#x27;, 1]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><p>同call方法的参数，但是不是马上执行，需要自己执行一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  </span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  return () =&gt; &#123;</span><br><span class="line">    const result = ctx[fn](...args);</span><br><span class="line">    delete ctx[fn];</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(db, &#x27;cc&#x27;, 1)();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/17/JavaScript/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/17/JavaScript/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">数据类型判断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-17 15:08:23" itemprop="dateCreated datePublished" datetime="2021-10-17T15:08:23+08:00">2021-10-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:30:29" itemprop="dateModified" datetime="2021-10-26T15:30:29+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript判断数据的类型的方法"><a href="#JavaScript判断数据的类型的方法" class="headerlink" title="JavaScript判断数据的类型的方法"></a>JavaScript判断数据的类型的方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">  t: Symbol(1),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(typeof obj[k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">number</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">boolean</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">undefined</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:29.835Z</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">function</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">symbol</span><br></pre></td></tr></table></figure>
+
+<p>这里的话，主要问题是在于</p>
+<p>​    一个是,只能把数据分为基本数据类型和对象,并且使用new方法调用的就为对象.</p>
+<p>​    一个是 null  的 typeof 的值为 object，至于原因的话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://2ality.com/2013/10/typeof-null.html</span><br></pre></td></tr></table></figure>
+
+<p>通过这篇文章我们可以知道原理，我这里就简单的说一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">首先，早期的JavaScript是通过值的低1位或3位来辨别类型的。</span><br><span class="line">又下面所示</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">000：对象。数据是对对象的引用。</span><br><span class="line">1：整数。数据是一个 31 位有符号整数。</span><br><span class="line">010：双倍。数据是对双浮点数的引用。</span><br><span class="line">100：字符串。数据是对字符串的引用。</span><br><span class="line">110：布尔值。数据是一个布尔值。</span><br><span class="line"></span><br><span class="line">undefined，用整数−2^30（负2的30次方，不在整型的范围内）</span><br><span class="line">null，机器码空指针（C/C++ 宏定义），低三位也是000</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以就出现了这种 typeof null = &#x27;object&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof</span><br></pre></td></tr></table></figure>
+
+<p><code>instanceof</code> 运算符用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + a instanceof Number);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对于基本数据类型会直接返回false。而不会再内部构建对应的引用类型.</span><br><span class="line"></span><br><span class="line">否则的话，就会先通过 Object.getPrototypeOf 获得参数的原型对象。然后判断这个和你要判断的对象是否相等，不想等则会继续向上，直到相等或者为 null 时。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/constructor</span><br></pre></td></tr></table></figure>
+
+<p>**<code>constructor </code>**是一种用于创建和初始化<code>class</code>创建的对象的特殊方法。</p>
+<p>你可以这样理解，一个对象的constructor的指向的是他所 new 而指向的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function O() &#123;&#125;</span><br><span class="line">let o = new O();</span><br><span class="line"></span><br><span class="line">o.constructor === O; //true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + (a.constructor === Number));</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里，在a调用constructor的时候，会在内部创建一个值为a的对象，然后再调用这个constructor方法，然后再将这个对象删除，所以这个是基本数据类型也可以进行判断的。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这个输出的值是 a的构造器所指向的一个函数。在这里就是指向的Number，</span><br><span class="line">问题：这个因为是通过判断其构造器函数来进行的判断，所以如果我们将对其进行过修改则会判断错误。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.constructor === Array)	//false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//false</span><br><span class="line">console.log(x.constructor === Array)	//ture</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一个是先new，然后在修改的原型。</span><br><span class="line">而第二个是先修改原型，然后再进行new方法的调用。</span><br><span class="line">然后结果就不一样了，所以说明了这个new方法会调用的是原型。</span><br><span class="line">所以其构造器会被修改。</span><br></pre></td></tr></table></figure>
+
+<p>通过上面这个代码我们可以知道，</p>
+<p>你可以这样想,一个new方法和其结果是平级的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = new Fn();</span><br><span class="line">a,和fn是平级的.</span><br></pre></td></tr></table></figure>
+
+<p>一个new方法，会将他的原型作为一个构造器,并将他自己进行一次<code>this</code>指向的调用.并创建一个 <code>__proto__</code> 指向了构造器的原型.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.__proto__ === Fn.prototype)	//true</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString</span><br></pre></td></tr></table></figure>
+
+<p>使用方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(a);</span><br><span class="line">这里通过调用了call方法，转换了this的指向。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(Object.prototype.toString.call(obj[k]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过下面的结果我们可以看到,使用这个对象原型的方法可以说是没有任何问题啊.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">[object Undefined]</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">[object Null]</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:45.116Z</span><br><span class="line">[object Date]</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">[object Function]</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">[object Set]</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">[object Map]</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">[object Symbol]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/17/CSS/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/17/CSS/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">水平垂直居中方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-17 14:51:23" itemprop="dateCreated datePublished" datetime="2021-10-17T14:51:23+08:00">2021-10-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:31:34" itemprop="dateModified" datetime="2021-10-26T15:31:34+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="水平垂直居中方法"><a href="#水平垂直居中方法" class="headerlink" title="水平垂直居中方法"></a>水平垂直居中方法</h1><h3 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    body &#123;</span><br><span class="line">      height: 100vh;</span><br><span class="line">      display: flex;</span><br><span class="line">      justify-content: center;</span><br><span class="line">      align-items: center;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div &#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: red;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -467,464 +1569,8 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/Node%20JS/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/14/Node%20JS/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Node JS 读取文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:28:32" itemprop="dateModified" datetime="2021-10-26T15:28:32+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Node-JS/" itemprop="url" rel="index"><span itemprop="name">Node JS</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Node-JS/fs/" itemprop="url" rel="index"><span itemprop="name">fs</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Node-JS-读取文件"><a href="#Node-JS-读取文件" class="headerlink" title="Node JS 读取文件"></a>Node JS 读取文件</h1><p>在  <code>Node JS</code> 中文件 操作是使用的 <code>fs</code> 模块进行了读取操作。</p>
-<h4 id="使用Node-JS读取文件"><a href="#使用Node-JS读取文件" class="headerlink" title="使用Node JS读取文件"></a>使用<code>Node JS</code>读取文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>path</code> &lt;string&gt; | &lt;Buffer&gt; | &lt;URL&gt; | &lt;integer&gt; 文件名或文件描述符</li>
-<li>options   &lt;Object&gt; | &lt;string&gt;<ul>
-<li><code>encoding</code> &lt;null&gt; | &lt;string&gt; <strong>默认值:</strong> <code>null</code></li>
-<li><code>flag</code> &lt;string&gt;  <strong>默认值:</strong> <code>&#39;r&#39;</code>。</li>
-<li><code>signal</code> &lt;AbortSignal&gt;允许中止正在进行的读取文件</li>
-</ul>
-</li>
-<li>callback   &lt;Function&gt;<ul>
-<li><code>err</code>  &lt;Error&gt; | &lt;AggregateError&gt;</li>
-<li><code>data</code> &lt;string&gt; | &lt;Buffer&gt;</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;./../source/Node JS 读取文件.md&#x27;, &#x27;utf8&#x27;, (err, data) =&gt; &#123;</span><br><span class="line">  if (err) &#123;</span><br><span class="line">    throw err;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  	//data 是一个 十六进制的buffer，所以使用toString转成字符。</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/%E9%9A%8F%E7%AC%94/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/13/%E9%9A%8F%E7%AC%94/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-13 16:12:42" itemprop="dateCreated datePublished" datetime="2021-10-13T16:12:42+08:00">2021-10-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-31 11:23:26" itemprop="dateModified" datetime="2021-10-31T11:23:26+08:00">2021-10-31</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
-
-<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
-<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
-<h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/xjm850552586/article/details/84101345</span><br></pre></td></tr></table></figure>
-
-<p>使用插件  <code>hexo-asset-image</code></p>
-<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">	清除缓存文件 ( db.json) 和生成的文件 ( public)。</span><br><span class="line">npx hexo g</span><br><span class="line">	生成静态文件</span><br><span class="line">nex hexo d</span><br><span class="line">	将静态文件上传</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里因为需要使用三个命令，很麻烦，所以就想着简单化一点。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开始是想着使用npm或者npx命令，自己写一个的，但是因为技术不够，所以还不会，后面了解了更多了之后再进行解决。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">所以，我是用的方式是，通过一个bat文件直接将这三个命令写下来，我只需要运行这个文件就行了。</span><br><span class="line">所以我在blog里面创建了一个 </span><br><span class="line">publish.bat</span><br><span class="line">然后直接在里面，写入</span><br><span class="line"></span><br><span class="line">call npx hexo clean</span><br><span class="line">call npx hexo g</span><br><span class="line">call npx hexo d</span><br><span class="line"></span><br><span class="line">这里需要在前面加上call方法。在批处理脚本中，call命令用来从一个批处理脚本中调用另一个批处理脚本。</span><br><span class="line">就这样就完成了。。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="gitee自动更新"><a href="#gitee自动更新" class="headerlink" title="gitee自动更新"></a>gitee自动更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用puppeteer模块</span><br><span class="line"></span><br><span class="line">但是因为我谷歌浏览器修改过位置，所以需要重新下载，所以我没有进行后续的操作了。</span><br><span class="line"></span><br><span class="line">https://www.jianshu.com/p/6460df84a099</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/%E9%9A%8F%E7%AC%94/next/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/13/%E9%9A%8F%E7%AC%94/next/" class="post-title-link" itemprop="url">next 基本使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-13 15:25:56" itemprop="dateCreated datePublished" datetime="2021-10-13T15:25:56+08:00">2021-10-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-31 11:23:29" itemprop="dateModified" datetime="2021-10-31T11:23:29+08:00">2021-10-31</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="next-基本使用"><a href="#next-基本使用" class="headerlink" title="next 基本使用"></a>next 基本使用</h1><p>基本可以看这个文档，我只是在使用的时候对于我出现的问题进行一个补充。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/getting-started.html#install-next-theme</span><br></pre></td></tr></table></figure>
-
-<p>下面这个是比较新的情况，有一个组织进行了维护。使用也有说明</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/docs/getting-started/</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果</span><br><span class="line">hexo d 的命令不行，</span><br><span class="line">可以尝试在前面加上 npx</span><br><span class="line">npx hexo d</span><br></pre></td></tr></table></figure>
-
-<p>npx 主要作用就是让项目内部模块用起来更加方便，具体可以看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.ruanyifeng.com/blog/2019/02/npx.html</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
-<p><img src="/2021/10/13/%E9%9A%8F%E7%AC%94/next/image-20211018110937363.png" alt="image-20211018105920422"></p>
-<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-
-
-<p>对于v7.8，其他版本的我没有尝试，不知道这个问题，这里有个bug，如果在md文档里面设置了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Object&gt;</span><br><span class="line">就这样一个单标签，就会让你的头像那一块位置不正确或者找不到。我这个是v7.8的版本，开始用的v8.8的版本没有问题，这个原因应该是因为没有对md文档里面的内容的处理。</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/10/13/%E9%9A%8F%E7%AC%94/next/image-20211018105920422.png" alt="image-20211018105920422"></p>
-<p><img src="/2021/10/13/%E9%9A%8F%E7%AC%94/next/image-20211018110658046.png" alt="image-20211018110658046"></p>
-<h2 id="设置-菜单"><a href="#设置-菜单" class="headerlink" title="设置 菜单"></a>设置 菜单</h2><p>这里设置 的 菜单出现错误，这个应该是v5这个版本之前的bug，后面的应该都解决了</p>
-<p>因为 在那个 /about/||user，这个 <code>||</code>之前不能有空格，空格会被当作url，你也可以看到点击之后的url地址后面有个%20,这个就是空格。</p>
-<p>不过较新的版本解决了这个问题。具体是从哪个版本开始解决的不清楚。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /|| home</span><br><span class="line">  about: /about/|| user</span><br><span class="line">  tags: /tags/|| tags</span><br><span class="line">  categories: /categories/|| th</span><br><span class="line">  archives: /archives/|| archive</span><br><span class="line">  schedule: /schedule/|| calendar</span><br><span class="line">  sitemap: /sitemap.xml|| sitemap</span><br><span class="line">  #commonweal: /404/|| heartbeat</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h2><p>相对地址和url都放在url后面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /uploads/avatar.jpg #/images/avatar.gif</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="黑暗模式"><a href="#黑暗模式" class="headerlink" title="黑暗模式"></a>黑暗模式</h2><p>我这里不对，没有效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">darkmode: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="后续主题配置"><a href="#后续主题配置" class="headerlink" title="后续主题配置"></a>后续主题配置</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/theme-settings.html#tags-page</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字体设置，代码高亮"><a href="#字体设置，代码高亮" class="headerlink" title="字体设置，代码高亮"></a>字体设置，代码高亮</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/highlight/</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/tallgy || fab fa-github</span><br><span class="line">  Gitee: https://gitee.com/tallgy || fab fa-github-alt</span><br><span class="line">  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br></pre></td></tr></table></figure>
-
-<p>图标网址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://fontawesome.dashgame.com/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选中自己想要的图标，然后他后面有一个复制的按钮，直接复制，替换掉就行了。</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="三方服务集成"><a href="#三方服务集成" class="headerlink" title="三方服务集成"></a>三方服务集成</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/third-party-services.html</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h2><p><strong>DISQUS</strong>，大部分都是需要翻墙的，所以我就没有搞。。。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/CSS/margin%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E5%8F%B7%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/13/CSS/margin%E4%BD%BF%E7%94%A8%E7%99%BE%E5%88%86%E5%8F%B7%E5%80%BC/" class="post-title-link" itemprop="url">margin使用百分号值</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-13T00:00:00+08:00">2021-10-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:19:01" itemprop="dateModified" datetime="2021-10-26T15:19:01+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="CSS-margin"><a href="#CSS-margin" class="headerlink" title="CSS margin"></a>CSS margin</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.w3school.com.cn/cssref/pr_margin-top.asp</span><br></pre></td></tr></table></figure>
-
-<p>对于使用 % 为单位的，为父元素的宽度，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">margin-top: 50%</span><br><span class="line">是相对于父节点的宽度。其他同样</span><br><span class="line">padding-top: 25%;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">border: black solid 25%; 使用会报错</span><br><span class="line"></span><br><span class="line">对于宽度和高度的50%，就是针对的父元素的宽度和高度了。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .f &#123;</span><br><span class="line">      height: 400px;</span><br><span class="line">      width: 800px;</span><br><span class="line">      background-color: red;</span><br><span class="line">      /*这里使用 overflow: hidden;</span><br><span class="line">       解决外边距合并，外边距塌陷问题 */</span><br><span class="line">      overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .c &#123;</span><br><span class="line">      height: 100px;</span><br><span class="line">      width: 200px;</span><br><span class="line">      background-color: blue;</span><br><span class="line">      margin-top: 25%;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;f&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;c&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

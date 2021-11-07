@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tallgy.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="fetch发送2次请求的原因fetch发送post请求的时候，总是发送2次，第一次状态码是204，第二次才成功？ 原因很简单，因为你用fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求。 先说产生的前提条件 请求不同源 不属于简单请求  请求不同源同源的概念： ​        如果两个 U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fetch发送2次请求的原因">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/index.html">
+<meta property="og:site_name" content="tallgy&#39;s blog">
+<meta property="og:description" content="fetch发送2次请求的原因fetch发送post请求的时候，总是发送2次，第一次状态码是204，第二次才成功？ 原因很简单，因为你用fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求。 先说产生的前提条件 请求不同源 不属于简单请求  请求不同源同源的概念： ​        如果两个 U">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T05:20:43.000Z">
+<meta property="article:modified_time" content="2021-11-06T05:33:54.129Z">
+<meta property="article:author" content="tallgy">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/","path":"2021/11/06/随笔/fetch发送2次请求的原因/","title":"fetch发送2次请求的原因"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>fetch发送2次请求的原因 | tallgy's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">tallgy's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">fetch发送2次请求的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E8%AF%B4%E4%BA%A7%E7%94%9F%E7%9A%84%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">先说产生的前提条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E4%B8%8D%E5%90%8C%E6%BA%90"><span class="nav-number">1.2.</span> <span class="nav-text">请求不同源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%B1%9E%E4%BA%8E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82"><span class="nav-number">1.3.</span> <span class="nav-text">不属于简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E9%9D%9E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82%EF%BC%8C%E9%9C%80%E8%A6%81%E5%85%88%E8%BF%9B%E8%A1%8C%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82-preflight"><span class="nav-number">1.4.</span> <span class="nav-text">对于非简单请求，需要先进行预检请求(preflight)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tallgy"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">tallgy</p>
+  <div class="site-description" itemprop="description">只是一个知识的搬运工</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tallgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/tallgy" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github-alt fa-fw"></i>Gitee</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          fetch发送2次请求的原因
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-06 13:20:43 / 修改时间：13:33:54" itemprop="dateCreated datePublished" datetime="2021-11-06T13:20:43+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="fetch发送2次请求的原因"><a href="#fetch发送2次请求的原因" class="headerlink" title="fetch发送2次请求的原因"></a>fetch发送2次请求的原因</h1><p>fetch发送post请求的时候，总是发送2次，第一次状态码是204，第二次才成功？</p>
+<p>原因很简单，因为你用fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求。</p>
+<h2 id="先说产生的前提条件"><a href="#先说产生的前提条件" class="headerlink" title="先说产生的前提条件"></a>先说产生的前提条件</h2><ul>
+<li>请求不同源</li>
+<li>不属于简单请求</li>
+</ul>
+<h2 id="请求不同源"><a href="#请求不同源" class="headerlink" title="请求不同源"></a>请求不同源</h2><p>同源的概念：</p>
+<p>​        如果两个 URL 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Protocol">protocol</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Port">port (en-US)</a> (如果有指定的话)和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Host">host</a> 都相同的话，则这两个 URL 是<em>同源</em>。这个方案也被称为“协议/主机/端口元组”，或者直接是 “元组”。</p>
+<p>所以简单来说，因为浏览器的安全策略，所以对于不同源的请求是不会成功的。</p>
+<h2 id="不属于简单请求"><a href="#不属于简单请求" class="headerlink" title="不属于简单请求"></a>不属于简单请求</h2><p>简单请求：</p>
+<ul>
+<li>请求方法是以下三个方法：<ul>
+<li>HEAD, GET, POST</li>
+</ul>
+</li>
+<li>HTTP的头信息不超出以下几种字段<ul>
+<li>Accept， Accept-Language， Content-Language， Last-Event-ID， Content-Type(只限于三个值<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>、<code>text/plain</code>)</li>
+</ul>
+</li>
+</ul>
+<p>不满足以上两个条件就属于非简单请求</p>
+<h2 id="对于非简单请求，需要先进行预检请求-preflight"><a href="#对于非简单请求，需要先进行预检请求-preflight" class="headerlink" title="对于非简单请求，需要先进行预检请求(preflight)"></a>对于非简单请求，需要先进行预检请求(preflight)</h2><p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，否则就报错。</p>
+<p>​        204的状态表示了处理了请求，没有返回实体内容。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://gitee.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-git"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/06/%E5%85%B6%E4%BB%96/%E7%8A%B6%E6%80%81%E7%A0%81/" rel="prev" title="状态码">
+                  <i class="fa fa-chevron-left"></i> 状态码
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/06/%E5%85%B6%E4%BB%96/Cookie%E3%80%81SessionStorage%E3%80%81LocalStorage%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="Cookie、SessionStorage、LocalStorage的区别">
+                  Cookie、SessionStorage、LocalStorage的区别 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tallgy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
