@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,145 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/Node%20JS/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/07/Node%20JS/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="post-title-link" itemprop="url">JavaScript事件循环</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-07 20:23:56" itemprop="dateCreated datePublished" datetime="2021-11-07T20:23:56+08:00">2021-11-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-08 15:30:26" itemprop="dateModified" datetime="2021-11-08T15:30:26+08:00">2021-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript的事件循环机制"><a href="#JavaScript的事件循环机制" class="headerlink" title="JavaScript的事件循环机制"></a>JavaScript的事件循环机制</h1><p>这里分为 NodeJS 和 浏览器环境</p>
+<p>​    因为 Node JS虽然是使用了 浏览器的V8处理器 作为一个JavaScript的解释器，但是其中的IO处理实则还是使用的 libuv 引擎。</p>
+<h2 id="浏览器的事件循环"><a href="#浏览器的事件循环" class="headerlink" title="浏览器的事件循环"></a>浏览器的事件循环</h2><p>​        这里先引入一个概念，叫做**任务队列(Task Queue)**，简单来说就是维护了一个需要执行的函数的一个队列。</p>
+<p>​        在这里，任务队列又分为了**宏任务队列(macro task)<strong>和</strong>微任务队列(micro task)**。</p>
+<p>​        简单来说就是JavaScript，在执行的过程中，如果遇到了异步处理，就会将其推入任务队列。然后继续执行后面的函数。直到执行结束，然后才会调用任务队列的任务进行执行。</p>
+<p>​        这里是先调用的 微任务队列的方法，先执行，直至微任务队列为空，这里如果产生了微任务，也会即刻放入这个微任务队列中，因为这是一个的队列。微任务队列执行结束，然后就会从宏任务队列中取出一个来进行执行，方式就如同上面那样，这样即产生了事件的循环。</p>
+<p>​        <strong>常见宏任务</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">script (可以理解为外层同步代码)、setTimeout/setInterval、setImmediate(Node.js)、I/O、UI事件、postMessage。</span><br></pre></td></tr></table></figure>
+
+<p>​        因为在这里，我们如果将最外层的同步代码视为第一个宏任务队列的话，我们就可以这样理解，先取出一个宏任务，然后再执行，然后再执行微任务，然后又取出宏任务这样循环。</p>
+<p>​        <strong>常见微任务</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.then、process.nextTick(Node.js) 这里nextTick会先于微任务执行、Object.observe、MutaionObserver。</span><br></pre></td></tr></table></figure>
+
+<p>​        这里 Promise里面算是一个同步的代码，只是then方法是一个异步的。所以then方法算是一个微任务。</p>
+<h2 id="Node-JS的事件循环"><a href="#Node-JS的事件循环" class="headerlink" title="Node JS的事件循环"></a>Node JS的事件循环</h2><p> <strong>官方文档</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/</span><br></pre></td></tr></table></figure>
+
+<p>事件循环操作顺序的简化图</p>
+<img src="/2021/11/07/Node%20JS/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/image-20211107211640084.png" alt="image-20211107211640084" style="zoom:80%;">
+
+<p>一个框，便为事件循环的一个阶段</p>
+<p>​        每个阶段都有一个FIFO(first input first output，就是队列) 队列，通常情况下，当进入给定的阶段，将执行该阶段的行为。然后执行回调，直到队列用尽或者最大回调数的执行。然后事件循环将移动到下一阶段。</p>
+<p>​        由于这些操作中的任何一个都可能调度 <em>更多的</em> 操作和由内核排列在<strong>轮询</strong>阶段被处理的新事件， 且在处理轮询中的事件时，轮询事件可以排队。因此，长时间运行的回调可以允许轮询阶段运行长于计时器的阈值时间。有关详细信息，请参阅 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/#timers"><strong>计时器</strong></a> 和 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/#poll"><strong>轮询</strong></a> 部分。<strong>（没看懂，直接复制的原文，后续再解读）</strong></p>
+<h3 id="阶段概述："><a href="#阶段概述：" class="headerlink" title="阶段概述："></a><strong>阶段概述</strong>：</h3><ul>
+<li>定时器（timers）： 本阶段执行已经被 <code>setTimeout()</code> 和 <code>setInterval()</code> 的调度回调函数。</li>
+<li>待定回调（pending callbacks）：执行延迟到下一个循环迭代的I/O回调</li>
+<li>idle，prepare：仅系统内部使用</li>
+<li>轮询（poll）：检索新的I/O事件；执行与I/O相关的回调（几乎所有情况下，除了关闭的回调函数，那些由计时器和<code>setImmediate</code>调度的之外），其余情况node将在适当的时候在此阻塞</li>
+<li>检测（check）：<code>setImmediate()</code> 回调函数在这里执行。</li>
+<li>关闭的回调函数（close callbacks）：一些关闭的回调函数，如：<code>socket.on(&#39;close&#39;, ...)</code>。</li>
+</ul>
+<p>在每次运行的事件循环之间，Node JS检查它是否在等待任何异步I/O或者计时器，如果没有，则完全关闭。</p>
+<h3 id="阶段的详细概述"><a href="#阶段的详细概述" class="headerlink" title="阶段的详细概述"></a>阶段的详细概述</h3><h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><p>​        可以执行所提供回调的阈值，而不是执行的确切事件，是指在时间间隔后，回调将尽快的执行。但是，操作系统或其他正在运行的回调可能会延迟它们的执行。</p>
+<h4 id="待定回调"><a href="#待定回调" class="headerlink" title="待定回调"></a>待定回调</h4><p>​        对某些系统操作（如 TCP 错误类型）执行回调。例如，如果 TCP 套接字在尝试连接时接收到 <code>ECONNREFUSED</code>，则某些 *nix 的系统希望等待报告错误。</p>
+<h4 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h4><p>两个重要的功能：</p>
+<ul>
+<li>计算应该 阻塞和轮询I/O的时间。</li>
+<li>处理轮询队列里的事件。</li>
+</ul>
+<p>当事件循环进入轮询阶段，且没有被调度的计时器时，将发生以下两种情况：</p>
+<ul>
+<li>如果轮询队列不是空的，事件循环将循环访问回调队列并同步执行它们，直到队列已用尽，或者达到了与系统相关的硬性限制。<ul>
+<li>为了防止轮询阶段饿死事件循环，<a target="_blank" rel="noopener" href="https://libuv.org/">libuv</a>（实现 Node.js 事件循环和平台的所有异步行为的 C 函数库），在停止轮询以获得更多事件之前，还有一个硬性最大值（依赖于系统）。</li>
+</ul>
+</li>
+<li><em>如果 <strong>轮询</strong> 队列 <strong>是空的</strong></em> ，还有两件事发生：<ul>
+<li>如果脚本被 <code>setImmediate()</code> 调度，则事件循环将结束 <strong>轮询</strong> 阶段，并继续 <strong>检查</strong> 阶段以执行那些被调度的脚本。</li>
+<li>如果脚本 <strong>未被</strong> <code>setImmediate()</code>调度，则事件循环将等待回调被添加到队列中，然后立即执行。</li>
+</ul>
+</li>
+</ul>
+<p>一旦 <strong>轮询</strong> 队列为空，事件循环将检查 _已达到时间阈值的计时器_。如果一个或多个计时器已准备就绪，则事件循环将绕回计时器阶段以执行这些计时器的回调。</p>
+<h4 id="检查阶段"><a href="#检查阶段" class="headerlink" title="检查阶段"></a>检查阶段</h4><p>​        此阶段允许人员在轮询阶段完成后立即执行回调。如果轮询阶段变为空闲状态，并且脚本使用 <code>setImmediate()</code> 后被排列在队列中，则事件循环可能继续到 <strong>检查</strong> 阶段而不是等待。</p>
+<p>​        <code>setImmediate()</code> 实际上是一个在事件循环的单独阶段运行的特殊计时器。它使用一个 libuv API 来安排回调在 <strong>轮询</strong> 阶段完成后执行。</p>
+<h4 id="关闭的回调函数"><a href="#关闭的回调函数" class="headerlink" title="关闭的回调函数"></a>关闭的回调函数</h4><p>​        如果套接字或处理函数突然关闭（例如 <code>socket.destroy()</code>），则<code>&#39;close&#39;</code> 事件将在这个阶段发出。否则它将通过 <code>process.nextTick()</code> 发出。</p>
+<p>​        任何时候在给定的阶段中调用 <code>process.nextTick()</code>，所有传递到 <code>process.nextTick()</code> 的回调将在事件循环继续之前解析。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1188,7 +1327,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/31/%E9%9A%8F%E7%AC%94/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/31/Vue/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -1201,7 +1340,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/31/%E9%9A%8F%E7%AC%94/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Vue-methods使用箭头函数</a>
+          <a href="/2021/10/31/Vue/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Vue-methods使用箭头函数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1265,101 +1404,6 @@
 <li>使用箭头函数后，this 的指向指向了 window 对象。</li>
 <li>对于对象的对象的箭头函数，this的指向，还是指向的最外边的对象所处的上下文位置。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/" class="post-title-link" itemprop="url">HTML-标签的title</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-30 22:35:32" itemprop="dateCreated datePublished" datetime="2021-10-30T22:35:32+08:00">2021-10-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-06 09:52:01" itemprop="dateModified" datetime="2021-11-06T09:52:01+08:00">2021-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/HTML/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="HTML-标签的title"><a href="#HTML-标签的title" class="headerlink" title="HTML-标签的title"></a>HTML-标签的title</h1><p>在学习的时候发现</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;停滞的span&quot;&gt;显示的span&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/30/%E9%9A%8F%E7%AC%94/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/image-20211030223916508.png" alt="image-20211030223916508" style="zoom: 67%;">
-
-<p>在页面上，鼠标进行放置可以显示 title，这个是一个html的title的特点。我们可以尝试对很多标签设置title，可以看看是否有效果。</p>
-<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>对一个标签添加 <strong>title</strong> 就可以实现。</p>
-<h2 id="出现方式"><a href="#出现方式" class="headerlink" title="出现方式"></a>出现方式</h2><p>在一个标签的范围内，进行移动，超过了一定的时间就会显示。</p>
-<h2 id="对于嵌套"><a href="#对于嵌套" class="headerlink" title="对于嵌套"></a>对于嵌套</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;height: 200px; border: 1px red solid;&quot; title=&quot;div&quot;&gt;</span><br><span class="line">  &lt;span title=&quot;停滞的span&quot;&gt;显示的span&lt;/span&gt;</span><br><span class="line">&lt;/div&gt; </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在外面的会显示的是div，在span内部的会显示span，这个就像极了，在冒泡阶段进行stop。</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
