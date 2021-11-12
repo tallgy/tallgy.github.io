@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,278 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-map函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-25 16:48:23" itemprop="dateCreated datePublished" datetime="2021-10-25T16:48:23+08:00">2021-10-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:17:03" itemprop="dateModified" datetime="2021-10-26T15:17:03+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript之Array-map函数"><a href="#JavaScript之Array-map函数" class="headerlink" title="JavaScript之Array.map函数"></a>JavaScript之Array.map函数</h1><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map</span><br></pre></td></tr></table></figure>
+
+<p><code>**map()**</code> 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</p>
+<p><strong>参数</strong></p>
+<p>​    <strong>回调函数，callback</strong></p>
+<p>​        参数分别为，value，index，array，第二个和第三个参数是可选的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const array1 = [1, 4, 9, 16];</span><br><span class="line"></span><br><span class="line">// pass a function to map</span><br><span class="line">const map1 = array1.map(x =&gt; x * 2);</span><br><span class="line"></span><br><span class="line">console.log(map1);</span><br><span class="line">// expected output: Array [2, 8, 18, 32]</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>thisArg</strong></p>
+<p>​        在执行callabck函数时，被用作 <code>this</code></p>
+<h2 id="简单的源码实现"><a href="#简单的源码实现" class="headerlink" title="简单的源码实现"></a>简单的源码实现</h2><p>通过上面的参数描述，我们可以知道，</p>
+<p>我们需要先对数组进行循环，然后将其带入callback，返回值会push入一个res数组，</p>
+<p>然后因为第二个参数是this的指向，所以我们需要在判断是否携带了第二个参数**(  const _this = thisArg || this;)**</p>
+<p>将其this的指向进行改变，使用了call方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function myMap(callback, thisArg) &#123;</span><br><span class="line">  const result = [];</span><br><span class="line">  const arr = this;</span><br><span class="line">  const _this = thisArg || this;</span><br><span class="line"></span><br><span class="line">  for (let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    result.push(callback.call(_this, arr[i], i, arr));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="一些面试时遇到的问题"><a href="#一些面试时遇到的问题" class="headerlink" title="一些面试时遇到的问题"></a>一些面试时遇到的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line"></span><br><span class="line">arr.map(parseInt)</span><br><span class="line"></span><br><span class="line">这个可能有的没有理解的话会有点懵逼</span><br><span class="line">其实理解了就很简单了。</span><br><span class="line">这就是把parseInt作为一个回调函数传递给了map，</span><br><span class="line">map的回调函数的参数是，value， index， arr</span><br><span class="line">而parseInt，可以带两个参数，这两个参数，一个是要转化的字符串（数字也可以），一个是要转化的进制。</span><br><span class="line"></span><br><span class="line">所以我们就能够理解了，</span><br><span class="line">对于 arr 1， 2， 3， 10， 111</span><br><span class="line">会分别传递</span><br><span class="line">	1， 0</span><br><span class="line">	2， 1</span><br><span class="line">	3， 2</span><br><span class="line">	10， 3</span><br><span class="line">	111， 4</span><br><span class="line">其中，0代表了默认转换，对于字符串没有进制前缀的，就是默认十进制，具体的转换规则后续写 parseInt 的时候再说明。</span><br><span class="line"></span><br><span class="line">我们可以看出，1对应的默认进制转换，2对应的1进制，3对应的2进制，10对应的3进制，111对应的4进制，因为parseInt的第二个参数范围是2-36，所以对于其他的除0以外直接NaN。</span><br><span class="line">所以对应的结果是 1, NaN, NaN, 3, 21.</span><br></pre></td></tr></table></figure>
+
+<p>对于其他的就也可以按照这个思路进行思考了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-24 10:53:12" itemprop="dateCreated datePublished" datetime="2021-10-24T10:53:12+08:00">2021-10-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:19:12" itemprop="dateModified" datetime="2021-10-26T15:19:12+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="border-radius的原理和使用"><a href="#border-radius的原理和使用" class="headerlink" title="border-radius的原理和使用"></a>border-radius的原理和使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>首先我们可以知道 <code>border-radius</code> 是四个属性的简写，所以我们先理解四个属性的值的效果。</p>
+<p><code>border-top-right-radius</code> <code>border-top-left-radius</code></p>
+<p> <code>border-bottom-right-radius</code> <code>border-bottm-left-radius</code></p>
+<p>我们取其中一个</p>
+<p><code>border-top-right-radius</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
+
+<p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
+
+<p>通过例子也可以知道，对于一个值，说明了 横轴<code>horizontal</code> 和 数轴<code>vertical</code> 的值相等，对于两个值，那么就说明了第一值是横轴，第二个值是数轴。</p>
+<p>然后得到横轴和数轴的半径后，相对进行偏移，然后画出一个圆形或者一个椭圆形，所裁剪出来的值。就是得到的效果。</p>
+<p>对于值是%的，那么宽度就会相对于宽度，高度就会相对于高度。</p>
+<h3 id="对于超过-50-的计算方式"><a href="#对于超过-50-的计算方式" class="headerlink" title="对于超过 50% 的计算方式"></a>对于超过 50% 的计算方式</h3><p>原文链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/20128284</span><br></pre></td></tr></table></figure>
+
+<p>简单来说就是对于 <strong>相邻的角的半径和超过了对应的盒子的边的长度，那么浏览器要重新计算保证它们不会重合。</strong></p>
+<p>就是会同时进行缩放。来保证不会重合。</p>
+<h2 id="水平和垂直从哪个位置开始偏移"><a href="#水平和垂直从哪个位置开始偏移" class="headerlink" title="水平和垂直从哪个位置开始偏移"></a>水平和垂直从哪个位置开始偏移</h2><h3 id="我们先看使用px的计算"><a href="#我们先看使用px的计算" class="headerlink" title="我们先看使用px的计算"></a>我们先看使用px的计算</h3><p>先说结果，结果是，<strong>px的计算是相对于border的位置开始的偏移。</strong></p>
+<p>然后我们再看代码和执行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
+
+
+
+<h3 id="我们再看使用-百分号-进行的计算"><a href="#我们再看使用-百分号-进行的计算" class="headerlink" title="我们再看使用 百分号% 进行的计算"></a>我们再看使用 百分号% 进行的计算</h3><p>意思是一样的，会按照你的宽高加上你的border的宽高，然后乘以 百分比。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始我这样写，以为10%应该是 50px，但是忘了border有上有下，所以真正的宽高是550px，所以50%是55px，后面才搞清楚</span><br><span class="line"></span><br><span class="line">width: 450px;</span><br><span class="line">height: 450px;</span><br><span class="line">background-color: #f00;</span><br><span class="line">border: blue solid 50px;</span><br><span class="line">border-radius: 10%;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="如何裁剪"><a href="#如何裁剪" class="headerlink" title="如何裁剪"></a>如何裁剪</h2><p>这个就是自己的理解了，我们可以看到，对于存在了border的，当你的数值超过了一定值之后，你的content也会变成弧边，而这个值就是border的宽度。</p>
+<p><strong>所以这个裁剪的方法是：</strong></p>
+<ul>
+<li><p>先计算出radius的偏移量x，y</p>
+</li>
+<li><p>然后从border的边框开始进行x，y的偏移，并且半径值也为x，y画弧，将border进行了裁剪。</p>
+</li>
+<li><p>然后如果x，y的偏移量在content里面了（这个content是包含了padding的），那么就会再对content进行裁剪，而裁剪的半径就是x，y这个点到content边界的半径。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
+
+
+
+<h2 id="简写参数"><a href="#简写参数" class="headerlink" title="简写参数"></a>简写参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: top-left top-right bottom-right bottom-left;</span><br><span class="line">上左，上右，下右，下左，这是一个从上左开始的一个顺时针顺序。</span><br><span class="line">按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</span><br><span class="line">	参考链接：(https://www.w3school.com.cn/cssref/pr_border-radius.asp)</span><br><span class="line">意思就是，如果在省略的情况下，那么就是最后一个开始是没有值的，而前面的才有值，然后对没有值的那个，他的值就是对面的值，如果对面也没有值，那么他的值就和旁边的相等(此时就是只有一个参数)</span><br><span class="line"></span><br><span class="line">按照上面的意思来理解的话，那么很多简写参数都可以理解了。我这里就直接统计结果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第一步，将参数从简写的个数化为完整个数"><a href="#第一步，将参数从简写的个数化为完整个数" class="headerlink" title="第一步，将参数从简写的个数化为完整个数"></a>第一步，将参数从简写的个数化为完整个数</h3><h4 id="一个参数-border-radius-50px"><a href="#一个参数-border-radius-50px" class="headerlink" title="一个参数 border-radius: 50px;"></a>一个参数 <code>border-radius: 50px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px;</span><br><span class="line"></span><br><span class="line">只有一个 top-left </span><br><span class="line">那么，bottom-right = top-left = 50</span><br><span class="line">并且 bottom-left = top-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 50px 50px 50px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="两个参数-border-radius-50px-30px"><a href="#两个参数-border-radius-50px-30px" class="headerlink" title="两个参数 border-radius: 50px 30px;"></a>两个参数 <code>border-radius: 50px 30px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px;</span><br><span class="line"></span><br><span class="line">有两个，那么这两个就是 top-left 和 top-right</span><br><span class="line">对应的 bottom-left = top-right = 30</span><br><span class="line">bottom-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 50px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="三个参数-border-radius-50px-30px-40px"><a href="#三个参数-border-radius-50px-30px-40px" class="headerlink" title="三个参数 border-radius: 50px 30px 40px;"></a>三个参数 <code>border-radius: 50px 30px 40px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px 40px;</span><br><span class="line"></span><br><span class="line">有三个，那么就只有最后一个 bottom-left 没有</span><br><span class="line">那么 bottom-left 等于对面的 top-right = 30px</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 40px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="四个参数-border-radius-50px-40px-30px-20px"><a href="#四个参数-border-radius-50px-40px-30px-20px" class="headerlink" title="四个参数 border-radius: 50px 40px 30px 20px;"></a>四个参数 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">没啥说的。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px"><a href="#对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px" class="headerlink" title="对于参数里面带有 / 符号的 border-radius: 4px 3px 6px / 2px 4px;"></a>对于参数里面带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px / 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 4px 3px 6px / 2px 4px;</span><br><span class="line"></span><br><span class="line">这个分为两个部分</span><br><span class="line">第一部分 4 3 6 将其转化为对应的 horizontal</span><br><span class="line">	所以为 4 3 6 3</span><br><span class="line">第二部分 2 4 将其转化为对应的 vertical</span><br><span class="line">	所以为 2 4 2 4</span><br><span class="line">	</span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line">	</span><br><span class="line">然后结果就是</span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第二步，将其转化为-border-radius"><a href="#第二步，将其转化为-border-radius" class="headerlink" title="第二步，将其转化为 border-*-*-radius"></a>第二步，将其转化为 <code>border-*-*-radius</code></h3><h4 id="对于没有带-符号的-border-radius-50px-40px-30px-20px"><a href="#对于没有带-符号的-border-radius-50px-40px-30px-20px" class="headerlink" title="对于没有带 / 符号的 border-radius: 50px 40px 30px 20px;"></a>对于没有带 <code>/</code> 符号的 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">其 horizontal 和 vertical 的值相等。</span><br><span class="line"></span><br><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     50px 50px;</span><br><span class="line">border-top-right-radius:    40px 40px;</span><br><span class="line">border-bottom-right-radius: 30px 30px;</span><br><span class="line">border-bottom-left-radius:  20px 20px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><a href="#对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px" class="headerlink" title="对于带有 / 符号的 border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;"></a>对于带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">会将 / 前的作为每一个的 horizontal </span><br><span class="line">/ 后的作为每一个的 vertical</span><br><span class="line"></span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1487,257 +1759,6 @@
 
 
 
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/18/JavaScript/call-apply-bind%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/18/JavaScript/call-apply-bind%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">call,apply,bind实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-18 14:04:16" itemprop="dateCreated datePublished" datetime="2021-10-18T14:04:16+08:00">2021-10-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:16:11" itemprop="dateModified" datetime="2021-10-26T15:16:11+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/Global-Objects/" itemprop="url" rel="index"><span itemprop="name">Global_Objects</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="call-apply-bind源码的实现"><a href="#call-apply-bind源码的实现" class="headerlink" title="call,apply,bind源码的实现"></a>call,apply,bind源码的实现</h1><h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>使用，就是替换了this的指向，传参使用的基本传参。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">这里将方法写在了Function函数的原型里面，这样因为通过原型链就可以找到这个方法了。</span><br><span class="line">Function.prototype.myCall = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line"></span><br><span class="line">  //这里这个this，指向的就是方法。这里使用Symbol，用于避免出现方法重复。</span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line"></span><br><span class="line">  // 获取参数</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  // 使用ctx来进行调用。替换了this指向。</span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line"></span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.call(db, &#x27;cc&#x27;, 1);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>同上，传参使用的是数组传参。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myApply = function (ctx, args) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  const result = ctx[fn](...args);</span><br><span class="line">  </span><br><span class="line">  delete ctx[fn];</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.apply(db, [&#x27;cc&#x27;, 1]);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><p>同call方法的参数，但是不是马上执行，需要自己执行一次</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = function (ctx) &#123;</span><br><span class="line">  ctx = ctx || window;</span><br><span class="line">  </span><br><span class="line">  const fn = Symbol(&#x27;fn&#x27;);</span><br><span class="line">  const args = [...arguments].slice(1);</span><br><span class="line">  </span><br><span class="line">  ctx[fn] = this;</span><br><span class="line">  </span><br><span class="line">  return () =&gt; &#123;</span><br><span class="line">    const result = ctx[fn](...args);</span><br><span class="line">    delete ctx[fn];</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(db, &#x27;cc&#x27;, 1)();</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/17/JavaScript/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/17/JavaScript/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">数据类型判断</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-17 15:08:23" itemprop="dateCreated datePublished" datetime="2021-10-17T15:08:23+08:00">2021-10-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:30:29" itemprop="dateModified" datetime="2021-10-26T15:30:29+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript判断数据的类型的方法"><a href="#JavaScript判断数据的类型的方法" class="headerlink" title="JavaScript判断数据的类型的方法"></a>JavaScript判断数据的类型的方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">  t: Symbol(1),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(typeof obj[k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">number</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">boolean</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">undefined</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:29.835Z</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">function</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">symbol</span><br></pre></td></tr></table></figure>
-
-<p>这里的话，主要问题是在于</p>
-<p>​    一个是,只能把数据分为基本数据类型和对象,并且使用new方法调用的就为对象.</p>
-<p>​    一个是 null  的 typeof 的值为 object，至于原因的话</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://2ality.com/2013/10/typeof-null.html</span><br></pre></td></tr></table></figure>
-
-<p>通过这篇文章我们可以知道原理，我这里就简单的说一下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">首先，早期的JavaScript是通过值的低1位或3位来辨别类型的。</span><br><span class="line">又下面所示</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">000：对象。数据是对对象的引用。</span><br><span class="line">1：整数。数据是一个 31 位有符号整数。</span><br><span class="line">010：双倍。数据是对双浮点数的引用。</span><br><span class="line">100：字符串。数据是对字符串的引用。</span><br><span class="line">110：布尔值。数据是一个布尔值。</span><br><span class="line"></span><br><span class="line">undefined，用整数−2^30（负2的30次方，不在整型的范围内）</span><br><span class="line">null，机器码空指针（C/C++ 宏定义），低三位也是000</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以就出现了这种 typeof null = &#x27;object&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof</span><br></pre></td></tr></table></figure>
-
-<p><code>instanceof</code> 运算符用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + a instanceof Number);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对于基本数据类型会直接返回false。而不会再内部构建对应的引用类型.</span><br><span class="line"></span><br><span class="line">否则的话，就会先通过 Object.getPrototypeOf 获得参数的原型对象。然后判断这个和你要判断的对象是否相等，不想等则会继续向上，直到相等或者为 null 时。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/constructor</span><br></pre></td></tr></table></figure>
-
-<p>**<code>constructor </code>**是一种用于创建和初始化<code>class</code>创建的对象的特殊方法。</p>
-<p>你可以这样理解，一个对象的constructor的指向的是他所 new 而指向的方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function O() &#123;&#125;</span><br><span class="line">let o = new O();</span><br><span class="line"></span><br><span class="line">o.constructor === O; //true</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + (a.constructor === Number));</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里，在a调用constructor的时候，会在内部创建一个值为a的对象，然后再调用这个constructor方法，然后再将这个对象删除，所以这个是基本数据类型也可以进行判断的。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这个输出的值是 a的构造器所指向的一个函数。在这里就是指向的Number，</span><br><span class="line">问题：这个因为是通过判断其构造器函数来进行的判断，所以如果我们将对其进行过修改则会判断错误。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.constructor === Array)	//false</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//false</span><br><span class="line">console.log(x.constructor === Array)	//ture</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一个是先new，然后在修改的原型。</span><br><span class="line">而第二个是先修改原型，然后再进行new方法的调用。</span><br><span class="line">然后结果就不一样了，所以说明了这个new方法会调用的是原型。</span><br><span class="line">所以其构造器会被修改。</span><br></pre></td></tr></table></figure>
-
-<p>通过上面这个代码我们可以知道，</p>
-<p>你可以这样想,一个new方法和其结果是平级的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = new Fn();</span><br><span class="line">a,和fn是平级的.</span><br></pre></td></tr></table></figure>
-
-<p>一个new方法，会将他的原型作为一个构造器,并将他自己进行一次<code>this</code>指向的调用.并创建一个 <code>__proto__</code> 指向了构造器的原型.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.__proto__ === Fn.prototype)	//true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString</span><br></pre></td></tr></table></figure>
-
-<p>使用方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(a);</span><br><span class="line">这里通过调用了call方法，转换了this的指向。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(Object.prototype.toString.call(obj[k]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过下面的结果我们可以看到,使用这个对象原型的方法可以说是没有任何问题啊.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">[object Undefined]</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">[object Null]</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:45.116Z</span><br><span class="line">[object Date]</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">[object Function]</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">[object Set]</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">[object Map]</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">[object Symbol]</span><br></pre></td></tr></table></figure>
 
 
       

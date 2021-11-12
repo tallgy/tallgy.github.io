@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,319 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/%E7%8A%B6%E6%80%81%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/%E7%8A%B6%E6%80%81%E7%A0%81/" class="post-title-link" itemprop="url">状态码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-06 10:51:49 / 修改时间：11:04:56" itemprop="dateCreated datePublished" datetime="2021-11-06T10:51:49+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><h2 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a>1xx</h2><ul>
+<li><strong>100</strong><ul>
+<li>告诉客户端应该继续发送请求。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h2><ul>
+<li><strong>200</strong><ul>
+<li>表示服务器已经成功接收请求，并返回请求结果</li>
+</ul>
+</li>
+<li><strong>202</strong><ul>
+<li>表示服务器接受了请求，但是还没有处理</li>
+</ul>
+</li>
+<li><strong>204</strong><ul>
+<li>表示服务器处理了请求，但是没有返回任何实体内容</li>
+</ul>
+</li>
+<li><strong>206</strong><ul>
+<li>是对资源的部分请求，断点续传，下载时的</li>
+</ul>
+</li>
+</ul>
+<h2 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a>3xx</h2><ul>
+<li><strong>301</strong><ul>
+<li>永久重定向，客户端会保存新的链接。</li>
+</ul>
+</li>
+<li><strong>302</strong><ul>
+<li>临时重定向，一般如果不是资源的临时移动，都建议使用301，有很多好处</li>
+</ul>
+</li>
+<li><strong>303</strong><ul>
+<li>和302相同，但是明确表示客户端应当采用GET方法获取资源</li>
+</ul>
+</li>
+<li><strong>304</strong><ul>
+<li>命中协商缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a>4xx</h2><ul>
+<li><strong>400</strong><ul>
+<li>客户端发送的请求无法理解</li>
+</ul>
+</li>
+<li><strong>401</strong><ul>
+<li>请求需要通过HTTP认证</li>
+</ul>
+</li>
+<li><strong>403</strong><ul>
+<li>不允许访问资源，权限，未授权等</li>
+</ul>
+</li>
+<li><strong>404</strong><ul>
+<li>服务器没有的请求资源，路径错误等</li>
+</ul>
+</li>
+</ul>
+<h2 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a>5xx</h2><ul>
+<li><strong>500</strong><ul>
+<li>服务器错误</li>
+</ul>
+</li>
+<li><strong>503</strong><ul>
+<li>服务器负载</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/TCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/" class="post-title-link" itemprop="url">TCP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-06 09:45:52 / 修改时间：10:46:49" itemprop="dateCreated datePublished" datetime="2021-11-06T09:45:52+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><ul>
+<li>首先TCP属于传输层</li>
+<li>面向连接的传输层协议</li>
+<li>一对一的连接</li>
+<li>提供可靠交付服务</li>
+<li>全双工通信</li>
+<li>面向字节流：指的是流入到进程或从进程流出的字节序列</li>
+</ul>
+<p>​        TCP并不关心应用一次把多长的报文发送到TCP缓存中，而是根据对方给出的窗口和当前网络拥塞的程度来决定一个报文应该包含多少个字节。</p>
+<h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h2><table>
+<thead>
+<tr>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向连接</td>
+<td>无连接，即发送前不需要先建立连接</td>
+</tr>
+<tr>
+<td>提供可靠交互，无差错，不丢失，不重复，按序到达</td>
+<td>尽最大努力交付，不保证可靠交付</td>
+</tr>
+<tr>
+<td>面向字节流</td>
+<td>面向报文</td>
+</tr>
+<tr>
+<td>一对一的连接</td>
+<td>支持一对一，一对多的通信</td>
+</tr>
+<tr>
+<td>拥塞控制</td>
+<td>没有拥塞控制，所以不会使发送率降低，因此会出现丢包</td>
+</tr>
+<tr>
+<td>首部较大20字节</td>
+<td>只有8字节</td>
+</tr>
+</tbody></table>
+<h2 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h2><ul>
+<li>停止等待协议<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102234899.png" alt="image-20211106102234899" style="zoom: 67%;"></li>
+</ul>
+</li>
+<li>连续arq协议<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102310315.png" alt="image-20211106102310315" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><ul>
+<li>滑动窗口<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102333564.png" alt="image-20211106102333564" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h2 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h2><p>​        慢开始和拥塞避免</p>
+<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102433477.png" alt="image-20211106102433477" style="zoom:67%;">
+
+<p>​        计算方式</p>
+<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102459740.png" alt="image-20211106102459740" style="zoom:67%;">
+
+
+
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102538627.png" alt="image-20211106102538627" style="zoom:67%;">
+
+<p>步骤：</p>
+<ul>
+<li>客户端主动打开，进行连接，SYN=1，seq=x，状态为SYN-SENT</li>
+<li>服务器处于LISTEN状态，等待客户端开始连接，接收到客户端的连接之后，返回 SYN=1，ACK=1，seq=y，ack=x+1，状态修改为SYN-RCVD</li>
+<li>客户端收到连接之后，发送 ACK=1，seq=x+1，ack=y+1，此时就代表了客户端已经成功收到，处于了ESTAB-LISHED状态。</li>
+<li>服务器收到之后，也处于了ESTAB-LISHED状态</li>
+<li>开始进行数据传送。</li>
+</ul>
+<p><strong>一句话简述</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">客户端发起连接请求，</span><br><span class="line">服务器收到连接请求，发送了确认报文。</span><br><span class="line">客户端收到确认报文，发送自己的确认报文，并准备传输数据。</span><br><span class="line">服务器收到了客户端的确认报文，准备接收数据。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106103554196.png" alt="image-20211106103554196" style="zoom:67%;">
+
+<p><strong>步骤：</strong></p>
+<p>客户端A，服务器B</p>
+<ul>
+<li>A主动关闭，发送 FIN=1，seq=u，状态置为 FIN-WAIT-1</li>
+<li>B收到关闭信息，先返回确认报文，ACK=1，seq=v，ack=u+1，状态：CLOSE-WAIT</li>
+<li>此时因为B可能还有数据传输或者数据处理，所以不会马上关闭</li>
+<li>A收到确认信息，状态：FIN-WAIT-2</li>
+<li>B数据传输结束，准备关闭，返回关闭确认，FIN=1，ACK=1，seq=w，ack=u+1，状态：LAST-ACK</li>
+<li>A收到了确认关闭的信息，发送确认收到报文，ACK=1，seq=u+1，ack=w+1，同时状态：TIME-WAIT。</li>
+<li>这里为什么A没有马上关闭是因为，如果B没有收到最后的确认报文，就不会关闭会重复发送，所以这里A等待了2MSL，（MSL叫做最长报文段寿命(Maximum Segment Lifetime)），所以在2MSL之后，关闭了连接，状态：closed</li>
+<li>B收到确认，关闭连接，状态：closed</li>
+</ul>
+<p><strong>一句话简述</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">客户端发送关闭，</span><br><span class="line">服务器确认收到并返回确认，但是此时服务器可能有数据进行传输，所以没有马上关闭</span><br><span class="line">服务器传输结束，返回关闭确认</span><br><span class="line">客户端收到关闭确认，返回确认</span><br><span class="line">服务器收到确认，关闭</span><br><span class="line">客户端等待了2MSL，来回最长报文段寿命后，关闭。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2215,278 +2528,6 @@ https://cn.vuejs.org/v2/guide/
 <h2 id="面试问到的："><a href="#面试问到的：" class="headerlink" title="面试问到的："></a>面试问到的：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line">arr.map(parseInt)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">简单的解析一下，</span><br><span class="line">首先map内部的回调函数的三个参数分别为 value，index，array</span><br><span class="line">然后parseInt会使用两个参数，一个是要转换的字符串，一个是进制</span><br><span class="line">所以 按照顺序就会变成： 1,0	2,1		3,2		10,3	111,4</span><br><span class="line">	对于0，会使用默认形式，对于1，会直接NaN，对于后面的就按照正常进制的运算</span><br><span class="line">	所以结果是： 1,NaN,NaN,3,21</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/25/JavaScript/JavaScript-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript-map函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-25 16:48:23" itemprop="dateCreated datePublished" datetime="2021-10-25T16:48:23+08:00">2021-10-25</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:17:03" itemprop="dateModified" datetime="2021-10-26T15:17:03+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript之Array-map函数"><a href="#JavaScript之Array-map函数" class="headerlink" title="JavaScript之Array.map函数"></a>JavaScript之Array.map函数</h1><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map</span><br></pre></td></tr></table></figure>
-
-<p><code>**map()**</code> 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</p>
-<p><strong>参数</strong></p>
-<p>​    <strong>回调函数，callback</strong></p>
-<p>​        参数分别为，value，index，array，第二个和第三个参数是可选的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const array1 = [1, 4, 9, 16];</span><br><span class="line"></span><br><span class="line">// pass a function to map</span><br><span class="line">const map1 = array1.map(x =&gt; x * 2);</span><br><span class="line"></span><br><span class="line">console.log(map1);</span><br><span class="line">// expected output: Array [2, 8, 18, 32]</span><br></pre></td></tr></table></figure>
-
-<p>​    <strong>thisArg</strong></p>
-<p>​        在执行callabck函数时，被用作 <code>this</code></p>
-<h2 id="简单的源码实现"><a href="#简单的源码实现" class="headerlink" title="简单的源码实现"></a>简单的源码实现</h2><p>通过上面的参数描述，我们可以知道，</p>
-<p>我们需要先对数组进行循环，然后将其带入callback，返回值会push入一个res数组，</p>
-<p>然后因为第二个参数是this的指向，所以我们需要在判断是否携带了第二个参数**(  const _this = thisArg || this;)**</p>
-<p>将其this的指向进行改变，使用了call方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function myMap(callback, thisArg) &#123;</span><br><span class="line">  const result = [];</span><br><span class="line">  const arr = this;</span><br><span class="line">  const _this = thisArg || this;</span><br><span class="line"></span><br><span class="line">  for (let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    result.push(callback.call(_this, arr[i], i, arr));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="一些面试时遇到的问题"><a href="#一些面试时遇到的问题" class="headerlink" title="一些面试时遇到的问题"></a>一些面试时遇到的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line"></span><br><span class="line">arr.map(parseInt)</span><br><span class="line"></span><br><span class="line">这个可能有的没有理解的话会有点懵逼</span><br><span class="line">其实理解了就很简单了。</span><br><span class="line">这就是把parseInt作为一个回调函数传递给了map，</span><br><span class="line">map的回调函数的参数是，value， index， arr</span><br><span class="line">而parseInt，可以带两个参数，这两个参数，一个是要转化的字符串（数字也可以），一个是要转化的进制。</span><br><span class="line"></span><br><span class="line">所以我们就能够理解了，</span><br><span class="line">对于 arr 1， 2， 3， 10， 111</span><br><span class="line">会分别传递</span><br><span class="line">	1， 0</span><br><span class="line">	2， 1</span><br><span class="line">	3， 2</span><br><span class="line">	10， 3</span><br><span class="line">	111， 4</span><br><span class="line">其中，0代表了默认转换，对于字符串没有进制前缀的，就是默认十进制，具体的转换规则后续写 parseInt 的时候再说明。</span><br><span class="line"></span><br><span class="line">我们可以看出，1对应的默认进制转换，2对应的1进制，3对应的2进制，10对应的3进制，111对应的4进制，因为parseInt的第二个参数范围是2-36，所以对于其他的除0以外直接NaN。</span><br><span class="line">所以对应的结果是 1, NaN, NaN, 3, 21.</span><br></pre></td></tr></table></figure>
-
-<p>对于其他的就也可以按照这个思路进行思考了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-24 10:53:12" itemprop="dateCreated datePublished" datetime="2021-10-24T10:53:12+08:00">2021-10-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:19:12" itemprop="dateModified" datetime="2021-10-26T15:19:12+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="border-radius的原理和使用"><a href="#border-radius的原理和使用" class="headerlink" title="border-radius的原理和使用"></a>border-radius的原理和使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>首先我们可以知道 <code>border-radius</code> 是四个属性的简写，所以我们先理解四个属性的值的效果。</p>
-<p><code>border-top-right-radius</code> <code>border-top-left-radius</code></p>
-<p> <code>border-bottom-right-radius</code> <code>border-bottm-left-radius</code></p>
-<p>我们取其中一个</p>
-<p><code>border-top-right-radius</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
-
-<p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
-
-<p>通过例子也可以知道，对于一个值，说明了 横轴<code>horizontal</code> 和 数轴<code>vertical</code> 的值相等，对于两个值，那么就说明了第一值是横轴，第二个值是数轴。</p>
-<p>然后得到横轴和数轴的半径后，相对进行偏移，然后画出一个圆形或者一个椭圆形，所裁剪出来的值。就是得到的效果。</p>
-<p>对于值是%的，那么宽度就会相对于宽度，高度就会相对于高度。</p>
-<h3 id="对于超过-50-的计算方式"><a href="#对于超过-50-的计算方式" class="headerlink" title="对于超过 50% 的计算方式"></a>对于超过 50% 的计算方式</h3><p>原文链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/20128284</span><br></pre></td></tr></table></figure>
-
-<p>简单来说就是对于 <strong>相邻的角的半径和超过了对应的盒子的边的长度，那么浏览器要重新计算保证它们不会重合。</strong></p>
-<p>就是会同时进行缩放。来保证不会重合。</p>
-<h2 id="水平和垂直从哪个位置开始偏移"><a href="#水平和垂直从哪个位置开始偏移" class="headerlink" title="水平和垂直从哪个位置开始偏移"></a>水平和垂直从哪个位置开始偏移</h2><h3 id="我们先看使用px的计算"><a href="#我们先看使用px的计算" class="headerlink" title="我们先看使用px的计算"></a>我们先看使用px的计算</h3><p>先说结果，结果是，<strong>px的计算是相对于border的位置开始的偏移。</strong></p>
-<p>然后我们再看代码和执行结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
-
-
-
-<h3 id="我们再看使用-百分号-进行的计算"><a href="#我们再看使用-百分号-进行的计算" class="headerlink" title="我们再看使用 百分号% 进行的计算"></a>我们再看使用 百分号% 进行的计算</h3><p>意思是一样的，会按照你的宽高加上你的border的宽高，然后乘以 百分比。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始我这样写，以为10%应该是 50px，但是忘了border有上有下，所以真正的宽高是550px，所以50%是55px，后面才搞清楚</span><br><span class="line"></span><br><span class="line">width: 450px;</span><br><span class="line">height: 450px;</span><br><span class="line">background-color: #f00;</span><br><span class="line">border: blue solid 50px;</span><br><span class="line">border-radius: 10%;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="如何裁剪"><a href="#如何裁剪" class="headerlink" title="如何裁剪"></a>如何裁剪</h2><p>这个就是自己的理解了，我们可以看到，对于存在了border的，当你的数值超过了一定值之后，你的content也会变成弧边，而这个值就是border的宽度。</p>
-<p><strong>所以这个裁剪的方法是：</strong></p>
-<ul>
-<li><p>先计算出radius的偏移量x，y</p>
-</li>
-<li><p>然后从border的边框开始进行x，y的偏移，并且半径值也为x，y画弧，将border进行了裁剪。</p>
-</li>
-<li><p>然后如果x，y的偏移量在content里面了（这个content是包含了padding的），那么就会再对content进行裁剪，而裁剪的半径就是x，y这个点到content边界的半径。</p>
-</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
-
-
-
-<h2 id="简写参数"><a href="#简写参数" class="headerlink" title="简写参数"></a>简写参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: top-left top-right bottom-right bottom-left;</span><br><span class="line">上左，上右，下右，下左，这是一个从上左开始的一个顺时针顺序。</span><br><span class="line">按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</span><br><span class="line">	参考链接：(https://www.w3school.com.cn/cssref/pr_border-radius.asp)</span><br><span class="line">意思就是，如果在省略的情况下，那么就是最后一个开始是没有值的，而前面的才有值，然后对没有值的那个，他的值就是对面的值，如果对面也没有值，那么他的值就和旁边的相等(此时就是只有一个参数)</span><br><span class="line"></span><br><span class="line">按照上面的意思来理解的话，那么很多简写参数都可以理解了。我这里就直接统计结果。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="第一步，将参数从简写的个数化为完整个数"><a href="#第一步，将参数从简写的个数化为完整个数" class="headerlink" title="第一步，将参数从简写的个数化为完整个数"></a>第一步，将参数从简写的个数化为完整个数</h3><h4 id="一个参数-border-radius-50px"><a href="#一个参数-border-radius-50px" class="headerlink" title="一个参数 border-radius: 50px;"></a>一个参数 <code>border-radius: 50px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px;</span><br><span class="line"></span><br><span class="line">只有一个 top-left </span><br><span class="line">那么，bottom-right = top-left = 50</span><br><span class="line">并且 bottom-left = top-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 50px 50px 50px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="两个参数-border-radius-50px-30px"><a href="#两个参数-border-radius-50px-30px" class="headerlink" title="两个参数 border-radius: 50px 30px;"></a>两个参数 <code>border-radius: 50px 30px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px;</span><br><span class="line"></span><br><span class="line">有两个，那么这两个就是 top-left 和 top-right</span><br><span class="line">对应的 bottom-left = top-right = 30</span><br><span class="line">bottom-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 50px 30px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="三个参数-border-radius-50px-30px-40px"><a href="#三个参数-border-radius-50px-30px-40px" class="headerlink" title="三个参数 border-radius: 50px 30px 40px;"></a>三个参数 <code>border-radius: 50px 30px 40px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px 40px;</span><br><span class="line"></span><br><span class="line">有三个，那么就只有最后一个 bottom-left 没有</span><br><span class="line">那么 bottom-left 等于对面的 top-right = 30px</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 40px 30px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="四个参数-border-radius-50px-40px-30px-20px"><a href="#四个参数-border-radius-50px-40px-30px-20px" class="headerlink" title="四个参数 border-radius: 50px 40px 30px 20px;"></a>四个参数 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">没啥说的。</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px"><a href="#对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px" class="headerlink" title="对于参数里面带有 / 符号的 border-radius: 4px 3px 6px / 2px 4px;"></a>对于参数里面带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px / 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 4px 3px 6px / 2px 4px;</span><br><span class="line"></span><br><span class="line">这个分为两个部分</span><br><span class="line">第一部分 4 3 6 将其转化为对应的 horizontal</span><br><span class="line">	所以为 4 3 6 3</span><br><span class="line">第二部分 2 4 将其转化为对应的 vertical</span><br><span class="line">	所以为 2 4 2 4</span><br><span class="line">	</span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line">	</span><br><span class="line">然后结果就是</span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="第二步，将其转化为-border-radius"><a href="#第二步，将其转化为-border-radius" class="headerlink" title="第二步，将其转化为 border-*-*-radius"></a>第二步，将其转化为 <code>border-*-*-radius</code></h3><h4 id="对于没有带-符号的-border-radius-50px-40px-30px-20px"><a href="#对于没有带-符号的-border-radius-50px-40px-30px-20px" class="headerlink" title="对于没有带 / 符号的 border-radius: 50px 40px 30px 20px;"></a>对于没有带 <code>/</code> 符号的 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">其 horizontal 和 vertical 的值相等。</span><br><span class="line"></span><br><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     50px 50px;</span><br><span class="line">border-top-right-radius:    40px 40px;</span><br><span class="line">border-bottom-right-radius: 30px 30px;</span><br><span class="line">border-bottom-left-radius:  20px 20px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><a href="#对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px" class="headerlink" title="对于带有 / 符号的 border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;"></a>对于带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">会将 / 前的作为每一个的 horizontal </span><br><span class="line">/ 后的作为每一个的 vertical</span><br><span class="line"></span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
-
-
 
 
       

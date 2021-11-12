@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tallgy.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="JavaScript 解构赋值1https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Operators&#x2F;Destructuring_assignment    ​        解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性&#x2F;值从对象&#x2F;数组中取出,赋值给其他变量。 ​        简单来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-ES6解构">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/index.html">
+<meta property="og:site_name" content="tallgy&#39;s blog">
+<meta property="og:description" content="JavaScript 解构赋值1https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Operators&#x2F;Destructuring_assignment    ​        解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性&#x2F;值从对象&#x2F;数组中取出,赋值给其他变量。 ​        简单来">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-11T14:14:32.000Z">
+<meta property="article:modified_time" content="2021-11-12T06:09:36.125Z">
+<meta property="article:author" content="tallgy">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="解构赋值">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/","path":"2021/11/11/JavaScript/JavaScript-ES6解构/","title":"JavaScript-ES6解构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript-ES6解构 | tallgy's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">tallgy's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b-arr"><span class="nav-number">1.1.1.</span> <span class="nav-text">[a, b] &#x3D; arr;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b-%E2%80%A6rest-arr"><span class="nav-number">1.1.2.</span> <span class="nav-text">[a, b, …rest] &#x3D; arr;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b-obj"><span class="nav-number">1.1.3.</span> <span class="nav-text">({ a, b } &#x3D; obj);</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b-%E2%80%A6rest-obj"><span class="nav-number">1.1.4.</span> <span class="nav-text">({a, b, …rest} &#x3D; obj);</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-4-a-10-%E8%A7%A3%E6%9E%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">1.1.5.</span> <span class="nav-text">[a&#x3D;4] &#x2F; {a &#x3D; 10} 解构默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b-b-a-%E4%BA%A4%E6%8D%A2%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.6.</span> <span class="nav-text">[a, b] &#x3D; [b, a]; 交换变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E5%80%BC-a-b-arr"><span class="nav-number">1.1.7.</span> <span class="nav-text">忽略值 [a, , b] &#x3D; arr;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%B5%8B%E5%80%BC-p-foo-obj-%E5%88%AB%E5%90%8D"><span class="nav-number">1.1.8.</span> <span class="nav-text">命名赋值 {p: foo} &#x3D; obj; 别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="nav-number">1.1.9.</span> <span class="nav-text">方法参数的赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E4%B8%80%E4%B8%AA%E5%B5%8C%E5%A5%97%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.10.</span> <span class="nav-text">解构一个嵌套对象和数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of-%E8%BF%AD%E4%BB%A3%E5%92%8C%E8%A7%A3%E6%9E%84"><span class="nav-number">1.1.11.</span> <span class="nav-text">for of 迭代和解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%90%8D%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%A2%AB%E8%A7%A3%E6%9E%84"><span class="nav-number">1.1.12.</span> <span class="nav-text">计算属性名，可以被解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%95%88%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E6%80%A7%E5%90%8D"><span class="nav-number">1.1.13.</span> <span class="nav-text">无效的标识符作为一个属性名</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tallgy"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">tallgy</p>
+  <div class="site-description" itemprop="description">只是一个知识的搬运工</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tallgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/tallgy" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github-alt fa-fw"></i>Gitee</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript-ES6解构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-11 22:14:32" itemprop="dateCreated datePublished" datetime="2021-11-11T22:14:32+08:00">2021-11-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-12 14:09:36" itemprop="dateModified" datetime="2021-11-12T14:09:36+08:00">2021-11-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JavaScript-解构赋值"><a href="#JavaScript-解构赋值" class="headerlink" title="JavaScript 解构赋值"></a>JavaScript 解构赋值</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        <strong>解构赋值</strong>语法是一种 Javascript 表达式。通过<strong>解构赋值,</strong> 可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+<p>​        简单来说，就是对于一个赋值变得简单起来。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="a-b-arr"><a href="#a-b-arr" class="headerlink" title="[a, b] = arr;"></a>[a, b] = arr;</h3><ul>
+<li>多余的不会被赋值</li>
+<li>少的会变成undefined</li>
+<li>注意要避免arr为null和undefined，对象同样，需要是数组和对象才行。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 5];</span><br><span class="line"></span><br><span class="line">let [a, b] = arr;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">1, 3</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-…rest-arr"><a href="#a-b-…rest-arr" class="headerlink" title="[a, b, …rest] = arr;"></a>[a, b, …rest] = arr;</h3><ul>
+<li>这里，对于多余的都会变成第三个的数组</li>
+<li>少于的，前面两个是undefined， 第三个数组会是一个空数组。</li>
+<li>剩余元素必须在最后一个。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 4, 2, ];</span><br><span class="line"></span><br><span class="line">let [a, b, ...res] = arr;</span><br><span class="line">console.log(a, b, res);</span><br><span class="line"></span><br><span class="line">1 3 [ 4, 2 ]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-obj"><a href="#a-b-obj" class="headerlink" title="({ a, b } = obj);"></a>({ a, b } = obj);</h3><ul>
+<li><p>这个是以名称为主，需要找到obj内部的a，如果没有，那么就会变成undefined，其次，这里的值是可以是原型上的。 obj.__proto__ 只要原型链上存在也会赋值。</p>
+</li>
+<li><p>其次，这里需要添加括号，或者是定义时进行解构赋值，这里的作用可能是避免大括号的影响了编译的判断。</p>
+</li>
+<li><p><strong>注意</strong>：赋值语句周围的圆括号 <code>( ... )</code> 在使用对象字面量无声明解构赋值时是必须的。 <code>&#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code> 不是有效的独立语法，因为左边的 <code>&#123;a, b&#125;</code> 被认为是一个块而不是对象字面量。</p>
+</li>
+<li><p>然而，<code>(&#123;a, b&#125; = &#123;a: 1, b: 2&#125;)</code> 是有效的，正如 <code>var &#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code>你的 <code>( ... )</code> 表达式之前需要有一个分号，否则它可能会被当成上一行中的函数执行。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let a,c;</span><br><span class="line">(&#123;a, c&#125; = obj);</span><br><span class="line">console.log(a, c);</span><br><span class="line"></span><br><span class="line">10, 30</span><br></pre></td></tr></table></figure>
+
+<p>​        or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;a, b&#125; = obj;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">10, 20</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-…rest-obj"><a href="#a-b-…rest-obj" class="headerlink" title="({a, b, …rest} = obj);"></a>({a, b, …rest} = obj);</h3><ul>
+<li>这里是将前面没有进行赋值的对象全部加入了最后一个对象。</li>
+<li>其次，最后一个是不会进入原型链进行查找赋值的。</li>
+<li>如果没有了，那么便会变成空对象。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">obj.__proto__ = &#123;</span><br><span class="line">  x: 1111,</span><br><span class="line">&#125;</span><br><span class="line">let &#123;a, ...res&#125; = obj;</span><br><span class="line">console.log(a, res);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-4-a-10-解构默认值"><a href="#a-4-a-10-解构默认值" class="headerlink" title="[a=4] / {a = 10} 解构默认值"></a>[a=4] / {a = 10} 解构默认值</h3><ul>
+<li>简单来说就是设置一个默认值，不会变成undefined</li>
+<li>对于对象也有效果 </li>
+<li>默认值可以是对象。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line"></span><br><span class="line">[a=5, b=7] = [1];    //[a=5, b=7] = [1, undefined]; ,就算是这样也是 1， 7</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(&#123;a=5, b=7&#125; = &#123;</span><br><span class="line">  a: 3,</span><br><span class="line">&#125;);</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br><span class="line"></span><br><span class="line">(&#123;a=5, b= &#123; x: 1 &#125;&#125; = &#123; a: 3 &#125;); 并且还能使用赋值默认对象效果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-b-a-交换变量"><a href="#a-b-b-a-交换变量" class="headerlink" title="[a, b] = [b, a]; 交换变量"></a>[a, b] = [b, a]; 交换变量</h3><ul>
+<li>交换的变量可以是对象，也可以是值类型。</li>
+<li>({a, b} = {b, a});  这个没有交换变量的效果。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a= &#123;a: 4&#125;,</span><br><span class="line">    b= &#123;x:3&#125;;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line">console.log(a, b);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="忽略值-a-b-arr"><a href="#忽略值-a-b-arr" class="headerlink" title="忽略值 [a, , b] = arr;"></a>忽略值 [a, , b] = arr;</h3><ul>
+<li>可以对不要的值不使用变量进行存储，使用 <code>, ,</code> 这样就能达到忽略的效果</li>
+<li>对象不能使用忽略值的效果，会报错，</li>
+<li><code>[, ,] = arr</code> ， 这样可以忽略全部返回值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">  return [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var [a, , b] = f();</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 3</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="命名赋值-p-foo-obj-别名"><a href="#命名赋值-p-foo-obj-别名" class="headerlink" title="命名赋值 {p: foo} = obj; 别名"></a>命名赋值 {p: foo} = obj; 别名</h3><ul>
+<li>只能用于对象</li>
+<li>可以将其重新命名。</li>
+<li>可以将命名赋值和默认值一同使用 {p:foo = 10}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;p: 42, q: true&#125;;</span><br><span class="line">var &#123;p: foo, q: bar&#125; = o;</span><br><span class="line"></span><br><span class="line">console.log(foo); // 42</span><br><span class="line">console.log(bar); // true </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法参数的赋值"><a href="#方法参数的赋值" class="headerlink" title="方法参数的赋值"></a>方法参数的赋值</h3><ul>
+<li>首先，function fn(op = {}) {}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function drawES2015Chart(&#123;size = &#x27;big&#x27;, cords = &#123; x: 0, y: 0 &#125;, radius = 25&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">上面这个写法很高级，但是有点难以理解。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;x: &#x27;x&#x27;, c: 1&#125;) &#123;&#125;</span><br><span class="line">这个写法，虽然可以理解了，但是如果传参时添加了一个参数便会全部覆盖，达不到想要的效果。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时如果没有传入参数则会变成一个空对象，然后我们再将这个o换成一个对象</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时，如果不传入参数，那么先是一个空对象，然后再将空对象赋值给了前面的，然后就会生成一个 x=3 的数了。</span><br><span class="line">如果传入的对象里面没有x，同样也是生成x=3的数。</span><br><span class="line">所以此时再去看最开始那个就应该能够看懂了</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125;) &#123;&#125;</span><br><span class="line">这里的区别，在于如果没有传入任何值，那么将会报错，而上面使用了空对象，可以不传递参数。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在上面的 <strong><code>drawES2015Chart</code></strong> 的函数签名中，解构的左手边被分配给右手边的空对象字面值：<code>&#123;size = &#39;big&#39;, cords = &#123;x: 0, y: 0&#125;, radius = 25&#125; = &#123;&#125;</code>。你也可以在没有右侧分配的情况下编写函数。但是，如果你忽略了右边的赋值，那么函数会在被调用的时候查找至少一个被提供的参数，而在当前的形式下，你可以直接调用 <code>**drawES2015Chart()**</code> 而不提供任何参数。如果你希望能够在不提供任何参数的情况下调用该函数，则当前的设计非常有用，而另一种方法在您确保将对象传递给函数时非常有用。</p>
+</blockquote>
+<h3 id="解构一个嵌套对象和数组"><a href="#解构一个嵌套对象和数组" class="headerlink" title="解构一个嵌套对象和数组"></a>解构一个嵌套对象和数组</h3><ul>
+<li>没啥讲的，但是却有点东西，对象别名使用了 []， 进行了数组赋值，然后再在里面进行了对象赋值，{}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const metadata = &#123;</span><br><span class="line">  title: &#x27;Scratchpad&#x27;,</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">      locale: &#x27;de&#x27;,</span><br><span class="line">      localization_tags: [],</span><br><span class="line">      last_edit: &#x27;2014-04-14T08:43:37&#x27;,</span><br><span class="line">      url: &#x27;/de/docs/Tools/Scratchpad&#x27;,</span><br><span class="line">      title: &#x27;JavaScript-Umgebung&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  url: &#x27;/en-US/docs/Tools/Scratchpad&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let &#123;</span><br><span class="line">  title: englishTitle, // rename</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">       title: localeTitle, // rename</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125; = metadata;</span><br><span class="line"></span><br><span class="line">console.log(englishTitle); // &quot;Scratchpad&quot;</span><br><span class="line">console.log(localeTitle);  // &quot;JavaScript-Umgebung&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="for-of-迭代和解构"><a href="#for-of-迭代和解构" class="headerlink" title="for of 迭代和解构"></a>for of 迭代和解构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Mike Smith&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Jane Smith&#x27;,</span><br><span class="line">      father: &#x27;Harry Smith&#x27;,</span><br><span class="line">      sister: &#x27;Samantha Smith&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 35</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Tom Jones&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Norah Jones&#x27;,</span><br><span class="line">      father: &#x27;Richard Jones&#x27;,</span><br><span class="line">      brother: &#x27;Howard Jones&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 25</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var &#123;name: n, family: &#123;father: f&#125;&#125; of people) &#123;</span><br><span class="line">  console.log(&#x27;Name: &#x27; + n + &#x27;, Father: &#x27; + f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="计算属性名，可以被解构"><a href="#计算属性名，可以被解构" class="headerlink" title="计算属性名，可以被解构"></a>计算属性名，可以被解构</h3><ul>
+<li>简单来说，就是key变成了一个变量，然后使用[]， 来将一个常量换成了一个变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let key = &quot;z&quot;;</span><br><span class="line">let &#123; [key]: foo &#125; = &#123; z: &quot;bar&quot; &#125;;</span><br><span class="line"></span><br><span class="line">console.log(foo); // &quot;bar&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="无效的标识符作为一个属性名"><a href="#无效的标识符作为一个属性名" class="headerlink" title="无效的标识符作为一个属性名"></a>无效的标识符作为一个属性名</h3><p>在这里，fizz-buzz 是一个无效的变量名，我们使用字符串形式，然后加上别名进行操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123; &#x27;fizz-buzz&#x27;: true &#125;;</span><br><span class="line">const &#123; &#x27;fizz-buzz&#x27;: fizzBuzz &#125; = foo;</span><br><span class="line"></span><br><span class="line">console.log(fizzBuzz); // &quot;true&quot;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://gitee.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-git"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="tag"># 解构赋值</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/10/JavaScript/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" rel="prev" title="JavaScript箭头函数">
+                  <i class="fa fa-chevron-left"></i> JavaScript箭头函数
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/12/JavaScript/ES6%E9%9A%8F%E7%AC%941/" rel="next" title="ES6随笔1">
+                  ES6随笔1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tallgy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

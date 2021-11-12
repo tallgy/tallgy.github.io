@@ -20,21 +20,21 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tallgy.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。         JavaScript 继承123456789function Fn() &amp;#123;  this">
+<meta name="description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 ​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。 ​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript原型链">
 <meta property="og:url" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
 <meta property="og:site_name" content="tallgy&#39;s blog">
-<meta property="og:description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。         JavaScript 继承123456789function Fn() &amp;#123;  this">
+<meta property="og:description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 ​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。 ​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
 <meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png">
 <meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png">
 <meta property="article:published_time" content="2021-11-09T12:57:32.000Z">
-<meta property="article:modified_time" content="2021-11-11T09:13:02.188Z">
+<meta property="article:modified_time" content="2021-11-11T14:08:17.668Z">
 <meta property="article:author" content="tallgy">
-<meta property="article:tag" content="随笔">
 <meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="随笔">
 <meta property="article:tag" content="原型链">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
@@ -143,18 +143,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-11 17:13:02" itemprop="dateModified" datetime="2021-11-11T17:13:02+08:00">2021-11-11</time>
+        <time title="修改时间：2021-11-11 22:08:17" itemprop="dateModified" datetime="2021-11-11T22:08:17+08:00">2021-11-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,12 +261,10 @@
         <p> <strong>注意：</strong></p>
 <p><strong>这里的内容为本人的理解，不敢保正。</strong></p>
 <h1 id="JavaScript原型链"><a href="#JavaScript原型链" class="headerlink" title="JavaScript原型链"></a>JavaScript原型链</h1><p>先看一张图，简单来说</p>
-<p>原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
+<p>​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
+<p>​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对应关系在于，一个方法的实例默认是没有constructor构造函数，此时这个实例就是一个单纯的底层实例，但是如果我们将一个构造函数的原型指向了这个实例，并且将这个实例的构造器指向了原型， 那么这个实例就已经算是一个原型了，此时就已经不是一个单纯的底层实例了。</p>
+<p>​        顶层的方法就是 Function，顶层的原型就是Object.prototype，而Object方法确实使用了Function的原型。</p>
 <img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
-
-
-
-
 
 
 
@@ -405,8 +403,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
               <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag"># 原型链</a>
           </div>
 

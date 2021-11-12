@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,333 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/ES6%E9%9A%8F%E7%AC%941/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/12/JavaScript/ES6%E9%9A%8F%E7%AC%941/" class="post-title-link" itemprop="url">ES6随笔1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-12 14:10:35 / 修改时间：14:31:23" itemprop="dateCreated datePublished" datetime="2021-11-12T14:10:35+08:00">2021-11-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ES6随笔1"><a href="#ES6随笔1" class="headerlink" title="ES6随笔1"></a>ES6随笔1</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/7016520448204603423</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数组合并并去重"><a href="#数组合并并去重" class="headerlink" title="数组合并并去重"></a>数组合并并去重</h2><p>​        先使用扩展运算符进行转化为一个数组，然后再使用set方式去重。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [1, 3, 5];</span><br><span class="line">let arr2 = [1, 6, 12];</span><br><span class="line"></span><br><span class="line">let arr = [...new Set([...arr1, ...arr2])];</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="对象合并"><a href="#对象合并" class="headerlink" title="对象合并"></a>对象合并</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;...obj1, ...obj2&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串拼接加判断"><a href="#字符串拼接加判断" class="headerlink" title="字符串拼接加判断"></a>字符串拼接加判断</h2><p>使用模板字符串，模板字符串内部的${}，可以放入任意的JavaScript表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const result = `$&#123;name&#125;$&#123;score &gt; 60 ? &#x27;的考试及格&#x27; : &#x27;的考试不及格&#x27;&#125;`;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用-includes-进行或判断"><a href="#使用-includes-进行或判断" class="headerlink" title="使用 includes 进行或判断"></a>使用 includes 进行或判断</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line">if (arr.includes(type)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">就等于了</span><br><span class="line">if (type === 1 || type===2 || type===3) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用-find-和-filter-进行查找"><a href="#使用-find-和-filter-进行查找" class="headerlink" title="使用 find 和 filter 进行查找"></a>使用 find 和 filter 进行查找</h2><ul>
+<li>find 的特点是只查找第一个满足的</li>
+<li>filter是将所有满足的作为一个新的数组返回。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(v =&gt; &#123;</span><br><span class="line">	return v === 3;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">arr.find(v =&gt; &#123;</span><br><span class="line">	return v === 3;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="扁平化数组"><a href="#扁平化数组" class="headerlink" title="扁平化数组"></a>扁平化数组</h2><ul>
+<li>Object.values，这个代表了取出对象的属性值，然后作为一个数组。</li>
+<li>flat 是一个扁平化数组的方法，Infinity作用是将很多层扁平化为一层。具体的可以取MDN进行查看。</li>
+<li>注意： <code>flat</code> 方法不支持IE浏览器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const deps = &#123;</span><br><span class="line">	key: [],</span><br><span class="line">	key1: []</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let member = Object.values(deps).flat(Infinity);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="空值合并运算符"><a href="#空值合并运算符" class="headerlink" title="空值合并运算符 ??"></a>空值合并运算符 ??</h2><ul>
+<li><code>??</code> 代表了如果 左侧的变量是 null或者是undefined时，那么将会返回右侧的操作数。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let a ?? &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h2><ul>
+<li>就是Promise.all 和 Promise.race 的使用</li>
+<li>以及可以使用 async 函数。</li>
+<li>避免生成回调地狱。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/" class="post-title-link" itemprop="url">JavaScript-ES6解构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-11 22:14:32" itemprop="dateCreated datePublished" datetime="2021-11-11T22:14:32+08:00">2021-11-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-12 14:09:36" itemprop="dateModified" datetime="2021-11-12T14:09:36+08:00">2021-11-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript-解构赋值"><a href="#JavaScript-解构赋值" class="headerlink" title="JavaScript 解构赋值"></a>JavaScript 解构赋值</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        <strong>解构赋值</strong>语法是一种 Javascript 表达式。通过<strong>解构赋值,</strong> 可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+<p>​        简单来说，就是对于一个赋值变得简单起来。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="a-b-arr"><a href="#a-b-arr" class="headerlink" title="[a, b] = arr;"></a>[a, b] = arr;</h3><ul>
+<li>多余的不会被赋值</li>
+<li>少的会变成undefined</li>
+<li>注意要避免arr为null和undefined，对象同样，需要是数组和对象才行。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 5];</span><br><span class="line"></span><br><span class="line">let [a, b] = arr;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">1, 3</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-…rest-arr"><a href="#a-b-…rest-arr" class="headerlink" title="[a, b, …rest] = arr;"></a>[a, b, …rest] = arr;</h3><ul>
+<li>这里，对于多余的都会变成第三个的数组</li>
+<li>少于的，前面两个是undefined， 第三个数组会是一个空数组。</li>
+<li>剩余元素必须在最后一个。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 4, 2, ];</span><br><span class="line"></span><br><span class="line">let [a, b, ...res] = arr;</span><br><span class="line">console.log(a, b, res);</span><br><span class="line"></span><br><span class="line">1 3 [ 4, 2 ]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-obj"><a href="#a-b-obj" class="headerlink" title="({ a, b } = obj);"></a>({ a, b } = obj);</h3><ul>
+<li><p>这个是以名称为主，需要找到obj内部的a，如果没有，那么就会变成undefined，其次，这里的值是可以是原型上的。 obj.__proto__ 只要原型链上存在也会赋值。</p>
+</li>
+<li><p>其次，这里需要添加括号，或者是定义时进行解构赋值，这里的作用可能是避免大括号的影响了编译的判断。</p>
+</li>
+<li><p><strong>注意</strong>：赋值语句周围的圆括号 <code>( ... )</code> 在使用对象字面量无声明解构赋值时是必须的。 <code>&#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code> 不是有效的独立语法，因为左边的 <code>&#123;a, b&#125;</code> 被认为是一个块而不是对象字面量。</p>
+</li>
+<li><p>然而，<code>(&#123;a, b&#125; = &#123;a: 1, b: 2&#125;)</code> 是有效的，正如 <code>var &#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code>你的 <code>( ... )</code> 表达式之前需要有一个分号，否则它可能会被当成上一行中的函数执行。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let a,c;</span><br><span class="line">(&#123;a, c&#125; = obj);</span><br><span class="line">console.log(a, c);</span><br><span class="line"></span><br><span class="line">10, 30</span><br></pre></td></tr></table></figure>
+
+<p>​        or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;a, b&#125; = obj;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">10, 20</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-…rest-obj"><a href="#a-b-…rest-obj" class="headerlink" title="({a, b, …rest} = obj);"></a>({a, b, …rest} = obj);</h3><ul>
+<li>这里是将前面没有进行赋值的对象全部加入了最后一个对象。</li>
+<li>其次，最后一个是不会进入原型链进行查找赋值的。</li>
+<li>如果没有了，那么便会变成空对象。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">obj.__proto__ = &#123;</span><br><span class="line">  x: 1111,</span><br><span class="line">&#125;</span><br><span class="line">let &#123;a, ...res&#125; = obj;</span><br><span class="line">console.log(a, res);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-4-a-10-解构默认值"><a href="#a-4-a-10-解构默认值" class="headerlink" title="[a=4] / {a = 10} 解构默认值"></a>[a=4] / {a = 10} 解构默认值</h3><ul>
+<li>简单来说就是设置一个默认值，不会变成undefined</li>
+<li>对于对象也有效果 </li>
+<li>默认值可以是对象。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line"></span><br><span class="line">[a=5, b=7] = [1];    //[a=5, b=7] = [1, undefined]; ,就算是这样也是 1， 7</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(&#123;a=5, b=7&#125; = &#123;</span><br><span class="line">  a: 3,</span><br><span class="line">&#125;);</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br><span class="line"></span><br><span class="line">(&#123;a=5, b= &#123; x: 1 &#125;&#125; = &#123; a: 3 &#125;); 并且还能使用赋值默认对象效果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="a-b-b-a-交换变量"><a href="#a-b-b-a-交换变量" class="headerlink" title="[a, b] = [b, a]; 交换变量"></a>[a, b] = [b, a]; 交换变量</h3><ul>
+<li>交换的变量可以是对象，也可以是值类型。</li>
+<li>({a, b} = {b, a});  这个没有交换变量的效果。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a= &#123;a: 4&#125;,</span><br><span class="line">    b= &#123;x:3&#125;;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line">console.log(a, b);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="忽略值-a-b-arr"><a href="#忽略值-a-b-arr" class="headerlink" title="忽略值 [a, , b] = arr;"></a>忽略值 [a, , b] = arr;</h3><ul>
+<li>可以对不要的值不使用变量进行存储，使用 <code>, ,</code> 这样就能达到忽略的效果</li>
+<li>对象不能使用忽略值的效果，会报错，</li>
+<li><code>[, ,] = arr</code> ， 这样可以忽略全部返回值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">  return [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var [a, , b] = f();</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 3</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="命名赋值-p-foo-obj-别名"><a href="#命名赋值-p-foo-obj-别名" class="headerlink" title="命名赋值 {p: foo} = obj; 别名"></a>命名赋值 {p: foo} = obj; 别名</h3><ul>
+<li>只能用于对象</li>
+<li>可以将其重新命名。</li>
+<li>可以将命名赋值和默认值一同使用 {p:foo = 10}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;p: 42, q: true&#125;;</span><br><span class="line">var &#123;p: foo, q: bar&#125; = o;</span><br><span class="line"></span><br><span class="line">console.log(foo); // 42</span><br><span class="line">console.log(bar); // true </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法参数的赋值"><a href="#方法参数的赋值" class="headerlink" title="方法参数的赋值"></a>方法参数的赋值</h3><ul>
+<li>首先，function fn(op = {}) {}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function drawES2015Chart(&#123;size = &#x27;big&#x27;, cords = &#123; x: 0, y: 0 &#125;, radius = 25&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">上面这个写法很高级，但是有点难以理解。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;x: &#x27;x&#x27;, c: 1&#125;) &#123;&#125;</span><br><span class="line">这个写法，虽然可以理解了，但是如果传参时添加了一个参数便会全部覆盖，达不到想要的效果。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时如果没有传入参数则会变成一个空对象，然后我们再将这个o换成一个对象</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时，如果不传入参数，那么先是一个空对象，然后再将空对象赋值给了前面的，然后就会生成一个 x=3 的数了。</span><br><span class="line">如果传入的对象里面没有x，同样也是生成x=3的数。</span><br><span class="line">所以此时再去看最开始那个就应该能够看懂了</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125;) &#123;&#125;</span><br><span class="line">这里的区别，在于如果没有传入任何值，那么将会报错，而上面使用了空对象，可以不传递参数。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在上面的 <strong><code>drawES2015Chart</code></strong> 的函数签名中，解构的左手边被分配给右手边的空对象字面值：<code>&#123;size = &#39;big&#39;, cords = &#123;x: 0, y: 0&#125;, radius = 25&#125; = &#123;&#125;</code>。你也可以在没有右侧分配的情况下编写函数。但是，如果你忽略了右边的赋值，那么函数会在被调用的时候查找至少一个被提供的参数，而在当前的形式下，你可以直接调用 <code>**drawES2015Chart()**</code> 而不提供任何参数。如果你希望能够在不提供任何参数的情况下调用该函数，则当前的设计非常有用，而另一种方法在您确保将对象传递给函数时非常有用。</p>
+</blockquote>
+<h3 id="解构一个嵌套对象和数组"><a href="#解构一个嵌套对象和数组" class="headerlink" title="解构一个嵌套对象和数组"></a>解构一个嵌套对象和数组</h3><ul>
+<li>没啥讲的，但是却有点东西，对象别名使用了 []， 进行了数组赋值，然后再在里面进行了对象赋值，{}</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const metadata = &#123;</span><br><span class="line">  title: &#x27;Scratchpad&#x27;,</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">      locale: &#x27;de&#x27;,</span><br><span class="line">      localization_tags: [],</span><br><span class="line">      last_edit: &#x27;2014-04-14T08:43:37&#x27;,</span><br><span class="line">      url: &#x27;/de/docs/Tools/Scratchpad&#x27;,</span><br><span class="line">      title: &#x27;JavaScript-Umgebung&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  url: &#x27;/en-US/docs/Tools/Scratchpad&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let &#123;</span><br><span class="line">  title: englishTitle, // rename</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">       title: localeTitle, // rename</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125; = metadata;</span><br><span class="line"></span><br><span class="line">console.log(englishTitle); // &quot;Scratchpad&quot;</span><br><span class="line">console.log(localeTitle);  // &quot;JavaScript-Umgebung&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="for-of-迭代和解构"><a href="#for-of-迭代和解构" class="headerlink" title="for of 迭代和解构"></a>for of 迭代和解构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Mike Smith&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Jane Smith&#x27;,</span><br><span class="line">      father: &#x27;Harry Smith&#x27;,</span><br><span class="line">      sister: &#x27;Samantha Smith&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 35</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Tom Jones&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Norah Jones&#x27;,</span><br><span class="line">      father: &#x27;Richard Jones&#x27;,</span><br><span class="line">      brother: &#x27;Howard Jones&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 25</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var &#123;name: n, family: &#123;father: f&#125;&#125; of people) &#123;</span><br><span class="line">  console.log(&#x27;Name: &#x27; + n + &#x27;, Father: &#x27; + f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="计算属性名，可以被解构"><a href="#计算属性名，可以被解构" class="headerlink" title="计算属性名，可以被解构"></a>计算属性名，可以被解构</h3><ul>
+<li>简单来说，就是key变成了一个变量，然后使用[]， 来将一个常量换成了一个变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let key = &quot;z&quot;;</span><br><span class="line">let &#123; [key]: foo &#125; = &#123; z: &quot;bar&quot; &#125;;</span><br><span class="line"></span><br><span class="line">console.log(foo); // &quot;bar&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="无效的标识符作为一个属性名"><a href="#无效的标识符作为一个属性名" class="headerlink" title="无效的标识符作为一个属性名"></a>无效的标识符作为一个属性名</h3><p>在这里，fizz-buzz 是一个无效的变量名，我们使用字符串形式，然后加上别名进行操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123; &#x27;fizz-buzz&#x27;: true &#125;;</span><br><span class="line">const &#123; &#x27;fizz-buzz&#x27;: fizzBuzz &#125; = foo;</span><br><span class="line"></span><br><span class="line">console.log(fizzBuzz); // &quot;true&quot;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -355,7 +682,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-11 17:13:02" itemprop="dateModified" datetime="2021-11-11T17:13:02+08:00">2021-11-11</time>
+        <time title="修改时间：2021-11-11 22:08:17" itemprop="dateModified" datetime="2021-11-11T22:08:17+08:00">2021-11-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -384,12 +711,10 @@
           <p> <strong>注意：</strong></p>
 <p><strong>这里的内容为本人的理解，不敢保正。</strong></p>
 <h1 id="JavaScript原型链"><a href="#JavaScript原型链" class="headerlink" title="JavaScript原型链"></a>JavaScript原型链</h1><p>先看一张图，简单来说</p>
-<p>原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
+<p>​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
+<p>​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对应关系在于，一个方法的实例默认是没有constructor构造函数，此时这个实例就是一个单纯的底层实例，但是如果我们将一个构造函数的原型指向了这个实例，并且将这个实例的构造器指向了原型， 那么这个实例就已经算是一个原型了，此时就已经不是一个单纯的底层实例了。</p>
+<p>​        顶层的方法就是 Function，顶层的原型就是Object.prototype，而Object方法确实使用了Function的原型。</p>
 <img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
-
-
-
-
 
 
 
@@ -1160,319 +1485,6 @@
 <p>不满足以上两个条件就属于非简单请求</p>
 <h2 id="对于非简单请求，需要先进行预检请求-preflight"><a href="#对于非简单请求，需要先进行预检请求-preflight" class="headerlink" title="对于非简单请求，需要先进行预检请求(preflight)"></a>对于非简单请求，需要先进行预检请求(preflight)</h2><p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，否则就报错。</p>
 <p>​        204的状态表示了处理了请求，没有返回实体内容。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/%E7%8A%B6%E6%80%81%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/%E7%8A%B6%E6%80%81%E7%A0%81/" class="post-title-link" itemprop="url">状态码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 10:51:49 / 修改时间：11:04:56" itemprop="dateCreated datePublished" datetime="2021-11-06T10:51:49+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><h2 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a>1xx</h2><ul>
-<li><strong>100</strong><ul>
-<li>告诉客户端应该继续发送请求。</li>
-</ul>
-</li>
-</ul>
-<h2 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h2><ul>
-<li><strong>200</strong><ul>
-<li>表示服务器已经成功接收请求，并返回请求结果</li>
-</ul>
-</li>
-<li><strong>202</strong><ul>
-<li>表示服务器接受了请求，但是还没有处理</li>
-</ul>
-</li>
-<li><strong>204</strong><ul>
-<li>表示服务器处理了请求，但是没有返回任何实体内容</li>
-</ul>
-</li>
-<li><strong>206</strong><ul>
-<li>是对资源的部分请求，断点续传，下载时的</li>
-</ul>
-</li>
-</ul>
-<h2 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a>3xx</h2><ul>
-<li><strong>301</strong><ul>
-<li>永久重定向，客户端会保存新的链接。</li>
-</ul>
-</li>
-<li><strong>302</strong><ul>
-<li>临时重定向，一般如果不是资源的临时移动，都建议使用301，有很多好处</li>
-</ul>
-</li>
-<li><strong>303</strong><ul>
-<li>和302相同，但是明确表示客户端应当采用GET方法获取资源</li>
-</ul>
-</li>
-<li><strong>304</strong><ul>
-<li>命中协商缓存</li>
-</ul>
-</li>
-</ul>
-<h2 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a>4xx</h2><ul>
-<li><strong>400</strong><ul>
-<li>客户端发送的请求无法理解</li>
-</ul>
-</li>
-<li><strong>401</strong><ul>
-<li>请求需要通过HTTP认证</li>
-</ul>
-</li>
-<li><strong>403</strong><ul>
-<li>不允许访问资源，权限，未授权等</li>
-</ul>
-</li>
-<li><strong>404</strong><ul>
-<li>服务器没有的请求资源，路径错误等</li>
-</ul>
-</li>
-</ul>
-<h2 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a>5xx</h2><ul>
-<li><strong>500</strong><ul>
-<li>服务器错误</li>
-</ul>
-</li>
-<li><strong>503</strong><ul>
-<li>服务器负载</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/TCP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/" class="post-title-link" itemprop="url">TCP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 09:45:52 / 修改时间：10:46:49" itemprop="dateCreated datePublished" datetime="2021-11-06T09:45:52+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><ul>
-<li>首先TCP属于传输层</li>
-<li>面向连接的传输层协议</li>
-<li>一对一的连接</li>
-<li>提供可靠交付服务</li>
-<li>全双工通信</li>
-<li>面向字节流：指的是流入到进程或从进程流出的字节序列</li>
-</ul>
-<p>​        TCP并不关心应用一次把多长的报文发送到TCP缓存中，而是根据对方给出的窗口和当前网络拥塞的程度来决定一个报文应该包含多少个字节。</p>
-<h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h2><table>
-<thead>
-<tr>
-<th>TCP</th>
-<th>UDP</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面向连接</td>
-<td>无连接，即发送前不需要先建立连接</td>
-</tr>
-<tr>
-<td>提供可靠交互，无差错，不丢失，不重复，按序到达</td>
-<td>尽最大努力交付，不保证可靠交付</td>
-</tr>
-<tr>
-<td>面向字节流</td>
-<td>面向报文</td>
-</tr>
-<tr>
-<td>一对一的连接</td>
-<td>支持一对一，一对多的通信</td>
-</tr>
-<tr>
-<td>拥塞控制</td>
-<td>没有拥塞控制，所以不会使发送率降低，因此会出现丢包</td>
-</tr>
-<tr>
-<td>首部较大20字节</td>
-<td>只有8字节</td>
-</tr>
-</tbody></table>
-<h2 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h2><ul>
-<li>停止等待协议<ul>
-<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102234899.png" alt="image-20211106102234899" style="zoom: 67%;"></li>
-</ul>
-</li>
-<li>连续arq协议<ul>
-<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102310315.png" alt="image-20211106102310315" style="zoom:67%;"></li>
-</ul>
-</li>
-</ul>
-<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><ul>
-<li>滑动窗口<ul>
-<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102333564.png" alt="image-20211106102333564" style="zoom:67%;"></li>
-</ul>
-</li>
-</ul>
-<h2 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h2><p>​        慢开始和拥塞避免</p>
-<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102433477.png" alt="image-20211106102433477" style="zoom:67%;">
-
-<p>​        计算方式</p>
-<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102459740.png" alt="image-20211106102459740" style="zoom:67%;">
-
-
-
-<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102538627.png" alt="image-20211106102538627" style="zoom:67%;">
-
-<p>步骤：</p>
-<ul>
-<li>客户端主动打开，进行连接，SYN=1，seq=x，状态为SYN-SENT</li>
-<li>服务器处于LISTEN状态，等待客户端开始连接，接收到客户端的连接之后，返回 SYN=1，ACK=1，seq=y，ack=x+1，状态修改为SYN-RCVD</li>
-<li>客户端收到连接之后，发送 ACK=1，seq=x+1，ack=y+1，此时就代表了客户端已经成功收到，处于了ESTAB-LISHED状态。</li>
-<li>服务器收到之后，也处于了ESTAB-LISHED状态</li>
-<li>开始进行数据传送。</li>
-</ul>
-<p><strong>一句话简述</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">客户端发起连接请求，</span><br><span class="line">服务器收到连接请求，发送了确认报文。</span><br><span class="line">客户端收到确认报文，发送自己的确认报文，并准备传输数据。</span><br><span class="line">服务器收到了客户端的确认报文，准备接收数据。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106103554196.png" alt="image-20211106103554196" style="zoom:67%;">
-
-<p><strong>步骤：</strong></p>
-<p>客户端A，服务器B</p>
-<ul>
-<li>A主动关闭，发送 FIN=1，seq=u，状态置为 FIN-WAIT-1</li>
-<li>B收到关闭信息，先返回确认报文，ACK=1，seq=v，ack=u+1，状态：CLOSE-WAIT</li>
-<li>此时因为B可能还有数据传输或者数据处理，所以不会马上关闭</li>
-<li>A收到确认信息，状态：FIN-WAIT-2</li>
-<li>B数据传输结束，准备关闭，返回关闭确认，FIN=1，ACK=1，seq=w，ack=u+1，状态：LAST-ACK</li>
-<li>A收到了确认关闭的信息，发送确认收到报文，ACK=1，seq=u+1，ack=w+1，同时状态：TIME-WAIT。</li>
-<li>这里为什么A没有马上关闭是因为，如果B没有收到最后的确认报文，就不会关闭会重复发送，所以这里A等待了2MSL，（MSL叫做最长报文段寿命(Maximum Segment Lifetime)），所以在2MSL之后，关闭了连接，状态：closed</li>
-<li>B收到确认，关闭连接，状态：closed</li>
-</ul>
-<p><strong>一句话简述</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">客户端发送关闭，</span><br><span class="line">服务器确认收到并返回确认，但是此时服务器可能有数据进行传输，所以没有马上关闭</span><br><span class="line">服务器传输结束，返回关闭确认</span><br><span class="line">客户端收到关闭确认，返回确认</span><br><span class="line">服务器收到确认，关闭</span><br><span class="line">客户端等待了2MSL，来回最长报文段寿命后，关闭。</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
