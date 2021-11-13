@@ -133,13 +133,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -181,6 +181,227 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/14/Node%20JS/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/14/Node%20JS/Node%20JS%20%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Node JS 读取文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-14T00:00:00+08:00">2021-10-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:28:32" itemprop="dateModified" datetime="2021-10-26T15:28:32+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Node-JS/" itemprop="url" rel="index"><span itemprop="name">Node JS</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Node-JS/fs/" itemprop="url" rel="index"><span itemprop="name">fs</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Node-JS-读取文件"><a href="#Node-JS-读取文件" class="headerlink" title="Node JS 读取文件"></a>Node JS 读取文件</h1><p>在  <code>Node JS</code> 中文件 操作是使用的 <code>fs</code> 模块进行了读取操作。</p>
+<h4 id="使用Node-JS读取文件"><a href="#使用Node-JS读取文件" class="headerlink" title="使用Node JS读取文件"></a>使用<code>Node JS</code>读取文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>path</code> &lt;string&gt; | &lt;Buffer&gt; | &lt;URL&gt; | &lt;integer&gt; 文件名或文件描述符</li>
+<li>options   &lt;Object&gt; | &lt;string&gt;<ul>
+<li><code>encoding</code> &lt;null&gt; | &lt;string&gt; <strong>默认值:</strong> <code>null</code></li>
+<li><code>flag</code> &lt;string&gt;  <strong>默认值:</strong> <code>&#39;r&#39;</code>。</li>
+<li><code>signal</code> &lt;AbortSignal&gt;允许中止正在进行的读取文件</li>
+</ul>
+</li>
+<li>callback   &lt;Function&gt;<ul>
+<li><code>err</code>  &lt;Error&gt; | &lt;AggregateError&gt;</li>
+<li><code>data</code> &lt;string&gt; | &lt;Buffer&gt;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;./../source/Node JS 读取文件.md&#x27;, &#x27;utf8&#x27;, (err, data) =&gt; &#123;</span><br><span class="line">  if (err) &#123;</span><br><span class="line">    throw err;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  	//data 是一个 十六进制的buffer，所以使用toString转成字符。</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/13/%E9%9A%8F%E7%AC%94/hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/13/%E9%9A%8F%E7%AC%94/hexo/" class="post-title-link" itemprop="url">hexo基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-13 16:12:42" itemprop="dateCreated datePublished" datetime="2021-10-13T16:12:42+08:00">2021-10-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 09:48:36" itemprop="dateModified" datetime="2021-11-06T09:48:36+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>md文件和html的文件对应关系在那个 <code>db.json</code>， 它使用了hash，id以及其他。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="使用主题"><a href="#使用主题" class="headerlink" title="使用主题"></a>使用主题</h1><p>我这里使用的是next主题。这里有两个，一个应该是以前个人制作的。第二个是有一个组织进行了维护吧，具体没有了解过。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://theme-next.iissnan.com/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://theme-next.js.org/</span><br></pre></td></tr></table></figure>
+
+<p>这里可能会因为新的版本的原因网页不能显示，这里我去百度了。</p>
+<p>原因是hexo在5.0之后把swig给删除了需要自己手动安装，所以只需要安装一下 这个就行了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/zh-cn/docs/writing</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">layout， </span><br><span class="line">post， 会发表的</span><br><span class="line">draft， 草稿，不会发表的。私密的</span><br><span class="line">page， 就是页面，会在source文件里面生成你写的文件名字，然后在里面生成一个index.md，然后，你可以在你的页面上输入 url/文件夹的名字就可以访问了，用于写页面，首页，关于，标签等都是使用的这个方法。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h2><p>直接在md文档上写就完了。会自动转译的。</p>
+<h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/xjm850552586/article/details/84101345</span><br></pre></td></tr></table></figure>
+
+<p>使用插件  <code>hexo-asset-image</code></p>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br><span class="line">	清除缓存文件 ( db.json) 和生成的文件 ( public)。</span><br><span class="line">npx hexo g</span><br><span class="line">	生成静态文件</span><br><span class="line">nex hexo d</span><br><span class="line">	将静态文件上传</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里因为需要使用三个命令，很麻烦，所以就想着简单化一点。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开始是想着使用npm或者npx命令，自己写一个的，但是因为技术不够，所以还不会，后面了解了更多了之后再进行解决。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">所以，我是用的方式是，通过一个bat文件直接将这三个命令写下来，我只需要运行这个文件就行了。</span><br><span class="line">所以我在blog里面创建了一个 </span><br><span class="line">publish.bat</span><br><span class="line">然后直接在里面，写入</span><br><span class="line"></span><br><span class="line">call npx hexo clean</span><br><span class="line">call npx hexo g</span><br><span class="line">call npx hexo d</span><br><span class="line"></span><br><span class="line">这里需要在前面加上call方法。在批处理脚本中，call命令用来从一个批处理脚本中调用另一个批处理脚本。</span><br><span class="line">就这样就完成了。。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="gitee自动更新"><a href="#gitee自动更新" class="headerlink" title="gitee自动更新"></a>gitee自动更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用puppeteer模块</span><br><span class="line"></span><br><span class="line">但是因为我谷歌浏览器修改过位置，所以需要重新下载，所以我没有进行后续的操作了。</span><br><span class="line"></span><br><span class="line">https://www.jianshu.com/p/6460df84a099</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

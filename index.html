@@ -133,13 +133,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -181,6 +181,218 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/CSS/CSS%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/13/CSS/CSS%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">CSS伪类和伪元素</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-13 23:08:34 / 修改时间：23:20:54" itemprop="dateCreated datePublished" datetime="2021-11-13T23:08:34+08:00">2021-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CSS伪类和伪元素"><a href="#CSS伪类和伪元素" class="headerlink" title="CSS伪类和伪元素"></a>CSS伪类和伪元素</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes</span><br></pre></td></tr></table></figure>
+
+<p>​        伪类是选择器的一种，它用于选择处于特定状态的元素，比如当它们是这一类型的第一个元素时，或者是当鼠标指针悬浮在元素上面的时候。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用的是单冒号</span><br><span class="line">:</span><br></pre></td></tr></table></figure>
+
+<h3 id="行为伪类"><a href="#行为伪类" class="headerlink" title="行为伪类"></a>行为伪类</h3><p>​        一些伪类只会在用户以某种方式和文档交互的时候应用。这些<strong>用户行为伪类</strong>，有时叫做<strong>动态伪类</strong>，表现得就像是一个类在用户和元素交互的时候加到了元素上一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:hover,:focus</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div:hover &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements</span><br></pre></td></tr></table></figure>
+
+<p>​        伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。伪元素开头为双冒号<code>::</code>。</p>
+<blockquote>
+<p><strong>备注：</strong>一些早期的伪元素曾使用单冒号的语法，所以你可能会在代码或者示例中看到。现代的浏览器为了保持后向兼容，支持早期的带有单双冒号语法的伪元素。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">::before</span><br><span class="line">::after</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//before和after的伪元素 content是必须的。</span><br><span class="line">div::before &#123;</span><br><span class="line">	content: &#x27;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><ul>
+<li><p>伪元素是生成一个新的，或者表现的像是生成了一个新的HTML元素。</p>
+<p>伪类是选择处于某种状态的的元素。</p>
+</li>
+<li><p>伪元素是使用的 ::</p>
+<p>伪类是使用的 :</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E7%BB%84%E7%9A%84emptyItems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E7%BB%84%E7%9A%84emptyItems/" class="post-title-link" itemprop="url">数组的emptyItems</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-13 21:45:21 / 修改时间：22:23:16" itemprop="dateCreated datePublished" datetime="2021-11-13T21:45:21+08:00">2021-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数组的empty-items"><a href="#数组的empty-items" class="headerlink" title="数组的empty-items"></a>数组的empty-items</h1><h2 id="empty的产生"><a href="#empty的产生" class="headerlink" title="empty的产生"></a>empty的产生</h2><p>​        首先，先说一下如何产生empty</p>
+<ul>
+<li>使用 new Array函数进行创建，并没有初始化</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = new Array(10);</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 length方法重新定义了长度，长度比原来的数组长，那么会导致多余的变为 empty-items。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = [1];</span><br><span class="line">a.length = 10;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="empty的问题"><a href="#empty的问题" class="headerlink" title="empty的问题"></a>empty的问题</h2><p>​        开始我也没有在意这个empty的问题，但是后来发现对于empty-items 使用一些方法是不会进行循环的。这就造成了很大的问题。</p>
+<ul>
+<li>map等数组的高阶函数，</li>
+<li>forin循环</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let a = new Array(10);</span><br><span class="line"></span><br><span class="line">a.map((v) =&gt; &#123;</span><br><span class="line">  console.log(v);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">for (const key in a) &#123;</span><br><span class="line">  console.log(a[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        但是forof循环是可以的，fori循环也可以，输出的值就是undefined。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>当然具体的原因我也不知道，我们可以这样理解，JavaScript的数组也是一个特殊的对象形式，所以对于这些empty-items，其实并没有真正的存在，就类似于一种离散的数组形式，所以为什么循环不到，因为对于不存在的是无法循环的。但是为什么forof是可以循环的呢，我们也许可以这样思考，forof是使用的迭代器循环，所以并不是循环到了，只是这是一个数组的迭代器的形式，所以这样才成功的循环了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1232,207 +1444,6 @@
 </ul>
 <p>  使用nginx进行代理。这里我没有成功，不知道是哪的问题，大致好像是使用 rewired进行重定向操作。具体以后再说。</p>
 <h2 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h2><p>​        hash模式，简单来说就是使用的 url的#，因为url的#是不会参与请求，所以基本没有什么问题，除了不怎么好看之外。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/JavaScript/ES6/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/07/JavaScript/ES6/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">async和await的基本使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-07 10:34:28 / 修改时间：11:08:04" itemprop="dateCreated datePublished" datetime="2021-11-07T10:34:28+08:00">2021-11-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/Promise/" itemprop="url" rel="index"><span itemprop="name">Promise</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="async和await"><a href="#async和await" class="headerlink" title="async和await"></a>async和await</h1><p>​        简单来说就像是将一个异步转化为一个同步的操作。</p>
-<p>​        简单的使用方式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">async function name() &#123;</span><br><span class="line">	await xxx;</span><br><span class="line">	</span><br><span class="line">	return 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        首先，await需要在 async之内，否则会报错，其次await等待的是一个promise对象，否则就没有什么效果。</p>
-<p><strong>上面的函数的执行：</strong></p>
-<ul>
-<li>先执行了async函数，创建了一个Promise，此时为pending阶段</li>
-<li>然后进入函数内部，执行到了await部分。如果await后面接一个promise的行为，等待一个resolve的返回，async函数内部后面的一些方法不会执行，但是不会影响到外面的函数的继续 运行。</li>
-<li>接收到了resolve，将其值返回。</li>
-<li>然后继续运行，直到结束或return，有return x，则为resolve(x); 如果是返回一个promise方法，则获取其resolve或者reject进行执行。</li>
-</ul>
-<p>​        先看看示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">async function test() &#123;</span><br><span class="line"></span><br><span class="line">  let a = await new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      resolve(1);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">  &#125;)</span><br><span class="line">  console.log(a);</span><br><span class="line"></span><br><span class="line">  return 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test().then((res) =&gt; console.log(res));</span><br><span class="line">console.log(111);</span><br></pre></td></tr></table></figure>
-
-<p>​        我们分析一下：</p>
-<ul>
-<li>首先，可以知道a=1，test的resolve为3。</li>
-<li>然后就是执行的顺序了，</li>
-<li>async函数执行，发现是一个promise的方法，直接先执行后续函数。然后再执行promise，这个是调度的机制</li>
-<li>async函数内部执行，虽然a后面是一个promise方法，但是使用了await，所以后面的会等待。</li>
-<li>输出a，执行后面的，return 3</li>
-<li>return 3，就类似于了Promise.resolve(3)，所以test.then 可以调用。</li>
-</ul>
-<h2 id="reject处理"><a href="#reject处理" class="headerlink" title="reject处理"></a>reject处理</h2><p>​        我们同时也可以发现，如果在 async函数内部调用了reject，会直接抛出异常。</p>
-<p>​        此时我们的处理方式，一般来说趋向于使用try，catch进行错误捕获，然后对错误进行处理。</p>
-<p>对于错误的处理也有两种方式：</p>
-<ul>
-<li>```<br>async function test() {  let a = await new Promise((resolve, reject) =&gt; {<pre><code>setTimeout(() =&gt; &#123;
-  reject(1);
-&#125;, 100);
-</code></pre>
-  }).catch(e =&gt; console.log(‘err’));<br>  console.log(a);  return 123;<br>}test()<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* ```</span><br><span class="line">    try &#123;</span><br><span class="line">      a = await new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">          reject(1);</span><br><span class="line">        &#125;, 100);</span><br><span class="line">      &#125;);</span><br><span class="line">      console.log(a);</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      console.log(e + &#x27; -- &#x27;);</span><br><span class="line">      console.log(&#x27;err&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  输出：</span><br><span class="line">  1 --</span><br><span class="line">  err</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>注意点：</p>
-<p>​    这里catch的e，是reject传递的值。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/RESTful/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/%E9%9A%8F%E7%AC%94/RESTful/" class="post-title-link" itemprop="url">RESTful</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 15:24:20 / 修改时间：15:28:57" itemprop="dateCreated datePublished" datetime="2021-11-06T15:24:20+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h1><p>REST：<strong>Representational State Transfer</strong> 的简写</p>
-<p>就是表现层状态转化</p>
-<p>简单理解：</p>
-<ul>
-<li>url 表示的是一个资源，就是一个实体，一个具体的信息</li>
-<li>而操作作为一个HTTP请求路径和方法来进行一个体现。</li>
-<li>常用的方法操作：<ul>
-<li>GET：获取资源</li>
-<li>POST：新建或更新资源</li>
-<li>PUT：更新资源</li>
-<li>DELETE：删除资源</li>
-</ul>
-</li>
-<li>客户端通过HTTP的方法和路径，实现对服务器端资源进行操作。</li>
-</ul>
 
       
     </div>
