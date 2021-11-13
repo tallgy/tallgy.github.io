@@ -23,11 +23,11 @@
 <meta name="description" content="前言: JavaScript-DOM的监听方式1234567dom.addEventListener(&amp;#x27;click&amp;#x27;, function (e) &amp;#123;  console.log(&amp;#x27;father1 捕获&amp;#x27;);&amp;#125;, true);dom.onclick &#x3D; function (e) &amp;#123;  console.log(&amp;#x27;a2 冒泡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript-冒泡和捕获">
-<meta property="og:url" content="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/index.html">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/index.html">
 <meta property="og:site_name" content="tallgy&#39;s blog">
 <meta property="og:description" content="前言: JavaScript-DOM的监听方式1234567dom.addEventListener(&amp;#x27;click&amp;#x27;, function (e) &amp;#123;  console.log(&amp;#x27;father1 捕获&amp;#x27;);&amp;#125;, true);dom.onclick &#x3D; function (e) &amp;#123;  console.log(&amp;#x27;a2 冒泡">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png">
 <meta property="article:published_time" content="2021-10-29T02:54:26.000Z">
 <meta property="article:modified_time" content="2021-10-29T14:21:44.819Z">
 <meta property="article:author" content="tallgy">
@@ -36,14 +36,14 @@
 <meta property="article:tag" content="捕获">
 <meta property="article:tag" content="事件委托">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png">
+<meta name="twitter:image" content="http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png">
 
 
-<link rel="canonical" href="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
+<link rel="canonical" href="http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/","path":"2021/10/29/JavaScript/JavaScript-冒泡和捕获/","title":"JavaScript-冒泡和捕获"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/","path":"2021/10/29/JavaScript/概念/JavaScript-冒泡和捕获/","title":"JavaScript-冒泡和捕获"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>JavaScript-冒泡和捕获 | tallgy's blog</title>
@@ -142,18 +142,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -200,7 +200,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -275,7 +275,7 @@
 <p>​    给一张对应的图片。</p>
 </li>
 </ul>
-<img src="/2021/10/29/JavaScript/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png" alt="image-20210907141230550" style="zoom:67%;">
+<img src="/2021/10/29/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript-%E5%86%92%E6%B3%A1%E5%92%8C%E6%8D%95%E8%8E%B7/image-20210907141230550.png" alt="image-20210907141230550" style="zoom:67%;">
 
 <p>​        如何在创建一个点击监听的时候，同时定义是处于冒泡还是捕获阶段。</p>
 <p>​        通过一个 <code>addEventListener</code> 函数的参数，分别为 <strong>事件名， 回调函数， 在什么阶段执行</strong>。第三个参数就是判断是处于什么阶段的。<strong>true代表捕获阶段，false代表了冒泡阶段</strong>。</p>

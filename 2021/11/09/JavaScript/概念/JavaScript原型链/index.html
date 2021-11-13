@@ -23,13 +23,13 @@
 <meta name="description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 ​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。 ​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript原型链">
-<meta property="og:url" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
 <meta property="og:site_name" content="tallgy&#39;s blog">
 <meta property="og:description" content="注意： 这里的内容为本人的理解，不敢保正。 JavaScript原型链先看一张图，简单来说 ​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。 ​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png">
-<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png">
+<meta property="og:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png">
 <meta property="article:published_time" content="2021-11-09T12:57:32.000Z">
 <meta property="article:modified_time" content="2021-11-11T14:08:17.668Z">
 <meta property="article:author" content="tallgy">
@@ -37,14 +37,14 @@
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="原型链">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
+<meta name="twitter:image" content="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg">
 
 
-<link rel="canonical" href="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+<link rel="canonical" href="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/","path":"2021/11/09/JavaScript/JavaScript原型链/","title":"JavaScript原型链"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/","path":"2021/11/09/JavaScript/概念/JavaScript原型链/","title":"JavaScript原型链"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>JavaScript原型链 | tallgy's blog</title>
@@ -143,18 +143,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -264,7 +264,7 @@
 <p>​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
 <p>​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对应关系在于，一个方法的实例默认是没有constructor构造函数，此时这个实例就是一个单纯的底层实例，但是如果我们将一个构造函数的原型指向了这个实例，并且将这个实例的构造器指向了原型， 那么这个实例就已经算是一个原型了，此时就已经不是一个单纯的底层实例了。</p>
 <p>​        顶层的方法就是 Function，顶层的原型就是Object.prototype，而Object方法确实使用了Function的原型。</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
 
 
 
@@ -293,14 +293,14 @@
 <p>这里，可以考虑使用一个新的对象进行指定。如果我一个新对象</p>
 <h3 id="原型和构造器"><a href="#原型和构造器" class="headerlink" title="原型和构造器"></a>原型和构造器</h3><p>这里和Java的一个不同点</p>
 <p>我印象中，Java是子类有多个，父类越来越少的一种情况，</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png" alt="image-20211110100356010" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png" alt="image-20211110100356010" style="zoom:67%;">
 
 <p>​        一开始，我是这样思考的，构造函数和实例是对应的，而构造函数的原型应该是属于上层的一个实例了。</p>
 <p>​        但是你仔细观察，发现，一个构造函数的原型是和构造函数进行了对应。思想应该是每个实例都有一个原型，但是其原型默认是没有constructor的（这里可以使用 hasOwnProperty 进行证明）。我们所使用的constructor属性其实都是我们的实例的原型  __proto__ 中的constructor，但是实例的原型为什么会带有constructor，这里我的认为是，一个函数默认在词法编译阶段，会默认指向一个prototype，而这个行为就是 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fn.protorype = new Object();</span><br><span class="line">Fn.prototype.constructor = Fn;</span><br></pre></td></tr></table></figure>
 
 <p>​    简单来说，就是在没有指定的情况下，默认先创建一个顶级的对象实例，里面只有最原始的方法，然后再对这个实例创建一个本函数的构造行为。</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png" alt="image-20211110101346723" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png" alt="image-20211110101346723" style="zoom:67%;">
 
 <p>​        而这个JavaScript是每个子类，都会将父类进行一次实例的操作，所以造成了每个父类的实例和子类的构造函数一一对应了。</p>
 <h3 id="new-方法实现"><a href="#new-方法实现" class="headerlink" title="new 方法实现"></a>new 方法实现</h3><h4 id="new-关键字会进行如下的操作："><a href="#new-关键字会进行如下的操作：" class="headerlink" title="new 关键字会进行如下的操作："></a><strong><code>new</code> 关键字会进行如下的操作：</strong></h4><ol>
@@ -417,7 +417,7 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/11/10/JavaScript/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" rel="next" title="JavaScript箭头函数">
+                <a href="/2021/11/10/JavaScript/ES6/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" rel="next" title="JavaScript箭头函数">
                   JavaScript箭头函数 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>

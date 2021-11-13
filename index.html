@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/ES6%E9%9A%8F%E7%AC%941/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -203,7 +203,184 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/12/JavaScript/ES6%E9%9A%8F%E7%AC%941/" class="post-title-link" itemprop="url">ES6随笔1</a>
+          <a href="/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">高阶函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-13 11:17:08 / 修改时间：16:51:26" itemprop="dateCreated datePublished" datetime="2021-11-13T11:17:08+08:00">2021-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript-高阶函数"><a href="#JavaScript-高阶函数" class="headerlink" title="JavaScript 高阶函数"></a>JavaScript 高阶函数</h1><p>​        面试的时候我被问到了什么是高阶函数，当时就蒙了，现在去了解了一下。</p>
+<p>​        其实这个东西很简单，你也经常使用。只是听起来高大上罢了</p>
+<h2 id="函数是什么"><a href="#函数是什么" class="headerlink" title="函数是什么"></a>函数是什么</h2><p>​        说到高阶函数，我们需要知道函数的一些形式，我们也需要思考函数可以和变量一样进行传递吗</p>
+<p>​        在JavaScript中，函数实际上也是一个对象。每一个函数都是Function类型的一个实例。它既有 __proto__，也有 prototype。但是prototype才是它自身的，而 proto 是它原型的一个指向。</p>
+<h2 id="什么是高阶函数"><a href="#什么是高阶函数" class="headerlink" title="什么是高阶函数"></a>什么是高阶函数</h2><p>​        在这里我们知道了函数其实就是一个特殊的对象，所以其实可以进行传递，因此。</p>
+<p>​        高阶函数由此而来，高阶函数就是进行了函数的传递，不是将函数当成一个函数，而是当成一个对象进行传递。</p>
+<h2 id="常用的高阶函数的一些方法"><a href="#常用的高阶函数的一些方法" class="headerlink" title="常用的高阶函数的一些方法"></a>常用的高阶函数的一些方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map， reduce， sort 等等。</span><br></pre></td></tr></table></figure>
+
+<p>​        这里就不详细进行介绍。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map(Number);</span><br><span class="line"></span><br><span class="line">map是一个会将一个数组的值调用回调函数生成的值作为一个新的数组</span><br><span class="line">Number就是转数字，</span><br><span class="line"></span><br><span class="line">所以这两个的结合就是，会将数组的值挨个使用一次Number方法，将生成的结果进行返回。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/%E6%A6%82%E5%BF%B5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/12/JavaScript/%E6%A6%82%E5%BF%B5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="post-title-link" itemprop="url">函数柯里化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-12 16:57:59" itemprop="dateCreated datePublished" datetime="2021-11-12T16:57:59+08:00">2021-11-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-13 11:17:21" itemprop="dateModified" datetime="2021-11-13T11:17:21+08:00">2021-11-13</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript函数柯里化-Curry"><a href="#JavaScript函数柯里化-Curry" class="headerlink" title="JavaScript函数柯里化 Curry"></a>JavaScript函数柯里化 Curry</h1><p>​        就是说一次性只传入一个参数，后续的参数要后面才进行传递，可以实现函数的一个参数的复用效果。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>​        首先是要确认参数的个数，这里，我看到别人是使用的 fn.length，进行的获取，所以实验了一番，发现方法的length指的是参数的个数。</p>
+<p>​        使用fn.length获取了方法的参数的个数，使用剩余参数将传递进来的参数存放入数组，然后再个数足够时运行方法即可。</p>
+<p>​        一步一步的理解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// ...args，剩余参数，将后面的参数都作为一个数组进行实现。剩余参数必须放最后一个。</span><br><span class="line">function curry(fn, ...args) &#123;</span><br><span class="line">	// 将this的指向存储下来，后续调用时会用。</span><br><span class="line">  let _this = this;</span><br><span class="line">  //	fn.length，这个方法可以获取到方法的参数个数。</span><br><span class="line">  let len = fn.length;</span><br><span class="line"></span><br><span class="line">	//	同样的，返回一个方法，然后使用剩余参数法则。</span><br><span class="line">  return function (..._args) &#123;</span><br><span class="line">    // let _args = Object.values(arguments);</span><br><span class="line">    //这里使用的是 unshift，没有使用push，是因为，为了避免修改了前面的args值，所以是修改的每一次的_args，如果使用push的话，你对这个函数重复调用也会被存储进去，因为这个是上层的参数，是公用的。</span><br><span class="line">    _args.unshift(...args);</span><br><span class="line">    // console.log(arguments.callee);	//获取被调用的函数，这里报错了，原因没有看，因为这个方式已经不建议使用了。</span><br><span class="line"></span><br><span class="line">		//	这里是当参数的个数不够时，继续调用这个外层方法。</span><br><span class="line">    if (_args.length &lt; len) &#123;</span><br><span class="line">    	//这里，只能重新调用外层的方法，如果调用内层的方法的话，参数会无法添加成功，因为内层方法的参数是基于外层的添加。</span><br><span class="line">      return curry.call(_this, fn, ..._args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">		//	参数够了，调用方法。</span><br><span class="line">    return fn.apply(_this, _args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/ES6/ES6%E9%9A%8F%E7%AC%941/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/12/JavaScript/ES6/ES6%E9%9A%8F%E7%AC%941/" class="post-title-link" itemprop="url">ES6随笔1</a>
         </h2>
 
         <div class="post-meta-container">
@@ -318,7 +495,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/11/JavaScript/ES6/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -331,7 +508,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/11/JavaScript/JavaScript-ES6%E8%A7%A3%E6%9E%84/" class="post-title-link" itemprop="url">JavaScript-ES6解构</a>
+          <a href="/2021/11/11/JavaScript/ES6/JavaScript-ES6%E8%A7%A3%E6%9E%84/" class="post-title-link" itemprop="url">JavaScript-ES6解构</a>
         </h2>
 
         <div class="post-meta-container">
@@ -517,7 +694,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/10/JavaScript/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/10/JavaScript/ES6/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -530,7 +707,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/10/JavaScript/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript箭头函数</a>
+          <a href="/2021/11/10/JavaScript/ES6/JavaScript%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">JavaScript箭头函数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -651,7 +828,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -664,7 +841,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="post-title-link" itemprop="url">JavaScript原型链</a>
+          <a href="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="post-title-link" itemprop="url">JavaScript原型链</a>
         </h2>
 
         <div class="post-meta-container">
@@ -714,7 +891,7 @@
 <p>​        原型其实就是一个方法的实例，然后每一个方法的实例有一个__proto__ 的指向。这个指向会直到指到null为止。这样所生产的就是一个原型链，对于在本层找不到的方法，会通过原型链逐层向上查找。</p>
 <p>​        一个方法是和一个原型对应的，而一个原型又是一个另一个方法的实例，所以这里的对应关系在于，一个方法的实例默认是没有constructor构造函数，此时这个实例就是一个单纯的底层实例，但是如果我们将一个构造函数的原型指向了这个实例，并且将这个实例的构造器指向了原型， 那么这个实例就已经算是一个原型了，此时就已经不是一个单纯的底层实例了。</p>
 <p>​        顶层的方法就是 Function，顶层的原型就是Object.prototype，而Object方法确实使用了Function的原型。</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/290701352241158.jpg" alt="290701352241158" style="zoom:67%;">
 
 
 
@@ -743,14 +920,14 @@
 <p>这里，可以考虑使用一个新的对象进行指定。如果我一个新对象</p>
 <h3 id="原型和构造器"><a href="#原型和构造器" class="headerlink" title="原型和构造器"></a>原型和构造器</h3><p>这里和Java的一个不同点</p>
 <p>我印象中，Java是子类有多个，父类越来越少的一种情况，</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png" alt="image-20211110100356010" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110100356010.png" alt="image-20211110100356010" style="zoom:67%;">
 
 <p>​        一开始，我是这样思考的，构造函数和实例是对应的，而构造函数的原型应该是属于上层的一个实例了。</p>
 <p>​        但是你仔细观察，发现，一个构造函数的原型是和构造函数进行了对应。思想应该是每个实例都有一个原型，但是其原型默认是没有constructor的（这里可以使用 hasOwnProperty 进行证明）。我们所使用的constructor属性其实都是我们的实例的原型  __proto__ 中的constructor，但是实例的原型为什么会带有constructor，这里我的认为是，一个函数默认在词法编译阶段，会默认指向一个prototype，而这个行为就是 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fn.protorype = new Object();</span><br><span class="line">Fn.prototype.constructor = Fn;</span><br></pre></td></tr></table></figure>
 
 <p>​    简单来说，就是在没有指定的情况下，默认先创建一个顶级的对象实例，里面只有最原始的方法，然后再对这个实例创建一个本函数的构造行为。</p>
-<img src="/2021/11/09/JavaScript/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png" alt="image-20211110101346723" style="zoom:67%;">
+<img src="/2021/11/09/JavaScript/%E6%A6%82%E5%BF%B5/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/image-20211110101346723.png" alt="image-20211110101346723" style="zoom:67%;">
 
 <p>​        而这个JavaScript是每个子类，都会将父类进行一次实例的操作，所以造成了每个父类的实例和子类的构造函数一一对应了。</p>
 <h3 id="new-方法实现"><a href="#new-方法实现" class="headerlink" title="new 方法实现"></a>new 方法实现</h3><h4 id="new-关键字会进行如下的操作："><a href="#new-关键字会进行如下的操作：" class="headerlink" title="new 关键字会进行如下的操作："></a><strong><code>new</code> 关键字会进行如下的操作：</strong></h4><ol>
@@ -972,7 +1149,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/JavaScript/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/Vue/VueRouter%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -985,7 +1162,116 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/07/JavaScript/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">async和await的基本使用</a>
+          <a href="/2021/11/07/Vue/VueRouter%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">VueRouter两种模式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-07 13:33:21" itemprop="dateCreated datePublished" datetime="2021-11-07T13:33:21+08:00">2021-11-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-12 16:53:24" itemprop="dateModified" datetime="2021-11-12T16:53:24+08:00">2021-11-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/VueRouter/" itemprop="url" rel="index"><span itemprop="name">VueRouter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="VueRouter的两种模式"><a href="#VueRouter的两种模式" class="headerlink" title="VueRouter的两种模式"></a>VueRouter的两种模式</h1><p>有history 和 hash两个模式</p>
+<h2 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a>history模式</h2><p>在这里我先直接说一下history模式的问题，简单来说就是不能刷新页面，因为后端没有对其进行一个处理。</p>
+<p>这里开始我想了很久都没有理解是什么意思，并且在本地访问也没有任何问题，后面才知道，这个是需要发布的时候，正式访问才会出现的问题。</p>
+<p>首先，history模式在本地是没有问题的，只有在打包之后，运行那个dist文件夹服务才会发现</p>
+<p>其次，问题的复现很简单，</p>
+<ul>
+<li>先运行<strong>打包</strong>之后的项目，然后访问，注意，一定要打包之后的，如果直接运行server，你不会发现这个问题。</li>
+<li>此时一般都是 <code>http://localhost:3000</code> 这种，访问之后，url一般都会根据前端的路由进行一次变化 <code>http://localhost:3000/bookkeeping</code> 我这里就变成这样了。</li>
+<li>然后此时如果你刷新，请求的就是 <code>http://localhost:3000/bookkeeping</code> 而不是最开始那个，如果你没有对这个进行一个处理，那么就会404.</li>
+</ul>
+<p>解决方法，简单来说就是对没有的域名都进行一个跳转为index.html页面的情况。</p>
+<ul>
+<li> <strong>方式1</strong>：</li>
+</ul>
+<p>  这个方式的前提条件就是 前端和后端的项目是合并的。并不是一个分离式的开发。此时的话，我们也可以知道，前端的页面请求是先通过了后端，然后后端进行配置，对于一些没有的路径进行一个处理即可</p>
+<ul>
+<li> <strong>方式2</strong>：</li>
+</ul>
+<p>  前后端进行了分离，这个时候就对前端运行就好了。下面这个是Vue的一个例子，我们在dist文件里新建一个js文件作为一个启动文件。然后在这里进行了一个文件的拦截，就像是一种虽然前后端分离，但是实则还是有一个后端。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&#x27;http&#x27;)</span><br><span class="line">const fs = require(&#x27;fs&#x27;)</span><br><span class="line">const httpPort = 80</span><br><span class="line"></span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line">  fs.readFile(&#x27;index.html&#x27;, &#x27;utf-8&#x27;, (err, content) =&gt; &#123;</span><br><span class="line">    if (err) &#123;</span><br><span class="line">      console.log(&#x27;We cannot open &quot;index.html&quot; file.&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.writeHead(200, &#123;</span><br><span class="line">      &#x27;Content-Type&#x27;: &#x27;text/html; charset=utf-8&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    res.end(content)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(httpPort, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Server listening on: http://localhost:%s&#x27;, httpPort)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> <strong>方式3</strong>：</li>
+</ul>
+<p>  使用nginx进行代理。这里我没有成功，不知道是哪的问题，大致好像是使用 rewired进行重定向操作。具体以后再说。</p>
+<h2 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h2><p>​        hash模式，简单来说就是使用的 url的#，因为url的#是不会参与请求，所以基本没有什么问题，除了不怎么好看之外。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/JavaScript/ES6/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/07/JavaScript/ES6/async%E5%92%8Cawait%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">async和await的基本使用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1165,346 +1451,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/JavaScript/WebWorker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/JavaScript/WebWorker/" class="post-title-link" itemprop="url">WebWorker</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 14:49:25 / 修改时间：15:13:13" itemprop="dateCreated datePublished" datetime="2021-11-06T14:49:25+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="WebWorker"><a href="#WebWorker" class="headerlink" title="WebWorker"></a>WebWorker</h1><p>参考文章</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.ruanyifeng.com/blog/2018/07/web-worker.html</span><br><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>​        简单来说就是为JavaScript提供了多线程。一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。</p>
-<p><strong>注意点</strong>：</p>
-<ul>
-<li>同源的限制</li>
-<li>无法使用DOM对象，document，window，parent对象，可以使用navigator 和 location 对象。</li>
-<li>和主线程通过消息进行通信</li>
-<li>不能使用 alert 和 confirm 方法，但是可以使用 XMLHttpRequest 对象发出 AJAX 请求。</li>
-<li>无法读取本地文件。</li>
-</ul>
-<p><strong>用法</strong>：</p>
-<p>使用 new 调用 worker 函数，创建一个线程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const worker = new Worker(&#x27;xx.js&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>​        参数是一个脚本文件，这个文件必须来自网络</p>
-<h3 id="主线程："><a href="#主线程：" class="headerlink" title="主线程："></a>主线程：</h3><p>主线程通过 worker.postMessage() 向Worker发送消息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">worker.postMessage(&#x27;Hello World&#x27;);</span><br><span class="line">worker.postMessage(&#123;method: &#x27;echo&#x27;, args: [&#x27;Work&#x27;]&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>​        参数就是传给worker的数据</p>
-<p>主线程通过 worker.onmessage 监听函数，接收子线程发回的消息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">worker.onmessage = function (event) &#123;</span><br><span class="line">	event.data.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        事件对象的data属性可以获取 worker发来的数据</p>
-<p>主线程关闭worker线程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker.terminate();</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Worker线程"><a href="#Worker线程" class="headerlink" title="Worker线程"></a>Worker线程</h3><p>worker线程需要一个监听函数，监听 message 事件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(&#x27;message&#x27;, function(e) &#123;</span><br><span class="line">	self.postMessage(&#x27;said: &#x27;, e.data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>​        <code>self</code>代表子线程自身，即子线程的全局对象</p>
-<p>所以等同于 this. 和 直接创建</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.addEventListener();</span><br><span class="line">addEventListener();</span><br></pre></td></tr></table></figure>
-
-<p>​        也可以使用 self.onmessage 指定</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.onmessage = function (e) &#123;</span><br><span class="line">	self.postMessage(&#x27;said: &#x27;, e.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        监听函数的参数是一个事件对象，data属性是主线程发来的数据</p>
-<p>self.postMessage() 方法用来向主线程发送消息</p>
-<p>self.close() 用于在Worker内部关闭自身。</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="创建API"><a href="#创建API" class="headerlink" title="创建API"></a>创建API</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const worker = new Worker(jsUrl, options);</span><br><span class="line"></span><br><span class="line">var myWorker = new Worker(&#x27;worker.js&#x27;, &#123; name : &#x27;myWorker&#x27; &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>​        jsUrl,脚本网址,遵守同源策略，必须且是js脚本</p>
-<p>​        options是一个配置对象，其中一个作用就是指定worker名称用来区分线程。</p>
-<h2 id="主线程使用API"><a href="#主线程使用API" class="headerlink" title="主线程使用API"></a>主线程使用API</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Worker.onerror</span><br><span class="line">	指定 error 事件的监听函数。</span><br><span class="line">Worker.onmessage</span><br><span class="line">	指定 message 事件的监听函数，发送过来的数据在Event.data属性中。</span><br><span class="line">Worker.onmessageerror</span><br><span class="line">	指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</span><br><span class="line">Worker.postMessage()</span><br><span class="line">	向 Worker 线程发送消息。</span><br><span class="line">Worker.terminate()</span><br><span class="line">	立即终止 Worker 线程。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Worker线程使用API"><a href="#Worker线程使用API" class="headerlink" title="Worker线程使用API"></a>Worker线程使用API</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">self.name</span><br><span class="line">	Worker 的名字。该属性只读，由构造函数指定。</span><br><span class="line">self.onmessage</span><br><span class="line">	指定message事件的监听函数。</span><br><span class="line">self.onmessageerror</span><br><span class="line">	指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</span><br><span class="line">self.close()</span><br><span class="line">	关闭 Worker 线程。</span><br><span class="line">self.postMessage()</span><br><span class="line">	向产生这个 Worker 线程发送消息。</span><br><span class="line">self.importScripts()</span><br><span class="line">	加载 JS 脚本。</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/Cookie%E3%80%81SessionStorage%E3%80%81LocalStorage%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/Cookie%E3%80%81SessionStorage%E3%80%81LocalStorage%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">Cookie、SessionStorage、LocalStorage的区别</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 13:35:43 / 修改时间：15:17:55" itemprop="dateCreated datePublished" datetime="2021-11-06T13:35:43+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Cookie、SessionStorage、LocalStorage的区别"><a href="#Cookie、SessionStorage、LocalStorage的区别" class="headerlink" title="Cookie、SessionStorage、LocalStorage的区别"></a>Cookie、SessionStorage、LocalStorage的区别</h1><p><strong>共同点：</strong></p>
-<ul>
-<li>保存于浏览器端</li>
-<li>属于同源</li>
-</ul>
-<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><ul>
-<li>数据始终在同源的HTTP请求中携带，即使不需要。</li>
-<li>存在路径的概念，可以限制cookie只属于某个路径。</li>
-<li>存储的大小只有4k左右。</li>
-<li>一般由服务器生成，设置过期时间，如果不设置过期时间，则表示这个cookie生命周期为浏览器会话期间，只要关闭浏览器窗口，cookie就消失了。</li>
-</ul>
-<p>使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JavaScript</span><br><span class="line">	document.cookie = &#x27;key=value&#x27;;</span><br><span class="line">	</span><br><span class="line">HTTP响应头的 set-cookie</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="安全机制"><a href="#安全机制" class="headerlink" title="安全机制"></a>安全机制</h3><ul>
-<li>响应头中setCookie设置HttpOnly 使JavaScript无法进行获取。</li>
-<li>响应头设置 secure，告诉浏览器仅在HTTPS请求发送cookie</li>
-<li>人为的设置时间，以及对key和value进行一些随机的生成。</li>
-</ul>
-<h2 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h2><ul>
-<li>存储时间：浏览器窗口关闭前有效，就是一个标签页。在标签页中，进行刷新也不会消失，但是关闭就会消失。</li>
-<li>即使是同域名下的页面，只要不在同一浏览器窗口打开，那么他们的SessionStorage无法共享。</li>
-<li>大小限制 5M</li>
-<li>不和服务器进行通信，仅客户端使用</li>
-</ul>
-<p><strong>使用</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(key, value);</span><br><span class="line">sessionStorage.getItem(key);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h2><ul>
-<li>存储时间：永久有效。用作持久数据</li>
-<li>同源的页面可以访问，不同于SessionStorage。</li>
-<li>其他基本和SessionStorage相同。</li>
-<li>基于上面的特点，LocalStorage可以作为浏览器的本地缓存方案，用来提升网页首屏渲染速度（根据第一请求返回时，将一些不变的信息直接存储在本地）</li>
-</ul>
-<p><strong>使用</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(key, value);</span><br><span class="line">localStorage.getItem(key);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/06/%E9%9A%8F%E7%AC%94/fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="post-title-link" itemprop="url">fetch发送2次请求的原因</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-06 13:20:43 / 修改时间：13:33:54" itemprop="dateCreated datePublished" datetime="2021-11-06T13:20:43+08:00">2021-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="fetch发送2次请求的原因"><a href="#fetch发送2次请求的原因" class="headerlink" title="fetch发送2次请求的原因"></a>fetch发送2次请求的原因</h1><p>fetch发送post请求的时候，总是发送2次，第一次状态码是204，第二次才成功？</p>
-<p>原因很简单，因为你用fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求。</p>
-<h2 id="先说产生的前提条件"><a href="#先说产生的前提条件" class="headerlink" title="先说产生的前提条件"></a>先说产生的前提条件</h2><ul>
-<li>请求不同源</li>
-<li>不属于简单请求</li>
-</ul>
-<h2 id="请求不同源"><a href="#请求不同源" class="headerlink" title="请求不同源"></a>请求不同源</h2><p>同源的概念：</p>
-<p>​        如果两个 URL 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Protocol">protocol</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Port">port (en-US)</a> (如果有指定的话)和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Host">host</a> 都相同的话，则这两个 URL 是<em>同源</em>。这个方案也被称为“协议/主机/端口元组”，或者直接是 “元组”。</p>
-<p>所以简单来说，因为浏览器的安全策略，所以对于不同源的请求是不会成功的。</p>
-<h2 id="不属于简单请求"><a href="#不属于简单请求" class="headerlink" title="不属于简单请求"></a>不属于简单请求</h2><p>简单请求：</p>
-<ul>
-<li>请求方法是以下三个方法：<ul>
-<li>HEAD, GET, POST</li>
-</ul>
-</li>
-<li>HTTP的头信息不超出以下几种字段<ul>
-<li>Accept， Accept-Language， Content-Language， Last-Event-ID， Content-Type(只限于三个值<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>、<code>text/plain</code>)</li>
-</ul>
-</li>
-</ul>
-<p>不满足以上两个条件就属于非简单请求</p>
-<h2 id="对于非简单请求，需要先进行预检请求-preflight"><a href="#对于非简单请求，需要先进行预检请求-preflight" class="headerlink" title="对于非简单请求，需要先进行预检请求(preflight)"></a>对于非简单请求，需要先进行预检请求(preflight)</h2><p>​        浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的<code>XMLHttpRequest</code>请求，否则就报错。</p>
-<p>​        204的状态表示了处理了请求，没有返回实体内容。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
