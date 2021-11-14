@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -181,6 +181,229 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/14/JavaScript/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/14/JavaScript/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">数组的方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-14 10:04:13 / 修改时间：15:54:49" itemprop="dateCreated datePublished" datetime="2021-11-14T10:04:13+08:00">2021-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><h3 id="from"><a href="#from" class="headerlink" title="from"></a>from</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from"><code>Array.from()</code></a></p>
+<p>​        从类数组对象或者可迭代对象中创建一个新的数组实例</p>
+<p>​        就是生成一个数组</p>
+<h3 id="isArray"><a href="#isArray" class="headerlink" title="isArray"></a>isArray</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray"><code>Array.isArray()</code></a></p>
+<p>​        用来判断某个变量是否是一个数组对象</p>
+<h3 id="of"><a href="#of" class="headerlink" title="of"></a>of</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/of"><code>Array.of()</code></a></p>
+<p>​    根据一组参数来创建新的数组实例，支持任意的参数数量和类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Array.of(1, 4)</span><br><span class="line">[1, 4]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><h3 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat"><code>Array.prototype.concat()</code></a></p>
+<p>​        用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.concat(b)</span><br><span class="line">也可以使用下面这个方式进行合并。</span><br><span class="line">[...a, ...b]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="copyWithin"><a href="#copyWithin" class="headerlink" title="copyWithin"></a>copyWithin</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin"><code>Array.prototype.copyWithin()</code></a></p>
+<p>​        浅复制数组的一部分到同一数组中的另一个位置，并返回它，不会改变原数组的长度</p>
+<p>​        注意，这个是浅复制。</p>
+<h3 id="entries"><a href="#entries" class="headerlink" title="entries"></a>entries</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/entries"><code>Array.prototype.entries()</code></a></p>
+<p>​        返回一个新的 <code>Array Iterator</code> 对象，该对象包含数组中每个索引的键/值对</p>
+<p>​        Iterator 是一个迭代器，有的循环需要使用迭代器进行循环。</p>
+<h3 id="every"><a href="#every" class="headerlink" title="every"></a>every</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every"><code>Array.prototype.every()</code></a></p>
+<p>​        测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值</p>
+<p>​        every里面有两个参数，一个是回调函数，一个是this的指向。</p>
+<p>​        every里面是一个回调函数，然后回调函数的参数分别为 值，下标和原数组本身，然后会执行里面的方法，进行Boolean进行判断是否为true，只有所有的数组都为true才为true。</p>
+<p>​        这里，为什么我会认为是使用的Boolean()来对返回值进行的判断呢。因为如果你 return []; 发现是true，但是如果你对 []==true 发现是false，所以他是使用的Boolean进行的判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(a.every((value, index, arr) =&gt; &#123;</span><br><span class="line">  return value == index;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+
+<p>​        简易实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.every = function (callback, thisArg) &#123;</span><br><span class="line">  let arr = this;</span><br><span class="line">  thisArg = thisArg || this;</span><br><span class="line">  for (const key in arr) &#123;</span><br><span class="line">    if (!Boolean(callback.call(thisArg, arr[key], key, arr))) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill"><code>Array.prototype.fill()</code></a></p>
+<p>​        用一个固定值填充一个数组中从起始索引到终止索引内的全部元素</p>
+<p>​        有三个参数，第一个是必须的。三个参数分别是：填充值value，起始索引start，终止索引end。</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>Array.prototype.filter()</code></a></p>
+<p>​        创建一个新数组, 其包含通过所提供函数实现的测试的所有元素</p>
+<p>​        里面的参数也是一样，一个回调和一个this指向。</p>
+<p>​        使用方式和上面的every一样，这个回调函数的作用是将返回true的加入一个数组，最后再将这个数组返回，常用于过滤条件。</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find"><code>Array.prototype.find()</code></a></p>
+<p>​        返回数组中满足提供的测试函数的第一个元素的值。否则返回 <code>undefined</code></p>
+<p>​        参数还是一样，一个回调一个this指向</p>
+<p>​        会将第一个满足的尽心返回便结束，并不会返回一个数组，只是返回单个元素。 或者 undefined</p>
+<h3 id="findIndex"><a href="#findIndex" class="headerlink" title="findIndex"></a>findIndex</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex"><code>Array.prototype.findIndex()</code></a></p>
+<p>​        返回数组中满足提供的测试函数的第一个元素的<strong>索引</strong>。若没有找到对应元素则返回 <code>-1</code></p>
+<p>​        同上 callback，thisArg</p>
+<p>​        效果：返回通过的第一个的索引，或者 -1</p>
+<h3 id="flat"><a href="#flat" class="headerlink" title="flat"></a>flat</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat"><code>Array.prototype.flat()</code></a></p>
+<p>​        按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
+<p>​        常用于数组的扁平化操作，参数是递归的深度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = [1, 5, 2, [1], [[[[[[[[[2, 3]]]]]]]]]];</span><br><span class="line">console.log(a.flat(Infinity))</span><br><span class="line"></span><br><span class="line">[ 1, 5, 2, 1, 2, 3 ]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"><code>Array.prototype.flatMap()</code></a></p>
+<p>​        使用映射函数映射每个元素，然后将结果压缩成一个新数组</p>
+<p>​        简单来说，就是先使用map生成一系列新的数组，然后再使用flat进行扁平化操作，记住是1层的扁平化。</p>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"><code>Array.prototype.forEach()</code></a></p>
+<p>​        对数组的每个元素执行一次给定的函数</p>
+<p>​        分别是回调函数和一个this指向。会对每个参数都执行一次里面的方法，没有返回值。</p>
+<h3 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes"><code>Array.prototype.includes()</code></a></p>
+<p>​        判断一个数组是否包含一个指定的值，如果包含则返回 <code>true</code>，否则返回 <code>false</code></p>
+<p>​        第一个是指定值，第二个是可选参数index</p>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf"><code>Array.prototype.indexOf()</code></a></p>
+<p>​        返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回 <code>-1</code></p>
+<p>​        第一个是要查找的参数，第一个是从index值开始查找。包含index值</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/join"><code>Array.prototype.join()</code></a></p>
+<p>​        将一个数组的所有元素连接成一个字符串并返回这个字符串</p>
+<p>​        参数是一个分隔符。默认是 ，</p>
+<h3 id="keys"><a href="#keys" class="headerlink" title="keys"></a>keys</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/keys"><code>Array.prototype.keys()</code></a></p>
+<p>​        返回一个包含数组中每个索引键的 <code>Array Iterator</code> 对象</p>
+<h3 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf"><code>Array.prototype.lastIndexOf()</code></a></p>
+<p>​        返回指定元素在数组中的最后一个的索引，如果不存在则返回 <code>-1</code></p>
+<p>​        第一个是要查找的元素，第二个是从此位置开始逆向查找。默认为数组的长度减 1(<code>arr.length - 1</code>)，即整个数组都被查找。如果该值大于或等于数组的长度，则整个数组会被查找。如果为负值，将其视为从数组末尾向前的偏移（-1就是最后一个位置。）。即使该值为负，数组仍然会被从后向前查找。如果该值为负时，其绝对值大于数组长度，则方法返回 -1，即数组不会被查找。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = [0, 1, 2];</span><br><span class="line">console.log(a.lastIndexOf(0, 0))	//0</span><br><span class="line">console.log(a.lastIndexOf(2, -1))	//2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><code>Array.prototype.map()</code></a></p>
+<p>​        返回一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值</p>
+<p>​        第一个是回调函数，第二个是this指向。返回的是调用回调函数之后返回的结果组成的数组。</p>
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop"><code>Array.prototype.pop()</code></a></p>
+<p>​        从数组中删除最后一个元素，并返回该元素的值</p>
+<p>​        是通过的length属性进行的操作，所以如果是在类数组上进行操作，没有length或者length不能转成数字则为0，并返回undefined。</p>
+<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>Array.prototype.push()</code></a></p>
+<p>​        将一个或多个元素添加到数组的末尾，并返回该数组的新长度</p>
+<p>​        同上，使用的length。</p>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce()</code></a></p>
+<p>​        对数组中的每个元素执行一个由您提供的reducer函数（升序执行），将其结果汇总为单个返回值</p>
+<p>​        回调函数和一个初始值的参数，回调函数的参数分别为：累计值，当前值，下标和数组</p>
+<p>​        行为简单来说就是，如果有初始值则取初始值，如果没有初始值那么便为0，这个初始值会作为回调函数的第一个参数，然后再调用数组进行循环，然后将值返回，用于下一次回调函数的初始值，常用于累加操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a = [1, 2, 3];</span><br><span class="line">a.reduce((total, cur) =&gt; &#123;</span><br><span class="line">	return total + cur;</span><br><span class="line">&#125;, 0);</span><br><span class="line">//6</span><br></pre></td></tr></table></figure>
+
+<p>​        回调函数第一次执行时，<code>accumulator</code> 和<code>currentValue</code>的取值有两种情况：如果调用<code>reduce()</code>时提供了<code>initialValue</code>，<code>accumulator</code>取值为<code>initialValue</code>，<code>currentValue</code>取数组中的第一个值；如果没有提供 <code>initialValue</code>，那么<code>accumulator</code>取数组中的第一个值，<code>currentValue</code>取数组中的第二个值。</p>
+<h3 id="reduceRight"><a href="#reduceRight" class="headerlink" title="reduceRight"></a>reduceRight</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/ReduceRight"><code>Array.prototype.reduceRight()</code></a></p>
+<p>​        接受一个函数作为累加器（accumulator）和数组的每个值（从右到左）将其减少为单个值</p>
+<p>​        和reduce差不多，就是这个是从右向左进行的操作。</p>
+<h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse"><code>Array.prototype.reverse()</code></a></p>
+<p>​        将数组中元素的位置颠倒，并返回该数组。该方法会改变原数组</p>
+<h3 id="shift"><a href="#shift" class="headerlink" title="shift"></a>shift</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"><code>Array.prototype.shift()</code></a></p>
+<p>​        从数组中删除第一个元素，并返回该元素的值</p>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice"><code>Array.prototype.slice()</code></a></p>
+<p>​        提取源数组的一部分并返回一个新数组</p>
+<p>​        第一个参数，起始值，默认0。第二个参数结束值。</p>
+<p>​        不包含结束值，但是包含起始值</p>
+<h3 id="come"><a href="#come" class="headerlink" title="come"></a>come</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some"><code>Array.prototype.some()</code></a></p>
+<p>​        测试数组中是不是至少有一个元素通过了被提供的函数测试</p>
+<p>​        同every，但是一个通过即可。</p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"><code>Array.prototype.sort()</code></a></p>
+<p>​        对数组元素进行原地排序并返回此数组</p>
+<p>​        默认是使用的字符串进行的排序，所以需要自己定义一个排序的形式。</p>
+<p>​        参数可选，是一个回调函数<strong>compareFunction</strong>，代表了用于比较的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">compareFunction(a, b) 小于0， 那么a会排到b之前。</span><br><span class="line">compareFunction(a, b) 等于0， 那么a和b的位置不会发生改变。</span><br><span class="line">compareFunction(a, b) 大于0， 那么b会排到a之前。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"><code>Array.prototype.splice()</code></a></p>
+<p>​        通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容</p>
+<p>​        参数：startIndex，开始的位置， deleteCount，要删除的个数，默认后面全部删除， item1，item2，要添加的元素。默认不添加。</p>
+<h3 id="toLocaleString-NaN"><a href="#toLocaleString-NaN" class="headerlink" title="toLocaleString"></a>toLocaleString</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString"><code>Array.prototype.toLocaleString()</code></a></p>
+<p>​        返回一个字符串表示数组中的元素。数组中的元素将使用各自的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toLocaleString"><code>Object.prototype.toLocaleString()</code></a> 方法转成字符串</p>
+<p>​        这个我没有看懂，好像是将数组的内容，按照区域或者类型的规则转换成特殊的字符串。</p>
+<p>​        不会修改原数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var prices = [&#x27;￥7&#x27;, 500, 8123, 12];</span><br><span class="line">prices.toLocaleString(&#x27;ja-JP&#x27;, &#123; style: &#x27;currency&#x27;, currency: &#x27;JPY&#x27; &#125;);</span><br><span class="line"></span><br><span class="line">// &quot;￥7,￥500,￥8,123,￥12&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toString"><code>Array.prototype.toString()</code></a></p>
+<p>​        返回一个字符串表示指定的数组及其元素。数组中的元素将使用各自的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString"><code>Object.prototype.toString()</code></a> 方法转成字符串</p>
+<p>​        toString方法，没啥可说的。</p>
+<h3 id="unshift"><a href="#unshift" class="headerlink" title="unshift"></a>unshift</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift"><code>Array.prototype.unshift()</code></a></p>
+<p>​        将一个或多个元素添加到数组的头部，并返回该数组的新长度</p>
+<p>下面这两个和迭代器相关，现在我没有学迭代器，代我们迭代器学了之后再进行了解。</p>
+<h3 id="values"><a href="#values" class="headerlink" title="values"></a>values</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/values"><code>Array.prototype.values()</code></a></p>
+<p>​        返回一个新的 <code>Array Iterator 对象</code>，该对象包含数组每个索引的值</p>
+<p>​        返回的是一个迭代器的对象，iterator，使用forof进行循环可以取出值。</p>
+<h3 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/@@iterator"><code>Array.prototype[@@iterator]()</code></a></p>
+<p>​        返回一个新的 <code>Array Iterator 对象</code>，该对象包含数组每个索引的值</p>
+<p>​        </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1335,115 +1558,6 @@
 <p>​        <code>setImmediate()</code> 实际上是一个在事件循环的单独阶段运行的特殊计时器。它使用一个 libuv API 来安排回调在 <strong>轮询</strong> 阶段完成后执行。</p>
 <h4 id="关闭的回调函数"><a href="#关闭的回调函数" class="headerlink" title="关闭的回调函数"></a>关闭的回调函数</h4><p>​        如果套接字或处理函数突然关闭（例如 <code>socket.destroy()</code>），则<code>&#39;close&#39;</code> 事件将在这个阶段发出。否则它将通过 <code>process.nextTick()</code> 发出。</p>
 <p>​        任何时候在给定的阶段中调用 <code>process.nextTick()</code>，所有传递到 <code>process.nextTick()</code> 的回调将在事件循环继续之前解析。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/07/Vue/VueRouter%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/07/Vue/VueRouter%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">VueRouter两种模式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-07 13:33:21" itemprop="dateCreated datePublished" datetime="2021-11-07T13:33:21+08:00">2021-11-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-12 16:53:24" itemprop="dateModified" datetime="2021-11-12T16:53:24+08:00">2021-11-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Vue/VueRouter/" itemprop="url" rel="index"><span itemprop="name">VueRouter</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="VueRouter的两种模式"><a href="#VueRouter的两种模式" class="headerlink" title="VueRouter的两种模式"></a>VueRouter的两种模式</h1><p>有history 和 hash两个模式</p>
-<h2 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a>history模式</h2><p>在这里我先直接说一下history模式的问题，简单来说就是不能刷新页面，因为后端没有对其进行一个处理。</p>
-<p>这里开始我想了很久都没有理解是什么意思，并且在本地访问也没有任何问题，后面才知道，这个是需要发布的时候，正式访问才会出现的问题。</p>
-<p>首先，history模式在本地是没有问题的，只有在打包之后，运行那个dist文件夹服务才会发现</p>
-<p>其次，问题的复现很简单，</p>
-<ul>
-<li>先运行<strong>打包</strong>之后的项目，然后访问，注意，一定要打包之后的，如果直接运行server，你不会发现这个问题。</li>
-<li>此时一般都是 <code>http://localhost:3000</code> 这种，访问之后，url一般都会根据前端的路由进行一次变化 <code>http://localhost:3000/bookkeeping</code> 我这里就变成这样了。</li>
-<li>然后此时如果你刷新，请求的就是 <code>http://localhost:3000/bookkeeping</code> 而不是最开始那个，如果你没有对这个进行一个处理，那么就会404.</li>
-</ul>
-<p>解决方法，简单来说就是对没有的域名都进行一个跳转为index.html页面的情况。</p>
-<ul>
-<li> <strong>方式1</strong>：</li>
-</ul>
-<p>  这个方式的前提条件就是 前端和后端的项目是合并的。并不是一个分离式的开发。此时的话，我们也可以知道，前端的页面请求是先通过了后端，然后后端进行配置，对于一些没有的路径进行一个处理即可</p>
-<ul>
-<li> <strong>方式2</strong>：</li>
-</ul>
-<p>  前后端进行了分离，这个时候就对前端运行就好了。下面这个是Vue的一个例子，我们在dist文件里新建一个js文件作为一个启动文件。然后在这里进行了一个文件的拦截，就像是一种虽然前后端分离，但是实则还是有一个后端。</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&#x27;http&#x27;)</span><br><span class="line">const fs = require(&#x27;fs&#x27;)</span><br><span class="line">const httpPort = 80</span><br><span class="line"></span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line">  fs.readFile(&#x27;index.html&#x27;, &#x27;utf-8&#x27;, (err, content) =&gt; &#123;</span><br><span class="line">    if (err) &#123;</span><br><span class="line">      console.log(&#x27;We cannot open &quot;index.html&quot; file.&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.writeHead(200, &#123;</span><br><span class="line">      &#x27;Content-Type&#x27;: &#x27;text/html; charset=utf-8&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    res.end(content)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(httpPort, () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Server listening on: http://localhost:%s&#x27;, httpPort)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li> <strong>方式3</strong>：</li>
-</ul>
-<p>  使用nginx进行代理。这里我没有成功，不知道是哪的问题，大致好像是使用 rewired进行重定向操作。具体以后再说。</p>
-<h2 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h2><p>​        hash模式，简单来说就是使用的 url的#，因为url的#是不会参与请求，所以基本没有什么问题，除了不怎么好看之外。</p>
 
       
     </div>
