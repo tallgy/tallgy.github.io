@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,597 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-24 10:53:12" itemprop="dateCreated datePublished" datetime="2021-10-24T10:53:12+08:00">2021-10-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-26 15:19:12" itemprop="dateModified" datetime="2021-10-26T15:19:12+08:00">2021-10-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="border-radius的原理和使用"><a href="#border-radius的原理和使用" class="headerlink" title="border-radius的原理和使用"></a>border-radius的原理和使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>首先我们可以知道 <code>border-radius</code> 是四个属性的简写，所以我们先理解四个属性的值的效果。</p>
+<p><code>border-top-right-radius</code> <code>border-top-left-radius</code></p>
+<p> <code>border-bottom-right-radius</code> <code>border-bottm-left-radius</code></p>
+<p>我们取其中一个</p>
+<p><code>border-top-right-radius</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
+
+<p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
+
+<p>通过例子也可以知道，对于一个值，说明了 横轴<code>horizontal</code> 和 数轴<code>vertical</code> 的值相等，对于两个值，那么就说明了第一值是横轴，第二个值是数轴。</p>
+<p>然后得到横轴和数轴的半径后，相对进行偏移，然后画出一个圆形或者一个椭圆形，所裁剪出来的值。就是得到的效果。</p>
+<p>对于值是%的，那么宽度就会相对于宽度，高度就会相对于高度。</p>
+<h3 id="对于超过-50-的计算方式"><a href="#对于超过-50-的计算方式" class="headerlink" title="对于超过 50% 的计算方式"></a>对于超过 50% 的计算方式</h3><p>原文链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/20128284</span><br></pre></td></tr></table></figure>
+
+<p>简单来说就是对于 <strong>相邻的角的半径和超过了对应的盒子的边的长度，那么浏览器要重新计算保证它们不会重合。</strong></p>
+<p>就是会同时进行缩放。来保证不会重合。</p>
+<h2 id="水平和垂直从哪个位置开始偏移"><a href="#水平和垂直从哪个位置开始偏移" class="headerlink" title="水平和垂直从哪个位置开始偏移"></a>水平和垂直从哪个位置开始偏移</h2><h3 id="我们先看使用px的计算"><a href="#我们先看使用px的计算" class="headerlink" title="我们先看使用px的计算"></a>我们先看使用px的计算</h3><p>先说结果，结果是，<strong>px的计算是相对于border的位置开始的偏移。</strong></p>
+<p>然后我们再看代码和执行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
+
+
+
+<h3 id="我们再看使用-百分号-进行的计算"><a href="#我们再看使用-百分号-进行的计算" class="headerlink" title="我们再看使用 百分号% 进行的计算"></a>我们再看使用 百分号% 进行的计算</h3><p>意思是一样的，会按照你的宽高加上你的border的宽高，然后乘以 百分比。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始我这样写，以为10%应该是 50px，但是忘了border有上有下，所以真正的宽高是550px，所以50%是55px，后面才搞清楚</span><br><span class="line"></span><br><span class="line">width: 450px;</span><br><span class="line">height: 450px;</span><br><span class="line">background-color: #f00;</span><br><span class="line">border: blue solid 50px;</span><br><span class="line">border-radius: 10%;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="如何裁剪"><a href="#如何裁剪" class="headerlink" title="如何裁剪"></a>如何裁剪</h2><p>这个就是自己的理解了，我们可以看到，对于存在了border的，当你的数值超过了一定值之后，你的content也会变成弧边，而这个值就是border的宽度。</p>
+<p><strong>所以这个裁剪的方法是：</strong></p>
+<ul>
+<li><p>先计算出radius的偏移量x，y</p>
+</li>
+<li><p>然后从border的边框开始进行x，y的偏移，并且半径值也为x，y画弧，将border进行了裁剪。</p>
+</li>
+<li><p>然后如果x，y的偏移量在content里面了（这个content是包含了padding的），那么就会再对content进行裁剪，而裁剪的半径就是x，y这个点到content边界的半径。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
+
+
+
+<h2 id="简写参数"><a href="#简写参数" class="headerlink" title="简写参数"></a>简写参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: top-left top-right bottom-right bottom-left;</span><br><span class="line">上左，上右，下右，下左，这是一个从上左开始的一个顺时针顺序。</span><br><span class="line">按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</span><br><span class="line">	参考链接：(https://www.w3school.com.cn/cssref/pr_border-radius.asp)</span><br><span class="line">意思就是，如果在省略的情况下，那么就是最后一个开始是没有值的，而前面的才有值，然后对没有值的那个，他的值就是对面的值，如果对面也没有值，那么他的值就和旁边的相等(此时就是只有一个参数)</span><br><span class="line"></span><br><span class="line">按照上面的意思来理解的话，那么很多简写参数都可以理解了。我这里就直接统计结果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第一步，将参数从简写的个数化为完整个数"><a href="#第一步，将参数从简写的个数化为完整个数" class="headerlink" title="第一步，将参数从简写的个数化为完整个数"></a>第一步，将参数从简写的个数化为完整个数</h3><h4 id="一个参数-border-radius-50px"><a href="#一个参数-border-radius-50px" class="headerlink" title="一个参数 border-radius: 50px;"></a>一个参数 <code>border-radius: 50px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px;</span><br><span class="line"></span><br><span class="line">只有一个 top-left </span><br><span class="line">那么，bottom-right = top-left = 50</span><br><span class="line">并且 bottom-left = top-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 50px 50px 50px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="两个参数-border-radius-50px-30px"><a href="#两个参数-border-radius-50px-30px" class="headerlink" title="两个参数 border-radius: 50px 30px;"></a>两个参数 <code>border-radius: 50px 30px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px;</span><br><span class="line"></span><br><span class="line">有两个，那么这两个就是 top-left 和 top-right</span><br><span class="line">对应的 bottom-left = top-right = 30</span><br><span class="line">bottom-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 50px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="三个参数-border-radius-50px-30px-40px"><a href="#三个参数-border-radius-50px-30px-40px" class="headerlink" title="三个参数 border-radius: 50px 30px 40px;"></a>三个参数 <code>border-radius: 50px 30px 40px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px 40px;</span><br><span class="line"></span><br><span class="line">有三个，那么就只有最后一个 bottom-left 没有</span><br><span class="line">那么 bottom-left 等于对面的 top-right = 30px</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 40px 30px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="四个参数-border-radius-50px-40px-30px-20px"><a href="#四个参数-border-radius-50px-40px-30px-20px" class="headerlink" title="四个参数 border-radius: 50px 40px 30px 20px;"></a>四个参数 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">没啥说的。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px"><a href="#对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px" class="headerlink" title="对于参数里面带有 / 符号的 border-radius: 4px 3px 6px / 2px 4px;"></a>对于参数里面带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px / 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 4px 3px 6px / 2px 4px;</span><br><span class="line"></span><br><span class="line">这个分为两个部分</span><br><span class="line">第一部分 4 3 6 将其转化为对应的 horizontal</span><br><span class="line">	所以为 4 3 6 3</span><br><span class="line">第二部分 2 4 将其转化为对应的 vertical</span><br><span class="line">	所以为 2 4 2 4</span><br><span class="line">	</span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line">	</span><br><span class="line">然后结果就是</span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第二步，将其转化为-border-radius"><a href="#第二步，将其转化为-border-radius" class="headerlink" title="第二步，将其转化为 border-*-*-radius"></a>第二步，将其转化为 <code>border-*-*-radius</code></h3><h4 id="对于没有带-符号的-border-radius-50px-40px-30px-20px"><a href="#对于没有带-符号的-border-radius-50px-40px-30px-20px" class="headerlink" title="对于没有带 / 符号的 border-radius: 50px 40px 30px 20px;"></a>对于没有带 <code>/</code> 符号的 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">其 horizontal 和 vertical 的值相等。</span><br><span class="line"></span><br><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     50px 50px;</span><br><span class="line">border-top-right-radius:    40px 40px;</span><br><span class="line">border-bottom-right-radius: 30px 30px;</span><br><span class="line">border-bottom-left-radius:  20px 20px;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><a href="#对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px" class="headerlink" title="对于带有 / 符号的 border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;"></a>对于带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">会将 / 前的作为每一个的 horizontal </span><br><span class="line">/ 后的作为每一个的 vertical</span><br><span class="line"></span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">HTTP概述</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-23 23:13:22" itemprop="dateCreated datePublished" datetime="2021-10-23T23:13:22+08:00">2021-10-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 09:50:28" itemprop="dateModified" datetime="2021-11-06T09:50:28+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="HTTP概述"><a href="#HTTP概述" class="headerlink" title="HTTP概述"></a>HTTP概述</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>找不到说啥，直接放个MDN文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024100324347.png" alt="image-20211024100324347" style="zoom:67%;">
+
+
+
+<h2 id="版本迭代"><a href="#版本迭代" class="headerlink" title="版本迭代"></a>版本迭代</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP</span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP/0.9"></a>HTTP/0.9</h3><p>也被称为 <strong>单行协议</strong> </p>
+<p>请求由单行指令构成，以唯一可用方法<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET"><code>GET</code></a>开头，其后跟目标资源的路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html</span><br></pre></td></tr></table></figure>
+
+<p>响应就只包含了响应文档本身，就是HTML文件</p>
+<p>并且因为不包含响应头，所以只有HTML文件可以进行传输。</p>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的变化是支持了传输其他文件，默认是短连接，支持GET、POST、 HEAD请求</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>协议版本信息现在会随着每个请求发送（<code>HTTP/1.0</code>被追加到了<code>GET</code>行）。</li>
+<li><strong>状态码会在响应开始时发送</strong>，使浏览器能了解请求执行成功或失败，并相应调整行为（如更新或使用本地缓存）。</li>
+<li>引入了HTTP头的概念，无论是对于请求还是响应，允许传输元数据，使协议变得非常灵活，更具扩展性。</li>
+<li>在新HTTP头的帮助下，具备了传输除纯文本HTML文件以外其他类型文档的能力（感谢<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a>头）。</li>
+</ul>
+<p><strong>默认是短连接，一次请求会建立一次TCP连接，请求结束就断开。</strong>可以通过一个 <code>Connection: keep-alive</code>字段使服务器不关闭连接。服务器同时也会响应这个字段。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html HTTP/1.0</span><br><span class="line">User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的变化就是支持了持久连接，默认长连接。不同自己声明 `Connection: keep-alive` ，增加了 `HOST` ，增加了请求方式，支持断点续传功能。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>连接可以复用，节省了多次打开TCP连接加载网页文档资源的时间。</li>
+<li>增加管线化技术，允许在第一个应答被完全发送之前就发送第二个请求，以降低通信延迟。</li>
+<li>支持响应分块。</li>
+<li>引入额外的缓存控制机制。</li>
+<li>引入内容协商机制，包括语言，编码，类型等，并允许客户端和服务器之间约定以最合适的内容进行交换。</li>
+<li>感谢<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Host"><code>Host</code></a>头，能够使不同域名配置在同一个IP地址的服务器上。</li>
+</ul>
+<p><strong>Host</strong> 请求头指明了请求将要发送到的服务器主机名和端口号。</p>
+<p>如果没有包含端口号，会自动使用被请求服务的默认端口（比如HTTPS URL使用443端口，HTTP URL使用80端口）。</p>
+<p>所有HTTP/1.1 请求报文中必须包含一个<code>Host</code>头字段。对于缺少<code>Host</code>头或者含有超过一个<code>Host</code>头的HTTP/1.1 请求，可能会收到<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/400"><code>400</code></a>（Bad Request）状态码。</p>
+<p>所有请求都是通过一个连接实现的。就是持久连接。服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送<code>Connection: close</code>，明确要求服务器关闭TCP连接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /en-US/docs/Glossary/Simple_header HTTP/1.1</span><br><span class="line">Host: developer.mozilla.org</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP/2.0"></a>HTTP/2.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的区别，协议为二进制协议，服务器主动推送，以及 headers 压缩</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>HTTP/2是二进制协议而不是文本协议。不再可读，也不可无障碍的手动创建，改善的优化技术现在可被实施。</li>
+<li>这是一个复用协议。并行的请求能在同一个链接中处理，移除了HTTP/1.x中顺序和阻塞的约束。</li>
+<li>压缩了headers。因为headers在一系列请求中常常是相似的，其移除了重复和传输重复数据的成本。</li>
+<li>其允许服务器在客户端缓存中填充数据，通过一个叫服务器推送的机制来提前请求。</li>
+</ul>
+<h3 id="服务器推送方式"><a href="#服务器推送方式" class="headerlink" title="服务器推送方式"></a>服务器推送方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.ruanyifeng.com/blog/2017/05/server-sent_events.html</span><br></pre></td></tr></table></figure>
+
+<p><strong>WebSockets</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API</span><br></pre></td></tr></table></figure>
+
+<p><strong>Server-sent events</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h2><p>HTTP/1.x有三个，HTTP/2新增了其他的连接管理模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Connection_management_in_HTTP_1.x</span><br></pre></td></tr></table></figure>
+
+
+
+<p>HTTP/1.x的三个连接</p>
+<p>短连接，长连接，流水线</p>
+<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024104204389.png" alt="image-20211024104204389" style="zoom:67%;">
+
+
+
+<h3 id="短连接"><a href="#短连接" class="headerlink" title="短连接"></a>短连接</h3><p>​        每一个 HTTP 请求都由它自己独立的连接完成；这意味着发起每一个 HTTP 请求之前都会有一次 TCP 握手，而且是连续不断的。</p>
+<p>​        简单来说就是每次请求都要建立连接，请求结束关闭连接，造成了大量的连接时间的浪费。</p>
+<p>​        这是 HTTP/1.0 的默认模型(如果没有指定 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Connection"><code>Connection</code></a> 协议头，或者是值被设置为 <code>close</code>)。而在 HTTP/1.1 中，只有当 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Connection"><code>Connection</code></a> 被设置为 <code>close</code> 时才会用到这个模型。</p>
+<h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><p>​        在HTTP/1.1被设计出来之前：<code>Connection: keep-alive</code>被作为一个请求头，做成了长连接的效果。</p>
+<p>​        为了缓解这些问题，<em>长连接</em> 的概念便被设计出来了，甚至在 HTTP/1.1 之前。或者这被称之为一个 <em>keep-alive</em> 连接。</p>
+<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP 流水线在现代浏览器中并不是默认被启用的：</span><br><span class="line">	Web 开发者并不能轻易的遇见和判断那些搞怪的代理服务器的各种莫名其妙的行为。</span><br><span class="line">	正确的实现流水线是复杂的：传输中的资源大小，多少有效的 RTT 会被用到，还有有效带宽，流水线带来的改善有多大的影响范围。不知道这些的话，重要的消息可能被延迟到不重要的消息后面。这个重要性的概念甚至会演变为影响到页面布局！因此 HTTP 流水线在大多数情况下带来的改善并不明显。</span><br><span class="line">	流水线受制于 HOL 问题。</span><br><span class="line">由于这些原因，流水线已经被更好的算法给代替，如 multiplexing，已经用在 HTTP/2。</span><br></pre></td></tr></table></figure>
+
+<p>简单理解就是说，直接发送连续的请求，不需要等待每次的响应。</p>
+<h3 id="域名分片"><a href="#域名分片" class="headerlink" title="域名分片"></a>域名分片</h3><p>简单的理解就是为域名多建立几个连接。以实现并发请求。但是HTTP/2支持客户端的并发请求</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">浏览器缓存策略</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-22 21:43:10" itemprop="dateCreated datePublished" datetime="2021-10-22T21:43:10+08:00">2021-10-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 09:52:23" itemprop="dateModified" datetime="2021-11-06T09:52:23+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="浏览器缓存策略"><a href="#浏览器缓存策略" class="headerlink" title="浏览器缓存策略"></a>浏览器缓存策略</h1><p><strong>参考文章</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903757872889870</span><br><span class="line">MDN</span><br><span class="line">https://juejin.cn/post/6844903737538920462</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>先说一下什么是缓存</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">缓存就是会将一些不会经常更改的图片文件等资源存储下来，下次访问的时候会优先读取本地的资源进行显示，这样既能减轻服务器的负载，也能加快页面的显示。</span><br><span class="line">这时可能就可能会问，那如果资源有了改变怎么办，所以这时候就有了强缓存和协商缓存两种。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>浏览器缓存策略分为</strong></p>
+<p>​    <strong>强缓存</strong></p>
+<p>​        强缓存就是直接从本地进行读取，不需要向服务器端进行获取资源。因此很快。</p>
+<p>​        在命中强缓存的情况下，状态码为 200，但是size显示from disk cache或from memory cache</p>
+<p>​    <strong>协商缓存</strong></p>
+<p>​        协商缓存就是会请求，但是会将一个文件的信息加入到请求头，然后服务器端进行判断，来决定是否要更新浏览器的资源。</p>
+<p>​        会将 <code>Last-Modified</code> 和 <code>Etag</code> 放入请求头，然后服务器就会进行比对，如果命中协商缓存，状态码为304。否则会将资源传输过来。</p>
+<h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>在进行请求的时候，不会向服务器发送请求，直接从缓存中读取资源，但是状态码是200</p>
+<p>如何进行强缓存，简单来说就是我们请求资源之后，服务器会返回一个请求头。浏览器后续就会根据这个请求头进行判断是否命中强缓存。</p>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>​        对于强缓存的请求头，有 <strong>Expires</strong> 和 <strong>Cache-Control</strong>，但是因为<strong>Cache-Control</strong> 是HTTP/1.1的产物，所以，优先级高于 Expires。</p>
+<h4 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires</span><br></pre></td></tr></table></figure>
+
+<p>HTTP/1.0</p>
+<p>​    缓存过期时间，用来指定资源到期的时间。</p>
+<p>​        缺点，是通过本地时间进行的判断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Wed, 21 Oct 2015 07:28:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong></p>
+<p>​    如果在<code>Cache-Contro</code>响应头设置了<code>max-age</code>或者<code>s-max-age</code>指令，那么<code>Expires</code>头会被忽悠。</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>HTTP/1.1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control</span><br></pre></td></tr></table></figure>
+
+<p><strong>语法</strong>：</p>
+<ul>
+<li>不区分大小写，但建议使用小写。</li>
+<li>多个指令以逗号分隔。</li>
+<li>具有可选参数，可以用令牌或者带引号的字符串语法。</li>
+</ul>
+<p><strong>默认值：private</strong></p>
+<p><strong>指令</strong>：</p>
+<p><strong>可缓存性指令：</strong></p>
+<p><strong>public：</strong></p>
+<p>​        表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存，即使是通常不可缓存的内容。</p>
+<p>​        （例如：1.该响应没有<code>max-age</code>指令或<code>Expires</code>消息头；</p>
+<p>​                        2. 该响应对应的请求方法是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST">POST</a> 。）</p>
+<p><strong>private：</strong></p>
+<p>​        表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）。私有缓存可以缓存响应内容。</p>
+<p>​        比如：对应用户的本地浏览器。</p>
+<p><strong>no-cache</strong>:</p>
+<p>​        在发布缓存副本之前，强制要求缓存把请求提交给原始服务器进行验证(协商缓存验证)。</p>
+<p><strong>no-store</strong>：</p>
+<p>​        缓存不应存储有关客户端请求或服务器响应的任何内容，即不使用任何缓存。</p>
+<p><strong>到期：</strong></p>
+<p><strong>max-age</strong>：</p>
+<p>​        设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。与<code>Expires</code>相反，时间是相对于请求的时间。</p>
+<p><strong>s-maxage</strong>：</p>
+<p>​        覆盖<code>max-age</code>或者<code>Expires</code>头，但是仅适用于共享缓存(比如各个代理)，私有缓存会忽略它。</p>
+<p><strong>max-stale</strong>：</p>
+<p>​        表明客户端愿意接收一个已经过期的资源。可以设置一个可选的秒数，表示响应不能已经过时超过该给定的时间。</p>
+<p><strong>min-fresh</strong>：</p>
+<p>​        表示客户端希望获取一个能在指定的秒数内保持其最新状态的响应。</p>
+<p><strong>重新验证与加载：</strong></p>
+<p><strong>must-revalidate</strong>：</p>
+<p>​        一旦资源过期（比如已经超过<code>max-age</code>），在成功向原始服务器验证之前，缓存不能用该资源响应后续请求。</p>
+<img src="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/image-20211023161739229.png" alt="image-20211023161739229" style="zoom:67%;">
+
+<p>图片来源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903757872889870</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>需要进行重新验证，这个就是会进行协商缓存：</strong></p>
+<p>​        指定 <code>no-cache</code> 或 <code>max-age=0, must-revalidate</code> 表示客户端可以缓存资源，每次使用缓存资源前都必须重新验证其有效性。这意味着每次都会发起 HTTP 请求，但当缓存内容仍有效时可以跳过 HTTP 响应体的下载。</p>
+<p><strong>注意：</strong></p>
+<p>​    如果服务器关闭或失去连接，下面的指令可能会造成使用缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=0</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在强缓存时间内如何更新资源"><a href="#在强缓存时间内如何更新资源" class="headerlink" title="在强缓存时间内如何更新资源"></a>在强缓存时间内如何更新资源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903737538920462#heading-5</span><br></pre></td></tr></table></figure>
+
+<p>虽然强缓存很好，但是有一个问题，如果在强缓存时间内，我的文件资源发生了更新，那该怎么解决呢？<code>（这个是我面试的时候问到的，一下把我人问傻了。）</code></p>
+<p>这里我后面去了解了：</p>
+<p>​    简单来说就是对于资源文件需要在发生了改变之后，可以让客户端再请求一次，方法就是将文件的名字在每次修改之后会发生改变，所以每次修改了之后，客户端要请求的文件名发生了改变，就会重新再进行一次请求了。这里对于文件名的方式使用<code>hash</code>。</p>
+<p>​    HTML：使用协商缓存，因为里面会存储资源文件的路径，在每次更新之后里面的路径需要修改，所以使用协商缓存更合理。</p>
+<p>​    对于　CSS／JS／图片：使用强缓存，对于一个文件名带上一个 hash 值。在每次文件进行了修改之后，名字后面的hash就会发生改变。所以客户端就会重新请求。</p>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>​        会在请求头加上：<code>If-None-Match</code>和<code>If-Modified-Since</code></p>
+<p>​        分别对应了服务器响应头的：<code>ETag</code> 和  <code>Last-Modified</code></p>
+<p>ETag 优先级高于 Last-Modified</p>
+<h3 id="If-Modified-Since-与-Last-Modified："><a href="#If-Modified-Since-与-Last-Modified：" class="headerlink" title="If-Modified-Since 与  Last-Modified："></a><strong>If-Modified-Since</strong> 与  <strong>Last-Modified</strong>：</h3><p><strong>Last-Modified</strong>：</p>
+<p>​    这个是服务器端的返回的响应头。</p>
+<p><strong>If-Modified-Since</strong>：</p>
+<p>​    这个是客户端的请求的请求头。</p>
+<h4 id="Last-Modified："><a href="#Last-Modified：" class="headerlink" title="Last-Modified："></a><strong>Last-Modified</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified</span><br></pre></td></tr></table></figure>
+
+<p>​        这个是根据上一次请求资源时，服务器所返回的<strong>Last-Modified</strong>，这个作为一个响应的头部。其中包含源头服务器认定的资源做出修改的日期及时间</p>
+<p>​        包含有  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Modified-Since"><code>If-Modified-Since</code></a> 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Unmodified-Since"><code>If-Unmodified-Since</code></a> 首部的条件请求会使用这个字段。 </p>
+<h4 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a><strong>If-Modified-Since</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Modified-Since</span><br></pre></td></tr></table></figure>
+
+<p>​        服务器只在所请求的资源在给定的日期时间之后对内容进行过修改的情况下才会将资源返回，状态码为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/200"><code>200</code></a> 。</p>
+<p>​        如果请求的资源从那时起未经修改，那么返回一个不带有消息主体的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/304"><code>304</code></a> 响应，而在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified"><code>Last-Modified</code></a> 首部中会带有上次修改时间。<strong>（注：虽然返回了304，但是会有last-modified的头部返回，因此浏览器下次请求时，会使用的是此时服务器端返回过来的last-modified，而不是以前的。）</strong></p>
+<p>​        <code>If-Modified-Since</code> 只可以用在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET"><code>GET</code></a> 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/HEAD"><code>HEAD</code></a> 请求中。</p>
+<p>​        当与 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match"><code>If-None-Match</code></a> 一同出现时，它（**<code>If-Modified-Since</code>**）会被忽略掉，除非服务器不支持 <code>If-None-Match</code>。</p>
+<p><strong>If-Unmodified-Since：</strong></p>
+<p>​        这个我没有了解。</p>
+<p><strong>使用上面这个的弊端：</strong></p>
+<p>​        对于没有进行修改，但是有过保存导致 Last-Modified 被修改，无法命中。</p>
+<p>​        这个只能以秒计时，所以对于秒以内的修改文件，不能返回。</p>
+<h3 id="If-None-Match-和-ETag"><a href="#If-None-Match-和-ETag" class="headerlink" title="If-None-Match 和 ETag"></a>If-None-Match 和 ETag</h3><p><strong>ETag</strong>：</p>
+<p>​    这个是服务器端的返回的响应头。</p>
+<p><strong>If-None-Match</strong>：</p>
+<p>​    这个是客户端的请求的请求头。</p>
+<h4 id="ETag："><a href="#ETag：" class="headerlink" title="ETag："></a><strong>ETag</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag</span><br></pre></td></tr></table></figure>
+
+<p>简单来说就是一个唯一标识资源的一个特殊符号，</p>
+<p>通常计算方式是：</p>
+<p>​    <strong>使用内容的散列，最后修改时间戳的哈希值，或简单地使用版本号</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903737538920462</span><br><span class="line">这里有将比较详细的计算方式，我这里就不做过多的说明。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag: &quot;33a64df551425fcc55e4d42a148795d9f25f89d4&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">作用：</span><br><span class="line">	避免空中碰撞</span><br><span class="line">	缓存未更改的资源，就是304.</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="避免空中碰撞"><a href="#避免空中碰撞" class="headerlink" title="避免空中碰撞"></a>避免空中碰撞</h5><p>MDN上有说有这句话：</p>
+<p>​    <strong>而如果内容发生了变化，使用ETag有助于防止资源的同时更新相互覆盖（“空中碰撞”）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag#避免“空中碰撞”</span><br></pre></td></tr></table></figure>
+
+<p>大概的意思就是说，</p>
+<p>​        我在客户端进行编辑共享文档时<code>（共享文档就是说可以被多人查看和编辑的）</code>，最开始拿到的文档是最新的。</p>
+<p>​        但是在编辑的过程中，可能别人也有编辑，但是比我上传的早，所以，在我准备上传一个共享文档时，服务器端的文档已经被别人修改过了，但是此时我的客户端的文档因为没有重新进行请求，所以还是没有被修改过的，</p>
+<p>​        此时如果没有先进行一次判断 ETag 值的话，就会发生相互覆盖，这个就是空中碰撞。</p>
+<p>​        避免就是会先进行 ETag 匹配检查是否为最新版，否则报 412 前提条件失败错误。</p>
+<p><code>（此时这个 ETag 会放在 If-Match 的请求头中。）</code></p>
+<p><strong>注：</strong></p>
+<p>​        如果给定URL中的资源更改，则一定要生成新的 Etag 值。 因此 Etags 类似于指纹，也可能被某些服务器用于跟踪。 比较 etags 能快速确定此资源是否变化，但也可能被跟踪服务器永久存留。<strong>（我能理解到 ETag 可能用于快速比较一个文件是否发生过修改，因为他是一个文根据文件的相关信息进行的一个算法生成的一个值，但是我不清楚什么是会被跟踪服务器存留）</strong></p>
+<h5 id="缓存未更改的资源"><a href="#缓存未更改的资源" class="headerlink" title="缓存未更改的资源"></a>缓存未更改的资源</h5><p>​        对于用户访问一个URL时，显示了资源过期且不可用，客户端就发送 ETag 的值 作为 If-None-Match 的请求头，如果资源没有更改，那么服务器将会返回不带响应体的 304 状态。</p>
+<h4 id="If-None-Match："><a href="#If-None-Match：" class="headerlink" title="If-None-Match："></a><strong>If-None-Match</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match</span><br></pre></td></tr></table></figure>
+
+<p><code>If-None-Match</code> 和 <code>If-Match</code> 的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://datatracker.ietf.org/doc/html/rfc7232#section-3.1</span><br></pre></td></tr></table></figure>
+
+<p>If-None-Match</p>
+<p>​    使用的是 弱比较算法。</p>
+<p>​    常用于 GET 请求的，请求最新资源的方式</p>
+<p>If-Match</p>
+<p>​    使用的是 强比较算法。</p>
+<p>​    常用于 POST  PUT，DELETE 状态改变方法，防止多个用户同时操作的意外覆盖。</p>
+<h2 id="后端设置方式"><a href="#后端设置方式" class="headerlink" title="后端设置方式"></a>后端设置方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">参考文章</span><br><span class="line">https://juejin.cn/post/6844903737538920462#heading-11</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(&#x27;Cache-Control&#x27;, &#x27;public, max-age=xxx&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">res.setHeader(&#x27;Cache-Control&#x27;, &#x27;public, max-age=0&#x27;);</span><br><span class="line">res.setHeader(&#x27;Last-Modified&#x27;, xxx);</span><br><span class="line">res.setHeader(&#x27;ETag&#x27;, xxx);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="最后，重新来一遍浏览器缓存过程"><a href="#最后，重新来一遍浏览器缓存过程" class="headerlink" title="最后，重新来一遍浏览器缓存过程"></a>最后，重新来一遍浏览器缓存过程</h2><p><strong>第一次请求</strong></p>
+<p>浏览器进行请求，发现缓存没有这个文件</p>
+<p>向服务器进行请求，获得文件，并带上响应头：</p>
+<p>​    属于强缓存的：Cache-Control，Expires</p>
+<p>​    属于协商缓存的：ETag，Last-Modified</p>
+<p>浏览器接收到了文件，并将文件和这些响应头缓存下来，下次使用。</p>
+<p><strong>强缓存</strong></p>
+<p>浏览器进行请求，发现缓存存在这个文件</p>
+<p>浏览器缓存查看该次请求是否命中强缓存（就是没有超过文件缓存过期时间）</p>
+<p>命中强缓存，直接从本地读取，状态码：200</p>
+<p><strong>协商缓存</strong></p>
+<p>浏览器进行请求，发现缓存存在这个文件</p>
+<p>浏览器缓存查看该次请求是否命中强缓存，</p>
+<p>没有命中强缓存，将 ETag 和 Last-Modified 的值放入请求头，</p>
+<p>​    为 If-None-Match 和 If-Modified-Since，发送给服务器</p>
+<p>服务器接收到请求后，查看是否命中协商缓存，</p>
+<p>发现命中协商缓存，服务器会返回状态码 304，没有响应体</p>
+<p>​    并将响应头的 Last-Modified 和 ETag 的值设置为文件的值，返回</p>
+<p>客户端接收到服务器的 304 响应，并将 ETag 和 Last-Modified 存储下来。</p>
+<p><strong>简单来说：</strong></p>
+<p>​    就是第一次的文件请求会正常的返回，第二次会先看看能不能命中强缓存，如果能直接读取本地的，如果不能则看看能不能命中协商缓存，如果命中，则还是读取本地的文件，如果都没有命中，那么就会使用新的文件。</p>
+<p>这里<strong>对于一个文件如何在强缓存期间进行更新</strong>也有说明：就是会对文件名进行hash计算，修改过的文件的hash值不一样，所以对于浏览器来说，这个文件名不一样，不是一个文件，需要重新请求。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1168,420 +1759,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(db, &#x27;cc&#x27;, 1)();</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/17/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/17/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">数据类型判断</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-17 15:08:23" itemprop="dateCreated datePublished" datetime="2021-10-17T15:08:23+08:00">2021-10-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:30:29" itemprop="dateModified" datetime="2021-10-26T15:30:29+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript判断数据的类型的方法"><a href="#JavaScript判断数据的类型的方法" class="headerlink" title="JavaScript判断数据的类型的方法"></a>JavaScript判断数据的类型的方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">  t: Symbol(1),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(typeof obj[k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">number</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">string</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">boolean</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">undefined</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:29.835Z</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">function</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">object</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">symbol</span><br></pre></td></tr></table></figure>
-
-<p>这里的话，主要问题是在于</p>
-<p>​    一个是,只能把数据分为基本数据类型和对象,并且使用new方法调用的就为对象.</p>
-<p>​    一个是 null  的 typeof 的值为 object，至于原因的话</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://2ality.com/2013/10/typeof-null.html</span><br></pre></td></tr></table></figure>
-
-<p>通过这篇文章我们可以知道原理，我这里就简单的说一下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">首先，早期的JavaScript是通过值的低1位或3位来辨别类型的。</span><br><span class="line">又下面所示</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">000：对象。数据是对对象的引用。</span><br><span class="line">1：整数。数据是一个 31 位有符号整数。</span><br><span class="line">010：双倍。数据是对双浮点数的引用。</span><br><span class="line">100：字符串。数据是对字符串的引用。</span><br><span class="line">110：布尔值。数据是一个布尔值。</span><br><span class="line"></span><br><span class="line">undefined，用整数−2^30（负2的30次方，不在整型的范围内）</span><br><span class="line">null，机器码空指针（C/C++ 宏定义），低三位也是000</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以就出现了这种 typeof null = &#x27;object&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof</span><br></pre></td></tr></table></figure>
-
-<p><code>instanceof</code> 运算符用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + a instanceof Number);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对于基本数据类型会直接返回false。而不会再内部构建对应的引用类型.</span><br><span class="line"></span><br><span class="line">否则的话，就会先通过 Object.getPrototypeOf 获得参数的原型对象。然后判断这个和你要判断的对象是否相等，不想等则会继续向上，直到相等或者为 null 时。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/constructor</span><br></pre></td></tr></table></figure>
-
-<p>**<code>constructor </code>**是一种用于创建和初始化<code>class</code>创建的对象的特殊方法。</p>
-<p>你可以这样理解，一个对象的constructor的指向的是他所 new 而指向的方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function O() &#123;&#125;</span><br><span class="line">let o = new O();</span><br><span class="line"></span><br><span class="line">o.constructor === O; //true</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a ----     &#x27; + (a.constructor === Number));</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里，在a调用constructor的时候，会在内部创建一个值为a的对象，然后再调用这个constructor方法，然后再将这个对象删除，所以这个是基本数据类型也可以进行判断的。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这个输出的值是 a的构造器所指向的一个函数。在这里就是指向的Number，</span><br><span class="line">问题：这个因为是通过判断其构造器函数来进行的判断，所以如果我们将对其进行过修改则会判断错误。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.constructor === Array)	//false</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">Fn.prototype = new Array();</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//false</span><br><span class="line">console.log(x.constructor === Array)	//ture</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一个是先new，然后在修改的原型。</span><br><span class="line">而第二个是先修改原型，然后再进行new方法的调用。</span><br><span class="line">然后结果就不一样了，所以说明了这个new方法会调用的是原型。</span><br><span class="line">所以其构造器会被修改。</span><br></pre></td></tr></table></figure>
-
-<p>通过上面这个代码我们可以知道，</p>
-<p>你可以这样想,一个new方法和其结果是平级的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = new Fn();</span><br><span class="line">a,和fn是平级的.</span><br></pre></td></tr></table></figure>
-
-<p>一个new方法，会将他的原型作为一个构造器,并将他自己进行一次<code>this</code>指向的调用.并创建一个 <code>__proto__</code> 指向了构造器的原型.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Fn() &#123;&#125;</span><br><span class="line">let x = new Fn();</span><br><span class="line">console.log(x.constructor === Fn)		//true</span><br><span class="line">console.log(x.__proto__ === Fn.prototype)	//true</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString</span><br></pre></td></tr></table></figure>
-
-<p>使用方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(a);</span><br><span class="line">这里通过调用了call方法，转换了this的指向。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  h: new Number(3),</span><br><span class="line"></span><br><span class="line">  b: &#x27;a&#x27;,</span><br><span class="line">  i: new String(&#x27;12&#x27;),</span><br><span class="line">  q: `sdcard`,</span><br><span class="line"></span><br><span class="line">  c: true,</span><br><span class="line">  j: new Boolean(false),</span><br><span class="line"></span><br><span class="line">  f: [1, 2, 3],</span><br><span class="line">  g: [&#x27;1&#x27;, &#x27;3&#x27;],</span><br><span class="line"></span><br><span class="line">  k: new Object(&#123; a: 3&#125; ),</span><br><span class="line">  l: &#123; b: 4 &#125;,</span><br><span class="line"></span><br><span class="line">  o: new RegExp(&#x27;sss&#x27;),</span><br><span class="line">  p: /sss/,</span><br><span class="line"></span><br><span class="line">  d: undefined,</span><br><span class="line">  e: null,</span><br><span class="line">  n: new Date(),</span><br><span class="line">  m: function () &#123;&#125;,</span><br><span class="line">  r: new Set([2, &#x27;1&#x27;, &#x27;aaa&#x27;]),</span><br><span class="line">  s: new Map([[&#x27;a&#x27;, 1], [2, &#x27;aa&#x27;], [&#x27;xxx&#x27;, 123]]),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const k in obj) &#123;</span><br><span class="line">  console.log(&#x27; --  &#x27;);</span><br><span class="line">  console.log(obj[k]);</span><br><span class="line">  console.log(Object.prototype.toString.call(obj[k]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过下面的结果我们可以看到,使用这个对象原型的方法可以说是没有任何问题啊.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> --</span><br><span class="line">1</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">[Number: 3]</span><br><span class="line">[object Number]</span><br><span class="line"> --</span><br><span class="line">a</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">[String: &#x27;12&#x27;]</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">sdcard</span><br><span class="line">[object String]</span><br><span class="line"> --</span><br><span class="line">true</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[Boolean: false]</span><br><span class="line">[object Boolean]</span><br><span class="line"> --</span><br><span class="line">[ 1, 2, 3 ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">[ &#x27;1&#x27;, &#x27;3&#x27; ]</span><br><span class="line">[object Array]</span><br><span class="line"> --</span><br><span class="line">&#123; a: 3 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">&#123; b: 4 &#125;</span><br><span class="line">[object Object]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">/sss/</span><br><span class="line">[object RegExp]</span><br><span class="line"> --</span><br><span class="line">undefined</span><br><span class="line">[object Undefined]</span><br><span class="line"> --</span><br><span class="line">null</span><br><span class="line">[object Null]</span><br><span class="line"> --</span><br><span class="line">2021-10-20T01:55:45.116Z</span><br><span class="line">[object Date]</span><br><span class="line"> --</span><br><span class="line">[Function: m]</span><br><span class="line">[object Function]</span><br><span class="line"> --</span><br><span class="line">Set(3) &#123; 2, &#x27;1&#x27;, &#x27;aaa&#x27; &#125;</span><br><span class="line">[object Set]</span><br><span class="line"> --</span><br><span class="line">Map(3) &#123; &#x27;a&#x27; =&gt; 1, 2 =&gt; &#x27;aa&#x27;, &#x27;xxx&#x27; =&gt; 123 &#125;</span><br><span class="line">[object Map]</span><br><span class="line"> --</span><br><span class="line">Symbol(1)</span><br><span class="line">[object Symbol]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/17/CSS/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/17/CSS/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">水平垂直居中方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-17 14:51:23" itemprop="dateCreated datePublished" datetime="2021-10-17T14:51:23+08:00">2021-10-17</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:31:34" itemprop="dateModified" datetime="2021-10-26T15:31:34+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="水平垂直居中方法"><a href="#水平垂直居中方法" class="headerlink" title="水平垂直居中方法"></a>水平垂直居中方法</h1><h3 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    body &#123;</span><br><span class="line">      height: 100vh;</span><br><span class="line">      display: flex;</span><br><span class="line">      justify-content: center;</span><br><span class="line">      align-items: center;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div &#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background-color: red;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/16/Vue/vue2%E5%92%8Cvue3%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/16/Vue/vue2%E5%92%8Cvue3%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">Vue2和Vue3的区别</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-16 20:02:19" itemprop="dateCreated datePublished" datetime="2021-10-16T20:02:19+08:00">2021-10-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:29:40" itemprop="dateModified" datetime="2021-10-26T15:29:40+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Vue/Vue3/" itemprop="url" rel="index"><span itemprop="name">Vue3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Vue2和Vue3的区别"><a href="#Vue2和Vue3的区别" class="headerlink" title="Vue2和Vue3的区别"></a>Vue2和Vue3的区别</h1><p>参考别人的文章和官网</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/weixin_46071217/article/details/108858877</span><br><span class="line">https://zhuanlan.zhihu.com/p/139590941</span><br><span class="line"></span><br><span class="line">https://v3.cn.vuejs.org/guide/migration/introduction.html</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="从内部上"><a href="#从内部上" class="headerlink" title="从内部上"></a>从内部上</h2><h3 id="响应式的改变"><a href="#响应式的改变" class="headerlink" title="响应式的改变"></a>响应式的改变</h3><p>Vue2是使用的 <code>Object.definePropert()</code> ，而Vue3是使用的 <code>Proxy</code> 来对数据进行的代理。</p>
-<p><strong>definePropert的使用</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.jianshu.com/p/8fe1382ba135</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//这里这个bV是用来存储属性的值。</span><br><span class="line">let bV;</span><br><span class="line">Object.defineProperty(a, &#x27;b&#x27;, &#123;</span><br><span class="line">  set(v) &#123;</span><br><span class="line">    console.log(&#x27;set&#x27;, v);</span><br><span class="line">    bV = v;</span><br><span class="line">  &#125;,</span><br><span class="line">  get() &#123;</span><br><span class="line">    console.log(&#x27;get&#x27;, bV);</span><br><span class="line">    return bV;</span><br><span class="line">  &#125;,</span><br><span class="line">  enumerable : true,</span><br><span class="line">  configurable : true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>prosy</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let validator = &#123;</span><br><span class="line">  set(obj, prop, value) &#123;</span><br><span class="line">    console.log(&#x27;set   &#x27;);</span><br><span class="line">    console.log(obj, prop, value);</span><br><span class="line">    obj[prop] = value;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;,</span><br><span class="line">  get(obj, prop) &#123;</span><br><span class="line">    console.log(&#x27;get   &#x27;);</span><br><span class="line">    console.log(obj, prop);</span><br><span class="line">    return obj[prop];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let person = new Proxy(&#123;&#125;, validator);</span><br><span class="line"></span><br><span class="line">person.a = 100;</span><br><span class="line">console.log(person.a);</span><br></pre></td></tr></table></figure>
-
-<p>proxy的优势</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用对象，可以是数组，函数，任何对象，而definePropert只能是一个对象的某一个值进行监听。</span><br><span class="line"></span><br><span class="line">defineProperty只能监听某个属性，不能对全对象监听</span><br><span class="line">可以省去for in、闭包等内容来提升效率（直接绑定整个对象即可）</span><br><span class="line">可以监听数组，不用再去单独的对数组做特异性操作 vue3.x可以检测到数组内部数据的变化</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="默认进行懒观察（lazy-observation）。"><a href="#默认进行懒观察（lazy-observation）。" class="headerlink" title="默认进行懒观察（lazy observation）。"></a>默认进行懒观察（lazy observation）。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 2.x 版本里，不管数据多大，都会在一开始就为其创建观察者。当数据很大时，这可能会在页面载入时造成明显的性能压力。3.x 版本，只会对「被用于渲染初始可见部分的数据」创建观察者，而且 3.x 的观察者更高效。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="更精准的变更通知。"><a href="#更精准的变更通知。" class="headerlink" title="更精准的变更通知。"></a>更精准的变更通知。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.x 版本中，使用 Vue.set 来给对象新增一个属性时，这个对象的所有 watcher 都会重新运行；3.x 版本中，只有依赖那个属性的 watcher 才会重新运行。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="从使用上"><a href="#从使用上" class="headerlink" title="从使用上"></a>从使用上</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://v3.cn.vuejs.org/guide/migration/introduction.html</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="组合式API"><a href="#组合式API" class="headerlink" title="组合式API"></a>组合式API</h3><p><strong>setup</strong></p>
-<p>注意</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 setup 中你应该避免使用 this，因为它不会找到组件实例。</span><br><span class="line">setup 的调用发生在 data property、computed property 或 methods 被解析之前，所以它们无法在 setup 中被获取。</span><br></pre></td></tr></table></figure>
-
-<p>使用ref将值封装于对象之中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为在 JavaScript 中，Number 或 String 等基本类型是通过值而非引用传递的，所以封装成对象之后变有了作用。</span><br></pre></td></tr></table></figure>
-
-<p>在setup里面注册生命周期钩子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onMounted(getUserRepositories) // 在 `mounted` 时调用 `getUserRepositories`</span><br><span class="line"></span><br><span class="line">这个代码放在setup内部</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h3><p>Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下渲染了 HTML，而不必求助于全局状态或将其拆分为两个组件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;teleport to=&quot;body&quot;&gt;&lt;/teleport&gt;</span><br></pre></td></tr></table></figure>
-
-<p>特点：使用之后， <code>to=&quot;body&quot;</code>，代表了在渲染时会作为body的子元素来进行渲染，不会出现一些，因为父元素的设置定位等问题而影响到了 <code>teleport </code> 的渲染。</p>
-<h3 id="片段"><a href="#片段" class="headerlink" title="片段"></a>片段</h3><p>Vue2.x 不支持多根节点，而Vue3.x支持了。</p>
-<p>在 3.x 中，组件可以包含多个根节点！但是，这要求开发者显式定义 attribute 应该分布在哪里。</p>
-<p><strong>为什么Vue实例只能有一个根元素</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/111691226</span><br></pre></td></tr></table></figure>
-
-<p>从源码上来说。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在实例化Vue的时候，填写一个el选项，来指定入口</span><br><span class="line">在Vue的源码里面，他只寻找了指定选择器的第一个元素。所以后面的都会原封不动。</span><br></pre></td></tr></table></figure>
-
-<p>对于单文件组件。</p>
-<p>template里面如果有 多个div入口，不知道如何指定 谁作为入口。</p>
-<h3 id="单文件组件-lt-script-setup-gt"><a href="#单文件组件-lt-script-setup-gt" class="headerlink" title="单文件组件&lt;script setup&gt;"></a>单文件组件<code>&lt;script setup&gt;</code></h3><script setup> 是在单文件组件 (SFC) 中使用组合式 API 的编译时语法糖。相比于普通的 <script> 语法，它具有更多优势：
-    更少的样板内容，更简洁的代码。
-    能够使用纯 Typescript 声明 props 和抛出事件。
-    更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。
-    更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">里面的代码会被编译成组件 setup() 函数的内容。这意味着与普通的 &lt;script&gt; 只在组件被首次引入的时候执行一次不同，&lt;script setup&gt; 中的代码会在每次组件实例被创建的时候执行。</span><br></pre></td></tr></table></figure>
-
-
-
-**限制：没有 Src 导入**
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于模块执行语义的差异，`&lt;script setup&gt;` 中的代码依赖单文件组件的上下文。当将其移动到外部的 `.js` 或者 `.ts` 文件中的时候，对于开发者和工具来说都会感到混乱。因而 **`&lt;script setup&gt;`** 不能和 `src` attribute 一起使用。</span><br></pre></td></tr></table></figure>
-
-
-
-### 状态驱动的动态 CSS
-
-单文件组件的 `<style>` 标签可以通过 `v-bind` 这一 CSS 函数将 CSS 的值关联到动态的组件状态上：
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">script </span><br><span class="line">	export default</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				color: &#x27;red&#x27;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.text &#123;</span><br><span class="line">  color: v-bind(color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-### Suspense**新增**
-
-Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。特此声明，以便社区能够为当前的实现提供反馈。
-
-生产环境请勿使用。
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在正确渲染组件之前进行一些异步请求是很常见的事。组件通常会在本地处理这种逻辑，绝大多数情况下这是非常完美的做法。</span><br><span class="line">该 `&lt;suspense&gt;` 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。</span><br></pre></td></tr></table></figure>
-
-</script>
       
     </div>
 

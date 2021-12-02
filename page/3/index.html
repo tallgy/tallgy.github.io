@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -181,6 +181,425 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/06/%E5%85%B6%E4%BB%96/TCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/" class="post-title-link" itemprop="url">TCP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-06 09:45:52 / 修改时间：10:46:49" itemprop="dateCreated datePublished" datetime="2021-11-06T09:45:52+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><ul>
+<li>首先TCP属于传输层</li>
+<li>面向连接的传输层协议</li>
+<li>一对一的连接</li>
+<li>提供可靠交付服务</li>
+<li>全双工通信</li>
+<li>面向字节流：指的是流入到进程或从进程流出的字节序列</li>
+</ul>
+<p>​        TCP并不关心应用一次把多长的报文发送到TCP缓存中，而是根据对方给出的窗口和当前网络拥塞的程度来决定一个报文应该包含多少个字节。</p>
+<h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h2><table>
+<thead>
+<tr>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向连接</td>
+<td>无连接，即发送前不需要先建立连接</td>
+</tr>
+<tr>
+<td>提供可靠交互，无差错，不丢失，不重复，按序到达</td>
+<td>尽最大努力交付，不保证可靠交付</td>
+</tr>
+<tr>
+<td>面向字节流</td>
+<td>面向报文</td>
+</tr>
+<tr>
+<td>一对一的连接</td>
+<td>支持一对一，一对多的通信</td>
+</tr>
+<tr>
+<td>拥塞控制</td>
+<td>没有拥塞控制，所以不会使发送率降低，因此会出现丢包</td>
+</tr>
+<tr>
+<td>首部较大20字节</td>
+<td>只有8字节</td>
+</tr>
+</tbody></table>
+<h2 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h2><ul>
+<li>停止等待协议<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102234899.png" alt="image-20211106102234899" style="zoom: 67%;"></li>
+</ul>
+</li>
+<li>连续arq协议<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102310315.png" alt="image-20211106102310315" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><ul>
+<li>滑动窗口<ul>
+<li><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102333564.png" alt="image-20211106102333564" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h2 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h2><p>​        慢开始和拥塞避免</p>
+<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102433477.png" alt="image-20211106102433477" style="zoom:67%;">
+
+<p>​        计算方式</p>
+<img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102459740.png" alt="image-20211106102459740" style="zoom:67%;">
+
+
+
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106102538627.png" alt="image-20211106102538627" style="zoom:67%;">
+
+<p>步骤：</p>
+<ul>
+<li>客户端主动打开，进行连接，SYN=1，seq=x，状态为SYN-SENT</li>
+<li>服务器处于LISTEN状态，等待客户端开始连接，接收到客户端的连接之后，返回 SYN=1，ACK=1，seq=y，ack=x+1，状态修改为SYN-RCVD</li>
+<li>客户端收到连接之后，发送 ACK=1，seq=x+1，ack=y+1，此时就代表了客户端已经成功收到，处于了ESTAB-LISHED状态。</li>
+<li>服务器收到之后，也处于了ESTAB-LISHED状态</li>
+<li>开始进行数据传送。</li>
+</ul>
+<p><strong>一句话简述</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">客户端发起连接请求，</span><br><span class="line">服务器收到连接请求，发送了确认报文。</span><br><span class="line">客户端收到确认报文，发送自己的确认报文，并准备传输数据。</span><br><span class="line">服务器收到了客户端的确认报文，准备接收数据。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><img src="/2021/11/06/%E5%85%B6%E4%BB%96/TCP/image-20211106103554196.png" alt="image-20211106103554196" style="zoom:67%;">
+
+<p><strong>步骤：</strong></p>
+<p>客户端A，服务器B</p>
+<ul>
+<li>A主动关闭，发送 FIN=1，seq=u，状态置为 FIN-WAIT-1</li>
+<li>B收到关闭信息，先返回确认报文，ACK=1，seq=v，ack=u+1，状态：CLOSE-WAIT</li>
+<li>此时因为B可能还有数据传输或者数据处理，所以不会马上关闭</li>
+<li>A收到确认信息，状态：FIN-WAIT-2</li>
+<li>B数据传输结束，准备关闭，返回关闭确认，FIN=1，ACK=1，seq=w，ack=u+1，状态：LAST-ACK</li>
+<li>A收到了确认关闭的信息，发送确认收到报文，ACK=1，seq=u+1，ack=w+1，同时状态：TIME-WAIT。</li>
+<li>这里为什么A没有马上关闭是因为，如果B没有收到最后的确认报文，就不会关闭会重复发送，所以这里A等待了2MSL，（MSL叫做最长报文段寿命(Maximum Segment Lifetime)），所以在2MSL之后，关闭了连接，状态：closed</li>
+<li>B收到确认，关闭连接，状态：closed</li>
+</ul>
+<p><strong>一句话简述</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">客户端发送关闭，</span><br><span class="line">服务器确认收到并返回确认，但是此时服务器可能有数据进行传输，所以没有马上关闭</span><br><span class="line">服务器传输结束，返回关闭确认</span><br><span class="line">客户端收到关闭确认，返回确认</span><br><span class="line">服务器收到确认，关闭</span><br><span class="line">客户端等待了2MSL，来回最长报文段寿命后，关闭。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/05/%E5%85%B6%E4%BB%96/HTTP%E5%92%8CHTTPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/05/%E5%85%B6%E4%BB%96/HTTP%E5%92%8CHTTPS/" class="post-title-link" itemprop="url">HTTP和HTTPS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-05 21:52:44" itemprop="dateCreated datePublished" datetime="2021-11-05T21:52:44+08:00">2021-11-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 10:08:20" itemprop="dateModified" datetime="2021-11-06T10:08:20+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="HTTP和HTTPS的区别"><a href="#HTTP和HTTPS的区别" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h1><p>参考链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.nowcoder.com/tutorial/96/4700c6f1f3334c9191a38406002efa65</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p>首先我们要知道 OSI网络参考模型 和 TCP/IP模型 以及最后的五层协议的体系</p>
+<img src="http和https/image-20210831164301870.png" alt="image-20210831164301870" style="zoom:67%;">
+
+<p><strong>对比</strong></p>
+<ul>
+<li>TCP/IP 将OSI 应用层，表示层，会话层 合并为了 应用层，但是同时也将 数据链路层 和物理层合并为了网络接口层。</li>
+<li>而五层协议在TCP/IP和OSI的综合下，合并了应用层，但是也保留了数据链路层和物理层</li>
+</ul>
+<p>在这里，应用层就是HTTP的部分了。</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>​        HTTP：超文本传输协议。是一个客户端和服务器端应答的标准(TCP)，</p>
+<h3 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h3><p>​        请求行，请求头，空行，请求体</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>​        HTTPS，在HTTP的基础上，添加了安全，因为HTTP都是进行的明文传输。</p>
+<p>​        HTTPS的SSL加密是在传输层实现的。</p>
+<p>​        HTTPS的主要作用是：建立一个信息安全通道，来确保数组的传输，确保网站的真实性。</p>
+<h3 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS"></a>SSL/TLS</h3><p>SSL，安全套接层，Secure Sockets Layer</p>
+<p>TLS，安全传输层，Transport Layer Security</p>
+<h3 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h3><ul>
+<li>它可以把任意长度的数据压缩成固定长度，并且独一无二的摘要字符串。</li>
+<li>通过把明文信息和摘要一起加密传输，接收后解密再对明文信息进行摘要，判断是否被修改。</li>
+</ul>
+<h3 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h3><ul>
+<li>对称加密，加密和解密使用相同的密钥进行实现</li>
+<li>非对称加密，有两个密钥，一个是<strong>私钥</strong>，一个是<strong>公钥</strong>，<strong>私钥是必须严格保密的，用于解密的。公钥是公开的，进行加密的。</strong> </li>
+</ul>
+<h3 id="混合加密"><a href="#混合加密" class="headerlink" title="混合加密"></a>混合加密</h3><ul>
+<li><p>因为非对称加密的传输速度较慢，所以使用混合加密的方式。</p>
+</li>
+<li><p>简而言之，通过非对称加密进行传输对称加密的密钥，然后通过对称加密进行数据传输。</p>
+</li>
+</ul>
+<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><ul>
+<li>对于一个服务是否可信，我们通过使用了数字证书来进行验证。</li>
+<li>里面包括了 CA信息，公钥用户的信息，公钥，权威机构的签名，有效期</li>
+<li>数字证书的作用： 1.向浏览器证明身份。 2.里面含有公钥。</li>
+</ul>
+<h3 id="HTTPS的传输步骤"><a href="#HTTPS的传输步骤" class="headerlink" title="HTTPS的传输步骤"></a>HTTPS的传输步骤</h3><ul>
+<li><p>客户端使用HTTPS进行访问时，则要求web服务器建立SSL连接。</p>
+</li>
+<li><p>web服务端收到请求后，会将网站的数字证书返回给客户端。</p>
+</li>
+<li><p>客户端验证过后，开始和web服务器协商SSL连接的安全等级，就是加密等级。</p>
+</li>
+<li><p>客户端通过双方协商后的安全等级，建立会话密钥，然后通过网站的公钥来加密会话密钥，并传送给网站。</p>
+</li>
+<li><p>服务端进行解密，也获取了密钥</p>
+</li>
+<li><p>使用密钥进行传输</p>
+</li>
+</ul>
+<h3 id="HTTPS的优点"><a href="#HTTPS的优点" class="headerlink" title="HTTPS的优点"></a>HTTPS的优点</h3><ul>
+<li>安全，防止数据在过程中不被窃取，改变，确保了数据的完整性。</li>
+</ul>
+<h3 id="HTTPS的缺点"><a href="#HTTPS的缺点" class="headerlink" title="HTTPS的缺点"></a>HTTPS的缺点</h3><ul>
+<li>费时</li>
+<li>缓存没有HTTP高效</li>
+</ul>
+<h2 id="HTTP和HTTPS的区别-1"><a href="#HTTP和HTTPS的区别-1" class="headerlink" title="HTTP和HTTPS的区别"></a>HTTP和HTTPS的区别</h2><ul>
+<li>HTTPS协议需要ca证书，费用较高。</li>
+<li>HTTP是超文本传输协议，信息是明文传输，HTTPS则是具有安全性的ssl加密传输协议。</li>
+<li>使用不同的链接方式，端口也不同，一般而言，HTTP协议的端口为80，HTTPS的端口为443</li>
+<li>HTTP的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比HTTP协议安全。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/31/Vue/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/31/Vue/Vue-methods%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Vue-methods使用箭头函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-31 16:51:55" itemprop="dateCreated datePublished" datetime="2021-10-31T16:51:55+08:00">2021-10-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-06 09:51:45" itemprop="dateModified" datetime="2021-11-06T09:51:45+08:00">2021-11-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><p>本篇随笔写的是在Vue的 <strong>methods</strong> 方法里面使用箭头函数。</p>
+<p>在说明之前，我们先对这个进行一下分析：</p>
+<p>首先 一个 <strong>Vue</strong> 的实例实则也是通过里面的对象进行的操作。</p>
+<p>其次，<strong>箭头函数的作用</strong>，主要是 this 指向的不同，箭头函数的 this 指向是根据当前的上下文进行决定的。</p>
+<p>所以首先可以认为，在Vue里面使用箭头函数，如果要使用 data里面 数据应该是不行，因为data里面的数据是通过 this 来获取，所以我们可以认为，Vue 内部对每个方法进行了一个this指向的变化，而箭头函数是无法修改的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var app4 = new Vue(&#123;</span><br><span class="line">  el: &#x27;#app-4&#x27;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; text: &#x27;学习 JavaScript&#x27;, flag: true &#125;,</span><br><span class="line">      &#123; text: &#x27;学习 Vue&#x27;, flag: false &#125;,</span><br><span class="line">      &#123; text: &#x27;整个牛项目&#x27;, flag: true &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">      console.log(this.todos);</span><br><span class="line">    &#125;,</span><br><span class="line">    test1: () =&gt; &#123;</span><br><span class="line">      console.log(this.todos);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = 3;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  m: &#123;</span><br><span class="line">    t: () =&gt; &#123;</span><br><span class="line">      console.log(this);</span><br><span class="line">      console.log(this.a);</span><br><span class="line">    &#125;,</span><br><span class="line">    t1() &#123;</span><br><span class="line">      console.log(this);</span><br><span class="line">      console.log(this.a);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>t 使用的箭头函数，this 的指向为 window</p>
+<p>t1 使用的普通函数，this 的指向，指向了调用他的方法。</p>
+<p><strong>结论：</strong></p>
+<ul>
+<li>使用箭头函数的方法，确实不能获取到 data 的值</li>
+<li>使用箭头函数后，this 的指向指向了 window 对象。</li>
+<li>对于对象的对象的箭头函数，this的指向，还是指向的最外边的对象所处的上下文位置。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2071,597 +2490,6 @@ https://cn.vuejs.org/v2/guide/
 <h2 id="一些面试时遇到的问题"><a href="#一些面试时遇到的问题" class="headerlink" title="一些面试时遇到的问题"></a>一些面试时遇到的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 10, 111];</span><br><span class="line"></span><br><span class="line">arr.map(parseInt)</span><br><span class="line"></span><br><span class="line">这个可能有的没有理解的话会有点懵逼</span><br><span class="line">其实理解了就很简单了。</span><br><span class="line">这就是把parseInt作为一个回调函数传递给了map，</span><br><span class="line">map的回调函数的参数是，value， index， arr</span><br><span class="line">而parseInt，可以带两个参数，这两个参数，一个是要转化的字符串（数字也可以），一个是要转化的进制。</span><br><span class="line"></span><br><span class="line">所以我们就能够理解了，</span><br><span class="line">对于 arr 1， 2， 3， 10， 111</span><br><span class="line">会分别传递</span><br><span class="line">	1， 0</span><br><span class="line">	2， 1</span><br><span class="line">	3， 2</span><br><span class="line">	10， 3</span><br><span class="line">	111， 4</span><br><span class="line">其中，0代表了默认转换，对于字符串没有进制前缀的，就是默认十进制，具体的转换规则后续写 parseInt 的时候再说明。</span><br><span class="line"></span><br><span class="line">我们可以看出，1对应的默认进制转换，2对应的1进制，3对应的2进制，10对应的3进制，111对应的4进制，因为parseInt的第二个参数范围是2-36，所以对于其他的除0以外直接NaN。</span><br><span class="line">所以对应的结果是 1, NaN, NaN, 3, 21.</span><br></pre></td></tr></table></figure>
 
 <p>对于其他的就也可以按照这个思路进行思考了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">border-radius的原理和使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-24 10:53:12" itemprop="dateCreated datePublished" datetime="2021-10-24T10:53:12+08:00">2021-10-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-26 15:19:12" itemprop="dateModified" datetime="2021-10-26T15:19:12+08:00">2021-10-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="border-radius的原理和使用"><a href="#border-radius的原理和使用" class="headerlink" title="border-radius的原理和使用"></a>border-radius的原理和使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>首先我们可以知道 <code>border-radius</code> 是四个属性的简写，所以我们先理解四个属性的值的效果。</p>
-<p><code>border-top-right-radius</code> <code>border-top-left-radius</code></p>
-<p> <code>border-bottom-right-radius</code> <code>border-bottm-left-radius</code></p>
-<p>我们取其中一个</p>
-<p><code>border-top-right-radius</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius属性设置元素的右上角弧形，这个圆弧可能是一个椭圆，或者其中一个值是0的话，就是没有圆弧，换句话就是说拐角是方形的。</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104917514.png" alt="image-20211025104917514" style="zoom:50%;">
-
-<p>通过图片我们可以知道 <code>border-top-right-radius</code> 的值是一个据 top 和 right 的一个半径，然后画弧所裁剪出来的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border-top-right-radius: radius               </span><br><span class="line">/* the corner is a circle    */  E.g. border-top-right-radius: 3px</span><br><span class="line">border-top-right-radius: horizontal vertical  </span><br><span class="line">/* the corner is an ellipsis */  E.g. border-top-right-radius: 0.5em 1em</span><br></pre></td></tr></table></figure>
-
-<p>通过例子也可以知道，对于一个值，说明了 横轴<code>horizontal</code> 和 数轴<code>vertical</code> 的值相等，对于两个值，那么就说明了第一值是横轴，第二个值是数轴。</p>
-<p>然后得到横轴和数轴的半径后，相对进行偏移，然后画出一个圆形或者一个椭圆形，所裁剪出来的值。就是得到的效果。</p>
-<p>对于值是%的，那么宽度就会相对于宽度，高度就会相对于高度。</p>
-<h3 id="对于超过-50-的计算方式"><a href="#对于超过-50-的计算方式" class="headerlink" title="对于超过 50% 的计算方式"></a>对于超过 50% 的计算方式</h3><p>原文链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/20128284</span><br></pre></td></tr></table></figure>
-
-<p>简单来说就是对于 <strong>相邻的角的半径和超过了对应的盒子的边的长度，那么浏览器要重新计算保证它们不会重合。</strong></p>
-<p>就是会同时进行缩放。来保证不会重合。</p>
-<h2 id="水平和垂直从哪个位置开始偏移"><a href="#水平和垂直从哪个位置开始偏移" class="headerlink" title="水平和垂直从哪个位置开始偏移"></a>水平和垂直从哪个位置开始偏移</h2><h3 id="我们先看使用px的计算"><a href="#我们先看使用px的计算" class="headerlink" title="我们先看使用px的计算"></a>我们先看使用px的计算</h3><p>先说结果，结果是，<strong>px的计算是相对于border的位置开始的偏移。</strong></p>
-<p>然后我们再看代码和执行结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 10px;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025104342522.png" alt="image-20211025104342522" style="zoom:50%;">
-
-
-
-<h3 id="我们再看使用-百分号-进行的计算"><a href="#我们再看使用-百分号-进行的计算" class="headerlink" title="我们再看使用 百分号% 进行的计算"></a>我们再看使用 百分号% 进行的计算</h3><p>意思是一样的，会按照你的宽高加上你的border的宽高，然后乘以 百分比。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始我这样写，以为10%应该是 50px，但是忘了border有上有下，所以真正的宽高是550px，所以50%是55px，后面才搞清楚</span><br><span class="line"></span><br><span class="line">width: 450px;</span><br><span class="line">height: 450px;</span><br><span class="line">background-color: #f00;</span><br><span class="line">border: blue solid 50px;</span><br><span class="line">border-radius: 10%;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="如何裁剪"><a href="#如何裁剪" class="headerlink" title="如何裁剪"></a>如何裁剪</h2><p>这个就是自己的理解了，我们可以看到，对于存在了border的，当你的数值超过了一定值之后，你的content也会变成弧边，而这个值就是border的宽度。</p>
-<p><strong>所以这个裁剪的方法是：</strong></p>
-<ul>
-<li><p>先计算出radius的偏移量x，y</p>
-</li>
-<li><p>然后从border的边框开始进行x，y的偏移，并且半径值也为x，y画弧，将border进行了裁剪。</p>
-</li>
-<li><p>然后如果x，y的偏移量在content里面了（这个content是包含了padding的），那么就会再对content进行裁剪，而裁剪的半径就是x，y这个点到content边界的半径。</p>
-</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .d &#123;</span><br><span class="line">      width: 450px;</span><br><span class="line">      height: 450px;</span><br><span class="line">      background-color: #f00;</span><br><span class="line">      border: blue solid 25px;</span><br><span class="line">      border-top: blue solid 30px;</span><br><span class="line">      border-left: blue solid 10px;</span><br><span class="line">      padding: 50px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">      border-top-left-radius: 30px 40px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;d&quot;&gt;123&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<img src="/2021/10/24/CSS/border-radius%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/image-20211025155459099.png" alt="image-20211025155459099" style="zoom:67%;">
-
-
-
-<h2 id="简写参数"><a href="#简写参数" class="headerlink" title="简写参数"></a>简写参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: top-left top-right bottom-right bottom-left;</span><br><span class="line">上左，上右，下右，下左，这是一个从上左开始的一个顺时针顺序。</span><br><span class="line">按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</span><br><span class="line">	参考链接：(https://www.w3school.com.cn/cssref/pr_border-radius.asp)</span><br><span class="line">意思就是，如果在省略的情况下，那么就是最后一个开始是没有值的，而前面的才有值，然后对没有值的那个，他的值就是对面的值，如果对面也没有值，那么他的值就和旁边的相等(此时就是只有一个参数)</span><br><span class="line"></span><br><span class="line">按照上面的意思来理解的话，那么很多简写参数都可以理解了。我这里就直接统计结果。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="第一步，将参数从简写的个数化为完整个数"><a href="#第一步，将参数从简写的个数化为完整个数" class="headerlink" title="第一步，将参数从简写的个数化为完整个数"></a>第一步，将参数从简写的个数化为完整个数</h3><h4 id="一个参数-border-radius-50px"><a href="#一个参数-border-radius-50px" class="headerlink" title="一个参数 border-radius: 50px;"></a>一个参数 <code>border-radius: 50px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px;</span><br><span class="line"></span><br><span class="line">只有一个 top-left </span><br><span class="line">那么，bottom-right = top-left = 50</span><br><span class="line">并且 bottom-left = top-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 50px 50px 50px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="两个参数-border-radius-50px-30px"><a href="#两个参数-border-radius-50px-30px" class="headerlink" title="两个参数 border-radius: 50px 30px;"></a>两个参数 <code>border-radius: 50px 30px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px;</span><br><span class="line"></span><br><span class="line">有两个，那么这两个就是 top-left 和 top-right</span><br><span class="line">对应的 bottom-left = top-right = 30</span><br><span class="line">bottom-right = top-left = 50</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 50px 30px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="三个参数-border-radius-50px-30px-40px"><a href="#三个参数-border-radius-50px-30px-40px" class="headerlink" title="三个参数 border-radius: 50px 30px 40px;"></a>三个参数 <code>border-radius: 50px 30px 40px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 30px 40px;</span><br><span class="line"></span><br><span class="line">有三个，那么就只有最后一个 bottom-left 没有</span><br><span class="line">那么 bottom-left 等于对面的 top-right = 30px</span><br><span class="line"></span><br><span class="line">border-radius: 50px 30px 40px 30px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="四个参数-border-radius-50px-40px-30px-20px"><a href="#四个参数-border-radius-50px-40px-30px-20px" class="headerlink" title="四个参数 border-radius: 50px 40px 30px 20px;"></a>四个参数 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">没啥说的。</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px"><a href="#对于参数里面带有-符号的-border-radius-4px-3px-6px-2px-4px" class="headerlink" title="对于参数里面带有 / 符号的 border-radius: 4px 3px 6px / 2px 4px;"></a>对于参数里面带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px / 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 4px 3px 6px / 2px 4px;</span><br><span class="line"></span><br><span class="line">这个分为两个部分</span><br><span class="line">第一部分 4 3 6 将其转化为对应的 horizontal</span><br><span class="line">	所以为 4 3 6 3</span><br><span class="line">第二部分 2 4 将其转化为对应的 vertical</span><br><span class="line">	所以为 2 4 2 4</span><br><span class="line">	</span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line">	</span><br><span class="line">然后结果就是</span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="第二步，将其转化为-border-radius"><a href="#第二步，将其转化为-border-radius" class="headerlink" title="第二步，将其转化为 border-*-*-radius"></a>第二步，将其转化为 <code>border-*-*-radius</code></h3><h4 id="对于没有带-符号的-border-radius-50px-40px-30px-20px"><a href="#对于没有带-符号的-border-radius-50px-40px-30px-20px" class="headerlink" title="对于没有带 / 符号的 border-radius: 50px 40px 30px 20px;"></a>对于没有带 <code>/</code> 符号的 <code>border-radius: 50px 40px 30px 20px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">其 horizontal 和 vertical 的值相等。</span><br><span class="line"></span><br><span class="line">border-radius: 50px 40px 30px 20px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     50px 50px;</span><br><span class="line">border-top-right-radius:    40px 40px;</span><br><span class="line">border-bottom-right-radius: 30px 30px;</span><br><span class="line">border-bottom-left-radius:  20px 20px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px"><a href="#对于带有-符号的-border-radius-4px-3px-6px-3px-2px-4px-2px-4px" class="headerlink" title="对于带有 / 符号的 border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;"></a>对于带有 <code>/</code> 符号的 <code>border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">会将 / 前的作为每一个的 horizontal </span><br><span class="line">/ 后的作为每一个的 vertical</span><br><span class="line"></span><br><span class="line">border-radius: 4px 3px 6px 3px / 2px 4px 2px 4px;</span><br><span class="line"></span><br><span class="line">border-top-left-radius:     4px 2px;</span><br><span class="line">border-top-right-radius:    3px 4px;</span><br><span class="line">border-bottom-right-radius: 6px 2px;</span><br><span class="line">border-bottom-left-radius:  3px 4px;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">HTTP概述</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-23 23:13:22" itemprop="dateCreated datePublished" datetime="2021-10-23T23:13:22+08:00">2021-10-23</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-06 09:50:28" itemprop="dateModified" datetime="2021-11-06T09:50:28+08:00">2021-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="HTTP概述"><a href="#HTTP概述" class="headerlink" title="HTTP概述"></a>HTTP概述</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>找不到说啥，直接放个MDN文档</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024100324347.png" alt="image-20211024100324347" style="zoom:67%;">
-
-
-
-<h2 id="版本迭代"><a href="#版本迭代" class="headerlink" title="版本迭代"></a>版本迭代</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP</span><br></pre></td></tr></table></figure>
-
-<h3 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP/0.9"></a>HTTP/0.9</h3><p>也被称为 <strong>单行协议</strong> </p>
-<p>请求由单行指令构成，以唯一可用方法<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET"><code>GET</code></a>开头，其后跟目标资源的路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html</span><br></pre></td></tr></table></figure>
-
-<p>响应就只包含了响应文档本身，就是HTML文件</p>
-<p>并且因为不包含响应头，所以只有HTML文件可以进行传输。</p>
-<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的变化是支持了传输其他文件，默认是短连接，支持GET、POST、 HEAD请求</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>协议版本信息现在会随着每个请求发送（<code>HTTP/1.0</code>被追加到了<code>GET</code>行）。</li>
-<li><strong>状态码会在响应开始时发送</strong>，使浏览器能了解请求执行成功或失败，并相应调整行为（如更新或使用本地缓存）。</li>
-<li>引入了HTTP头的概念，无论是对于请求还是响应，允许传输元数据，使协议变得非常灵活，更具扩展性。</li>
-<li>在新HTTP头的帮助下，具备了传输除纯文本HTML文件以外其他类型文档的能力（感谢<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a>头）。</li>
-</ul>
-<p><strong>默认是短连接，一次请求会建立一次TCP连接，请求结束就断开。</strong>可以通过一个 <code>Connection: keep-alive</code>字段使服务器不关闭连接。服务器同时也会响应这个字段。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html HTTP/1.0</span><br><span class="line">User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的变化就是支持了持久连接，默认长连接。不同自己声明 `Connection: keep-alive` ，增加了 `HOST` ，增加了请求方式，支持断点续传功能。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>连接可以复用，节省了多次打开TCP连接加载网页文档资源的时间。</li>
-<li>增加管线化技术，允许在第一个应答被完全发送之前就发送第二个请求，以降低通信延迟。</li>
-<li>支持响应分块。</li>
-<li>引入额外的缓存控制机制。</li>
-<li>引入内容协商机制，包括语言，编码，类型等，并允许客户端和服务器之间约定以最合适的内容进行交换。</li>
-<li>感谢<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Host"><code>Host</code></a>头，能够使不同域名配置在同一个IP地址的服务器上。</li>
-</ul>
-<p><strong>Host</strong> 请求头指明了请求将要发送到的服务器主机名和端口号。</p>
-<p>如果没有包含端口号，会自动使用被请求服务的默认端口（比如HTTPS URL使用443端口，HTTP URL使用80端口）。</p>
-<p>所有HTTP/1.1 请求报文中必须包含一个<code>Host</code>头字段。对于缺少<code>Host</code>头或者含有超过一个<code>Host</code>头的HTTP/1.1 请求，可能会收到<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/400"><code>400</code></a>（Bad Request）状态码。</p>
-<p>所有请求都是通过一个连接实现的。就是持久连接。服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送<code>Connection: close</code>，明确要求服务器关闭TCP连接。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /en-US/docs/Glossary/Simple_header HTTP/1.1</span><br><span class="line">Host: developer.mozilla.org</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP/2.0"></a>HTTP/2.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最大的区别，协议为二进制协议，服务器主动推送，以及 headers 压缩</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>HTTP/2是二进制协议而不是文本协议。不再可读，也不可无障碍的手动创建，改善的优化技术现在可被实施。</li>
-<li>这是一个复用协议。并行的请求能在同一个链接中处理，移除了HTTP/1.x中顺序和阻塞的约束。</li>
-<li>压缩了headers。因为headers在一系列请求中常常是相似的，其移除了重复和传输重复数据的成本。</li>
-<li>其允许服务器在客户端缓存中填充数据，通过一个叫服务器推送的机制来提前请求。</li>
-</ul>
-<h3 id="服务器推送方式"><a href="#服务器推送方式" class="headerlink" title="服务器推送方式"></a>服务器推送方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.ruanyifeng.com/blog/2017/05/server-sent_events.html</span><br></pre></td></tr></table></figure>
-
-<p><strong>WebSockets</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API</span><br></pre></td></tr></table></figure>
-
-<p><strong>Server-sent events</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h2><p>HTTP/1.x有三个，HTTP/2新增了其他的连接管理模型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Connection_management_in_HTTP_1.x</span><br></pre></td></tr></table></figure>
-
-
-
-<p>HTTP/1.x的三个连接</p>
-<p>短连接，长连接，流水线</p>
-<img src="/2021/10/23/%E5%85%B6%E4%BB%96/HTTP%E6%A6%82%E8%BF%B0/image-20211024104204389.png" alt="image-20211024104204389" style="zoom:67%;">
-
-
-
-<h3 id="短连接"><a href="#短连接" class="headerlink" title="短连接"></a>短连接</h3><p>​        每一个 HTTP 请求都由它自己独立的连接完成；这意味着发起每一个 HTTP 请求之前都会有一次 TCP 握手，而且是连续不断的。</p>
-<p>​        简单来说就是每次请求都要建立连接，请求结束关闭连接，造成了大量的连接时间的浪费。</p>
-<p>​        这是 HTTP/1.0 的默认模型(如果没有指定 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Connection"><code>Connection</code></a> 协议头，或者是值被设置为 <code>close</code>)。而在 HTTP/1.1 中，只有当 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Connection"><code>Connection</code></a> 被设置为 <code>close</code> 时才会用到这个模型。</p>
-<h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><p>​        在HTTP/1.1被设计出来之前：<code>Connection: keep-alive</code>被作为一个请求头，做成了长连接的效果。</p>
-<p>​        为了缓解这些问题，<em>长连接</em> 的概念便被设计出来了，甚至在 HTTP/1.1 之前。或者这被称之为一个 <em>keep-alive</em> 连接。</p>
-<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP 流水线在现代浏览器中并不是默认被启用的：</span><br><span class="line">	Web 开发者并不能轻易的遇见和判断那些搞怪的代理服务器的各种莫名其妙的行为。</span><br><span class="line">	正确的实现流水线是复杂的：传输中的资源大小，多少有效的 RTT 会被用到，还有有效带宽，流水线带来的改善有多大的影响范围。不知道这些的话，重要的消息可能被延迟到不重要的消息后面。这个重要性的概念甚至会演变为影响到页面布局！因此 HTTP 流水线在大多数情况下带来的改善并不明显。</span><br><span class="line">	流水线受制于 HOL 问题。</span><br><span class="line">由于这些原因，流水线已经被更好的算法给代替，如 multiplexing，已经用在 HTTP/2。</span><br></pre></td></tr></table></figure>
-
-<p>简单理解就是说，直接发送连续的请求，不需要等待每次的响应。</p>
-<h3 id="域名分片"><a href="#域名分片" class="headerlink" title="域名分片"></a>域名分片</h3><p>简单的理解就是为域名多建立几个连接。以实现并发请求。但是HTTP/2支持客户端的并发请求</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">浏览器缓存策略</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-22 21:43:10" itemprop="dateCreated datePublished" datetime="2021-10-22T21:43:10+08:00">2021-10-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-06 09:52:23" itemprop="dateModified" datetime="2021-11-06T09:52:23+08:00">2021-11-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="浏览器缓存策略"><a href="#浏览器缓存策略" class="headerlink" title="浏览器缓存策略"></a>浏览器缓存策略</h1><p><strong>参考文章</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903757872889870</span><br><span class="line">MDN</span><br><span class="line">https://juejin.cn/post/6844903737538920462</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>先说一下什么是缓存</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">缓存就是会将一些不会经常更改的图片文件等资源存储下来，下次访问的时候会优先读取本地的资源进行显示，这样既能减轻服务器的负载，也能加快页面的显示。</span><br><span class="line">这时可能就可能会问，那如果资源有了改变怎么办，所以这时候就有了强缓存和协商缓存两种。</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>浏览器缓存策略分为</strong></p>
-<p>​    <strong>强缓存</strong></p>
-<p>​        强缓存就是直接从本地进行读取，不需要向服务器端进行获取资源。因此很快。</p>
-<p>​        在命中强缓存的情况下，状态码为 200，但是size显示from disk cache或from memory cache</p>
-<p>​    <strong>协商缓存</strong></p>
-<p>​        协商缓存就是会请求，但是会将一个文件的信息加入到请求头，然后服务器端进行判断，来决定是否要更新浏览器的资源。</p>
-<p>​        会将 <code>Last-Modified</code> 和 <code>Etag</code> 放入请求头，然后服务器就会进行比对，如果命中协商缓存，状态码为304。否则会将资源传输过来。</p>
-<h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p>在进行请求的时候，不会向服务器发送请求，直接从缓存中读取资源，但是状态码是200</p>
-<p>如何进行强缓存，简单来说就是我们请求资源之后，服务器会返回一个请求头。浏览器后续就会根据这个请求头进行判断是否命中强缓存。</p>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>​        对于强缓存的请求头，有 <strong>Expires</strong> 和 <strong>Cache-Control</strong>，但是因为<strong>Cache-Control</strong> 是HTTP/1.1的产物，所以，优先级高于 Expires。</p>
-<h4 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires</span><br></pre></td></tr></table></figure>
-
-<p>HTTP/1.0</p>
-<p>​    缓存过期时间，用来指定资源到期的时间。</p>
-<p>​        缺点，是通过本地时间进行的判断。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Wed, 21 Oct 2015 07:28:00 GMT</span><br></pre></td></tr></table></figure>
-
-<p><strong>注：</strong></p>
-<p>​    如果在<code>Cache-Contro</code>响应头设置了<code>max-age</code>或者<code>s-max-age</code>指令，那么<code>Expires</code>头会被忽悠。</p>
-<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>HTTP/1.1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control</span><br></pre></td></tr></table></figure>
-
-<p><strong>语法</strong>：</p>
-<ul>
-<li>不区分大小写，但建议使用小写。</li>
-<li>多个指令以逗号分隔。</li>
-<li>具有可选参数，可以用令牌或者带引号的字符串语法。</li>
-</ul>
-<p><strong>默认值：private</strong></p>
-<p><strong>指令</strong>：</p>
-<p><strong>可缓存性指令：</strong></p>
-<p><strong>public：</strong></p>
-<p>​        表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存，即使是通常不可缓存的内容。</p>
-<p>​        （例如：1.该响应没有<code>max-age</code>指令或<code>Expires</code>消息头；</p>
-<p>​                        2. 该响应对应的请求方法是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST">POST</a> 。）</p>
-<p><strong>private：</strong></p>
-<p>​        表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）。私有缓存可以缓存响应内容。</p>
-<p>​        比如：对应用户的本地浏览器。</p>
-<p><strong>no-cache</strong>:</p>
-<p>​        在发布缓存副本之前，强制要求缓存把请求提交给原始服务器进行验证(协商缓存验证)。</p>
-<p><strong>no-store</strong>：</p>
-<p>​        缓存不应存储有关客户端请求或服务器响应的任何内容，即不使用任何缓存。</p>
-<p><strong>到期：</strong></p>
-<p><strong>max-age</strong>：</p>
-<p>​        设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。与<code>Expires</code>相反，时间是相对于请求的时间。</p>
-<p><strong>s-maxage</strong>：</p>
-<p>​        覆盖<code>max-age</code>或者<code>Expires</code>头，但是仅适用于共享缓存(比如各个代理)，私有缓存会忽略它。</p>
-<p><strong>max-stale</strong>：</p>
-<p>​        表明客户端愿意接收一个已经过期的资源。可以设置一个可选的秒数，表示响应不能已经过时超过该给定的时间。</p>
-<p><strong>min-fresh</strong>：</p>
-<p>​        表示客户端希望获取一个能在指定的秒数内保持其最新状态的响应。</p>
-<p><strong>重新验证与加载：</strong></p>
-<p><strong>must-revalidate</strong>：</p>
-<p>​        一旦资源过期（比如已经超过<code>max-age</code>），在成功向原始服务器验证之前，缓存不能用该资源响应后续请求。</p>
-<img src="/2021/10/22/%E5%85%B6%E4%BB%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/image-20211023161739229.png" alt="image-20211023161739229" style="zoom:67%;">
-
-<p>图片来源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903757872889870</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>需要进行重新验证，这个就是会进行协商缓存：</strong></p>
-<p>​        指定 <code>no-cache</code> 或 <code>max-age=0, must-revalidate</code> 表示客户端可以缓存资源，每次使用缓存资源前都必须重新验证其有效性。这意味着每次都会发起 HTTP 请求，但当缓存内容仍有效时可以跳过 HTTP 响应体的下载。</p>
-<p><strong>注意：</strong></p>
-<p>​    如果服务器关闭或失去连接，下面的指令可能会造成使用缓存。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=0</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="在强缓存时间内如何更新资源"><a href="#在强缓存时间内如何更新资源" class="headerlink" title="在强缓存时间内如何更新资源"></a>在强缓存时间内如何更新资源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903737538920462#heading-5</span><br></pre></td></tr></table></figure>
-
-<p>虽然强缓存很好，但是有一个问题，如果在强缓存时间内，我的文件资源发生了更新，那该怎么解决呢？<code>（这个是我面试的时候问到的，一下把我人问傻了。）</code></p>
-<p>这里我后面去了解了：</p>
-<p>​    简单来说就是对于资源文件需要在发生了改变之后，可以让客户端再请求一次，方法就是将文件的名字在每次修改之后会发生改变，所以每次修改了之后，客户端要请求的文件名发生了改变，就会重新再进行一次请求了。这里对于文件名的方式使用<code>hash</code>。</p>
-<p>​    HTML：使用协商缓存，因为里面会存储资源文件的路径，在每次更新之后里面的路径需要修改，所以使用协商缓存更合理。</p>
-<p>​    对于　CSS／JS／图片：使用强缓存，对于一个文件名带上一个 hash 值。在每次文件进行了修改之后，名字后面的hash就会发生改变。所以客户端就会重新请求。</p>
-<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>​        会在请求头加上：<code>If-None-Match</code>和<code>If-Modified-Since</code></p>
-<p>​        分别对应了服务器响应头的：<code>ETag</code> 和  <code>Last-Modified</code></p>
-<p>ETag 优先级高于 Last-Modified</p>
-<h3 id="If-Modified-Since-与-Last-Modified："><a href="#If-Modified-Since-与-Last-Modified：" class="headerlink" title="If-Modified-Since 与  Last-Modified："></a><strong>If-Modified-Since</strong> 与  <strong>Last-Modified</strong>：</h3><p><strong>Last-Modified</strong>：</p>
-<p>​    这个是服务器端的返回的响应头。</p>
-<p><strong>If-Modified-Since</strong>：</p>
-<p>​    这个是客户端的请求的请求头。</p>
-<h4 id="Last-Modified："><a href="#Last-Modified：" class="headerlink" title="Last-Modified："></a><strong>Last-Modified</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified</span><br></pre></td></tr></table></figure>
-
-<p>​        这个是根据上一次请求资源时，服务器所返回的<strong>Last-Modified</strong>，这个作为一个响应的头部。其中包含源头服务器认定的资源做出修改的日期及时间</p>
-<p>​        包含有  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Modified-Since"><code>If-Modified-Since</code></a> 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Unmodified-Since"><code>If-Unmodified-Since</code></a> 首部的条件请求会使用这个字段。 </p>
-<h4 id="If-Modified-Since："><a href="#If-Modified-Since：" class="headerlink" title="If-Modified-Since："></a><strong>If-Modified-Since</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Modified-Since</span><br></pre></td></tr></table></figure>
-
-<p>​        服务器只在所请求的资源在给定的日期时间之后对内容进行过修改的情况下才会将资源返回，状态码为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/200"><code>200</code></a> 。</p>
-<p>​        如果请求的资源从那时起未经修改，那么返回一个不带有消息主体的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/304"><code>304</code></a> 响应，而在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified"><code>Last-Modified</code></a> 首部中会带有上次修改时间。<strong>（注：虽然返回了304，但是会有last-modified的头部返回，因此浏览器下次请求时，会使用的是此时服务器端返回过来的last-modified，而不是以前的。）</strong></p>
-<p>​        <code>If-Modified-Since</code> 只可以用在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET"><code>GET</code></a> 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/HEAD"><code>HEAD</code></a> 请求中。</p>
-<p>​        当与 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match"><code>If-None-Match</code></a> 一同出现时，它（**<code>If-Modified-Since</code>**）会被忽略掉，除非服务器不支持 <code>If-None-Match</code>。</p>
-<p><strong>If-Unmodified-Since：</strong></p>
-<p>​        这个我没有了解。</p>
-<p><strong>使用上面这个的弊端：</strong></p>
-<p>​        对于没有进行修改，但是有过保存导致 Last-Modified 被修改，无法命中。</p>
-<p>​        这个只能以秒计时，所以对于秒以内的修改文件，不能返回。</p>
-<h3 id="If-None-Match-和-ETag"><a href="#If-None-Match-和-ETag" class="headerlink" title="If-None-Match 和 ETag"></a>If-None-Match 和 ETag</h3><p><strong>ETag</strong>：</p>
-<p>​    这个是服务器端的返回的响应头。</p>
-<p><strong>If-None-Match</strong>：</p>
-<p>​    这个是客户端的请求的请求头。</p>
-<h4 id="ETag："><a href="#ETag：" class="headerlink" title="ETag："></a><strong>ETag</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag</span><br></pre></td></tr></table></figure>
-
-<p>简单来说就是一个唯一标识资源的一个特殊符号，</p>
-<p>通常计算方式是：</p>
-<p>​    <strong>使用内容的散列，最后修改时间戳的哈希值，或简单地使用版本号</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/6844903737538920462</span><br><span class="line">这里有将比较详细的计算方式，我这里就不做过多的说明。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag: &quot;33a64df551425fcc55e4d42a148795d9f25f89d4&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">作用：</span><br><span class="line">	避免空中碰撞</span><br><span class="line">	缓存未更改的资源，就是304.</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="避免空中碰撞"><a href="#避免空中碰撞" class="headerlink" title="避免空中碰撞"></a>避免空中碰撞</h5><p>MDN上有说有这句话：</p>
-<p>​    <strong>而如果内容发生了变化，使用ETag有助于防止资源的同时更新相互覆盖（“空中碰撞”）</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag#避免“空中碰撞”</span><br></pre></td></tr></table></figure>
-
-<p>大概的意思就是说，</p>
-<p>​        我在客户端进行编辑共享文档时<code>（共享文档就是说可以被多人查看和编辑的）</code>，最开始拿到的文档是最新的。</p>
-<p>​        但是在编辑的过程中，可能别人也有编辑，但是比我上传的早，所以，在我准备上传一个共享文档时，服务器端的文档已经被别人修改过了，但是此时我的客户端的文档因为没有重新进行请求，所以还是没有被修改过的，</p>
-<p>​        此时如果没有先进行一次判断 ETag 值的话，就会发生相互覆盖，这个就是空中碰撞。</p>
-<p>​        避免就是会先进行 ETag 匹配检查是否为最新版，否则报 412 前提条件失败错误。</p>
-<p><code>（此时这个 ETag 会放在 If-Match 的请求头中。）</code></p>
-<p><strong>注：</strong></p>
-<p>​        如果给定URL中的资源更改，则一定要生成新的 Etag 值。 因此 Etags 类似于指纹，也可能被某些服务器用于跟踪。 比较 etags 能快速确定此资源是否变化，但也可能被跟踪服务器永久存留。<strong>（我能理解到 ETag 可能用于快速比较一个文件是否发生过修改，因为他是一个文根据文件的相关信息进行的一个算法生成的一个值，但是我不清楚什么是会被跟踪服务器存留）</strong></p>
-<h5 id="缓存未更改的资源"><a href="#缓存未更改的资源" class="headerlink" title="缓存未更改的资源"></a>缓存未更改的资源</h5><p>​        对于用户访问一个URL时，显示了资源过期且不可用，客户端就发送 ETag 的值 作为 If-None-Match 的请求头，如果资源没有更改，那么服务器将会返回不带响应体的 304 状态。</p>
-<h4 id="If-None-Match："><a href="#If-None-Match：" class="headerlink" title="If-None-Match："></a><strong>If-None-Match</strong>：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match</span><br></pre></td></tr></table></figure>
-
-<p><code>If-None-Match</code> 和 <code>If-Match</code> 的区别</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://datatracker.ietf.org/doc/html/rfc7232#section-3.1</span><br></pre></td></tr></table></figure>
-
-<p>If-None-Match</p>
-<p>​    使用的是 弱比较算法。</p>
-<p>​    常用于 GET 请求的，请求最新资源的方式</p>
-<p>If-Match</p>
-<p>​    使用的是 强比较算法。</p>
-<p>​    常用于 POST  PUT，DELETE 状态改变方法，防止多个用户同时操作的意外覆盖。</p>
-<h2 id="后端设置方式"><a href="#后端设置方式" class="headerlink" title="后端设置方式"></a>后端设置方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">参考文章</span><br><span class="line">https://juejin.cn/post/6844903737538920462#heading-11</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(&#x27;Cache-Control&#x27;, &#x27;public, max-age=xxx&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">res.setHeader(&#x27;Cache-Control&#x27;, &#x27;public, max-age=0&#x27;);</span><br><span class="line">res.setHeader(&#x27;Last-Modified&#x27;, xxx);</span><br><span class="line">res.setHeader(&#x27;ETag&#x27;, xxx);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="最后，重新来一遍浏览器缓存过程"><a href="#最后，重新来一遍浏览器缓存过程" class="headerlink" title="最后，重新来一遍浏览器缓存过程"></a>最后，重新来一遍浏览器缓存过程</h2><p><strong>第一次请求</strong></p>
-<p>浏览器进行请求，发现缓存没有这个文件</p>
-<p>向服务器进行请求，获得文件，并带上响应头：</p>
-<p>​    属于强缓存的：Cache-Control，Expires</p>
-<p>​    属于协商缓存的：ETag，Last-Modified</p>
-<p>浏览器接收到了文件，并将文件和这些响应头缓存下来，下次使用。</p>
-<p><strong>强缓存</strong></p>
-<p>浏览器进行请求，发现缓存存在这个文件</p>
-<p>浏览器缓存查看该次请求是否命中强缓存（就是没有超过文件缓存过期时间）</p>
-<p>命中强缓存，直接从本地读取，状态码：200</p>
-<p><strong>协商缓存</strong></p>
-<p>浏览器进行请求，发现缓存存在这个文件</p>
-<p>浏览器缓存查看该次请求是否命中强缓存，</p>
-<p>没有命中强缓存，将 ETag 和 Last-Modified 的值放入请求头，</p>
-<p>​    为 If-None-Match 和 If-Modified-Since，发送给服务器</p>
-<p>服务器接收到请求后，查看是否命中协商缓存，</p>
-<p>发现命中协商缓存，服务器会返回状态码 304，没有响应体</p>
-<p>​    并将响应头的 Last-Modified 和 ETag 的值设置为文件的值，返回</p>
-<p>客户端接收到服务器的 304 响应，并将 ETag 和 Last-Modified 存储下来。</p>
-<p><strong>简单来说：</strong></p>
-<p>​    就是第一次的文件请求会正常的返回，第二次会先看看能不能命中强缓存，如果能直接读取本地的，如果不能则看看能不能命中协商缓存，如果命中，则还是读取本地的文件，如果都没有命中，那么就会使用新的文件。</p>
-<p>这里<strong>对于一个文件如何在强缓存期间进行更新</strong>也有说明：就是会对文件名进行hash计算，修改过的文件的hash值不一样，所以对于浏览器来说，这个文件名不一样，不是一个文件，需要重新请求。</p>
 
       
     </div>
