@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tallgy.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="组件注册1https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;components-registration.html    组件名组件名大小写​        对于大小写的组件名，在使用的时候大写会变成 -+小写的形式。 123myComPonentmy-com-ponent    全局注册1Vue.component(&amp;#x27;component-a&amp;#x27;, &amp;#123; &#x2F;*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-使用-深入了解组件">
+<meta property="og:url" content="http://tallgy.gitee.io/2021/10/29/Vue/Vue2%E6%95%99%E7%A8%8B/Vue2-%E6%95%99%E7%A8%8B-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="tallgy&#39;s blog">
+<meta property="og:description" content="组件注册1https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;components-registration.html    组件名组件名大小写​        对于大小写的组件名，在使用的时候大写会变成 -+小写的形式。 123myComPonentmy-com-ponent    全局注册1Vue.component(&amp;#x27;component-a&amp;#x27;, &amp;#123; &#x2F;*">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-29T15:15:14.000Z">
+<meta property="article:modified_time" content="2021-12-11T08:39:33.115Z">
+<meta property="article:author" content="tallgy">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="文档">
+<meta property="article:tag" content="Vue2">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://tallgy.gitee.io/2021/10/29/Vue/Vue2%E6%95%99%E7%A8%8B/Vue2-%E6%95%99%E7%A8%8B-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%BB%84%E4%BB%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://tallgy.gitee.io/2021/10/29/Vue/Vue2%E6%95%99%E7%A8%8B/Vue2-%E6%95%99%E7%A8%8B-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%BB%84%E4%BB%B6/","path":"2021/10/29/Vue/Vue2教程/Vue2-教程-深入了解组件/","title":"Vue-使用-深入了解组件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vue-使用-深入了解组件 | tallgy's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">tallgy's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">组件注册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%90%8D"><span class="nav-number">1.1.</span> <span class="nav-text">组件名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="nav-number">1.1.1.</span> <span class="nav-text">组件名大小写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="nav-number">1.2.</span> <span class="nav-text">全局注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">1.3.</span> <span class="nav-text">局部注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.</span> <span class="nav-text">模块系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">1.4.1.</span> <span class="nav-text">在模块系统中局部注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="nav-number">1.4.2.</span> <span class="nav-text">基础组件的自动化全局注册</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prop"><span class="nav-number">2.</span> <span class="nav-text">Prop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="nav-number">2.1.</span> <span class="nav-text">Prop的大小写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Prop类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop-%E9%AA%8C%E8%AF%81"><span class="nav-number">2.3.</span> <span class="nav-text">Prop 验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">2.3.1.</span> <span class="nav-text">类型检查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E-Prop-%E7%9A%84-Attribute"><span class="nav-number">2.4.</span> <span class="nav-text">非 Prop 的 Attribute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-%E5%90%88%E5%B9%B6%E5%B7%B2%E6%9C%89%E7%9A%84-Attribute"><span class="nav-number">2.4.1.</span> <span class="nav-text">替换&#x2F;合并已有的 Attribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%81%E7%94%A8-Attribute-%E7%BB%A7%E6%89%BF"><span class="nav-number">2.4.2.</span> <span class="nav-text">禁用 Attribute 继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">自定义事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%90%8D"><span class="nav-number">3.1.</span> <span class="nav-text">事件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84v-model-2-2-0"><span class="nav-number">3.2.</span> <span class="nav-text">自定义组件的v-model 2.2.0+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%88%B0%E7%BB%84%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">将原生事件绑定到组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sync%E4%BF%AE%E9%A5%B0%E7%AC%A6-2-3-0"><span class="nav-number">3.4.</span> <span class="nav-text">.sync修饰符 2.3.0+</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%92%E6%A7%BD"><span class="nav-number">4.</span> <span class="nav-text">插槽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E6%A7%BD%E5%86%85%E5%AE%B9"><span class="nav-number">4.1.</span> <span class="nav-text">插槽内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">4.2.</span> <span class="nav-text">编译作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%83%8C%E5%86%85%E5%AE%B9"><span class="nav-number">4.3.</span> <span class="nav-text">后背内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="nav-number">4.4.</span> <span class="nav-text">具名插槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="nav-number">4.5.</span> <span class="nav-text">作用域插槽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%AC%E5%8D%A0%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD%E7%9A%84%E7%BC%A9%E5%86%99%E8%AF%AD%E6%B3%95"><span class="nav-number">4.5.1.</span> <span class="nav-text">独占默认插槽的缩写语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E6%8F%92%E6%A7%BDProp"><span class="nav-number">4.5.2.</span> <span class="nav-text">解构插槽Prop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%8F%92%E6%A7%BD%E5%90%8D"><span class="nav-number">4.6.</span> <span class="nav-text">动态插槽名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD%E7%9A%84%E7%BC%A9%E5%86%99"><span class="nav-number">4.7.</span> <span class="nav-text">具名插槽的缩写</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6-amp-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">动态组件&amp;异步组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8-keep-alive"><span class="nav-number">5.1.</span> <span class="nav-text">在动态组件上使用 keep-alive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">异步组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%8A%A0%E8%BD%BD%E7%8A%B6%E6%80%81"><span class="nav-number">5.2.1.</span> <span class="nav-text">处理加载状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E8%BE%B9%E7%95%8C%E6%83%85%E5%86%B5"><span class="nav-number">6.</span> <span class="nav-text">处理边界情况</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%85%83%E7%B4%A0-amp-%E7%BB%84%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">访问元素 &amp; 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%A0%B9%E5%AE%9E%E4%BE%8B-this-root"><span class="nav-number">6.1.1.</span> <span class="nav-text">访问根实例 this.$root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E7%88%B6%E7%BA%A7%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B"><span class="nav-number">6.1.2.</span> <span class="nav-text">访问父级组件实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%AD%90%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%88%96%E5%AD%90%E5%85%83%E7%B4%A0"><span class="nav-number">6.1.3.</span> <span class="nav-text">访问子组件实例或子元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">6.1.4.</span> <span class="nav-text">依赖注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8C%96%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BE%A6%E5%90%AC%E5%99%A8"><span class="nav-number">6.2.</span> <span class="nav-text">程序化的事件侦听器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8"><span class="nav-number">6.3.</span> <span class="nav-text">循环引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%BB%84%E4%BB%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">递归组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8"><span class="nav-number">6.3.2.</span> <span class="nav-text">组件之间的循环引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%AE%9A%E4%B9%89%E7%9A%84%E4%BB%A3%E6%9B%BF%E5%93%81"><span class="nav-number">6.4.</span> <span class="nav-text">模板定义的代替品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E8%81%94%E6%A8%A1%E6%9D%BF"><span class="nav-number">6.4.1.</span> <span class="nav-text">内联模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X-Template"><span class="nav-number">6.4.2.</span> <span class="nav-text">X-Template</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%9B%B4%E6%96%B0"><span class="nav-number">6.5.</span> <span class="nav-text">控制更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0"><span class="nav-number">6.5.1.</span> <span class="nav-text">强制更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-v-once-%E7%9A%84%E5%BB%89%E4%BB%B7%E9%9D%99%E6%80%81%E7%BB%84%E4%BB%B6"><span class="nav-number">6.5.2.</span> <span class="nav-text">使用 v-once 的廉价静态组件</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tallgy"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">tallgy</p>
+  <div class="site-description" itemprop="description">只是一个知识的搬运工</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tallgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/tallgy" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;tallgy" rel="noopener" target="_blank"><i class="fab fa-github-alt fa-fw"></i>Gitee</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/10/29/Vue/Vue2%E6%95%99%E7%A8%8B/Vue2-%E6%95%99%E7%A8%8B-%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%BB%84%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue-使用-深入了解组件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-29 23:15:14" itemprop="dateCreated datePublished" datetime="2021-10-29T23:15:14+08:00">2021-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-11 16:39:33" itemprop="dateModified" datetime="2021-12-11T16:39:33+08:00">2021-12-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/Vue2%E6%96%87%E6%A1%A3/" itemprop="url" rel="index"><span itemprop="name">Vue2文档</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cn.vuejs.org/v2/guide/components-registration.html</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="组件名"><a href="#组件名" class="headerlink" title="组件名"></a>组件名</h2><h3 id="组件名大小写"><a href="#组件名大小写" class="headerlink" title="组件名大小写"></a>组件名大小写</h3><p>​        对于大小写的组件名，在使用的时候大写会变成 -+小写的形式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myComPonent</span><br><span class="line"></span><br><span class="line">my-com-ponent</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;component-a&#x27;, &#123; /* ... */ &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        这样创建就是全局注册的，只要注册了之后，后面的Vue实例都可以直接使用。</p>
+<h2 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h2><p>​        全局注册会不可避免的增加性能的消耗，浪费了很多时间。所以可以使用局部注册的方式进行注册，将组件注册在实例的内部，因此在实例被销毁时也会被销毁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const ComponentA = &#123; /* ... */ &#125;;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    &#x27;component-a&#x27;: ComponentA,</span><br><span class="line">    &#x27;component-b&#x27;: ComponentB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        简单来说就是 ComponentsA 里面的对象就是 new一个Vue实例的对象。然后再在components里面进行new的创建，所以将作用域限制到了一定的范围。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const C = &#123;</span><br><span class="line">  template: `&lt;div&gt;22&lt;/div&gt;`,</span><br><span class="line">&#125;</span><br><span class="line">const ComponentA = &#123;</span><br><span class="line">  el: &#x27;#ap&#x27;,</span><br><span class="line">  //这里是局部组件创建再加上了一个组件的创建，否则一个父组件，两个局部组件内部是不能相互调用的。</span><br><span class="line">  components: &#123;</span><br><span class="line">    &#x27;com&#x27;: C,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    &#x27;comA&#x27;: ComponentA,</span><br><span class="line">    &#x27;com&#x27;: C,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h2><p>​        简单来说就是可以使用 import / require 来使用一个模块系统。</p>
+<h3 id="在模块系统中局部注册"><a href="#在模块系统中局部注册" class="headerlink" title="在模块系统中局部注册"></a>在模块系统中局部注册</h3><p>​        简单来说，下面这个是取出了一个对象。这个是一个ES6的模块化导出的默认导出的写法。</p>
+<p>​        所以简单来说就是将对象进行导出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentA from &#x27;./Component&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        我们先理清一下思路</p>
+<ul>
+<li>首先，Vue的components里面使用的是一个对象，这个对象是那个实例对象。其次对于这个命名的思路是因为是es6的对象赋值的方式</li>
+<li>然后就是导入 import 和 export default 这里导入和导出对象。</li>
+<li>所以其实还是有思路的。</li>
+</ul>
+<h3 id="基础组件的自动化全局注册"><a href="#基础组件的自动化全局注册" class="headerlink" title="基础组件的自动化全局注册"></a>基础组件的自动化全局注册</h3><p>​        require.context 可以全局注册组件。但是需要使用webpack或者使用了VueCLI3+（因为内部使用了webpack）</p>
+<p>​        <strong>什么是 require.context ：</strong></p>
+<ul>
+<li>首先，是一个webpack的api。</li>
+<li>其次，这个api用于实现自动化导入模块。就是对于一个文件引入很多模块的情况，可以使用这个api，会遍历指定的文件，然后进行自动导入，不需要每次显式的调用import导入模块。</li>
+<li>进行一个更细粒度的模块引入。</li>
+</ul>
+<p>​        <strong>一个使用时机</strong>：</p>
+<ul>
+<li>首先就是需要引入很多模块</li>
+<li>其次就是这个模块的处于同一父文件位置，所以对于基础组件来说是非常合适的。</li>
+</ul>
+<p>​        require.context 的参数：</p>
+<ul>
+<li><p>directory，String类型</p>
+<ul>
+<li>文件目录位置，</li>
+</ul>
+</li>
+<li><p>includeSubdirs，Boolean类型</p>
+<ul>
+<li>表示是否包含文件的子目录，可选参数，默认是 true</li>
+</ul>
+</li>
+<li><p>filter，RegExp正则表达式类型</p>
+<ul>
+<li>表示过滤某些文件。可选参数，默认是 <code>/^\.\/.*$/</code> 指的是所有文件。（这里是webpack写的，但是我没有理解这个正则）。</li>
+</ul>
+</li>
+<li><p>mode，String类型</p>
+<ul>
+<li><p>表示加载的方式， sync，eager，weak，lazy，lazy-once。默认值是sync。</p>
+</li>
+<li><p>```<br>sync<br>eager</p>
+<pre><code>不会生成额外的chunk，所有模块当成当前chunk引入。没有额外的网络请求，但是会返回一个resolved的Promise。
+</code></pre>
+<p>weak</p>
+<pre><code>这个没有看懂，大概可能是尝试加载，不可用返回一个reject的Promise。
+</code></pre>
+<p>lazy</p>
+<pre><code>为每一个导入的模块生成一个可延迟加载的chunk。简单来说就是将以异步方式加载。
+</code></pre>
+<p>lazy-once</p>
+<pre><code>生成一个可以满足所有的可延迟加载的chunk。这个chunk将第一次调用时获取，随后使用相同的网络响应。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">大概看懂了之后，我们再看一下组件的自动化全局注册</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import Vue from ‘vue’<br>import upperFirst from ‘lodash/upperFirst’<br>import camelCase from ‘lodash/camelCase’</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>const requireComponent = require.context(<br>  // 其组件目录的相对路径<br>  ‘./components’,<br>  // 是否查询其子目录<br>  false,<br>  // 匹配基础组件文件名的正则表达式<br>  /Base[A-Z]\w+.(vue|js)$/<br>)</p>
+<p>requireComponent.keys().forEach(fileName =&gt; {<br>  // 获取组件配置<br>  const componentConfig = requireComponent(fileName)</p>
+<p>  // 获取组件的 PascalCase 命名<br>  const componentName = upperFirst(<br>    camelCase(<br>      // 获取和目录深度无关的文件名<br>      fileName<br>        .split(‘/‘)<br>        .pop()<br>        .replace(/.\w+$/, ‘’)<br>    )<br>  )</p>
+<p>  // 全局注册组件<br>  Vue.component(<br>    componentName,<br>    // 如果这个组件选项是通过 <code>export default</code> 导出的，<br>    // 那么就会优先使用 <code>.default</code>，<br>    // 否则回退到使用模块的根。<br>    componentConfig.default || componentConfig<br>  )<br>})</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		**其中这一部分的作用是将每个文件的模块给取了出来**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>const requireComponent = require.context(<br>  // 其组件目录的相对路径<br>  ‘./components’,<br>  // 是否查询其子目录<br>  false,<br>  // 匹配基础组件文件名的正则表达式<br>  /Base[A-Z]\w+.(vue|js)$/<br>)</p>
+<p>目录是 ./components<br>不查询子目录<br>匹配文件的形式，Basexxxx.(vue|js)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* requireComponent 通过typeof 判断是一个，function，里面存在了方法，可以使用keys方法进行获取</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​		**这里是将requireComponent存储的组件给进行了注册。**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>requireComponent.keys().forEach(fileName =&gt; {<br>  // 获取组件配置<br>  const componentConfig = requireComponent(fileName)</p>
+<p>  // 获取组件的 PascalCase 命名<br>  const componentName = upperFirst(<br>    camelCase(<br>      // 获取和目录深度无关的文件名<br>      fileName<br>        .split(‘/‘)<br>        .pop()<br>        .replace(/.\w+$/, ‘’)<br>    )<br>  )</p>
+<p>  // 全局注册组件<br>  Vue.component(<br>    componentName,<br>    // 如果这个组件选项是通过 <code>export default</code> 导出的，<br>    // 那么就会优先使用 <code>.default</code>，<br>    // 否则回退到使用模块的根。<br>    componentConfig.default || componentConfig<br>  )<br>})</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* keys方法获取到的是文件的相对路径。使用foreach进行循环操作。foreach内部也是和forin一个意思。forin和forof的区别在于迭代器问题。</span><br><span class="line"></span><br><span class="line">  * ```</span><br><span class="line">    ./App.vue</span><br><span class="line">    ./components/App.vue</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>然后使用 requireComponent 方法，参数为文件位置，便会获取到内容。</p>
+<ul>
+<li>使用 requireComponent(filename)，进行获取，就可以获取到内容。</li>
+</ul>
+</li>
+<li><p>当然这里的一个特点是，这个requireComponent 既是一个方法，也是一个对象，因为它既能像方法一样传递参数进行操作，也可以调用keys这个方法。</p>
+</li>
+<li><p>这里使用的 upperFirst 和 camelCase 是 lodash里面的方法，其中 upperFirst的作用是首字母大写，而camelCase是将字符串转为驼峰命名法，比如空格，-，_将会被划分。</p>
+</li>
+<li><p>在这里，首先fileName是一个文件的路径和名字，所以使用split进行划分/， 然后取出最后一个，然后将后面的文件后缀改为空，然后给camelCase变为驼峰，然后返回的字符串给了upperFirst变为了首字母大写的驼峰。赋值给了componentName。</p>
+<ul>
+<li>```<br>const componentName = upperFirst(<br>  camelCase(<pre><code>// 获取和目录深度无关的文件名
+fileName
+  .split(&#39;/&#39;)
+  .pop()
+  .replace(/\.\w+$/, &#39;&#39;)
+</code></pre>
+  )<br>)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 然后就是注册组件了，使用了 Vue.component 方法。进行注册，Vue.component 第一个参数是名字，第二个参数是需要被Vue实例的对象。</span><br><span class="line"></span><br><span class="line">  * 这里的唯一的问题就是，对于如果没有使用 export default 导出的方法，貌似不会存在 default 这个对象。但是具体的我们需要在后面才会知道。</span><br><span class="line"></span><br><span class="line">  * ```</span><br><span class="line">    Vue.component(</span><br><span class="line">      componentName,</span><br><span class="line">      // 如果这个组件选项是通过 `export default` 导出的，</span><br><span class="line">      // 那么就会优先使用 `.default`，</span><br><span class="line">      // 否则回退到使用模块的根。</span><br><span class="line">      componentConfig.default || componentConfig</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>​        <strong>如何实现一个方法带有对象的使用。</strong></p>
+<p>​        这里我的一个想法就是修改原型链了，因为JavaScript任何都是存在原型链的，对于方法来说，也是有一个原型链的。简单来理解，方法既可以使用，又可以当作一个构造器来创建对象。</p>
+<ul>
+<li>作为一个构造器来说，方法需要记住的是prototype的指向</li>
+<li>而对于方法的执行来说，需要记住的是 __proto__ 的指向。所以这里对 __proto__ 里面创建了一个方法，然后通过调用这个方法来获取了keys，并且这个本身也是一个方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function T() &#123;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">T.__proto__.keys = function () &#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Prop"><a href="#Prop" class="headerlink" title="Prop"></a>Prop</h1><h2 id="Prop的大小写"><a href="#Prop的大小写" class="headerlink" title="Prop的大小写"></a>Prop的大小写</h2><p>​        简单来说就是驼峰命名法(camelCase)会在HTML上进行使用时需要转换为短横线分割命名(kebab-case)。因为HTML文档解析是大小写不敏感的，所以 postTitle 会被解析成 posttitle</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post :post-title=&quot;a&quot;&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;blog-post&#x27;, &#123;</span><br><span class="line">  // 在 JavaScript 中是 camelCase 的</span><br><span class="line">  props: [&#x27;postTitle&#x27;],</span><br><span class="line">  template: &#x27;&lt;h3&gt;&#123;&#123; postTitle &#125;&#125;&lt;/h3&gt;&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​        但是如果是使用的字符串模板，那么就不会有这个限制。</p>
+<p>​        意思就是说，使用template这种，模板是字符串的，应该是中间有个步骤在解析的时候会将驼峰自动转换为短横线。所以没有问题。</p>
+<h2 id="Prop类型"><a href="#Prop类型" class="headerlink" title="Prop类型"></a>Prop类型</h2><ul>
+<li><p>正常prop在使用的时候是使用的数组，加上字符串进行存储。此时的prop是一个数组的形式。</p>
+<ul>
+<li><p>```<br>props: [‘title’, ‘author’]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 当然我们可以设置prop的值的类型。此时的prop是一个对象的形式。</span><br><span class="line"></span><br><span class="line">  * ```</span><br><span class="line">    props: &#123;</span><br><span class="line">      title: String,</span><br><span class="line">      likes: Number,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>对于设置了类型，但是类型对不上的，会报错，但是还是会正常显示，并不会进行类型转换。</p>
+</li>
+</ul>
+</li>
+<li><p>后面还会将一个写法，props里面的prop也是一个对象，我们后续再进行一个讲解。</p>
+<ul>
+<li>```<br>props: {<pre><code>propA: &#123;
+    type: String,
+    default: &#39;111&#39;,
+    required: true
+&#125;
+</code></pre>
+}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 传递静态或动态Prop</span><br><span class="line"></span><br><span class="line">​		简单来说，prop的传递是通过在使用组件时，添加上了attribute属性在DOM树上，然后再进行的传递，所以这个是可以使用 v-bind 进行绑定的。</span><br><span class="line"></span><br><span class="line">​		当然通过这里我也学会一个小case，就是在这样使用的时候，会把42作为一个数字传递过去，而不是字符串，对于布尔值也是一样，如果要传递一个字符串，需要再使用 &#x27;&#x27; 进行划分。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blog-post :likes="42"></blog-post><br>42， false， [12, 41]， {}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		对于要传入一个对象的所有property，我们可以使用 v-bind，进行直接传入。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blog-post v-bind="post"></blog-post></li>
+</ul>
+</li>
+</ul>
+<p>就等于将 post 里面的对象进行传递</p>
+<p>&lt;blog-post<br>  v-bind:id=”post.id”<br>  v-bind:title=”post.title”</p>
+<blockquote>
+
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		当然这里的优先级来说，首先对于子组件没有的prop，是不会进行赋值的，其次对于对象里面存在，同时在外面也进行过一个操作的。比如下面这个情况，是以单独的为重点。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><blog-post :post-title="a" v-bind="post"></blog-post></p>
+<p>post: {<br>  id: 1,<br>  ‘post-title’: ‘xxxx’,<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		其次，就是对于对象里面的属性，在子组件的props里没有，但是确实这个标签的属性的，会被挂载为一个属性。</span><br><span class="line"></span><br><span class="line">​		比如：下面这个title就是子组件不存在的，但是属于标签上的属性，我们就可以看到DOM解构上就存在了，同时，我们也发现，id属性应该也是DOM树上的，但是却没有，应该是对于props里面存在的属性会被拦截，只有不在的才会跳出拦截。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>post: {<br>  id: 1,<br>  title: ‘xxxx’,<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 单向数据流</span><br><span class="line"></span><br><span class="line">​		简单来说，对于这个父子组件的值的传递，所以为了保证子组件意外变更父级组件的状态，我们让子组件不能进行更新，更新会报出警告。并且不能进行更改。</span><br><span class="line"></span><br><span class="line">​		然而记住，这个只是对栈进行了一个锁定，并没有对堆进行锁定，所以简单来说就是值类型是会被警告，但是对于引用类型来说，还是可以直接进行修改，并不会爆出警告。</span><br><span class="line"></span><br><span class="line">​		这是一个需要记住的问题。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​		对于会进行修改数据，但是又不想污染了父组件的data的，我们这里，有两个方式</span><br><span class="line"></span><br><span class="line">* 第一种就是使用了data将props的值重新进行赋值了 **这个子组件接下来希望将其作为一个本地的 prop 数据来使用** 。</span><br><span class="line">  * ```</span><br><span class="line">    props: [&#x27;initialCounter&#x27;],</span><br><span class="line">    data: function () &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        counter: this.initialCounter</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第二种就是使用计算属性，简单来说就是并没有修改原数据，仅仅只是使用了原数据。常用于 <strong>以一种原始的值传入且需要进行转换</strong> 。</li>
+</ul>
+<h2 id="Prop-验证"><a href="#Prop-验证" class="headerlink" title="Prop 验证"></a>Prop 验证</h2><p>​        验证类型是否满足需求，以及是否是必填项。</p>
+<h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><ul>
+<li>类型的限制</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">	A: Number,</span><br><span class="line">	B: [Number, String],</span><br><span class="line">	C: &#123;</span><br><span class="line">		type: String,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>是否为必填项和默认值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">	A: &#123;</span><br><span class="line">		required: true,</span><br><span class="line">		default: &#x27;AA&#x27;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>对象和数组的默认值必须从一个工厂函数获取。简单来说就是需要是一个函数，函数返回一个对象或者数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">default: () =&gt; &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">		a: 1</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>自定义一个验证函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A: &#123;</span><br><span class="line">	validator: function(value) &#123;</span><br><span class="line">		//返回值是 true 和 false</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>​        注意那些 prop 会在一个组件实例创建<strong>之前</strong>进行验证，所以实例的 property (如 <code>data</code>、<code>computed</code> 等) 在 <code>default</code> 或 <code>validator</code> 函数中是不可用的。</p>
+</blockquote>
+<h2 id="非-Prop-的-Attribute"><a href="#非-Prop-的-Attribute" class="headerlink" title="非 Prop 的 Attribute"></a>非 Prop 的 Attribute</h2><p>​        一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 prop 定义的 attribute。</p>
+<p>​        这个在前面也有说过，因为prop的传递是在标签上进行的传递，那么怎么区别这个属性是prop的值还是我是要给标签上的值呢。这里就是非Prop的属性</p>
+<p>​        简单来理解，就是对于声明的属性，但是却没有prop属性进行接收，那么就会被添加到组件的根元素上。</p>
+<h3 id="替换-合并已有的-Attribute"><a href="#替换-合并已有的-Attribute" class="headerlink" title="替换/合并已有的 Attribute"></a>替换/合并已有的 Attribute</h3><p>​        简单来说就是我在组件的根元素上已经存在了这个属性，但是我在外面使用的使用对这个属性进行了重新的赋值，但是我的需求不是进行覆盖，而是进行合并，此时就是这个 替换/合并 属性</p>
+<p>​        但是这里从官网上看出，并没有什么方法，但是对于 class 和 style 这两个属性，我们会进行合并操作，但是对于其他属性，比如 type 等，我们就会出现替换掉的操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">子组件，c-c</span><br><span class="line">div.A[type=&#x27;AA&#x27;]</span><br><span class="line"></span><br><span class="line">父组件的使用</span><br><span class="line">c-c.B[type=&#x27;BB&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="禁用-Attribute-继承"><a href="#禁用-Attribute-继承" class="headerlink" title="禁用 Attribute 继承"></a>禁用 Attribute 继承</h3><p>​        简单来说就是因为在使用这个组件时，一些没有被prop的属性会被加入根标签，但是有的时候是不想这样的，所以我们可以使用 inheritAttrs: false，代表了继承属性为false。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;my-component&#x27;, &#123;</span><br><span class="line">	//这个属性，为false，代表了多余的属性不会被记录在dom树上。（多余是指没有在props定义的），默认为true。</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  // ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        当然对于需要被继承的属性，我们可以使用 $attrs 进行获取。这个属性包含了一个属性名和一个属性值。</p>
+<p>​        通过 inheritAttrs 和 $attrs 这两个属性，就可以自己决定属性应该被赋予哪个元素。通常用于编写基础组件。</p>
+<p>​        下面这个例子，首先，使用了 inheritAttrs 进行了拦截。对于props不存在的属性将不会出现在根元素上。然后再对input标签上添加了一个 v-bind=”$attrs” 因为$attrs 属性是一个键值对。然后将其赋值给了input标签上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;base-input&#x27;, &#123;</span><br><span class="line">  inheritAttrs: false,</span><br><span class="line">  props: [&#x27;label&#x27;, &#x27;value&#x27;],</span><br><span class="line">  template: `</span><br><span class="line">    &lt;label&gt;</span><br><span class="line">      &#123;&#123; label &#125;&#125;</span><br><span class="line">      &lt;input</span><br><span class="line">        v-bind=&quot;$attrs&quot;</span><br><span class="line">        v-bind:value=&quot;value&quot;</span><br><span class="line">        v-on:input=&quot;$emit(&#x27;input&#x27;, $event.target.value)&quot;</span><br><span class="line">      &gt;</span><br><span class="line">    &lt;/label&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;base-input</span><br><span class="line">  label=&quot;Username:&quot;</span><br><span class="line">  v-model=&quot;username&quot;</span><br><span class="line">  required</span><br><span class="line">  placeholder=&quot;Enter your username&quot;</span><br><span class="line">&gt;&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$attrs 的值。</span><br><span class="line">&#123;</span><br><span class="line">	required: &quot;&quot;</span><br><span class="line">	placeholder: &quot;Enter your username&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意 <code>inheritAttrs: false</code> 选项<strong>不会</strong>影响 <code>style</code> 和 <code>class</code> 的绑定。</p>
+</blockquote>
+<p>​        通过这个方式来进行操作的话，不用担心哪个是真正的根元素。</p>
+<h1 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h1><h2 id="事件名"><a href="#事件名" class="headerlink" title="事件名"></a>事件名</h2><p>​        首先要注意一个地方，那就是，对于 vue 的 v-on 监听来说，（语法糖是@）。这个是不会将短横线转为驼峰的。</p>
+<p>​        我们从前面可以知道，对于 props 来说，传递的属性如果是短横线，那么在props里面可以使用驼峰来进行处理，但是对于事件来说不行。</p>
+<p>​        这里就会好奇为什么prop可以短横线转驼峰，但是事件不能呢。有的说是JavaScript的命名规范里面不能使用短横线命名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&#x27;myEvent&#x27;)</span><br><span class="line">&lt;!-- 没有效果 --&gt;</span><br><span class="line">因为 短横线不能转换为驼峰。所以没有效果。</span><br><span class="line">&lt;my-component v-on:my-event=&quot;doSomething&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        所以对于 @myEvent 将会被转化为 @myevent。</p>
+<p>​        所以最好的建议就是全部都是用 kebab-case。这里不但有HTML大小写不敏感的原因，还有对于模板字符串来说。大小写是规定的。</p>
+<h2 id="自定义组件的v-model-2-2-0"><a href="#自定义组件的v-model-2-2-0" class="headerlink" title="自定义组件的v-model 2.2.0+"></a>自定义组件的v-model 2.2.0+</h2><p>​        v-model 这个默认是利用名为 value 的prop 和 input 的事件。当然对于input的单选框和其他的会将value属性用于不同的prop。但是我们可以使用 model 选项来解决 v-model的冲突。</p>
+<p>​        简单的理解一下下面的内容，prop：checked，这个默认是value，代表了使用props的checked作为v-model的绑定。event：change，默认是input，代表监听的事件名称是change，这些都是可以进行修改的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;base-checkbox&#x27;, &#123;</span><br><span class="line">  model: &#123;</span><br><span class="line">    prop: &#x27;checked&#x27;,</span><br><span class="line">    event: &#x27;change&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    checked: Boolean</span><br><span class="line">  &#125;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;input</span><br><span class="line">      type=&quot;checkbox&quot;</span><br><span class="line">      v-bind:checked=&quot;checked&quot;</span><br><span class="line">      v-on:change=&quot;$emit(&#x27;change&#x27;, $event.target.checked)&quot;</span><br><span class="line">    &gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        比如我这里进行一个修改。就是将 prop 的checked改成了XXX，于是相对应的。props的名字也要有一个XXX的存在。同理。我可以将event改成一个AAA，那么就会将emit提交的事件名称修改为AAA。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">model: &#123;</span><br><span class="line">  prop: &#x27;XXX&#x27;,</span><br><span class="line">  event: &#x27;AA&#x27;</span><br><span class="line">&#125;,</span><br><span class="line">props: &#123;</span><br><span class="line">  XXX: String</span><br><span class="line">&#125;,</span><br><span class="line">template: `</span><br><span class="line">  &lt;input</span><br><span class="line">  :value=&quot;XXX&quot;</span><br><span class="line">  @change=&quot;$emit(&#x27;AA&#x27;, $event.target.value)&quot;</span><br><span class="line">  &gt;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意你仍然需要在组件的 props 选项里声明 checked 这个 prop。</p>
+</blockquote>
+<h2 id="将原生事件绑定到组件"><a href="#将原生事件绑定到组件" class="headerlink" title="将原生事件绑定到组件"></a>将原生事件绑定到组件</h2><p>​        简单来说就是我想对一个标签进行监听，比如input监听，方法在本身，但是组件的input标签是在子组件的。那么此时我们就可以发现。子组件的输入并不会调用这个方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-input @input=&quot;onInput&quot;&gt;&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        我们可以先做一个原生的示例。通过下面这个示例我们可以发现。在输入input的时候会输出1，2 。因为这个是冒泡的原因。所以先进行的子组件的执行，再进行的父组件的执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div oninput=&quot;console.log(2);&quot;&gt;</span><br><span class="line">  &lt;input oninput=&quot;console.log(1);&quot;/&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        那么我们做一个vue组件的示例。并且我们也可以发现。此时就不会执行 myInput 方法了。只会执行组件内部的input的方法。不会执行外部的。原因的话。我们可以知道对于没有props接收的属性一般会被加入根元素，但是我们可以发现对于 监听属性来说，并没有加入到根元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;base-input @input=&quot;myInput&quot;&gt;&lt;/base-input&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;base-input&#x27;, &#123;</span><br><span class="line">  template: `&lt;input @input=&quot;CInput&quot;&gt;`,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    CInput() &#123;</span><br><span class="line">      console.log(&#x27;c&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        具体的原因还不清楚。但是要记住就是直接使用监听是不会被监听成功的。有可能是监听要通过JavaScript进行操作，但是组件的元素会被替换，所以监听会失效。</p>
+<p>​        因此我们可以使用 .native 修饰符 那么此时就可以将监听放入根元素了。当然，这个的效果简单来说就是会将事件绑定给根元素。但是如果本来根元素不支持这个事件，那么就会静默失败，比如 div的根元素绑定一个focus，就会失败。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-input @input.native=&quot;myInput&quot;&gt;&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        此时，对于根元素并不是我想要绑定的元素，这个时候，我们知道，对于props，有一个叫做。$attrs，和 inheritAttrs 进行搭配，可以使父组件传递的props在子组件能够有一个自己规定的位置出现。那么同时事件也有一个 $listeners 属性，他是一个对象，里面包含了作用在这个组件上的监听器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;input v-on=&quot;$listeners&quot; @input=&quot;CInput&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        但是注意，如果使用了 .native 那么将不会出现在 $listeners 里面。不管 .native 是否会绑定成功。</p>
+<p>​        下面这个是使用computed，这里记住一个问题，那就是 下面这个写法是会将 input 的监听进行覆盖的一个操作。但是又通过了 $emit 向上通知了父组件的 input。同理 使用 this.$listeners[‘input’] 也会覆盖input。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  inputListeners: function () &#123;</span><br><span class="line">    var vm = this</span><br><span class="line">    // `Object.assign` 将所有的对象合并为一个新对象</span><br><span class="line">    return Object.assign(&#123;&#125;,</span><br><span class="line">      // 我们从父级添加所有的监听器</span><br><span class="line">      this.$listeners,</span><br><span class="line">      // 然后我们添加自定义监听器，</span><br><span class="line">      // 或覆写一些监听器的行为</span><br><span class="line">      &#123;</span><br><span class="line">        // 这里确保组件配合 `v-model` 的工作</span><br><span class="line">        input: function (event) &#123;</span><br><span class="line">        	vm.$emit(&#x27;input&#x27;, event.target.value)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sync修饰符-2-3-0"><a href="#sync修饰符-2-3-0" class="headerlink" title=".sync修饰符 2.3.0+"></a>.sync修饰符 2.3.0+</h2><p>​        因为双向绑定会带来维护上的问题。因为对于data的变更不清楚来源。</p>
+<p>​        所以我们推荐 update:myPropName 来代替。在一个包含 title 的假设的组件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&#x27;update:title&#x27;, newTitle)</span><br></pre></td></tr></table></figure>
+
+<p>​        因此就引出了sync修饰符，这算是一个语法糖。</p>
+<ul>
+<li><p>对于父组件来说，变化就是将 :title 和 :update:title 进行了合并，简单来说就像是进行了 v-model 的操作一样。</p>
+<ul>
+<li>```<br>&lt;base-input<br>  v-bind:title=”a”<br>  v-on:update:title=”a”<blockquote>
+
+</blockquote>
+<base-input :title.sync="a"></base-input><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 对于子组件来说，没有什么变化， 这里的 :title.sync 就是 @update:title 加上了 :title，所以对于 $emit 也是使用原来的 update:title 进行的提交。</span><br><span class="line"></span><br><span class="line">  * ```</span><br><span class="line">    this.$emit(&#x27;update:title&#x27;, Math.random());</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>在这里，还有一个问题就是。我们可以发现对于 emit提交时带的参数，父组件如果要将方法写在那个标签上进行表达式的执行，那么 $event 就是第一个参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&#x27;update:title&#x27;, 1);</span><br><span class="line"></span><br><span class="line">//这里的 $event 就是 子元素在 $emit 提交时的第二个参数，从第二个参数开始的提交就是会传递给父元素的参数。这里只是第二个，如果没有参数的话，就会为undefined</span><br><span class="line">&lt;base-input @update:title=&quot;a = $event&quot;&gt;&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>注意带有 <code>.sync</code> 修饰符的 <code>v-bind</code> <strong>不能</strong>和表达式一起使用 (例如 <code>v-bind:title.sync=”doc.title + ‘!’”</code> 是无效的)。取而代之的是，你只能提供你想要绑定的 property 名，类似 <code>v-model</code>。</p>
+</blockquote>
+<p>​        当然，这里的 sync修饰符 也可以和 v-bind 进行搭配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;text-document v-bind.sync=&quot;doc&quot;&gt;&lt;/text-document&gt;</span><br><span class="line"></span><br><span class="line">this.$emit(&#x27;update:title&#x27;, 1111);</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>将 <code>v-bind.sync</code> 用在一个字面量的对象上，例如 <code>v-bind.sync=”&#123; title: doc.title &#125;”</code>，是无法正常工作的，因为在解析一个像这样的复杂表达式的时候，有很多边缘情况需要考虑。</p>
+</blockquote>
+<h1 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h1><p>​        简单来说就是，因为Vue的组件化思路，所以很多都是以组件进行的开发。但是为了降低组件和组件的解耦性，就可以使用插槽，将组件之间的联系进一步的降低。</p>
+<p>​        在 2.6.0中，提供了新的语法 v-slot 来代替了 slot 和 slot-scope</p>
+<h2 id="插槽内容"><a href="#插槽内容" class="headerlink" title="插槽内容"></a>插槽内容</h2><p>​        </p>
+<p><strong>一个简单的示例</strong></p>
+<p>​        下面的示例就代表了 Your Profile 将会代替 slot这个标签进行显示。当然 插槽的内部可以包含任何模板代码，包括HTML和其他组件，这也是我们常会使用的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigation-link url=&quot;/profile&quot;&gt;</span><br><span class="line">  Your Profile</span><br><span class="line">&lt;/navigation-link&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;a&gt;</span><br><span class="line">  &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="编译作用域"><a href="#编译作用域" class="headerlink" title="编译作用域"></a>编译作用域</h2><p>​        简单来说，看下面这个代码，这个 a 应该是 父级组件上的 a呢，还是子组件上的a呢。</p>
+<p>​        最终的结果就是这个是 父级组件上的a。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;base-input&gt;&#123;&#123; a &#125;&#125;&lt;/base-input&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里有条规则</p>
+<blockquote>
+<p>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</p>
+</blockquote>
+<h2 id="后背内容"><a href="#后背内容" class="headerlink" title="后背内容"></a>后背内容</h2><p>​        简单来说就是一个插槽的默认值。简单来说就是写在 slot 里面的内容就是 插槽的默认值。</p>
+<p>​        如果你在使用组件的时候没有使用插槽，那么就会使用这个默认的内容，并且这个默认的内容的作用域是在子组件的。</p>
+<p>​        如果提供有内容，那么便会渲染来取代内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;slot&gt;&#123;&#123; x &#125;&#125;&lt;/slot&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><p>​        简单来说就是使用name将插槽能够指定的使用在某个位置。对于没有使用name的，会有一个默认的name default。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        那么在使用这个具名插槽的时候，我们就可以使用一个 template 进行包裹，然后在里面使用 v-slot指令，并以 v-slot 的参数的形式提供名称。</p>
+<p>​        从下面的代码可以看出，对于使用了 template加上v-slot的，就是寻找name相对应的。对于没有使用的就会被作为一个默认，就算中间隔了一个template v-slot 也一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template v-slot:header&gt;</span><br><span class="line">    &lt;h1&gt;Here might be a page title&lt;/h1&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">  &lt;template v-slot:footer&gt;</span><br><span class="line">    &lt;p&gt;Here&#x27;s some contact info&lt;/p&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        当然，为了语义的方便，我们建议还是可以将默认的放入一个 template v-slot:default，当然，这个default不要也可以，但是如果加了default，那么就不会将其他外层标签也加入默认，但是如果没有加上default的话，那么就会加入默认。</p>
+<p>​        比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-slot:default&gt;</span><br><span class="line">  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//下面这个不会显示。</span><br><span class="line">&lt;p&gt;And another one.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;p&gt;A paragraph for the main content.&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//上面的template没有使用default，下面这个会显示出来，因为都被算在了插槽里面</span><br><span class="line">&lt;p&gt;And another one.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>​        2.6.0 废弃了 slot-scope</p>
+<p>​        因为我们可以知道，插槽的默认的作用域是编译时的环境，所以一般常常是父级作用域，那么此时我们要如何将作用域作用域子级。</p>
+<p>​        这个时候就是要使用作用域插槽的时候了。</p>
+<ul>
+<li>简单来说就是子组件在进行slot创建时，通过 v-bind 绑定一个属性，然后属性的值是data的值。</li>
+<li>然后在使用的时候，通过 v-slot:xx=”xxx” 进行了属性的获取，这里 xxx就是子组件传递过来的一系列的属性而形成的对象。</li>
+<li>此时我们就可以在父组件里面使用到子组件的data了，当然，建议这个还是少使用吧，因为这个造成了组件的透明度降低。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot :x=&quot;x1&quot;&gt;&lt;/slot&gt;</span><br><span class="line"></span><br><span class="line">&lt;template v-slot:default=&quot;a&quot;&gt;</span><br><span class="line">a.x</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="独占默认插槽的缩写语法"><a href="#独占默认插槽的缩写语法" class="headerlink" title="独占默认插槽的缩写语法"></a>独占默认插槽的缩写语法</h3><p>​        就是说，只有被提供的内容只存在默认插槽的存在时，组件的标签才可以被当作插槽的模板来使用。此时我们就可以直接把 v-slot 用在组件上。</p>
+<p>​        这里我们首先知道 v-slot 可以使用在组件上，并且插槽是可以接收一个组件的。但是我们后面可以发现，如果直接使用组件，会出现插槽的位置无法正确的定位。</p>
+<p>​        然后我么可以发现，其实对组件是不能进行插槽的定位的。意思就是说，对于组件来说，使用插槽的 v-slot 不能定位到对应的具名插槽。</p>
+<p>​        比如下面这个情况，我开始以为 v-slot:footer 和 v-slot:header，都会按照正确的位置进行拜访，因为这个就是具名插槽的作用，只能用于template，对于下面这个test组件，虽然我们也使用了 v-slot:header 但是他并没有去header，而是就为普通的标签的行为。v-slot不会在除了template上起作用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-input&gt;</span><br><span class="line">  &lt;template v-slot:footer&gt;</span><br><span class="line">  	&lt;ttt&gt;&lt;/ttt&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;123&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;111&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">  &lt;test v-slot:header&gt;&lt;/test&gt;</span><br><span class="line">&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;current-user v-slot:default=&quot;slotProps&quot;&gt;</span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">&lt;/current-user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        缩写语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;current-user v-slot=&quot;slotProps&quot;&gt;</span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">&lt;/current-user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        案例形式。简单来说就是，如果base-input内部只有一个默认插槽，那么我们可以将这个 base-input 内部的整体都作为一个 slot的代替，如果是以前， base-input&gt;template[v-slot=”slotProps”] 但是我们可以将template进行省略，所以变成了 base-input[v-slot=”slotProps”]</p>
+<p>​        当然，上面这个也是进行了缩写了的。完整的话，需要加上 v-slot:default。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-input v-slot=&quot;slotProps&quot;&gt;</span><br><span class="line">&lt;/base-input&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解构插槽Prop"><a href="#解构插槽Prop" class="headerlink" title="解构插槽Prop"></a>解构插槽Prop</h3><p>​        简单来说就是说，作用域插槽的内部原理就是将插槽的内容包裹在一个参数的函数内部。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function (slotProps) &#123;</span><br><span class="line">  // 插槽内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        在下面这个标签的使用里。使用了解构赋值的形式， { user } = slotProps，在这里，解构赋值的效果就是，取出了 slotProps的user给了 user。当然我们也可以使用其他的解构赋值的行为。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;current-user v-slot=&quot;&#123; user &#125;&quot;&gt;</span><br><span class="line">  &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line">&lt;/current-user&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="动态插槽名"><a href="#动态插槽名" class="headerlink" title="动态插槽名"></a>动态插槽名</h2><p>​        2.6.0 新增</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-slot:[dynamicSlotName]&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/template	&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="具名插槽的缩写"><a href="#具名插槽的缩写" class="headerlink" title="具名插槽的缩写"></a>具名插槽的缩写</h2><p>​        2.6.0 新增</p>
+<p>​        简单来说，就是插槽的语法糖，v-slot =&gt; #，但是对于没有参数的话是无效的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;current #header=&quot;&#123; user &#125;&quot;&gt;&lt;/current&gt;</span><br><span class="line">//下面这个是无效的。</span><br><span class="line">&lt;current #=&quot;&#123; user &#125;&quot;&gt;&lt;/current&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="动态组件-amp-异步组件"><a href="#动态组件-amp-异步组件" class="headerlink" title="动态组件&amp;异步组件"></a>动态组件&amp;异步组件</h1><h2 id="在动态组件上使用-keep-alive"><a href="#在动态组件上使用-keep-alive" class="headerlink" title="在动态组件上使用 keep-alive"></a>在动态组件上使用 keep-alive</h2><p>​        之前，我们使用 is 属性来对组件进行切换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        现在，我们在组件进行切换的时候，想要保存组件的状态。以避免重复的渲染。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 失活的组件将会被缓存！--&gt;</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">  &lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h2><p>​        将应用分割成小一些的代码块，并且只在需要的时候才从服务器进行加载。对此Vue允许使用一个工厂函数的方式进行定义组件。Vue只有在这个组件需要被渲染，并把结果缓存起来供未来重渲染。</p>
+<p>​        下面这个简单的例子，表示了第二个参数是一个函数，函数需要使用resolve和reject，表示会以promise进行调用，通过resolve返回渲染对象，荣国reject表示加载失败。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;async-example&#x27;, function (resolve, reject) &#123;</span><br><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    // 向 `resolve` 回调传递组件定义</span><br><span class="line">    resolve(&#123;</span><br><span class="line">      template: &#x27;&lt;div&gt;I am async!&lt;/div&gt;&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, 1000)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        一个推荐的做法是将异步组件和 <a target="_blank" rel="noopener" href="https://webpack.js.org/guides/code-splitting/">webpack 的 code-splitting 功能</a>一起配合使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;async-webpack-example&#x27;, function (resolve) &#123;</span><br><span class="line">  // 这个特殊的 `require` 语法将会告诉 webpack</span><br><span class="line">  // 自动将你的构建代码切割成多个包，这些包</span><br><span class="line">  // 会通过 Ajax 请求加载</span><br><span class="line">  require([&#x27;./my-async-component&#x27;], resolve)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        但是因为我这个异步组件和搭配webpack这个用的比较少，所以在这里就没有进行详细的讲述，就直接贴上Vue的官网链接了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cn.vuejs.org/v2/guide/components-dynamic-async.html#异步组件</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="处理加载状态"><a href="#处理加载状态" class="headerlink" title="处理加载状态"></a>处理加载状态</h3><p>​        2.3.0 新增</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const AsyncComponent = () =&gt; (&#123;</span><br><span class="line">  // 需要加载的组件 (应该是一个 `Promise` 对象)</span><br><span class="line">  component: import(&#x27;./MyComponent.vue&#x27;),</span><br><span class="line">  // 异步组件加载时使用的组件</span><br><span class="line">  loading: LoadingComponent,</span><br><span class="line">  // 加载失败时使用的组件</span><br><span class="line">  error: ErrorComponent,</span><br><span class="line">  // 展示加载时组件的延时时间。默认值是 200 (毫秒)</span><br><span class="line">  delay: 200,</span><br><span class="line">  // 如果提供了超时时间且组件加载也超时了，</span><br><span class="line">  // 则使用加载失败时使用的组件。默认值是：`Infinity`</span><br><span class="line">  timeout: 3000</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>注意如果你希望在 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router">Vue Router</a> 的路由组件中使用上述语法的话，你必须使用 Vue Router 2.4.0+ 版本。</p>
+</blockquote>
+<h1 id="处理边界情况"><a href="#处理边界情况" class="headerlink" title="处理边界情况"></a>处理边界情况</h1><h2 id="访问元素-amp-组件"><a href="#访问元素-amp-组件" class="headerlink" title="访问元素 &amp; 组件"></a>访问元素 &amp; 组件</h2><h3 id="访问根实例-this-root"><a href="#访问根实例-this-root" class="headerlink" title="访问根实例 this.$root"></a>访问根实例 this.$root</h3><p>​        这个可以通过 <code>this.$root</code>，进行访问。如果是methods里面的方法aa，那么就可以通过 <code>this.$root.aa</code> 进行访问。</p>
+<p>​        所有的子组件都可以将这个实例作为一个全局 store 来访问或者使用。</p>
+<blockquote>
+<p>对于 demo 或非常小型的有少量组件的应用来说这是很方便的。不过这个模式扩展到中大型应用来说就不然了。因此在绝大多数情况下，我们强烈推荐使用 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vuex">Vuex</a> 来管理应用的状态。</p>
+</blockquote>
+<h3 id="访问父级组件实例"><a href="#访问父级组件实例" class="headerlink" title="访问父级组件实例"></a>访问父级组件实例</h3><p>​        可以通过 $parent 属性来访问一个父组件的实例。<br>​        但是请注意，这样写虽然是可以直接对父组件进行了操作，可以代替props来进行数据的访问，但是却会造成数据的修改时不清楚修改的源头。</p>
+<h3 id="访问子组件实例或子元素"><a href="#访问子组件实例或子元素" class="headerlink" title="访问子组件实例或子元素"></a>访问子组件实例或子元素</h3><p>​        可以通过 ref 属性，为子组件赋予一个ID引用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;/base-input&gt;</span><br><span class="line"></span><br><span class="line">那么父组件就可以通过 this.$refs.usernameInput 来访问子组件了。</span><br></pre></td></tr></table></figure>
+
+<p>​        但是记住，this.$refs，里面存放的只会有属于自己的子组件，以及有可能会有自己的子孙级组件。这个我们一会儿就说。</p>
+<p>​        ref同时也可以写在原生的HTML标签上面，for example <code>&lt;input type=&quot;text&quot; ref=&quot;inpu&quot;&gt;</code> 如果写在了原生的HTML上面，我们通过$refs获取时也是一个原生的标签，并且也可以使用方法，比如 <code>focus</code> 等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; ref=&quot;input&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">//在父组件的方法里面使用这个便可以调用input的原生focus进行聚焦。</span><br><span class="line">this.$refs.inpu.focus()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>关于父组件的 refs 是否会含有子组件，这个应该是在哪个组件被编译就会存在于哪个组件。</p>
+<p>​        比如看看下面这个文件的内容。template存在一个插槽和input，然后在使用组件的时候，插槽又是插入了一个input，但是如果我们查看结果，就会发现，插槽所写的ref会存在与父组件，而在template里面所写的，便会存在于子组件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template: `&lt;div&gt;&lt;slot&gt;&lt;/slot&gt;&lt;input type=&quot;text&quot; ref=&quot;input&quot;&gt;&lt;/div&gt;`,</span><br><span class="line"></span><br><span class="line">&lt;aaaa ref=&quot;ssss&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; ref=&quot;inpu&quot;&gt;</span><br><span class="line">&lt;/aaaa&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        当 ref 和 v-for 一起使用的时候，ref会包含整个数组。一般来说，refs是一个对象，但是对于使用了v-for的来说，就会变成一个数组，就算是ref使用了v-bind 进行了绑定，也会变为存在不同ref的对象，内部含有数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;li :ref=&quot;i&quot; v-for=&quot;i in 10&quot;&gt;&lt;/li&gt;</span><br><span class="line"></span><br><span class="line">1: [li]</span><br><span class="line">2: [li]</span><br><span class="line">3: [li]</span><br><span class="line">4: [li]</span><br><span class="line"></span><br><span class="line">形成的还是数组，虽然数组的长度只有1。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><p>​        简单来说，就是父子组件可以通过 $parent 来进行访问，但是对于嵌套的情况，会造成 $parent.$parent 那么此时就是依赖注入的时候。</p>
+<p>​        这里用到了两个新的实例的选项。 provide &amp; inject</p>
+<p><strong>provide</strong> 选项允许我们指定我们想要提供给后代组件的数据/方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">provide: function() &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">		get: this.get</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>inject</strong> 在任何后代组件里，我们都可以使用 inject 选项来接收指定的属性进行注入。</p>
+<p><strong>例子</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">father</span><br><span class="line">	children</span><br><span class="line">		grandson</span><br><span class="line"></span><br><span class="line">那么此时 grandson要使用 father组件的方法就需要 this.$parent.$parent 来进行调用，但是对于有多层的调用会出现意想不到的问题。</span><br></pre></td></tr></table></figure>
+
+<p>​        使用 provide 和 inject 进行处理，需要记住，这个的调用创建应该是先于data，所以如果当data和inject进行了重合，那么便会出现data覆盖了inject，但是他们都是属于 init injected &amp; reacted 周期。在使用 beforeCreate 之后， 以及 created 之前。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">先使用 provide 进行提供需要给后代的方法和数据。</span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">	provide() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			name: this.output,</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">然后在后代使用 inject 进行注入，注入之后就可以使用 this.name进行使用。</span><br><span class="line">Vue.component(&#x27;xx&#x27;, &#123;</span><br><span class="line">	inject: [&#x27;name&#x27;],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="程序化的事件侦听器"><a href="#程序化的事件侦听器" class="headerlink" title="程序化的事件侦听器"></a>程序化的事件侦听器</h2><p>通过 $on(eventName, eventHandler) 来侦听一个事件。</p>
+<p>通过 $once(eventName, eventHandler) 来一次性的侦听一个事件。</p>
+<p>通过 $off(eventName, eventHandler)  来停止侦听一个事件。</p>
+<p>一般来说是很少进行使用的，但是当你需要在一个组件的实例上手动的侦听事件时，它们便派上了用场。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">	this.pi = new Pi(&#123;&#125;);</span><br><span class="line">&#125;,</span><br><span class="line">beforeDestroy() &#123;</span><br><span class="line">	this.pi.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用程序化的侦听器来解决这个问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">	const pi = new Pi(&#123;&#125;);</span><br><span class="line">	this.$once(&#x27;hook:beforeDestroy&#x27;, function() &#123;</span><br><span class="line">		pi.destroy();</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<blockquote>
+<p>​        Vue 的事件系统不同于浏览器的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget">EventTarget API</a>。尽管它们工作起来是相似的，但是 <code>$emit</code>、<code>$on</code>, 和 <code>$off</code> 并不是 <code>dispatchEvent</code>、<code>addEventListener</code> 和 <code>removeEventListener</code> 的别名。</p>
+</blockquote>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><h3 id="递归组件"><a href="#递归组件" class="headerlink" title="递归组件"></a>递归组件</h3><p>​        组件是可以在他们自己的模板中调用自身的，但是只能通过name选项来做这件事。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name: &#x27;stack&#x27;,</span><br><span class="line">tempalte: `&lt;div&gt;&lt;stack&gt;&lt;/stack&gt;&lt;/div&gt;`,</span><br></pre></td></tr></table></figure>
+
+<p>​        简单来说就是可以进行递归的循环，所以需要注意，并且发现对于全局注册组件，也可以使用组件名称进行递归组件。</p>
+<h3 id="组件之间的循环引用"><a href="#组件之间的循环引用" class="headerlink" title="组件之间的循环引用"></a>组件之间的循环引用</h3><p>​        对于组件之间的相互调用，组件在渲染树中互相为对方的后代和祖先。当通过 Vue.component 全局注册组件的时候，这个悖论将会被解开。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tree-father</span><br><span class="line">	tree-other</span><br><span class="line">	</span><br><span class="line">tree-other</span><br><span class="line">	tree-father</span><br></pre></td></tr></table></figure>
+
+<p>​        然而，如果你使用一个模块系统依赖/导入组件，则会遇到一个错误。</p>
+<p>​        所以此时的解决办法就是：</p>
+<ul>
+<li><p>将注册事件放入 beforeCreate 进行注册。</p>
+<ul>
+<li>```<br>beforeCreate() {<pre><code>this.$options.components.ComponentA = require(&#39;./component-a.vue&#39;);
+</code></pre>
+}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 或者，在本地进行注册组件的时候，可以使用 webpack 异步 import</span><br><span class="line"></span><br><span class="line">  * ```</span><br><span class="line">    components: &#123;</span><br><span class="line">    	ComponentA: () =&gt; import(&#x27;./component-a.vue&#x27;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="模板定义的代替品"><a href="#模板定义的代替品" class="headerlink" title="模板定义的代替品"></a>模板定义的代替品</h2><h3 id="内联模板"><a href="#内联模板" class="headerlink" title="内联模板"></a>内联模板</h3><p>​        简单来说就是，组件内部的内容将会作为模板，而不是将其视为分布式内容(或者插槽？)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component inline-template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;p&gt;These are compiled as the component&#x27;s own template.&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;Not parent&#x27;s transclusion content.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;my-component&#x27;, &#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意点</strong>：</p>
+<ul>
+<li>使用的模板名需要是存在的</li>
+<li>如果要使用内联模板，那么对于全局注册的组件时需要的信息可以不需要，比如(template，data，methods等)。</li>
+<li>个人感觉这个和 template 的效果很相似。但是注意，使用内联模板也是可以使用data和methods的。所以这个的作用应该是很像 .vue 文件的使用。</li>
+</ul>
+<h3 id="X-Template"><a href="#X-Template" class="headerlink" title="X-Template"></a>X-Template</h3><p>​        使用 script 脚本，并且将type设置为 text/x-template，然后通过使用 id 来引用模板。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/x-template&quot; id=&quot;hello-world-template&quot;&gt;</span><br><span class="line">  &lt;p&gt;Hello hello hello&lt;/p&gt;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;hello-world&#x27;, &#123;</span><br><span class="line">  template: &#x27;#hello-world-template&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​        这些替代模板都是将 模板内部的标签 和 数据 以及操作等进行了分割。</p>
+<h2 id="控制更新"><a href="#控制更新" class="headerlink" title="控制更新"></a>控制更新</h2><h3 id="强制更新"><a href="#强制更新" class="headerlink" title="强制更新"></a>强制更新</h3><p>​        使用 $forceUpdate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">		x: [1, 3],</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">this.x[1] = 10;</span><br><span class="line">//此时，虽然数据发生了改变，但是因为vue2的数据响应式无法对数组的直接操作进行通知，所以不会发生更新，那么此时就需要使用 this.$forceUpdate(); 来进行强制更新了。</span><br><span class="line">this.$forceUpdate();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用-v-once-的廉价静态组件"><a href="#使用-v-once-的廉价静态组件" class="headerlink" title="使用 v-once 的廉价静态组件"></a>使用 v-once 的廉价静态组件</h3><p>​        Vue 渲染纯HTML非常快，但是有时你的组件包含了大量的静态内容。在这些情况下，可以确保只被评估一次。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;terms-of-service&#x27;, &#123;</span><br><span class="line">  template: `</span><br><span class="line">    &lt;div v-once&gt;</span><br><span class="line">      &lt;h1&gt;Terms of Service&lt;/h1&gt;</span><br><span class="line">      ... a lot of static content ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<p>尽量不要过度的使用这种模式。除非真的渲染缓慢。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://gitee.com/tallgy">
+          <span class="icon">
+            <i class="fab fa-git"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/tags/%E6%96%87%E6%A1%A3/" rel="tag"># 文档</a>
+              <a href="/tags/Vue2/" rel="tag"># Vue2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/29/Vue/Vue2%E6%95%99%E7%A8%8B/Vue2-%E6%95%99%E7%A8%8B-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" rel="prev" title="Vue-使用-基础使用">
+                  <i class="fa fa-chevron-left"></i> Vue-使用-基础使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/30/HTML/HTML-%E6%A0%87%E7%AD%BE%E7%9A%84title/" rel="next" title="HTML-标签的title">
+                  HTML-标签的title <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tallgy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
