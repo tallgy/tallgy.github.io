@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/17/%E9%9A%8F%E7%AC%94/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98/">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2022/02/12/JavaScript/%E9%9A%8F%E7%AC%94/if%20in%20%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -203,7 +203,599 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/17/%E9%9A%8F%E7%AC%94/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98/" class="post-title-link" itemprop="url">浏览器的回流和重绘</a>
+          <a href="/2022/02/12/JavaScript/%E9%9A%8F%E7%AC%94/if%20in%20%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">if in 用法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-02-12 16:09:34 / 修改时间：16:14:53" itemprop="dateCreated datePublished" datetime="2022-02-12T16:09:34+08:00">2022-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="if-in-的用法"><a href="#if-in-的用法" class="headerlink" title="if in 的用法"></a>if in 的用法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  a: 1,</span><br><span class="line">  b: 2,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.__proto__.c = 3</span><br><span class="line"></span><br><span class="line">Object.defineProperty(obj, &#x27;d&#x27;, &#123;</span><br><span class="line">  value: 123,</span><br><span class="line">  enumerable: false</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">if (&#x27;a&#x27; in obj) &#123;</span><br><span class="line">  console.log(&#x27;a&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">if (&#x27;c&#x27; in obj) &#123;</span><br><span class="line">  console.log(&#x27;c&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">if (&#x27;d&#x27; in obj) &#123;</span><br><span class="line">  console.log(&#x27;d&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">c</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+
+
+
+<p>所以我们可以知道，if ( in )</p>
+<p>会把 自身的，原型链上的。以及不可枚举的都会显示。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2022/02/04/%E9%9A%8F%E7%AC%94/css-hover%E5%92%8Cfocus%E9%A1%BA%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/04/%E9%9A%8F%E7%AC%94/css-hover%E5%92%8Cfocus%E9%A1%BA%E5%BA%8F/" class="post-title-link" itemprop="url">css-hover和focus顺序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-04 17:16:47" itemprop="dateCreated datePublished" datetime="2022-02-04T17:16:47+08:00">2022-02-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-03 22:30:59" itemprop="dateModified" datetime="2022-03-03T22:30:59+08:00">2022-03-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="hover和focus的顺序问题"><a href="#hover和focus的顺序问题" class="headerlink" title="hover和focus的顺序问题"></a>hover和focus的顺序问题</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div:hover &#123; &#125;</span><br><span class="line">div:focus &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        最近在写项目的时候无意间发现的问题，对于hover和触发和focus的触发问题。这个其实在学的时候就已经知道了，但是因为用的较少，所以还忘记了这个问题。</p>
+<p>​        简单来说就是 hover需要放在focus的前面，因为hover的触发比focus触发的时机问题。会先focus然后再hover(应该)，但是在css里面，对于优先级相同的。在后面的会覆盖前面的。</p>
+<p>​        通过这个我们也要知道关于冒泡和捕获触发的问题也要注意这个情况。事件是先捕获，然后再冒泡。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2022/01/22/%E9%9A%8F%E7%AC%94/npm-package%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/22/%E9%9A%8F%E7%AC%94/npm-package%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">npm-package上传</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-22 23:02:31" itemprop="dateCreated datePublished" datetime="2022-01-22T23:02:31+08:00">2022-01-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-24 22:05:27" itemprop="dateModified" datetime="2022-01-24T22:05:27+08:00">2022-01-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="npm包上传到npm官网"><a href="#npm包上传到npm官网" class="headerlink" title="npm包上传到npm官网"></a>npm包上传到npm官网</h1><p>众所周知，我们可以使用npm i xxx进行下载，npm作为一个包管理的一个工具，我们可以使用别人的包，我们也可以自己在npm上面创建一个属于自己的包，然后使用npm进行下载</p>
+<h2 id="首先，肯定是要在-npm-官网上面创建一个账号了"><a href="#首先，肯定是要在-npm-官网上面创建一个账号了" class="headerlink" title="首先，肯定是要在 npm 官网上面创建一个账号了"></a>首先，肯定是要在 npm 官网上面创建一个账号了</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.npmjs.com/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="然后就是-进入-cmd在本地进行登录"><a href="#然后就是-进入-cmd在本地进行登录" class="headerlink" title="然后就是 进入 cmd在本地进行登录"></a>然后就是 进入 cmd在本地进行登录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 npm login 就可以进行登录</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>​    这个需要在官网，所以你要知道你现在连接的仓库是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+<p>​    当然我记得现在比较新的npm应该是在登录的时候可以看到自己登录的网站是哪个，</p>
+<p>​    如果看不到自己的网站是哪个，那么我们可以使用一个包管理工具 nrm 进行管理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -g nrm</span><br><span class="line"></span><br><span class="line">nrm ls</span><br><span class="line">nrm use npm</span><br></pre></td></tr></table></figure>
+
+<p>然后使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm login</span><br><span class="line"></span><br><span class="line">输入自己的用户名和密码，然后输入邮箱</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="初始化一个包"><a href="#初始化一个包" class="headerlink" title="初始化一个包"></a>初始化一个包</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line"></span><br><span class="line">对应的意思是</span><br><span class="line">包名</span><br><span class="line">版本，听说需要从 0.0.1 开始</span><br><span class="line">描述</span><br><span class="line">入口文件</span><br><span class="line">测试指令：应该是，这个没有用过</span><br><span class="line">git 仓库</span><br><span class="line">关键字，可以用于搜索</span><br><span class="line">作者</span><br><span class="line">证书，用MIT，开源管理不会过于严格，不会引起应激反应</span><br><span class="line">然后就是回车回车完事儿</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/22/%E9%9A%8F%E7%AC%94/npm-package%E4%B8%8A%E4%BC%A0/image-20220122231048580.png" alt="image-20220122231048580"></p>
+<h2 id="编写自己的包的过程"><a href="#编写自己的包的过程" class="headerlink" title="编写自己的包的过程"></a>编写自己的包的过程</h2><p>xxxx</p>
+<p>然后包编写完了，就是开始上传了</p>
+<h2 id="最后，上传"><a href="#最后，上传" class="headerlink" title="最后，上传"></a>最后，上传</h2><p>这个很简单，就是publish就完了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="更新-npm"><a href="#更新-npm" class="headerlink" title="更新 npm"></a>更新 npm</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">就是修改一下 version</span><br><span class="line">然后 npm publish 就行</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2022/01/19/JavaScript/%E9%9A%8F%E7%AC%94/js%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/19/JavaScript/%E9%9A%8F%E7%AC%94/js%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">js遍历对象的方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-19 17:32:25" itemprop="dateCreated datePublished" datetime="2022-01-19T17:32:25+08:00">2022-01-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-03 22:37:17" itemprop="dateModified" datetime="2022-03-03T22:37:17+08:00">2022-03-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript-遍历对象的方法"><a href="#JavaScript-遍历对象的方法" class="headerlink" title="JavaScript 遍历对象的方法"></a>JavaScript 遍历对象的方法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object.keys</span><br><span class="line">forin</span><br><span class="line">Object.getOwnPropertyNames</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys"></a>Object.keys</h2><p>使用 Object.keys，会返回一个数组，数组是一个由键构成的</p>
+<p>元素均为对象自身的，可枚举的属性</p>
+<p>​    代表了，不会查找原型链，以及需要可枚举</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">	a: 1</span><br><span class="line">&#125;</span><br><span class="line">const pro = &#123;</span><br><span class="line">	b: 2</span><br><span class="line">&#125;</span><br><span class="line">obj.__proto__ = pro</span><br><span class="line"></span><br><span class="line">Object.keys(obj).log</span><br><span class="line">	a</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="forin"><a href="#forin" class="headerlink" title="forin"></a>forin</h2><p>forin循环，获取的是key值，会向原型链进行获取。但是不会查找不可枚举的属性</p>
+<p>​    可以使用 hasOwnProperty 来判断该属性是否是属于自身的。同时 hasOwnProperty 对于不可枚举的也是可以进行判断的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">	a: 1</span><br><span class="line">&#125;</span><br><span class="line">const pro = &#123;</span><br><span class="line">	b: 2</span><br><span class="line">&#125;</span><br><span class="line">obj.__proto__ = pro</span><br><span class="line">Object.defineProperty(obj, &#x27;c&#x27;, &#123;value: 3, enumerable: false&#125;) // 不可枚举属性</span><br><span class="line"></span><br><span class="line">for key in obj</span><br><span class="line">	log.key</span><br><span class="line">	log.obj[key]</span><br><span class="line">	log.obj.hasOwnProperty(key)</span><br><span class="line">  a, b</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Object-getOwnPropertyNames"><a href="#Object-getOwnPropertyNames" class="headerlink" title="Object.getOwnPropertyNames"></a>Object.getOwnPropertyNames</h2><p>返回自身的属性数组，不包括原型链</p>
+<p>但是包括不可枚举属性</p>
+<p>同时对于一个数组，他的 getOwnPropertyNames 有length，说明了这个length是存在于自身的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">	a: 1</span><br><span class="line">&#125;</span><br><span class="line">const pro = &#123;</span><br><span class="line">	b: 2</span><br><span class="line">&#125;</span><br><span class="line">obj.__proto__ = pro</span><br><span class="line">Object.defineProperty(obj, &#x27;c&#x27;, &#123;value: 3, eumerable: false&#125;)	// 添加一个不可枚举属性</span><br><span class="line"></span><br><span class="line">Object.getOwPropertyNames(obj)</span><br><span class="line">	a, c</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="题外话：forof"><a href="#题外话：forof" class="headerlink" title="题外话：forof"></a>题外话：forof</h2><p>forof 其实在前面就已经说过了，这个是一个根据迭代器进行的循环</p>
+<p>面试也问过，为什么forin可以遍历数组，当时我的理解是 forin 实际上并不是遍历数组，他是遍历一个对象，现在我也是这样认为的，我认为forin 不是遍历数组，他内部的遍历实际是对象，只是因为js的任何都是对象的原因，所以 forin 遍历数组获取到的下标，这样一看，他不是很像是对象的键吗，数组只是存在了一个length方法。而对象没有而已。</p>
+<p>我认为forof才是JavaScript对于遍历数组而创建一个方式，因为forof使用的迭代器，是数组才有的，创建的对象是没有的，当然这个我们也能进行自己编写，具体的可以看看前面写的 迭代器部分。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2022/01/11/%E9%9A%8F%E7%AC%94/other/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/11/%E9%9A%8F%E7%AC%94/other/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2/" class="post-title-link" itemprop="url">jet-brains文件内容的正则查找和替换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-11 14:40:44" itemprop="dateCreated datePublished" datetime="2022-01-11T14:40:44+08:00">2022-01-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-24 22:05:27" itemprop="dateModified" datetime="2022-01-24T22:05:27+08:00">2022-01-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="jet-brains-webStore的正则查找"><a href="#jet-brains-webStore的正则查找" class="headerlink" title="jet-brains webStore的正则查找"></a>jet-brains webStore的正则查找</h1><p><img src="/2022/01/11/%E9%9A%8F%E7%AC%94/other/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2%5Cimage-20220111144213336.png" alt="image-20220111144213336"></p>
+<p>在 ctrl+f 之后，选择这个 .* 或者是 reg 的就是正则的。这个其实也没有什么</p>
+<p>重点来了！！正则的替换</p>
+<h1 id="正则替换"><a href="#正则替换" class="headerlink" title="正则替换"></a>正则替换</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaaaa(.*)ccc(.*)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx$2aa$1z</span><br></pre></td></tr></table></figure>
+
+<p>使用 () 将要保留的元素给记录下来，然后再在下面使用 $1/2/3 来进行获取对应的值来进行替换</p>
+<p><img src="/2022/01/11/%E9%9A%8F%E7%AC%94/other/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2%5Cimage-20220111144549850.png" alt="image-20220111144549850"></p>
+<p><img src="/2022/01/11/%E9%9A%8F%E7%AC%94/other/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2/jet-brains%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A3%E5%88%99%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2%5Cimage-20220111144559970-16418835623721.png" alt="image-20220111144559970"></p>
+<p>这样就能给替换成功了，很是方便。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/12/28/Node%20JS/NodeJS%E4%B8%8B%E8%BD%BD%E5%92%8Cnpm%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/28/Node%20JS/NodeJS%E4%B8%8B%E8%BD%BD%E5%92%8Cnpm%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">NodeJS下载和npm安装和配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-28 11:36:56" itemprop="dateCreated datePublished" datetime="2021-12-28T11:36:56+08:00">2021-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-24 22:05:27" itemprop="dateModified" datetime="2022-01-24T22:05:27+08:00">2022-01-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="NodeJS下载和npm安装"><a href="#NodeJS下载和npm安装" class="headerlink" title="NodeJS下载和npm安装"></a>NodeJS下载和npm安装</h1><p>下载 NodeJS，没啥，直接官网进入，下载包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://nodejs.org/zh-cn/download/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>一路安装，node 安装会自动安装 npm</p>
+<p>安装完成之后</p>
+<p>通过在 cmd 使用 来判断是否安装完成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改安装路径"><a href="#修改安装路径" class="headerlink" title="修改安装路径"></a>修改安装路径</h2><h3 id="查看路径"><a href="#查看路径" class="headerlink" title="查看路径"></a>查看路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm prefix -g</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改路径"><a href="#修改路径" class="headerlink" title="修改路径"></a>修改路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个是全局安装时的路径，使用全局安装会将其安装在这里，当然你也可以直接安装在nodejs这个目录就行，不需要更深层的目录。但是这样不方便查看和删除。</span><br><span class="line">npm config set prefix “D:\Software\nodejs\node_global”</span><br><span class="line">这个是缓存的路径，npm会生成缓存。用于更快的进行启动和操作。</span><br><span class="line">npm config set cache “D:\Software\nodejs\node_cache”</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置环境变量</p>
+<p><img src="/2021/12/28/Node%20JS/NodeJS%E4%B8%8B%E8%BD%BD%E5%92%8Cnpm%E5%AE%89%E8%A3%85/NodeJS%E4%B8%8B%E8%BD%BD%E5%92%8Cnpm%E5%AE%89%E8%A3%85%5Cimage-20211228140948410-16406717947501.png" alt="image-20211228140948410"></p>
+<p>然后点击确定保存即可。</p>
+<h3 id="配置镜像"><a href="#配置镜像" class="headerlink" title="配置镜像"></a>配置镜像</h3><p>我们先配置一个镜像然后再安装一个源管理工具nrm</p>
+<p>这个是一个淘宝的镜像源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装nrm"><a href="#安装nrm" class="headerlink" title="安装nrm"></a>安装nrm</h3><p>如果出现操作错误，试试使用管理员的cmd进行操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g nrm</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用nrm"><a href="#使用nrm" class="headerlink" title="使用nrm"></a>使用nrm</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br><span class="line">输出nrm的一个镜像仓库</span><br><span class="line"></span><br><span class="line">nrm use xxx</span><br><span class="line">使用这个xxx镜像</span><br><span class="line"></span><br><span class="line">nrm add name url</span><br><span class="line">添加一个镜像仓库，名字是name，地址是url</span><br><span class="line"></span><br><span class="line">nrm del xx</span><br><span class="line">删除xx仓库</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/17/%E9%9A%8F%E7%AC%94/%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="tallgy">
+      <meta itemprop="description" content="只是一个知识的搬运工">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tallgy's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/17/%E9%9A%8F%E7%AC%94/%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98/" class="post-title-link" itemprop="url">浏览器的回流和重绘</a>
         </h2>
 
         <div class="post-meta-container">
@@ -479,7 +1071,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-16 21:28:42" itemprop="dateModified" datetime="2021-11-16T21:28:42+08:00">2021-11-16</time>
+        <time title="修改时间：2022-01-09 11:01:56" itemprop="dateModified" datetime="2022-01-09T11:01:56+08:00">2022-01-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -491,7 +1083,7 @@
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+          <a href="/categories/JavaScript/%E6%A6%82%E5%BF%B5/" itemprop="url" rel="index"><span itemprop="name">概念</span></a>
         </span>
     </span>
 
@@ -813,724 +1405,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/CSS/CSS%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/13/CSS/CSS%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">CSS伪类和伪元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-13 23:08:34 / 修改时间：23:20:54" itemprop="dateCreated datePublished" datetime="2021-11-13T23:08:34+08:00">2021-11-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="CSS伪类和伪元素"><a href="#CSS伪类和伪元素" class="headerlink" title="CSS伪类和伪元素"></a>CSS伪类和伪元素</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes</span><br></pre></td></tr></table></figure>
-
-<p>​        伪类是选择器的一种，它用于选择处于特定状态的元素，比如当它们是这一类型的第一个元素时，或者是当鼠标指针悬浮在元素上面的时候。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用的是单冒号</span><br><span class="line">:</span><br></pre></td></tr></table></figure>
-
-<h3 id="行为伪类"><a href="#行为伪类" class="headerlink" title="行为伪类"></a>行为伪类</h3><p>​        一些伪类只会在用户以某种方式和文档交互的时候应用。这些<strong>用户行为伪类</strong>，有时叫做<strong>动态伪类</strong>，表现得就像是一个类在用户和元素交互的时候加到了元素上一样。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:hover,:focus</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div:hover &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements</span><br></pre></td></tr></table></figure>
-
-<p>​        伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。伪元素开头为双冒号<code>::</code>。</p>
-<blockquote>
-<p><strong>备注：</strong>一些早期的伪元素曾使用单冒号的语法，所以你可能会在代码或者示例中看到。现代的浏览器为了保持后向兼容，支持早期的带有单双冒号语法的伪元素。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">::before</span><br><span class="line">::after</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//before和after的伪元素 content是必须的。</span><br><span class="line">div::before &#123;</span><br><span class="line">	content: &#x27;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><ul>
-<li><p>伪元素是生成一个新的，或者表现的像是生成了一个新的HTML元素。</p>
-<p>伪类是选择处于某种状态的的元素。</p>
-</li>
-<li><p>伪元素是使用的 ::</p>
-<p>伪类是使用的 :</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E7%BB%84%E7%9A%84emptyItems/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E6%95%B0%E7%BB%84%E7%9A%84emptyItems/" class="post-title-link" itemprop="url">数组的emptyItems</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-13 21:45:21 / 修改时间：22:23:16" itemprop="dateCreated datePublished" datetime="2021-11-13T21:45:21+08:00">2021-11-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="数组的empty-items"><a href="#数组的empty-items" class="headerlink" title="数组的empty-items"></a>数组的empty-items</h1><h2 id="empty的产生"><a href="#empty的产生" class="headerlink" title="empty的产生"></a>empty的产生</h2><p>​        首先，先说一下如何产生empty</p>
-<ul>
-<li>使用 new Array函数进行创建，并没有初始化</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = new Array(10);</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 length方法重新定义了长度，长度比原来的数组长，那么会导致多余的变为 empty-items。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = [1];</span><br><span class="line">a.length = 10;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="empty的问题"><a href="#empty的问题" class="headerlink" title="empty的问题"></a>empty的问题</h2><p>​        开始我也没有在意这个empty的问题，但是后来发现对于empty-items 使用一些方法是不会进行循环的。这就造成了很大的问题。</p>
-<ul>
-<li>map等数组的高阶函数，</li>
-<li>forin循环</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let a = new Array(10);</span><br><span class="line"></span><br><span class="line">a.map((v) =&gt; &#123;</span><br><span class="line">  console.log(v);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">for (const key in a) &#123;</span><br><span class="line">  console.log(a[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        但是forof循环是可以的，fori循环也可以，输出的值就是undefined。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>当然具体的原因我也不知道，我们可以这样理解，JavaScript的数组也是一个特殊的对象形式，所以对于这些empty-items，其实并没有真正的存在，就类似于一种离散的数组形式，所以为什么循环不到，因为对于不存在的是无法循环的。但是为什么forof是可以循环的呢，我们也许可以这样思考，forof是使用的迭代器循环，所以并不是循环到了，只是这是一个数组的迭代器的形式，所以这样才成功的循环了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/13/JavaScript/%E6%A6%82%E5%BF%B5/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">高阶函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-13 11:17:08 / 修改时间：16:51:26" itemprop="dateCreated datePublished" datetime="2021-11-13T11:17:08+08:00">2021-11-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript-高阶函数"><a href="#JavaScript-高阶函数" class="headerlink" title="JavaScript 高阶函数"></a>JavaScript 高阶函数</h1><p>​        面试的时候我被问到了什么是高阶函数，当时就蒙了，现在去了解了一下。</p>
-<p>​        其实这个东西很简单，你也经常使用。只是听起来高大上罢了</p>
-<h2 id="函数是什么"><a href="#函数是什么" class="headerlink" title="函数是什么"></a>函数是什么</h2><p>​        说到高阶函数，我们需要知道函数的一些形式，我们也需要思考函数可以和变量一样进行传递吗</p>
-<p>​        在JavaScript中，函数实际上也是一个对象。每一个函数都是Function类型的一个实例。它既有 __proto__，也有 prototype。但是prototype才是它自身的，而 proto 是它原型的一个指向。</p>
-<h2 id="什么是高阶函数"><a href="#什么是高阶函数" class="headerlink" title="什么是高阶函数"></a>什么是高阶函数</h2><p>​        在这里我们知道了函数其实就是一个特殊的对象，所以其实可以进行传递，因此。</p>
-<p>​        高阶函数由此而来，高阶函数就是进行了函数的传递，不是将函数当成一个函数，而是当成一个对象进行传递。</p>
-<h2 id="常用的高阶函数的一些方法"><a href="#常用的高阶函数的一些方法" class="headerlink" title="常用的高阶函数的一些方法"></a>常用的高阶函数的一些方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map， reduce， sort 等等。</span><br></pre></td></tr></table></figure>
-
-<p>​        这里就不详细进行介绍。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map(Number);</span><br><span class="line"></span><br><span class="line">map是一个会将一个数组的值调用回调函数生成的值作为一个新的数组</span><br><span class="line">Number就是转数字，</span><br><span class="line"></span><br><span class="line">所以这两个的结合就是，会将数组的值挨个使用一次Number方法，将生成的结果进行返回。</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/%E6%A6%82%E5%BF%B5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/12/JavaScript/%E6%A6%82%E5%BF%B5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="post-title-link" itemprop="url">函数柯里化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-12 16:57:59" itemprop="dateCreated datePublished" datetime="2021-11-12T16:57:59+08:00">2021-11-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-13 11:17:21" itemprop="dateModified" datetime="2021-11-13T11:17:21+08:00">2021-11-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript函数柯里化-Curry"><a href="#JavaScript函数柯里化-Curry" class="headerlink" title="JavaScript函数柯里化 Curry"></a>JavaScript函数柯里化 Curry</h1><p>​        就是说一次性只传入一个参数，后续的参数要后面才进行传递，可以实现函数的一个参数的复用效果。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>​        首先是要确认参数的个数，这里，我看到别人是使用的 fn.length，进行的获取，所以实验了一番，发现方法的length指的是参数的个数。</p>
-<p>​        使用fn.length获取了方法的参数的个数，使用剩余参数将传递进来的参数存放入数组，然后再个数足够时运行方法即可。</p>
-<p>​        一步一步的理解。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// ...args，剩余参数，将后面的参数都作为一个数组进行实现。剩余参数必须放最后一个。</span><br><span class="line">function curry(fn, ...args) &#123;</span><br><span class="line">	// 将this的指向存储下来，后续调用时会用。</span><br><span class="line">  let _this = this;</span><br><span class="line">  //	fn.length，这个方法可以获取到方法的参数个数。</span><br><span class="line">  let len = fn.length;</span><br><span class="line"></span><br><span class="line">	//	同样的，返回一个方法，然后使用剩余参数法则。</span><br><span class="line">  return function (..._args) &#123;</span><br><span class="line">    // let _args = Object.values(arguments);</span><br><span class="line">    //这里使用的是 unshift，没有使用push，是因为，为了避免修改了前面的args值，所以是修改的每一次的_args，如果使用push的话，你对这个函数重复调用也会被存储进去，因为这个是上层的参数，是公用的。</span><br><span class="line">    _args.unshift(...args);</span><br><span class="line">    // console.log(arguments.callee);	//获取被调用的函数，这里报错了，原因没有看，因为这个方式已经不建议使用了。</span><br><span class="line"></span><br><span class="line">		//	这里是当参数的个数不够时，继续调用这个外层方法。</span><br><span class="line">    if (_args.length &lt; len) &#123;</span><br><span class="line">    	//这里，只能重新调用外层的方法，如果调用内层的方法的话，参数会无法添加成功，因为内层方法的参数是基于外层的添加。</span><br><span class="line">      return curry.call(_this, fn, ..._args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">		//	参数够了，调用方法。</span><br><span class="line">    return fn.apply(_this, _args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/12/JavaScript/ES6/ES6%E9%9A%8F%E7%AC%941/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/12/JavaScript/ES6/ES6%E9%9A%8F%E7%AC%941/" class="post-title-link" itemprop="url">ES6随笔1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-12 14:10:35 / 修改时间：14:31:23" itemprop="dateCreated datePublished" datetime="2021-11-12T14:10:35+08:00">2021-11-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="ES6随笔1"><a href="#ES6随笔1" class="headerlink" title="ES6随笔1"></a>ES6随笔1</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://juejin.cn/post/7016520448204603423</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数组合并并去重"><a href="#数组合并并去重" class="headerlink" title="数组合并并去重"></a>数组合并并去重</h2><p>​        先使用扩展运算符进行转化为一个数组，然后再使用set方式去重。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [1, 3, 5];</span><br><span class="line">let arr2 = [1, 6, 12];</span><br><span class="line"></span><br><span class="line">let arr = [...new Set([...arr1, ...arr2])];</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="对象合并"><a href="#对象合并" class="headerlink" title="对象合并"></a>对象合并</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;...obj1, ...obj2&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字符串拼接加判断"><a href="#字符串拼接加判断" class="headerlink" title="字符串拼接加判断"></a>字符串拼接加判断</h2><p>使用模板字符串，模板字符串内部的${}，可以放入任意的JavaScript表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const result = `$&#123;name&#125;$&#123;score &gt; 60 ? &#x27;的考试及格&#x27; : &#x27;的考试不及格&#x27;&#125;`;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用-includes-进行或判断"><a href="#使用-includes-进行或判断" class="headerlink" title="使用 includes 进行或判断"></a>使用 includes 进行或判断</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line">if (arr.includes(type)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">就等于了</span><br><span class="line">if (type === 1 || type===2 || type===3) &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用-find-和-filter-进行查找"><a href="#使用-find-和-filter-进行查找" class="headerlink" title="使用 find 和 filter 进行查找"></a>使用 find 和 filter 进行查找</h2><ul>
-<li>find 的特点是只查找第一个满足的</li>
-<li>filter是将所有满足的作为一个新的数组返回。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(v =&gt; &#123;</span><br><span class="line">	return v === 3;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">arr.find(v =&gt; &#123;</span><br><span class="line">	return v === 3;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="扁平化数组"><a href="#扁平化数组" class="headerlink" title="扁平化数组"></a>扁平化数组</h2><ul>
-<li>Object.values，这个代表了取出对象的属性值，然后作为一个数组。</li>
-<li>flat 是一个扁平化数组的方法，Infinity作用是将很多层扁平化为一层。具体的可以取MDN进行查看。</li>
-<li>注意： <code>flat</code> 方法不支持IE浏览器</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const deps = &#123;</span><br><span class="line">	key: [],</span><br><span class="line">	key1: []</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let member = Object.values(deps).flat(Infinity);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="空值合并运算符"><a href="#空值合并运算符" class="headerlink" title="空值合并运算符 ??"></a>空值合并运算符 ??</h2><ul>
-<li><code>??</code> 代表了如果 左侧的变量是 null或者是undefined时，那么将会返回右侧的操作数。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let a ?? &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h2><ul>
-<li>就是Promise.all 和 Promise.race 的使用</li>
-<li>以及可以使用 async 函数。</li>
-<li>避免生成回调地狱。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://tallgy.gitee.io/2021/11/11/JavaScript/ES6/JavaScript-ES6%E8%A7%A3%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="tallgy">
-      <meta itemprop="description" content="只是一个知识的搬运工">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tallgy's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/11/JavaScript/ES6/JavaScript-ES6%E8%A7%A3%E6%9E%84/" class="post-title-link" itemprop="url">JavaScript-ES6解构</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-11 22:14:32" itemprop="dateCreated datePublished" datetime="2021-11-11T22:14:32+08:00">2021-11-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-12 14:09:36" itemprop="dateModified" datetime="2021-11-12T14:09:36+08:00">2021-11-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JavaScript-解构赋值"><a href="#JavaScript-解构赋值" class="headerlink" title="JavaScript 解构赋值"></a>JavaScript 解构赋值</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment</span><br></pre></td></tr></table></figure>
-
-
-
-<p>​        <strong>解构赋值</strong>语法是一种 Javascript 表达式。通过<strong>解构赋值,</strong> 可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
-<p>​        简单来说，就是对于一个赋值变得简单起来。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="a-b-arr"><a href="#a-b-arr" class="headerlink" title="[a, b] = arr;"></a>[a, b] = arr;</h3><ul>
-<li>多余的不会被赋值</li>
-<li>少的会变成undefined</li>
-<li>注意要避免arr为null和undefined，对象同样，需要是数组和对象才行。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 5];</span><br><span class="line"></span><br><span class="line">let [a, b] = arr;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">1, 3</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="a-b-…rest-arr"><a href="#a-b-…rest-arr" class="headerlink" title="[a, b, …rest] = arr;"></a>[a, b, …rest] = arr;</h3><ul>
-<li>这里，对于多余的都会变成第三个的数组</li>
-<li>少于的，前面两个是undefined， 第三个数组会是一个空数组。</li>
-<li>剩余元素必须在最后一个。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 4, 2, ];</span><br><span class="line"></span><br><span class="line">let [a, b, ...res] = arr;</span><br><span class="line">console.log(a, b, res);</span><br><span class="line"></span><br><span class="line">1 3 [ 4, 2 ]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="a-b-obj"><a href="#a-b-obj" class="headerlink" title="({ a, b } = obj);"></a>({ a, b } = obj);</h3><ul>
-<li><p>这个是以名称为主，需要找到obj内部的a，如果没有，那么就会变成undefined，其次，这里的值是可以是原型上的。 obj.__proto__ 只要原型链上存在也会赋值。</p>
-</li>
-<li><p>其次，这里需要添加括号，或者是定义时进行解构赋值，这里的作用可能是避免大括号的影响了编译的判断。</p>
-</li>
-<li><p><strong>注意</strong>：赋值语句周围的圆括号 <code>( ... )</code> 在使用对象字面量无声明解构赋值时是必须的。 <code>&#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code> 不是有效的独立语法，因为左边的 <code>&#123;a, b&#125;</code> 被认为是一个块而不是对象字面量。</p>
-</li>
-<li><p>然而，<code>(&#123;a, b&#125; = &#123;a: 1, b: 2&#125;)</code> 是有效的，正如 <code>var &#123;a, b&#125; = &#123;a: 1, b: 2&#125;</code>你的 <code>( ... )</code> 表达式之前需要有一个分号，否则它可能会被当成上一行中的函数执行。</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let a,c;</span><br><span class="line">(&#123;a, c&#125; = obj);</span><br><span class="line">console.log(a, c);</span><br><span class="line"></span><br><span class="line">10, 30</span><br></pre></td></tr></table></figure>
-
-<p>​        or</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">let &#123;a, b&#125; = obj;</span><br><span class="line">console.log(a, b);</span><br><span class="line"></span><br><span class="line">10, 20</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="a-b-…rest-obj"><a href="#a-b-…rest-obj" class="headerlink" title="({a, b, …rest} = obj);"></a>({a, b, …rest} = obj);</h3><ul>
-<li>这里是将前面没有进行赋值的对象全部加入了最后一个对象。</li>
-<li>其次，最后一个是不会进入原型链进行查找赋值的。</li>
-<li>如果没有了，那么便会变成空对象。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  a: 10,</span><br><span class="line">  b: 20,</span><br><span class="line">  c: 30</span><br><span class="line">&#125;;</span><br><span class="line">obj.__proto__ = &#123;</span><br><span class="line">  x: 1111,</span><br><span class="line">&#125;</span><br><span class="line">let &#123;a, ...res&#125; = obj;</span><br><span class="line">console.log(a, res);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="a-4-a-10-解构默认值"><a href="#a-4-a-10-解构默认值" class="headerlink" title="[a=4] / {a = 10} 解构默认值"></a>[a=4] / {a = 10} 解构默认值</h3><ul>
-<li>简单来说就是设置一个默认值，不会变成undefined</li>
-<li>对于对象也有效果 </li>
-<li>默认值可以是对象。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line"></span><br><span class="line">[a=5, b=7] = [1];    //[a=5, b=7] = [1, undefined]; ,就算是这样也是 1， 7</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(&#123;a=5, b=7&#125; = &#123;</span><br><span class="line">  a: 3,</span><br><span class="line">&#125;);</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 7</span><br><span class="line"></span><br><span class="line">(&#123;a=5, b= &#123; x: 1 &#125;&#125; = &#123; a: 3 &#125;); 并且还能使用赋值默认对象效果。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="a-b-b-a-交换变量"><a href="#a-b-b-a-交换变量" class="headerlink" title="[a, b] = [b, a]; 交换变量"></a>[a, b] = [b, a]; 交换变量</h3><ul>
-<li>交换的变量可以是对象，也可以是值类型。</li>
-<li>({a, b} = {b, a});  这个没有交换变量的效果。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a= &#123;a: 4&#125;,</span><br><span class="line">    b= &#123;x:3&#125;;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line">console.log(a, b);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="忽略值-a-b-arr"><a href="#忽略值-a-b-arr" class="headerlink" title="忽略值 [a, , b] = arr;"></a>忽略值 [a, , b] = arr;</h3><ul>
-<li>可以对不要的值不使用变量进行存储，使用 <code>, ,</code> 这样就能达到忽略的效果</li>
-<li>对象不能使用忽略值的效果，会报错，</li>
-<li><code>[, ,] = arr</code> ， 这样可以忽略全部返回值</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">  return [1, 2, 3];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var [a, , b] = f();</span><br><span class="line">console.log(a); // 1</span><br><span class="line">console.log(b); // 3</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="命名赋值-p-foo-obj-别名"><a href="#命名赋值-p-foo-obj-别名" class="headerlink" title="命名赋值 {p: foo} = obj; 别名"></a>命名赋值 {p: foo} = obj; 别名</h3><ul>
-<li>只能用于对象</li>
-<li>可以将其重新命名。</li>
-<li>可以将命名赋值和默认值一同使用 {p:foo = 10}</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;p: 42, q: true&#125;;</span><br><span class="line">var &#123;p: foo, q: bar&#125; = o;</span><br><span class="line"></span><br><span class="line">console.log(foo); // 42</span><br><span class="line">console.log(bar); // true </span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="方法参数的赋值"><a href="#方法参数的赋值" class="headerlink" title="方法参数的赋值"></a>方法参数的赋值</h3><ul>
-<li>首先，function fn(op = {}) {}</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function drawES2015Chart(&#123;size = &#x27;big&#x27;, cords = &#123; x: 0, y: 0 &#125;, radius = 25&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">上面这个写法很高级，但是有点难以理解。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;x: &#x27;x&#x27;, c: 1&#125;) &#123;&#125;</span><br><span class="line">这个写法，虽然可以理解了，但是如果传参时添加了一个参数便会全部覆盖，达不到想要的效果。</span><br><span class="line"></span><br><span class="line">function fn(o = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时如果没有传入参数则会变成一个空对象，然后我们再将这个o换成一个对象</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125; = &#123;&#125;) &#123;&#125;</span><br><span class="line">此时，如果不传入参数，那么先是一个空对象，然后再将空对象赋值给了前面的，然后就会生成一个 x=3 的数了。</span><br><span class="line">如果传入的对象里面没有x，同样也是生成x=3的数。</span><br><span class="line">所以此时再去看最开始那个就应该能够看懂了</span><br><span class="line"></span><br><span class="line">function fn(&#123;x = 3&#125;) &#123;&#125;</span><br><span class="line">这里的区别，在于如果没有传入任何值，那么将会报错，而上面使用了空对象，可以不传递参数。</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在上面的 <strong><code>drawES2015Chart</code></strong> 的函数签名中，解构的左手边被分配给右手边的空对象字面值：<code>&#123;size = &#39;big&#39;, cords = &#123;x: 0, y: 0&#125;, radius = 25&#125; = &#123;&#125;</code>。你也可以在没有右侧分配的情况下编写函数。但是，如果你忽略了右边的赋值，那么函数会在被调用的时候查找至少一个被提供的参数，而在当前的形式下，你可以直接调用 <code>**drawES2015Chart()**</code> 而不提供任何参数。如果你希望能够在不提供任何参数的情况下调用该函数，则当前的设计非常有用，而另一种方法在您确保将对象传递给函数时非常有用。</p>
-</blockquote>
-<h3 id="解构一个嵌套对象和数组"><a href="#解构一个嵌套对象和数组" class="headerlink" title="解构一个嵌套对象和数组"></a>解构一个嵌套对象和数组</h3><ul>
-<li>没啥讲的，但是却有点东西，对象别名使用了 []， 进行了数组赋值，然后再在里面进行了对象赋值，{}</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const metadata = &#123;</span><br><span class="line">  title: &#x27;Scratchpad&#x27;,</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">      locale: &#x27;de&#x27;,</span><br><span class="line">      localization_tags: [],</span><br><span class="line">      last_edit: &#x27;2014-04-14T08:43:37&#x27;,</span><br><span class="line">      url: &#x27;/de/docs/Tools/Scratchpad&#x27;,</span><br><span class="line">      title: &#x27;JavaScript-Umgebung&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  url: &#x27;/en-US/docs/Tools/Scratchpad&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let &#123;</span><br><span class="line">  title: englishTitle, // rename</span><br><span class="line">  translations: [</span><br><span class="line">    &#123;</span><br><span class="line">       title: localeTitle, // rename</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125; = metadata;</span><br><span class="line"></span><br><span class="line">console.log(englishTitle); // &quot;Scratchpad&quot;</span><br><span class="line">console.log(localeTitle);  // &quot;JavaScript-Umgebung&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="for-of-迭代和解构"><a href="#for-of-迭代和解构" class="headerlink" title="for of 迭代和解构"></a>for of 迭代和解构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var people = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Mike Smith&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Jane Smith&#x27;,</span><br><span class="line">      father: &#x27;Harry Smith&#x27;,</span><br><span class="line">      sister: &#x27;Samantha Smith&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 35</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Tom Jones&#x27;,</span><br><span class="line">    family: &#123;</span><br><span class="line">      mother: &#x27;Norah Jones&#x27;,</span><br><span class="line">      father: &#x27;Richard Jones&#x27;,</span><br><span class="line">      brother: &#x27;Howard Jones&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 25</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var &#123;name: n, family: &#123;father: f&#125;&#125; of people) &#123;</span><br><span class="line">  console.log(&#x27;Name: &#x27; + n + &#x27;, Father: &#x27; + f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="计算属性名，可以被解构"><a href="#计算属性名，可以被解构" class="headerlink" title="计算属性名，可以被解构"></a>计算属性名，可以被解构</h3><ul>
-<li>简单来说，就是key变成了一个变量，然后使用[]， 来将一个常量换成了一个变量</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let key = &quot;z&quot;;</span><br><span class="line">let &#123; [key]: foo &#125; = &#123; z: &quot;bar&quot; &#125;;</span><br><span class="line"></span><br><span class="line">console.log(foo); // &quot;bar&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="无效的标识符作为一个属性名"><a href="#无效的标识符作为一个属性名" class="headerlink" title="无效的标识符作为一个属性名"></a>无效的标识符作为一个属性名</h3><p>在这里，fizz-buzz 是一个无效的变量名，我们使用字符串形式，然后加上别名进行操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123; &#x27;fizz-buzz&#x27;: true &#125;;</span><br><span class="line">const &#123; &#x27;fizz-buzz&#x27;: fizzBuzz &#125; = foo;</span><br><span class="line"></span><br><span class="line">console.log(fizzBuzz); // &quot;true&quot;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
